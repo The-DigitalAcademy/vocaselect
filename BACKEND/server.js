@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
+const subjectRoutes = require('./routes/subjects.routes')
 
 
 //Environment file
@@ -47,6 +48,7 @@ app.get("/", (req, res) => {
 
 //routes for the user API
 app.use('/api/users', userRoutes)
+app.use('/api/getAllSubjectMarks', subjectRoutes)
 
 
 // set port, listen for requests
