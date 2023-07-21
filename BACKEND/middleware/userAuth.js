@@ -15,17 +15,17 @@ require('dotenv').config()
 //redunt code - for testing purpose 
  try {
    
-   //checking if email already exist
-//    const emailcheck = await User.findOne({
-//      where: {
-//        email: req.body.email,
-//      },
-//    });
+  //  checking if email already exist
+   const emailcheck = await User.findOne({
+     where: {
+       email: req.body.email,
+     },
+   });
 
-//    //if email exist in the database respond with a status of 409
-//    if (emailcheck) {
-//      return res.json(409).send("Authentication failed");
-//    }
+   //if email exist in the database respond with a status of 409
+   if (emailcheck) {
+     return res.json(409).send("Authentication failed");
+   }
 
    next();
  } catch (error) {
@@ -33,21 +33,8 @@ require('dotenv').config()
  }
 };
 
-const getUsers = async (req, res) => {
-    try {
-      // Fetch all users from the database
-      const users = await User.findAll();
-  
-      // Return the list of users
-      return res.status(200).send(users);
-    } catch (error) {
-      console.log(error);
-      return res.status(500).send("Internal Server Error");
-    }
-};
 
 //exporting module
  module.exports = {
  saveUser,
- getUsers
 };

@@ -48,7 +48,6 @@ const signup = async (req, res) => {
 
 
 //login authentication
-
 const login = async (req, res) => {
  try {
 const { email, password } = req.body;
@@ -91,22 +90,73 @@ const { email, password } = req.body;
  }
 };
 
-// Function to get all users
+//GET ALL 
 const getUsers = async (req, res) => {
-    try {
-      // Fetch all users from the database
-      const users = await User.findAll();
-  
-      // Return the list of users
-      return res.status(200).send(users);
-    } catch (error) {
-      console.log(error);
-      return res.status(500).send("Internal Server Error");
-    }
+  try {
+    // Fetch all users from the database
+    const users = await User.findAll();
+
+    // Return the list of users
+    return res.status(200).send(users);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
+  }
 };
+
+
+
+//GET BY ID 
+const getUserById = async (req, res) => {
+  try {
+    const userId = req.params.id; // Assuming you pass the user ID in the URL
+    const user = await User.findByPk(userId);
+    if (user) {
+      return res.status(200).send(user);
+    } else {
+      return res.status(404).send("User not found");
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
+const updateUserById = async (req, res) => {
+  try {
+    const userId = req.params.id; // Assuming you pass the user ID in the URL
+    const { name, surname, email, dob, city, studentgrade } = req.body;
+    const data = {
+      name,
+      surname,
+      email,
+      dob,
+      city,
+      studentgrade,
+    };
+    const user = await User.findByPk(userId);
+    if (user) {
+      await User.update(data, {
+        where: { id: userId },
+      });
+      // Fetch the updated user to return it
+      const updatedUser = await User.findByPk(userId);
+      return res.status(200).send(updatedUser);
+    } else {
+      return res.status(404).send("User not found");
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
+
 
 module.exports = {
  signup,
  login,
- getUsers
+ getUsers,
+ getUserById,
+ updateUserById
 };
