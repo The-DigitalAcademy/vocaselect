@@ -22,6 +22,7 @@ export class LoginComponent {
   errorMessage = '';
   roles: string[] = [];
 username: any;
+f: any;
 
   constructor() { }
 
