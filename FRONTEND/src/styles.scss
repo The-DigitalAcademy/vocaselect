@@ -4,6 +4,15 @@
 body{
     background-color: #f2f6fd;
 }
+
+:root {
+    --primary-color: #fff;
+    --background-color: #e5e5e5;
+    --text-color: #073980;
+    --button-color: #75A1DF;
+  }
+  
+
 .eclipse-1{
     position: fixed;
     height: 100px;
@@ -31,7 +40,7 @@ body{
     border-radius: 50%;
     width: 350px;
     z-index: 9999;
-    right: 400px;
+    right: 529px;
     bottom: 50px;
     background: linear-gradient(#ffffff, #AED3E8);
 }
