@@ -16,12 +16,8 @@ router.post('/signup', userAuth.saveUser, signup)
 router.post('/login', login )
 
 // Route to get all users
-router.get("/", userController.getUsers);
+router.get("/getAll", userController.getUsers);
+
 
 module.exports = router
 
-// module.exports = {
-//     signup,
-//     login,
-//     getUsers
-//    };

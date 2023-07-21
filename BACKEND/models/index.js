@@ -1,5 +1,6 @@
 const dbConfig = require("../config/db.config");
 const Sequelize = require("sequelize");
+// const db = require("../models/subjects.model");
 
 //importing modules
 // const {Sequelize, DataTypes} = require('sequelize')
@@ -32,7 +33,13 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.User = require("./user.models.js")(sequelize, Sequelize);
+db.Subject = require("../models/subjects.model")(sequelize, Sequelize);
+
+
 // db.users = require("./users.model.js")(sequelize, Sequelize);
 
 
 module.exports = db;
+
+
+

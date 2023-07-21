@@ -1,16 +1,20 @@
 // importing modules
 const express = require('express');
 const subjectController = require('../controllers/subjects.controllers');
-const { createSubjectMark, getAllSubjectMarks, getSubjectById, updateSubjectMark, deleteSubjectMark } = subjectController;
+const { createSubjectMark, getAllSubjectMarks, updateSubjectMark, deleteSubjectMark } = subjectController;
 
 
 const router = express.Router();
 
 // Route to create a new subject
-router.post('/', createSubjectMark);
+router.post('/subject', createSubjectMark);
+
+// router.post('/signup', userAuth.saveUser, signup)
 
 // Route to get all subjects
-router.get('/subjects', getAllSubjectMarks);
+router.get('/', getAllSubjectMarks);
+
+
 
 // Route to get a subject by ID
 // router.get('/subjects/:id', getSubjectById);
@@ -24,9 +28,4 @@ router.delete('/subjects/:id', deleteSubjectMark);
 module.exports = router;
 
 
-// module.exports = {
-//     createSubjectMark,
-//     getAllSubjectMarks,
-//     updateSubjectMark,
-//     deleteSubjectMark,
-//   };
+
