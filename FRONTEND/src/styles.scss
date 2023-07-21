@@ -4,3 +4,77 @@
 body{
     background-color: #f2f6fd;
 }
+
+:root {
+    --primary-color: #fff;
+    --background-color: #e5e5e5;
+    --text-color: #073980;
+    --button-color: #75A1DF;
+  }
+  
+
+.eclipse-1{
+    position: fixed;
+    height: 100px;
+    border-radius: 50%;
+    width: 100px;
+    background: linear-gradient(#c2e8e6, #9198e5);
+    z-index: 9999;
+    top: 40px;
+    left: 150px;
+}
+.eclipse-2{
+    position: fixed;
+    height: 200px;
+    border-radius: 50%;
+    width: 200px;
+    background: linear-gradient( #9198e5, #c2e8e6);
+    z-index: 9999;
+    bottom: -40px;
+    left:-40px;
+}
+
+.eclipse-3{
+    position: fixed;
+    height: 350px;
+    border-radius: 50%;
+    width: 350px;
+    z-index: 9999;
+    right: 529px;
+    bottom: 50px;
+    background: linear-gradient(#ffffff, #AED3E8);
+}
+
+.eclipse-4{
+    position: fixed;
+    border-radius: 50%;
+    background-color: #E6E6FA;
+    z-index: 9999;
+    right: -110px;
+    top: -100px;
+    width: 500px;
+    height: 500px;
+}
+
+.eclipse-5{
+    position: fixed;
+    height: 250px;
+    border-radius: 50%;
+    width: 250px;
+    background: linear-gradient(#def3f2, #b8bce4);
+    z-index: 9999;
+    top: 166px;
+    left: 666px;
+}
+
+.eclipse-6{
+    position: fixed;
+    border-radius: 50%;
+    z-index: 9999;
+    top: 470px;
+    left: 350px;
+    width: 200px;
+    height: 200px;
+    // background-color: #E6E6FA;
+    background: linear-gradient(#fff, #cecef0);
+}
