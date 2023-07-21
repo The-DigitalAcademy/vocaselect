@@ -22,7 +22,7 @@ require('dotenv').config()
      },
    });
 
-   //if email exist in the database respond with a status of 409
+  //  if email exist in the database respond with a status of 409
    if (emailcheck) {
      return res.json(409).send("Authentication failed");
    }
@@ -32,7 +32,6 @@ require('dotenv').config()
    console.log(error);
  }
 };
-
 
 //exporting module
  module.exports = {

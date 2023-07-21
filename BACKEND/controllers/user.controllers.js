@@ -30,14 +30,16 @@ const signup = async (req, res) => {
    // set cookie with the token generated
    if (user) {
      let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-       expiresIn: 1 * 24 * 60 * 60 * 1000, //24 hours
+      expiresIn: '1d', // 1 day (24 hours)
      });
 
      res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
      console.log("user", JSON.stringify(user, null, 2));
      console.log(token);
      //send users details
-     return res.status(201).send(user);
+    //  return res.status(201).send(user);
+     return res.status(201).send({message: "User was registered successfully!"} );
+
    } else {
      return res.status(409).send("Details are not correct");
    }
@@ -68,8 +70,8 @@ const { email, password } = req.body;
       //generate token with the user's id and the secretKey in the env file
 
      if (isSame) {
-       let token = jwt.sign({ id: user.id }, process.env.secretKey, {
-         expiresIn: 1 * 24 * 60 * 60 * 1000,
+       let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+        expiresIn: '1d', // 1 day (24 hours)
        });
 
        //if password matches wit the one in the database
@@ -78,7 +80,7 @@ const { email, password } = req.body;
        console.log("user", JSON.stringify(user, null, 2));
        console.log(token);
        //send user data
-       return res.status(201).send(user);
+       return res.status(201).send({message: "Successfully logged in!"});
      } else {
        return res.status(401).send("Authentication failed");
      }
@@ -97,6 +99,7 @@ const getUsers = async (req, res) => {
     const users = await User.findAll();
 
     // Return the list of users
+    // res.send({ message: "Users successfully retrieved!" });
     return res.status(200).send(users);
   } catch (error) {
     console.log(error);
@@ -109,7 +112,7 @@ const getUsers = async (req, res) => {
 //GET BY ID 
 const getUserById = async (req, res) => {
   try {
-    const userId = req.params.id; // Assuming you pass the user ID in the URL
+    const userId = req.params.id;
     const user = await User.findByPk(userId);
     if (user) {
       return res.status(200).send(user);
@@ -124,7 +127,7 @@ const getUserById = async (req, res) => {
 
 const updateUserById = async (req, res) => {
   try {
-    const userId = req.params.id; // Assuming you pass the user ID in the URL
+    const userId = req.params.id; 
     const { name, surname, email, dob, city, studentgrade } = req.body;
     const data = {
       name,
@@ -149,6 +152,28 @@ const updateUserById = async (req, res) => {
     console.log(error);
     return res.status(500).send("Internal Server Error");
   }
+  
+};
+
+//delete users
+// DELETE BY ID
+const deleteUserById = async (req, res) => {
+  try {
+    const userId = req.params.id; 
+    const user = await User.findByPk(userId);
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Perform the delete operation here
+    await user.destroy();
+
+    return res.status(200).send("User deleted successfully");
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
+  }
 };
 
 
@@ -158,5 +183,6 @@ module.exports = {
  login,
  getUsers,
  getUserById,
- updateUserById
+ updateUserById,
+ deleteUserById
 };

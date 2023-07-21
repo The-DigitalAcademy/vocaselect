@@ -7,7 +7,7 @@ const userRoutes = require ('./routes/user.routes')
 
 
 //Environment file
-require('dotenv').config();
+// require('dotenv').config();
 
 //assigning the variable app to express
 const app = express();
@@ -47,6 +47,13 @@ app.get("/", (req, res) => {
 
 //routes for the user API
 app.use('/api/users', userRoutes)
+
+
+// Import the deleteUserById method (replace this with the actual path to your method file)
+const { deleteUserById } = require('./controllers/user.controllers');
+
+// Create the route for deleting a user
+app.delete('/:id', deleteUserById);
 
 
 // set port, listen for requests
