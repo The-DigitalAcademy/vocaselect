@@ -18,7 +18,7 @@
 
 // models/subject.js
 module.exports = (sequelize, Sequelize) => {
-    const Subject = sequelize.define("Subject", {
+    const Subject = sequelize.define("subject", {
         subjectName: {
         type: Sequelize.STRING,
         allowNull: false,

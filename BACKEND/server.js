@@ -50,7 +50,9 @@ app.get("/", (req, res) => {
 
 //routes for the user API
 app.use('/api/users', userRoutes)
-app.use('/api/allSubjects', subjectRoutes)
+// app.use('/api/allSubjects', subjectRoutes)
+
+app.use('/api/subjects', subjectRoutes)
 
 
 // set port, listen for requests
@@ -58,3 +60,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is connected on port ${PORT}.`);
 });
+
+
