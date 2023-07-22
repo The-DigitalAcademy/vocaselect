@@ -1,4 +1,6 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/_services/auth.service';
+import { StorageService } from 'src/app/_services/storage.service';
 
 
 // Login Component Calls TokenStorageService Methods To Check The LoggedIn Status And Save Token And User Info To Session Storage.
@@ -12,7 +14,7 @@ import { Component, Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form: any = {
     username: null,
     password: null
@@ -21,20 +23,43 @@ export class LoginComponent {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-username: any;
-f: any;
 
-  constructor() { }
+  constructor(private authService: AuthService, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    // if (this.tokenStorage.getToken()) {
-    //   this.isLoggedIn = true;
-    //   this.roles = this.tokenStorage.getUser().roles;
-    // }
+    if (this.storageService.isLoggedIn()) {
+      this.isLoggedIn = true;
+      this.roles = this.storageService.getUser().roles;
+    }
   }
-
+  
   onSubmit(): void {
     const { username, password } = this.form;
+
+    this.authService.login(username, password).subscribe({
+      next: data => {
+        this.storageService.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.roles = this.storageService.getUser().roles;
+        this.reloadPage();
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    });
+  }
+ 
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+}
+
+ // onSubmit(): void {
+  //   const { username, password } = this.form;
 
   //   this.authService.login(username, password).subscribe({
   //     next: (data) => {
@@ -59,7 +84,7 @@ f: any;
   //     },
       
   //  });
-  }
+ 
 
   // isAuthenticated(): boolean{
   //   if (this.isLoggedIn = true){
@@ -67,9 +92,3 @@ f: any;
   //   }
   //   return true
   // }
-
-  reloadPage(): void {
-    window.location.reload();
-  }
-}
-
