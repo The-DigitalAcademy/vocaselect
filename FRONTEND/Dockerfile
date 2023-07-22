@@ -1,3 +1,6 @@
+
+
+# Stage 1: Build Angular app
 FROM node:18-alpine as build
 
 WORKDIR /app
@@ -8,12 +11,19 @@ RUN npm install
 
 COPY . .
 
-RUN apk add gettext
+RUN npm run build --prod
 
-RUN npm run build --base-href
+# Stage 2: Serve the Angular app using Node.js HTTP server
+FROM node:18-alpine
 
-FROM nginx:latest
+WORKDIR /app
 
-COPY --from=build /app/dist/frontend /usr/share/nginx/html
+COPY --from=build /app/dist/frontend .
+
+# Install http-server to serve the application
+RUN npm install -g http-server
 
 EXPOSE 4200
+
+CMD ["http-server", "-p", "4200"]
+

@@ -7,7 +7,7 @@ const userRoutes = require ('./routes/user.routes')
 
 
 //Environment file
-// require('dotenv').config();
+require('dotenv').config();
 
 //assigning the variable app to express
 const app = express();
