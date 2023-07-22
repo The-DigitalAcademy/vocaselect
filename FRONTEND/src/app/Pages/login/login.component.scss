@@ -1,5 +1,5 @@
 form{
-    margin-top: 10rem;
+   
 }
 
 #cent{
@@ -12,26 +12,21 @@ form{
     justify-content: center;
 }
 
-.login-container{
-    width: 400px;
-    height: 550px;
-    box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
-    -webkit-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
-    -moz-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
-    background-color: #fff;
-    background: linear-gradient(#ffffff,#ffffff, #bccdeb);
-    border-radius: 20px !important;
-    padding: 50px;
-    z-index: 9999999;
-    position: absolute;
+.l-container{
+  box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
+  -webkit-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
+  -moz-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
+  background-color: #fff;
+  background: linear-gradient(#ffffff,#ffffff, #bccdeb);
+  border-radius: 20px !important;
+  z-index: 9999999;
 }
-
 .pt-30{
     padding-top: 30px;
 }
 .container {
-    
-        padding-left: 30rem!important;
+  margin-top: 200px;
+  margin-bottom: 200px;
     }
 
 .form-control{
@@ -43,8 +38,9 @@ form{
 .pt-15{
     padding-top: 15px;
 }
-.fr{
-    float: right;
+.img-logo{
+  margin-bottom: -63px;
+  margin-top: -88px;
 }
 
 button{
@@ -67,33 +63,7 @@ button{
     right: 50px;
 }
 
-@media (max-width: 767px) {
-    .container {
-      max-width: 100%; /* Adjust the container to fill the screen width */
-      padding: 0 15px; /* Add some horizontal padding for small screens */
-    }
-  
-    .form-group {
-      padding-top: 15px; /* Increase the top padding for form groups */
-    }
-  
-    .card-img-top {
-      height: 150px; /* Reduce the logo height for small screens */
-    }
-  
-    .pt-30 {
-      padding-top: 15px; /* Increase the top padding for the "Not a member?" link */
-    }
-  }
-  
-  /* Tablets and larger mobile devices (768px to 1023px) */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .card-img-top {
-      height: 180px; /* Adjust the logo height for tablets */
-    }
-  }
 
-  
   
   
   

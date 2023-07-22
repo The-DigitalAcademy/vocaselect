@@ -43,8 +43,8 @@ body{
     border-radius: 50%;
     width: 350px;
     z-index: -999999;
-    right: 450px;
-    bottom: 50px;
+    right: 380px;
+    bottom: 40px;
     background: linear-gradient(#ffffff, #AED3E8);
 }
 
@@ -53,7 +53,7 @@ body{
     border-radius: 50%;
     background-color: #E6E6FA;
     z-index: -999999;
-    right: -110px;
+    right: -90px;
     top: -100px;
     width: 250px;
     height: 250px;
@@ -66,16 +66,16 @@ body{
     width: 250px;
     background: linear-gradient(#def3f2, #b8bce4);
     z-index: -999999;
-    top: 166px;
-    left: 666px;
+    top: 60px;
+    left:450px;
 }
 
 .eclipse-6{
     position: fixed;
     border-radius: 50%;
     z-index: -999999;// z-index: 9999;
-    top: 470px;
-    left: 350px;
+    top: 300px;
+    left: 200px;
     width: 200px;
     height: 200px;
     // background-color: #E6E6FA;
