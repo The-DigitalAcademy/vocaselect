@@ -27,29 +27,45 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private storageService: StorageService) { }
 
   ngOnInit(): void {
-    if (this.storageService.isLoggedIn()) {
-      this.isLoggedIn = true;
-      this.roles = this.storageService.getUser().roles;
-    }
+    // if (this.storageService.isLoggedIn()) {
+    //   this.isLoggedIn = true;
+    //   this.roles = this.storageService.getUser().roles;
+    // }else{
+    //   //redirect to login screen
+    // }
   }
   
   onSubmit(): void {
     const { username, password } = this.form;
 
-    this.authService.login(username, password).subscribe({
-      next: data => {
-        this.storageService.saveUser(data);
+  var response =  this.authService.login(username, password);//.subscribe({
+      // next: data => {
+      //   this.storageService.saveUser(data);
 
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.storageService.getUser().roles;
-        this.reloadPage();
-      },
-      error: err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      }
-    });
+      //   this.isLoginFailed = false;
+      //   this.isLoggedIn = true;
+      //   this.roles = this.storageService.getUser().roles;
+      //   this.reloadPage();
+      // },
+      // error: err => {
+      //   this.errorMessage = err.error.message;
+      //   this.isLoginFailed = true;
+      //}
+      
+  //  });
+
+  if(response == true){
+    //successful
+    this.storageService.saveUser(this.form);
+this.isLoginFailed = false;
+this.isLoggedIn = true;
+this.roles = this.storageService.getUser().roles;
+this.reloadPage();
+      // },
+  }else{
+    this.errorMessage ="Incorrect username or password";
+    this.isLoginFailed = true;
+  }
   }
  
 
