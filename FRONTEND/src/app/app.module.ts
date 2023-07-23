@@ -8,6 +8,7 @@ import { LandingPageComponent } from './Pages/landing-page/landing-page.componen
 import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
+import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SubjectsComponent } from './Pages/subjects/subjects.component';
     LandingPageComponent,
     LoginComponent,
     RegisterComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    DreamJobComponent
   ],
   imports: [
     BrowserModule,
