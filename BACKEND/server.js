@@ -54,6 +54,10 @@ app.use('/api/users', userRoutes)
 
 app.use('/api/subjects', subjectRoutes)
 
+// routes for getting all subjets
+
+// app.use('/app/getting')
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

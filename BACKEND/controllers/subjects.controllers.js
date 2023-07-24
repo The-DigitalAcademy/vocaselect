@@ -62,6 +62,23 @@ const Subject = db.Subject;
     }
    };
 
+// get all subjects
+
+const getAllsubjects = async (req, res) => {
+  try {
+    // Fetch all users from the database
+    const subject = await Subject.findAll();
+
+    // Return the list of subjects
+    return res.status(200).send(subject);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
+
    module.exports = {
-    createNewSubject
+    createNewSubject,
+    getAllsubjects
    }
