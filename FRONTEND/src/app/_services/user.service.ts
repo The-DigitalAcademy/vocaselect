@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../enviroments/enviroment.development';
+import { environment } from '../../environments/environment';
 
-const apiUrl = environment.baseUrl;
+// const apiUrl = environment.jwtSecret;
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  apiUrl = environment.apiURL;
+  constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<any> {
-    return this.http.get(apiUrl + '/users', { responseType: 'text' });
+  //Sign Up
+  signup(user: any) {
+    const jwtSecret = environment.jwtSecret; // Access the JWT secret from the environment
+    const headers = { Authorization: `Bearer ${jwtSecret}` };
+    return this.http.post<any>(`${this.apiUrl}/signup`, user, { headers });
   }
 
-  getUserByEmail(email:any): Observable<any> {
-    return this.http.get(apiUrl + '/users/email/' + email, { responseType: 'json' });
+  //Sign In
+  login(credentials: any) {
+    const jwtSecret = environment.jwtSecret; // Access the JWT secret from the environment
+    const headers = { Authorization: `Bearer ${jwtSecret}` };
+    return this.http.post<any>(`${this.apiUrl}/login`, credentials, { headers });
   }
-  
-  saveUser(body: any){
-    return this.http.post<any>(apiUrl+ '/users', body)
-  }
+
 
 
 }
