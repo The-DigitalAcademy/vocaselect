@@ -1,6 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
-import { StorageService } from 'src/app/_services/storage.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 
 // Login Component Calls TokenStorageService Methods To Check The LoggedIn Status And Save Token And User Info To Session Storage.
@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    // if (this.storageService.isLoggedIn()) {
+    // if (this.tokenStorage.getToken())  {
     //   this.isLoggedIn = true;
     //   this.roles = this.storageService.getUser().roles;
     // }else{
@@ -56,10 +56,10 @@ export class LoginComponent implements OnInit {
 
   if(response == true){
     //successful
-    this.storageService.saveUser(this.form);
+    this.tokenStorage.saveUser(this.form);
 this.isLoginFailed = false;
 this.isLoggedIn = true;
-this.roles = this.storageService.getUser().roles;
+// this.roles = this.tokenStorage.getUser().roles;
 this.reloadPage();
       // },
   }else{

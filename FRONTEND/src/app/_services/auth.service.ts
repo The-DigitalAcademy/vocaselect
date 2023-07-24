@@ -37,17 +37,17 @@ export class AuthService {
   }
 
 
-  // register(username: string, email: string, password: string): Observable<any> {
-  //   return this.http.post(
-  //     apiUrl + 'signup',
-  //     {
-  //       username,
-  //       email,
-  //       password,
-  //     },
-  //     httpOptions
-  //   );
-  // }
+  register(username: string, email: string, password: string): Observable<any> {
+    return this.http.post(
+      apiUrl + 'signup',
+      {
+        username,
+        email,
+        password,
+      },
+      httpOptions
+    );
+  }
 
   logout(): Observable<any> {
     return this.http.post(apiUrl + 'signout', { }, httpOptions);
