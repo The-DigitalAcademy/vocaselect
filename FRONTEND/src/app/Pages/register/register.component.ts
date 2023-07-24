@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     cityorTown:null,
     studentGrade:null,
     password: null,
-  confirmpassword:null
+  confirmPassword:null
   };
   isSuccessful = false;
   isSignUpFailed = false;
