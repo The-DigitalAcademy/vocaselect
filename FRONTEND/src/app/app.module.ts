@@ -15,7 +15,6 @@ import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { CommonModule } from '@angular/common';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

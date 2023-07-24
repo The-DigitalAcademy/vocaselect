@@ -10,14 +10,10 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class RegisterComponent implements OnInit {
 
   form: any = {
-    firstName: null,
-    lastName:null,
+    username: null,
     email: null,
-    dateofBirth:null,
-    cityorTown:null,
-    studentGrade:null,
     password: null,
-  confirmPassword:null
+
   };
   isSuccessful = false;
   isSignUpFailed = false;
