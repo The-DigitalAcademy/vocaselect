@@ -21,17 +21,19 @@ export class TokenStorageService {
     window.sessionStorage.setItem(TOKEN_KEY, token);
   }
 
-  public getToken(): string {
-    return sessionStorage.getItem(TOKEN_KEY);
+  public getToken(): any {
+    
+    const logged= window.sessionStorage.getItem(TOKEN_KEY);
+    if (logged) return JSON.parse(logged)
+
+    return null
   }
+  
 
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
 
-  // public getUser(): any {
-  //   return JSON.parse(sessionStorage.getItem(USER_KEY));
-  // }
 }
 
