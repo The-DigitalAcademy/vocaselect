@@ -55,6 +55,13 @@ app.use('/api/users', userRoutes)
 app.use('/api/subjects', subjectRoutes)
 
 
+// Import the deleteUserById method (replace this with the actual path to your method file)
+const { deleteUserById } = require('./controllers/user.controllers');
+
+// Create the route for deleting a user
+app.delete('/:id', deleteUserById);
+
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

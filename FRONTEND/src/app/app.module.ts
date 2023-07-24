@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { FormsModule } from '@angular/forms';
@@ -11,6 +11,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { CommonModule } from '@angular/common';
+import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CommonModule } from '@angular/common';
     LandingPageComponent,
     LoginComponent,
     RegisterComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    DreamJobComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,7 @@ import { CommonModule } from '@angular/common';
     
   ],
   providers: [],
-  schemas: [NO_ERRORS_SCHEMA],
+  // schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
