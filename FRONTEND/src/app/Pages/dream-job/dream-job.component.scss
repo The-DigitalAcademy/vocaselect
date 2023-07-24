@@ -1,6 +1,79 @@
-* {
+// * {
+//     background: var(background-color)
+// }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins, sans-serif;
     background: var(background-color)
 }
 
-.logo {
+.navbar {
+    // text-align: center;
+    // padding: 10px 0;
+    // position: relative;
+    // display: flex;
+    // justify-content: space-between;
+    margin-top: -2.5rem;
 }
+
+
+.backbutton {
+    padding-top: 10px;
+    padding-right: 60px;
+    width: 30px;
+    height: 40px;
+}
+
+
+.logo-img {
+    // text-align: center;
+    margin: 0 auto;
+    width: 150px; /* Adjust the width as needed */
+}
+
+.question {
+    text-align: center;
+    font-size: 22px;
+    font-family: 'poppins';
+}
+
+.dream-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.dream-btn button {
+    background-color: #75A1DF;
+    color: white;
+    padding: 10px 30px;
+    font-size: 20px;
+    margin: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.dream-btn button:hover {
+    background-color: #89a5cd;
+}
+
+
+
+.questionMark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionMark img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 800px; 
+    height:300px; 
+}
+
