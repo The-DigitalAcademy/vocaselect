@@ -11,12 +11,17 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getPublicContent(): Observable<any> {
-    return this.http.get(apiUrl + 'all', { responseType: 'text' });
+  getUsers(): Observable<any> {
+    return this.http.get(apiUrl + '/users', { responseType: 'text' });
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(apiUrl  + 'user', { responseType: 'text' });
+  getUserByEmail(email:any): Observable<any> {
+    return this.http.get(apiUrl + '/users/email/' + email, { responseType: 'json' });
   }
   
+  saveUser(body: any){
+    return this.http.post<any>(apiUrl+ '/users', body)
+  }
+
+
 }
