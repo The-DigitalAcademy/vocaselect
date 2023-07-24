@@ -15,26 +15,28 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): any {
+ 
+  login(username: string, password: string): Observable<any>  {
     console.log(username,password,"credentials")
    
-    if(username == 'neomakhubo25@gmail.com' && password == '12345678'){
-      return true;
-    }
+    // if(username == 'neomakhubo25@gmail.com' && password == '12345678'){
+    //   return true;
+    // }
 
-    return false;
-    //  return this.http.post(
+    // return false;
+     return this.http.post(
 
-    //   apiUrl + 'signin',
-    //   {
-    //     username,
-    //     password,
-    //   },
+      apiUrl + 'signin',
+      {
+        username,
+        password,
+      },
     
-    //   httpOptions
-    // );
+      httpOptions
+    );
     
   }
+
 
 
   register(username: string, email: string, password: string): Observable<any> {
