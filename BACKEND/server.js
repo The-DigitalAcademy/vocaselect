@@ -30,9 +30,11 @@ db.sequelize.sync()
 app.use(cors(corsOptions));
 
 //middleware
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
 
 // parse requests of content-type - application/json
 // app.use(bodyParser.json());
