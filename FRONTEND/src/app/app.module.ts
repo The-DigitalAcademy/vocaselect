@@ -11,6 +11,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { SubjectsComponent } from './Pages/subjects/subjects.component';
     LandingPageComponent,
     LoginComponent,
     RegisterComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    
   ],
   imports: [
     BrowserModule,
