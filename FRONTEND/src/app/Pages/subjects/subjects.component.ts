@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-subjects',
@@ -6,41 +7,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subjects.component.scss']
 })
 export class SubjectsComponent implements OnInit {
+  form: FormGroup;
+  countries: Array<any> = [
+    { name: 'India', value: 'india' },
+    { name: 'France', value: 'france' },
+    { name: 'USA', value: 'USA' },
+    { name: 'Germany', value: 'germany' },
+    { name: 'Japan', value: 'Japan' }
+  ];
+
+  constructor(fb: FormBuilder) {
+    this.form = fb.group({
+     selectedCountries:  new FormArray([])
+    });
+  }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
-  name = 'Angular 6';
-  selectedAll: any;
- channelDDList = [
-   {
-     "channelId": 0,
-     "channelName": "Mathematics",
-     "selected":false
-   },
-   {
-     "channelId": 1,
-     "channelName": "Life Sciences",
-     "selected":false
-   }];
-   showCheckbox = false;
 
-  showCheckboxes(){
-    this.showCheckbox = !this.showCheckbox;
-  }
-
-  selectAll() {
-    for (var i = 0; i < this.channelDDList.length; i++) {
-      this.channelDDList[i].selected = this.selectedAll;
+  onCheckboxChange(event: any) {
+    
+    const selectedCountries = (this.form.controls['selectedCountries'] as FormArray);
+    if (event.target.checked) {
+      selectedCountries.push(new FormControl(event.target.value));
+    } else {
+      const index = selectedCountries.controls
+      .findIndex(x => x.value === event.target.value);
+      selectedCountries.removeAt(index);
     }
   }
-  checkIfAllSelected() {
-    this.selectedAll = this.channelDDList.every(function(item:any)          {
-        return item.selected == true;
-      });
+
+  submit() {
+    console.log(this.form.value);
   }
-
-  constructor() { }
-
-
 
 }

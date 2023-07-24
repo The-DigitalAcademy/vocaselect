@@ -4,41 +4,15 @@
     <p class="fs-2">To better guide you on your journey</p>
   </div>
 </div>
-<div class="row">
-  <form>
-    <div class="multiselect">
-      <div class="selectBox" (click)="showCheckboxes()">
-        <select>
-          <option>Subjects</option>
-        </select>
-        <div class="overSelect"></div>
-      </div>
-      <div id="checkboxes" *ngIf="showCheckbox">
-        <ul class="dropdown">
-          <li>
-            <label for="allEvents">
-              <input
-                type="checkbox"
-                id="allEvents"
-                [(ngModel)]="selectedAll"
-                name="allEvents"
-                (change)="selectAll()"
-              />All Events
-            </label>
-          </li>
-          <li *ngFor="let channel of channelDDList">
-            <label for="{{ channel.channelId }}">
-              <input
-                type="checkbox"
-                id="{{ channel.channelId }}"
-                [(ngModel)]="channel.selected"
-                (change)="checkIfAllSelected()"
-                name="{{ channel.channelId }}"
-              />{{ channel.channelName }}</label
-            >
-          </li>
-        </ul>
-      </div>
+<section>
+  <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <div *ngFor="let country of countries; let i=index">
+      <input type="checkbox" formArrayName="selectedCountries" [value]="country.value" (change)="onCheckboxChange($event)" 
+      />
+      {{ country.name}}
     </div>
+    <button type="submit">Submit</button>
   </form>
-</div>
+
+  <p>{{ form.value | json }}</p>
+</section>
