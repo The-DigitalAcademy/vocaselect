@@ -11,8 +11,9 @@ import { LandingPageComponent } from './Pages/landing-page/landing-page.componen
 import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
-import { CommonModule } from '@angular/common';
+import { WelcomeQuizComponent } from './Pages/welcome-quiz/welcome-quiz.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
     LoginComponent,
     RegisterComponent,
     SubjectsComponent,
+    WelcomeQuizComponent,
     DreamJobComponent
   ],
   imports: [

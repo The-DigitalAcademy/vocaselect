@@ -5,6 +5,9 @@ const subjects = require('../controllers/subjects.controllers')
     router.post("/", subjects.createNewSubject);
 
 
+    //for getting all subjects
+    router.get("/", subjects.getAllsubjects);
+
     module.exports = router
 
 
