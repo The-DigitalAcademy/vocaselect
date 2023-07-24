@@ -1,4 +1,6 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/_services/auth.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 
 // Login Component Calls TokenStorageService Methods To Check The LoggedIn Status And Save Token And User Info To Session Storage.
@@ -12,7 +14,7 @@ import { Component, Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form: any = {
     username: null,
     password: null
@@ -21,19 +23,59 @@ export class LoginComponent {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-username: any;
 
-  constructor() { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-    // if (this.tokenStorage.getToken()) {
+    // if (this.tokenStorage.getToken())  {
     //   this.isLoggedIn = true;
-    //   this.roles = this.tokenStorage.getUser().roles;
+    //   this.roles = this.storageService.getUser().roles;
+    // }else{
+    //   //redirect to login screen
     // }
   }
-
+  
   onSubmit(): void {
     const { username, password } = this.form;
+
+  var response =  this.authService.login(username, password);//.subscribe({
+      // next: data => {
+      //   this.storageService.saveUser(data);
+
+      //   this.isLoginFailed = false;
+      //   this.isLoggedIn = true;
+      //   this.roles = this.storageService.getUser().roles;
+      //   this.reloadPage();
+      // },
+      // error: err => {
+      //   this.errorMessage = err.error.message;
+      //   this.isLoginFailed = true;
+      //}
+      
+  //  });
+
+  if(response == true){
+    //successful
+    this.tokenStorage.saveUser(this.form);
+this.isLoginFailed = false;
+this.isLoggedIn = true;
+// this.roles = this.tokenStorage.getUser().roles;
+this.reloadPage();
+      // },
+  }else{
+    this.errorMessage ="Incorrect username or password";
+    this.isLoginFailed = true;
+  }
+  }
+ 
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+}
+
+ // onSubmit(): void {
+  //   const { username, password } = this.form;
 
   //   this.authService.login(username, password).subscribe({
   //     next: (data) => {
@@ -58,7 +100,7 @@ username: any;
   //     },
       
   //  });
-  }
+ 
 
   // isAuthenticated(): boolean{
   //   if (this.isLoggedIn = true){
@@ -66,9 +108,3 @@ username: any;
   //   }
   //   return true
   // }
-
-  reloadPage(): void {
-    window.location.reload();
-  }
-}
-
