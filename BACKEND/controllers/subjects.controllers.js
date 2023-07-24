@@ -2,58 +2,24 @@ const db = require("../models")
 const Subject = db.Subject;
 // const Op = db.Sequelize.Op;
 
-
-
-// exports.create = (req, res) => {
-//     // Validate request
-//     const {subjectName, mark } = req.body;
-//     if (!req.body) {
-//         console.log(subjectName, mark )
-
-//       res.status(400).send({
-//         message: "Content can not be empty!"
-//       });
-//       return;
-//     }
-  
-//     // Create a subjects
-//     const subjectMark = {
-//         subjectName: req.body.subjectName,
-//       mark: req.body.mark,
-//     //   published: req.body.published ? req.body.published : false
-//     };
-  
-//     // Save subjects in the database
-//     Subject.create(subjectMark)
-//       .then(data => {
-//         res.send(subjectMark);
-//         console.log(data);
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message:
-//             err.message || "Some error occurred while creating the subjects."
-//         });
-//       });
-//   };
-
+// create new subjects to postgres table
 
   const createNewSubject = async (req, res) => {
     try {
-      const { subjectName, mark } = req.body;
+      const { subjectName } = req.body;
       const data = {
        subjectName,
-       mark,
+      //  mark,
       };
       //saving the subject
-      const subject = await Subject.create(data);
+      const selectedsubject = await Subject.create(data);
    
       //if subject details is captured
-      if (subject) {
-        console.log("subject", JSON.stringify(subject, null, 2));
+      if (selectedsubject) {
+        console.log("subject", JSON.stringify(selectedsubject, null, 2));
       
         //send subject details
-        return res.status(201).send(subject);
+        return res.status(201).send(selectedsubject);
       } else {
         return res.status(409).send("Details are not correct");
       }
@@ -67,18 +33,45 @@ const Subject = db.Subject;
 const getAllsubjects = async (req, res) => {
   try {
     // Fetch all users from the database
-    const subject = await Subject.findAll();
+    const selectedsubject = await Subject.findAll();
 
     // Return the list of subjects
-    return res.status(200).send(subject);
+    return res.status(200).send(selectedsubject);
   } catch (error) {
     console.log(error);
     return res.status(500).send("Internal Server Error");
   }
 };
 
+/// create subjects table with marks and it has to post only marks
+// without subjects, more like updating mark 
+
+const createsubjectAndMarks = async (req, res) => {
+  try {
+    const { subjectName, mark } = req.body;
+    const data = {
+     subjectName,
+      mark,
+    };
+    //saving the subject
+    const subject = await Subject.create(data);
+ 
+    //if subject details is captured
+    if (subject) {
+      console.log("subject", JSON.stringify(subject, null, 2));
+    
+      //send subject details
+      return res.status(201).send(subject);
+    } else {
+      return res.status(409).send("Details are not correct");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+ };
 
    module.exports = {
     createNewSubject,
-    getAllsubjects
+    getAllsubjects,
+    createsubjectAndMarks
    }

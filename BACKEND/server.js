@@ -58,6 +58,8 @@ app.use('/api/subjects', subjectRoutes)
 
 // app.use('/app/getting')
 
+// app.use('/api/SubjectsAndMarks')
+
 
 // Import the deleteUserById method (replace this with the actual path to your method file)
 const { deleteUserById } = require('./controllers/user.controllers');
