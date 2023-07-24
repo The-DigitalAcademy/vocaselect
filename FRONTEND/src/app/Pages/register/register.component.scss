@@ -1,18 +1,78 @@
 
-button{
-    background-color: #75A1DF;
-    height: 50px;
-    width:140px;
-    margin-top: 20px;
-    
-}
+.r-container{
+    box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
+    -webkit-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
+    -moz-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
+    background-color: #fff;
+    background: linear-gradient(#ffffff,#ffffff, #bccdeb);
+    border-radius: 20px !important;
+    z-index: 9999999;
+  }
+  
+  .container {
+    margin-top: 100px;
+    margin-bottom: 50px;
+   
+      }
+  
+  .form-control{
+      border-radius: 30px;
+      height: 40px;
+      border: solid #A1C2F3;
+  }
+  
+  .pt-15{
+      padding-top: 15px;
+  }
+  .img-logo{
+    margin-bottom: -63px;
+    margin-top: -88px;
+  }
+  
+  button{
+      background-color: #75A1DF;
+      /* height: 50px; */
+      /* width:40px; */
+      margin-top: 15px;
+      
+  }
+  
+  
+  .alert{
+      background: none !important;
+      border: 0px !important;
+      color: red !important;
+      padding:0px !important
+  }
 
+  .names input{
+    width: 9rem;
+  }
+  
+  .names{
+    display: flex;
+    justify-content: space-between;
+  }
 
+  // .passwords input{
+  //   width: 9rem;
+  // }
 
-input{
-    border: green;
-    border-color: rgb(0, 255, 98);
-    background-color: rgb(248, 250, 250);
-    border: 5px;
-    border-color: red;
+// .passwords{
+//   width:9rem;
+// }
+
+// .passwords{
+//   display:flex;
+//   justify-content: space-between;
+// }
+
+ 
+//   .forgot-ps{
+//       position: absolute;
+//       right: 50px;
+//   }
+form{
+  margin-top: -3rem;
+  margin-bottom: -3rem;
 }
