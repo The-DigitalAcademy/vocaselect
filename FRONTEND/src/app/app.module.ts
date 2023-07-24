@@ -1,4 +1,4 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 
@@ -22,7 +22,8 @@ import { CommonModule } from '@angular/common';
     LandingPageComponent,
     LoginComponent,
     RegisterComponent,
-    SubjectsComponent
+    SubjectsComponent,
+  
   ],
   imports: [
     BrowserModule,

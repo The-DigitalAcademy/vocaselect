@@ -1,29 +1,38 @@
 module.exports = (sequelize, Sequelize) => {
-    const VocaSelect = sequelize.define("vocaselects", {
+    const User  = sequelize.define("user", {
+        //change DataTypes back Sequelize - if it breaks
         name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       surname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true,
+        isEmail: true, //checks for email format
+        allowNull: false
       },
       dob: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: false
       },
       city: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       studentgrade: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
 
       },
       password: {
-        type: Sequelize.STRING
-
+        type: Sequelize.STRING,
+        allowNull: false
       }
     });
   
-    return VocaSelect;
+    return User;
   };
