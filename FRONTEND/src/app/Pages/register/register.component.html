@@ -1,4 +1,4 @@
-<div class="eclipse-1"></div>
+<!-- <div class="eclipse-1"></div>
 <div class="eclipse-4"></div>
 <div class="eclipse-5"></div>
 <div class="eclipse-6"></div>
@@ -95,4 +95,32 @@ novalidate
     </div>
 </form>
 <div class="eclipse-2"></div>
-<div class="eclipse-3"></div>
+<div class="eclipse-3"></div> -->
+<div>
+  <h2>Registration</h2>
+  <form (ngSubmit)="signup()">
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="user.name" name="name" required>
+
+    <label>Surname:</label>
+    <input type="text" [(ngModel)]="user.surname" name="surname" required>
+
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="user.email" name="email" required>
+
+    <label>dob:</label>
+    <input type="dob" [(ngModel)]="user.dob" name="dob" required>
+
+    <label>city:</label>
+    <input type="city" [(ngModel)]="user.city" name="city" required>
+
+    <label>studentgrade:</label>
+    <input type="studentgrade" [(ngModel)]="user.studentgrade" name="studentgrade" required>
+    
+
+    <label>Password:</label>
+    <input type="password" [(ngModel)]="user.password" name="password" required>
+
+    <button type="submit">Register</button>
+  </form>
+</div>

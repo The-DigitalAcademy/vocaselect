@@ -13,6 +13,7 @@ const User = db.User;
 const signup = async (req, res) => {
  try {
    const { name, surname,email,dob, city, studentgrade, password } = req.body;
+   
    const data = {
     name,
     surname,

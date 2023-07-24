@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   jwtSecret: 'vocaselect23',
-  apiURL: 'http://localhost:9000/api/'
+  apiURL: 'http://localhost:9000/api/users'
 };
 
 

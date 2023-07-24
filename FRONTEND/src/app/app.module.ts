@@ -12,6 +12,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { CommonModule } from '@angular/common';
+import { UserService } from './_services/user.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { CommonModule } from '@angular/common';
     CommonModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserService],
   schemas: [],
   bootstrap: [AppComponent]
 })
