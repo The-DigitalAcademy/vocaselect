@@ -6,7 +6,7 @@ const Sequelize = require("sequelize");
 // const {Sequelize, DataTypes} = require('sequelize')
 
 //for environment file
-// require('dotenv').config();
+require('dotenv').config();
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,

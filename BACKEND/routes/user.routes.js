@@ -18,6 +18,7 @@ router.post('/login', login )
 // Route to get all users
 router.get("/getAll", userController.getUsers);
 
+// Create the route for deleting a user
+router.delete('/:id', userController.deleteUserById);
 
 module.exports = router
-
