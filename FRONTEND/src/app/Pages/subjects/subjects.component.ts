@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-subjects',
@@ -7,38 +7,16 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./subjects.component.scss']
 })
 export class SubjectsComponent implements OnInit {
-  form: FormGroup;
-  countries: Array<any> = [
-    { name: 'India', value: 'india' },
-    { name: 'France', value: 'france' },
-    { name: 'USA', value: 'USA' },
-    { name: 'Germany', value: 'germany' },
-    { name: 'Japan', value: 'Japan' }
-  ];
+     
+  // list: any[];
 
-  constructor(fb: FormBuilder) {
-    this.form = fb.group({
-     selectedCountries:  new FormArray([])
-    });
-  }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
+    // this.list = []
   }
 
-  onCheckboxChange(event: any) {
-    
-    const selectedCountries = (this.form.controls['selectedCountries'] as FormArray);
-    if (event.target.checked) {
-      selectedCountries.push(new FormControl(event.target.value));
-    } else {
-      const index = selectedCountries.controls
-      .findIndex(x => x.value === event.target.value);
-      selectedCountries.removeAt(index);
-    }
-  }
+  // get result() {
+  //   return this.list.filter(item => item.checked);
+  // }
 
-  submit() {
-    console.log(this.form.value);
-  }
 
 }

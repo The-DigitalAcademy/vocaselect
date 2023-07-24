@@ -27,6 +27,7 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
+    
   ],
   providers: [],
   schemas: [NO_ERRORS_SCHEMA],
