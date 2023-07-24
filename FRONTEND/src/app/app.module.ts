@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -29,6 +30,7 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
+    HttpClientModule 
   ],
   providers: [],
   // schemas: [NO_ERRORS_SCHEMA],

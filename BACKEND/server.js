@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
+const subjectRoutes = require('./routes/subjects.routes')
 
 
 //Environment file
@@ -19,6 +20,15 @@ var corsOptions = {
 };
 
 const db = require("./models");
+
+
+app.use(cors(corsOptions));
+
+//middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+
 db.sequelize.sync()
   .then(() => {
     console.log("Connected to the Vocaselect database!");
@@ -26,13 +36,6 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   })
-
-app.use(cors(corsOptions));
-
-//middleware
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
-app.use(cookieParser())
 
 // parse requests of content-type - application/json
 // app.use(bodyParser.json());
@@ -47,6 +50,9 @@ app.get("/", (req, res) => {
 
 //routes for the user API
 app.use('/api/users', userRoutes)
+// app.use('/api/allSubjects', subjectRoutes)
+
+app.use('/api/subjects', subjectRoutes)
 
 
 // Import the deleteUserById method (replace this with the actual path to your method file)
@@ -61,3 +67,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is connected on port ${PORT}.`);
 });
+
+
