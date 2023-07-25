@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule} from '@angular/common/http';
+
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
@@ -16,6 +17,11 @@ import { UserService } from './_services/user.service';
 
 import { CommonModule } from '@angular/common';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
+import { HomepageComponent } from './Pages/homepage/homepage.component';
+import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
+// import { authInterceptorProviders } from './helpers/auth.interceptor';
+
+
 
 @NgModule({
   declarations: [
@@ -26,7 +32,10 @@ import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
     RegisterComponent,
     SubjectsComponent,
     WelcomeQuizComponent,
-    FillCareerComponent
+    DreamJobComponent,
+    FillCareerComponent,
+    HomepageComponent
+  
   ],
   imports: [
     BrowserModule,
@@ -34,10 +43,11 @@ import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule 
+  
   ],
-  providers: [UserService],
-  schemas: [],
+  providers: [ UserService ],
+  schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

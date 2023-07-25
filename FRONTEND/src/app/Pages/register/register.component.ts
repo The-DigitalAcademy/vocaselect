@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/_services/auth.service';
 import { UserService } from 'src/app/_services/user.service';
 
 @Component({
@@ -10,40 +11,56 @@ import { UserService } from 'src/app/_services/user.service';
 export class RegisterComponent implements OnInit {
 
   form: any = {
-    // Initialize any properties you need for the registration form
     name: '',
-    surname: '',
+    surname:'',
     email: '',
-    dob: '',
-    city: '',
-    studentgrade: '',
+    dob:'',
+    city:'',
+    studentgrade:'',
     password: '',
-
   };
-isSignUpFailed: any;
-errorMessage: any;
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
 
-  constructor(private userService: UserService, private router: Router) {}
-
-  signup() {
-    this.userService.signup(this.form).subscribe(
-      (response) => {
-        // Handle successful registration response if needed
-        console.log('Registration successful:', response);
-      },
-      (error) => {
-        // Handle registration error if needed
-        console.error('Registration error:', error);
-      }
-    );
-  }
+  constructor(private authService: AuthService,  public _router: Router) { }
 
   ngOnInit(): void {
   }
 
-  
+  onSubmit(): void {
+    const { name, surname,email,dob, city, studentgrade, password } = this.form;
+    //This Method That Returns An Observable Object (authService.register())
+    this.authService.register(name, surname,email,dob, city, studentgrade, password ).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        // this.reloadPage();
+        // this.toastr.success("Registration Was Successful")
+        
+        // window.location.replace("/login")
+        // Swal.fire({
+        //   title: 'Registration Was Successful',
+        //    text: 'You can now login!',
+        //   icon: 'success',
+        //   confirmButtonText: 'Login',
+        // }).then((result)=>{
+        //   if (result.value){
+        //     this._router.navigate(["/login"])
+            
+        //   }})
+         
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+        // this.toastr.error("Registration Failed, Try Again")
+      }
+    });
+  }
 }
-
+  
 
 // form: any = {
 //   firstName: null,

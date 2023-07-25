@@ -7,7 +7,13 @@ import { LandingPageComponent } from './Pages/landing-page/landing-page.componen
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { RegisterComponent } from './Pages/register/register.component';
 
+
 const routes: Routes = [
+ { path: 'login', component:LoginComponent},
+ { path: 'register', component:RegisterComponent},
+ { path:'landing', component: LandingPageComponent},
+ { path: 'subjects', component: SubjectsComponent},
+ { path: 'dream-job', component: DreamJobComponent},
 
   {path : 'welcome-quize' , component: WelcomeQuizComponent },
   {path : 'login' , component: RegisterComponent },

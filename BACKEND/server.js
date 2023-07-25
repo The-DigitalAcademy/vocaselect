@@ -20,15 +20,6 @@ var corsOptions = {
 };
 
 const db = require("./models");
-
-
-app.use(cors(corsOptions));
-
-//middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
 db.sequelize.sync()
   .then(() => {
     console.log("Connected to the Vocaselect database!");
@@ -36,6 +27,13 @@ db.sequelize.sync()
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   })
+
+app.use(cors(corsOptions));
+
+//middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
 
 // parse requests of content-type - application/json
 // app.use(bodyParser.json());

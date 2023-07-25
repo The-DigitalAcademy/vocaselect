@@ -14,15 +14,20 @@
       novalidate
     >
       <div
-        class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-20"
+        class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2"
       >
         <div
           class="bg-slate-200 px-6 py-8 login-container rounded shadow-md text-black w-full"
           style="height:fit-content"
         >
-          <div class="text-center pt-30">
-            <h1>Welcome Back</h1>
-          </div>
+
+            <img
+            class="card-img-top text-center"
+            src="../../../assets/logo.png"
+            alt="Logo"
+            style="height:220px"
+          />
+        
           <div class="form-group pt-30">
             <label for="username">Your Email</label>
             <input
@@ -80,7 +85,7 @@
             </label>
           </div>
           <div ngClass="form-group mt-4 text-center">
-            <button class="btn btn-primary text-sm py-2 px-4">Login</button>
+            <button class="btn btn-primary btn-block">Login</button>
           </div>
           <div class="form-group">
             <div
@@ -122,7 +127,7 @@ name="form"
 #f="ngForm"
 novalidate
 >
-    <div class="bg-grey-lighter min-screen flex flex-col">
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
         <div class="container  max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white l-container px-6 py-8 rounded shadow-md text-black w-full">
                 <img
@@ -179,7 +184,7 @@ novalidate
                   <label class="fr">
                     Forgot
                     <a
-                      class="no-underline border-b border-grey-dark text-grey-dark float-right text-blue-500"
+                      class="no-underline border-b border-grey-dark text-grey-dark text-blue-500"
                       href="/forgotPassword"
                     >
                        Password?
@@ -187,7 +192,7 @@ novalidate
                   </label>
     
                 <div ngClass="form-group mt-4 text-center">
-                    <button class="btn btn-primary btn-block" routerLink="/home">Login</button>
+                    <button class="btn btn-primary btn-block"routerLink="/homepage">Login</button>
                   </div>
                   <div class="form-group">
                     <div
@@ -202,7 +207,7 @@ novalidate
                     Not a member?
                     <a
                       class="no-underline border-b border-blue text-blue-500"
-                      href="../register/"
+                      routerLink="/register"
                     >
                       Register
                     </a>
