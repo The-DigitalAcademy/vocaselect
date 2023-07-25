@@ -13,6 +13,14 @@ const User = db.User;
 const signup = async (req, res) => {
  try {
    const { name, surname,email,dob, city, studentgrade, password } = req.body;
+   
+   //if user exists
+   // Check if the user with the given email already exists
+  //  const existingUser = await User.findOne({ email });
+  //  if (existingUser) {
+  //    return res.status(409).send("User with this email already exists");
+  //  }
+
    const data = {
     name,
     surname,
