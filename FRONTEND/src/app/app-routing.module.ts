@@ -10,7 +10,8 @@ import { RegisterComponent } from './Pages/register/register.component';
 const routes: Routes = [
 
   {path : 'welcome-quize' , component: WelcomeQuizComponent },
-  {path : 'login' , component: LoginComponent },
+  {path : 'login' , component: RegisterComponent },
+  {path : 'register' , component: LoginComponent },
   {path : 'landing' , component: LandingPageComponent},
   {path : 'subjects' , component: SubjectsComponent },
   {path: 'dream-job', component: DreamJobComponent}

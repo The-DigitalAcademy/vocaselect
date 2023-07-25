@@ -26,7 +26,6 @@ import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
     RegisterComponent,
     SubjectsComponent,
     WelcomeQuizComponent,
-  ,
     FillCareerComponent
   ],
   imports: [
