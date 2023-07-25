@@ -5,6 +5,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
+import { RegisterComponent } from './Pages/register/register.component';
 
 const routes: Routes = [
 

@@ -1,1 +1,254 @@
-<p>register works!</p>
+<div class="eclipse-1"></div>
+<div class="eclipse-4"></div>
+<div class="eclipse-5"></div>
+<div class="eclipse-6"></div>
+<form
+        name="form"
+        (ngSubmit)="f.form.valid && signup()"
+        #f="ngForm"
+        novalidate
+>
+    <div class="bg-grey-lighter min-screen flex flex-col">
+        <div class="container  max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-3 ">
+            <div class="bg-white r-container px-6 py-8 rounded shadow-md text-black w-full">
+                <img 
+                class="card-img-top text-center img-logo" 
+                src="../../../assets/logo.png"
+                alt="Logo"
+
+              />
+                    
+              
+              <div class="names">
+                <div class="form-group pt-25" >
+                  <label for="username">Your First Name</label>  
+                <input 
+                type="text"
+                class=" form-control"
+                name="firstName"
+                [(ngModel)]="form.name"
+                required
+                placeholder="Nandi"
+                #firstName="ngModel"/>
+
+                <label
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="firstName.errors && f.submitted"
+              >
+                Your Firstname is required!
+              </label>
+                </div>
+                
+                <div class="form-group pt-25"  >
+                    
+                    <label for="lastName">Your Last Name</label>
+                <input 
+                    type="text"
+                    class=" form-control"
+                    name="lastName"
+                    [(ngModel)]="form.surname"
+                    required
+                    placeholder="Nxumalo"
+                    #lastName="ngModel"/>
+    
+                    <label
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="lastName.errors && f.submitted"
+                  >
+                    Your Lastname is required!
+                  </label>
+                    </div>
+
+
+
+              </div>  
+           
+
+                <div class="form-group pt-30">
+                    
+                    <label for="username">Your Email</label>
+                <input 
+                    type="email"
+                    class=" form-control"
+                    name="email"
+                    [(ngModel)]="form.email"
+                    required
+                    placeholder="NandiM@gmail.com"
+                    #email="ngModel"/>
+
+                    <label
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="email.errors && f.submitted"
+                  >
+                    Your Email is required!
+                  </label>
+                    </div>
+
+                    <div class="form-group pt-30">
+                    
+                        <label for="username">Your Date of Birth</label>
+                    <input 
+                        type="date"
+                        class=" form-control"
+                        name="dateofBirth"
+                        [(ngModel)]="form.dob"
+                        required
+                        placeholder="yyyy-mm-dd"
+                        #dateofBirth="ngModel"/>
+    
+                        <label
+                        class="alert alert-danger"
+                        role="alert"
+                        *ngIf="dateofBirth.errors && f.submitted"
+                      >
+                       Your Date of Birth is required!
+                      </label>
+                        </div>
+
+                        <div class="form-group pt-30">
+                    
+                            <label for="cityorTown">Your City/Town</label>
+                        <input 
+                            type="text"
+                            class=" form-control"
+                            name="cityorTown"
+                            [(ngModel)]="form.city"
+                            required
+                            placeholder="Pretoria"
+                            #cityorTown="ngModel"/>
+        
+                            <label
+                            class="alert alert-danger"
+                            role="alert"
+                            *ngIf="cityorTown.errors && f.submitted"
+                          >
+                            Your City or Town is required!
+                          </label>
+                            </div>
+
+                            <div class="form-group pt-30">
+                    
+                                <label for="studentGrade">Your Student Grade</label>
+                            <input 
+                                type="integer"
+                                class=" form-control"
+                                name="studentGrade"
+                                [(ngModel)]="form.studentgrade"
+                                required
+                                placeholder="eg.10"
+                                #studentGrade="ngModel"/>
+            
+                                <label
+                                class="alert alert-danger"
+                                role="alert"
+                                *ngIf="studentGrade.errors && f.submitted"
+                              >
+                                Your current Grade is required!
+                              </label>
+                                </div>
+
+                                <div class="passwords">
+
+                                  <div class="form-group pt-30" >
+                                    <label for="password">Password</label>
+                                    <input
+                                      type="password"
+                                      class="form-control"
+                                      name="password"
+                                      [(ngModel)]="form.password"
+                                      required
+                                      minlength="8"
+                                      placeholder="Minimum 8 characters"
+                                      #password="ngModel"/>
+                
+                                      <div
+                                      class="alert alert-danger"
+                                      role="alert"
+                                      *ngIf="password.errors && f.submitted"
+                                    >
+                                      <div *ngIf="password.errors?.['required']">
+                                        Password is required!
+                                      </div>
+                                      <div *ngIf="password.errors?.['minlength']">
+                                        
+                                        Password must be at least 8 characters!
+                                        
+                                      </div>
+                                    </div>
+                
+                                   
+
+                                </div> 
+                                </div>
+
+                
+                  <label class="fr">
+                    Forgot
+                    <a
+                      class="no-underline border-b border-grey-dark text-grey-dark text-blue-500"
+                      href="/forgotPassword"
+                    >
+                       Password?
+                    </a>
+                  </label>
+     
+                <div ngClass="form-group mt-3 text-center">
+                    <button class="btn btn-primary btn-block" routerLink="/subjects">Register</button>
+                  </div>
+                  <div class="form-group">
+                    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                        Signup failed!<br />{{ errorMessage }}
+                      </div>
+            
+                  </div>
+                  <div class="text-grey-dark mt-2 text-black pt-4" id="cent">
+                    Already a member?
+                    <a
+                      class="no-underline border-b border-blue text-blue-500"
+                      href="../register/"
+                    >
+                     Login
+                    </a>
+                  </div>
+            </div>
+        </div>
+    </div>
+</form> 
+
+
+<!-- <div class="eclipse-2"></div>
+<div class="eclipse-3"></div> -->
+
+
+
+
+  <!-- <h2>Register</h2>
+  <form (ngSubmit)="signup()">
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="form.name" name="name" required>
+
+    <label>Surname:</label>
+    <input type="text" [(ngModel)]="form.surname" name="surname" required>
+
+    <label>Email:</label>
+    <input type="email" [(ngModel)]="form.email" name="email" required>
+
+    <label>dob:</label>
+    <input type="dob" [(ngModel)]="form.dob" name="dob" required>
+
+    <label>city:</label>
+    <input type="city" [(ngModel)]="form.city" name="city" required>
+
+    <label>studentgrade:</label>
+    <input type="studentgrade" [(ngModel)]="form.studentgrade" name="studentgrade" required>
+    
+
+    <label>Password:</label>
+    <input type="password" [(ngModel)]="form.password" name="password" required>
+
+    <button type="submit">Register</button>
+  </form> -->
+
