@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/_services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -30,6 +31,14 @@ errorMessage: any;
       (response) => {
         // Handle successful registration response if needed
         console.log('Registration successful:', response);
+
+        // Show success alert using SweetAlert
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful!',
+          text: 'You have been successfully registered.',
+        });
+        
       },
       (error) => {
         // Handle registration error if needed
@@ -45,17 +54,4 @@ errorMessage: any;
 }
 
 
-// form: any = {
-//   firstName: null,
-//   lastName:null,
-//   email: null,
-//   dateofBirth:null,
-//   cityorTown:null,
-//   studentGrade:null,
-//   password: null,
-// confirmPassword:null
-// };
-// isSuccessful = false;
-// isSignUpFailed = false;
-// errorMessage = '';
 
