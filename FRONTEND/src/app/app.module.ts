@@ -14,6 +14,7 @@ import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { WelcomeQuizComponent } from './Pages/welcome-quiz/welcome-quiz.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { CommonModule } from '@angular/common';
+import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CommonModule } from '@angular/common';
     RegisterComponent,
     SubjectsComponent,
     WelcomeQuizComponent,
-    DreamJobComponent
+    DreamJobComponent,
+    FillCareerComponent
   ],
   imports: [
     BrowserModule,
