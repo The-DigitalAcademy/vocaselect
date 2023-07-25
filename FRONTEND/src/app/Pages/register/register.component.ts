@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/_services/user.service';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
 isSignUpFailed: any;
 errorMessage: any;
 
+
   constructor(private userService: UserService, private router: Router) {}
 
   signup() {
@@ -33,11 +34,11 @@ errorMessage: any;
         console.log('Registration successful:', response);
 
         // Show success alert using SweetAlert
-        Swal.fire({
-          icon: 'success',
-          title: 'Registration Successful!',
-          text: 'You have been successfully registered.',
-        });
+        // Swal.fire({
+        //   icon: 'success',
+        //   title: 'Registration Successful!',
+        //   text: 'You have been successfully registered.',
+        // });
         
       },
       (error) => {

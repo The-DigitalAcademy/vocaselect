@@ -17,23 +17,32 @@ body {
     // text-align: center;
     // padding: 10px 0;
     // position: relative;
-    // display: flex;
+    display: flex;
     // justify-content: space-between;
     margin-top: -2.5rem;
 }
 
+.logo {
+    /* justify-content: center; */
+
+}
+
 
 .backbutton {
+    display: flex;
+    align-self: center;
     padding-top: 10px;
     padding-right: 60px;
     width: 30px;
     height: 40px;
+
+    padding: gree
 }
 
 
 .logo-img {
     // text-align: center;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     width: 150px; /* Adjust the width as needed */
 }
 
