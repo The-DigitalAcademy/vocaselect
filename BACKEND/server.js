@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
+const subjectRoutes = require('./routes/subjects.routes')
 
 
 //Environment file
@@ -30,11 +31,9 @@ db.sequelize.sync()
 app.use(cors(corsOptions));
 
 //middleware
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
-
 
 // parse requests of content-type - application/json
 // app.use(bodyParser.json());
@@ -49,6 +48,13 @@ app.get("/", (req, res) => {
 
 //routes for the user API
 app.use('/api/users', userRoutes)
+// app.use('/api/allSubjects', subjectRoutes)
+
+app.use('/api/subjects', subjectRoutes)
+
+// routes for getting all subjets
+
+// app.use('/app/getting')
 
 
 // Import the deleteUserById method (replace this with the actual path to your method file)
@@ -63,3 +69,5 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is connected on port ${PORT}.`);
 });
+
+

@@ -1,44 +1,66 @@
-<div class="col">
-  <div class="row">
-    <p class="fs-1">Select the subjects you are doing</p>
-    <p class="fs-2">To better guide you on your journey</p>
-  </div>
-</div>
-<div class="row">
-  <form>
-    <div class="multiselect">
-      <div class="selectBox" (click)="showCheckboxes()">
-        <select>
-          <option>Subjects</option>
-        </select>
-        <div class="overSelect"></div>
-      </div>
-      <div id="checkboxes" *ngIf="showCheckbox">
-        <ul class="dropdown">
-          <li>
-            <label for="allEvents">
-              <input
-                type="checkbox"
-                id="allEvents"
-                [(ngModel)]="selectedAll"
-                name="allEvents"
-                (change)="selectAll()"
-              />All Events
-            </label>
-          </li>
-          <li *ngFor="let channel of channelDDList">
-            <label for="{{ channel.channelId }}">
-              <input
-                type="checkbox"
-                id="{{ channel.channelId }}"
-                [(ngModel)]="channel.selected"
-                (change)="checkIfAllSelected()"
-                name="{{ channel.channelId }}"
-              />{{ channel.channelName }}</label
-            >
-          </li>
-        </ul>
-      </div>
+
+
+
+  <div class="container subject-Page">
+
+    <div class="heading row">
+      <p class="fs-1">Select the subjects you are doing</p>
+      <p class="fs-2">To better guide you on your journey</p>
     </div>
-  </form>
-</div>
+  
+    <!-- <ul>
+      <li *ngFor="let subject of subjects">
+        <input type="checkbox" [(ngModel)]="subjects.checked">{{subjects.subject_name}}
+      </li>
+    </ul> -->
+  <div class = "sub">
+    <form>
+        <p>Subjects:</p>
+        <div class="eclipse-1"></div>
+        <div class="eclipse-6"></div>
+        <div>
+          <input type="checkbox" id="instagram" name="source" value="instagram">
+          <a>Mathematics</a>
+        </div>
+        <div>
+          <input type="checkbox" id="facebook" name="source" value="facebook">
+          <a>Maths Literacy</a>
+        </div>
+        <div>
+          <input type="checkbox" id="search-engine" name="source" value="search-engine">
+          <a>Business Studies</a>
+        </div>
+        <div>
+          <input type="checkbox" id="word-of-mouth" name="source" value="word-of-mouth">
+          <a>Tourism</a>
+        </div>
+        <div>
+          <input type="checkbox" id="press" name="source" value="press">
+          <a>Physical Sciences</a>
+        </div>
+        <div>
+          <input type="checkbox" id="event" name="source" value="event">
+          <a>Agriculture</a>
+        </div>
+        <div>
+          <input type="checkbox" id="billboard" name="source" value="billboard">
+          <a>E-conomics</a>
+        </div>
+        <div>
+          <input type="checkbox" id="billboard" name="source" value="billboard">
+          <a>E-conomics</a>
+        </div>
+        <div>
+          <input type="checkbox" id="billboard" name="source" value="billboard">
+          <a>Geography</a>
+        </div>
+        <div class="eclipse-2"></div>
+        <div class="eclipse-4"></div>
+      </form>
+    </div>
+  
+  <div class = "next-btn">
+      <button type="button" class="btn" data-bs-toggle="button" routerLink="/dream-job">Next</button>
+    </div>
+  </div>
+  

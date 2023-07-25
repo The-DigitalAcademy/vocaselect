@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SubjectsService } from 'src/app/services/subjects.service';
 
 @Component({
   selector: 'app-subjects',
@@ -6,41 +9,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./subjects.component.scss']
 })
 export class SubjectsComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  name = 'Angular 6';
-  selectedAll: any;
- channelDDList = [
-   {
-     "channelId": 0,
-     "channelName": "Mathematics",
-     "selected":false
-   },
-   {
-     "channelId": 1,
-     "channelName": "Life Sciences",
-     "selected":false
-   }];
-   showCheckbox = false;
+     
+  subjects: any;   
+ 
+  constructor(private subjectsService: SubjectsService, private router: Router)
+  {    
 
-  showCheckboxes(){
-    this.showCheckbox = !this.showCheckbox;
+  }  
+  ngOnInit() {
+    // this.subjectsService.getSubjects().subscribe({
+    //   next: (data: any) => {
+    //     this.subjects = data;
+    //     console.log(data, 'subjects');
+    //   },
+    //   error: (err: any) => {
+    //     // this.errorMessage = err.error.message;
+    //     // this.isLoginFailed = true;
+    //   }
+    // });
   }
 
-  selectAll() {
-    for (var i = 0; i < this.channelDDList.length; i++) {
-      this.channelDDList[i].selected = this.selectedAll;
-    }
-  }
-  checkIfAllSelected() {
-    this.selectedAll = this.channelDDList.every(function(item:any)          {
-        return item.selected == true;
-      });
-  }
-
-  constructor() { }
-
-
-
+  
+  
 }
