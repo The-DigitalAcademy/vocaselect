@@ -8,6 +8,9 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+  isAuthenticated(): boolean {
+    throw new Error('Method not implemented.');
+  }
 
   apiUrl = environment.apiURL;
   constructor(private http: HttpClient) {}
@@ -23,7 +26,7 @@ export class UserService {
   login(credentials: any) {
     const jwtSecret = environment.jwtSecret; // Access the JWT secret from the environment
     const headers = { Authorization: `Bearer ${jwtSecret}` };
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials, { headers });
+    return this.http.post<any>("http://localhost:9000/api/users/login", credentials, { headers });
   }
 
 

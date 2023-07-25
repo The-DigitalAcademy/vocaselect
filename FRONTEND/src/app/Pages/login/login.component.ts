@@ -1,5 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-// import { AuthService } from 'src/app/_services/auth.service';
+import {UserService} from "../../_services/user.service"
+import { Router } from '@angular/router';
 // import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 
@@ -15,6 +16,8 @@ import { Component, Injectable, OnInit } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginComponent implements OnInit {
+
+  
   form: any = {
     username: null,
     password: null
@@ -24,7 +27,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor() { }
+  constructor(private userService: UserService, private router:Router) { }
 
   ngOnInit(): void {
   //  if (this.tokenStorage.getToken())  {
@@ -32,6 +35,16 @@ export class LoginComponent implements OnInit {
     //   this.roles = this.storageService.getUser().roles;
     // }else{
     //   //redirect to login screen
+    }
+
+
+    login(){
+     console.log(this.form)
+
+    //  if(this.form)
+        return  this.userService.login(this.form).subscribe((res:any)=>{
+        
+      })
     }
 }
 

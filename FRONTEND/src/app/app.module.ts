@@ -13,6 +13,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { CommonModule } from '@angular/common';
 import { UserService } from './_services/user.service';
+import { Login2Component } from './Pages/login2/login2.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserService } from './_services/user.service';
     LoginComponent,
     RegisterComponent,
     SubjectsComponent,
+    Login2Component,
   
   ],
   imports: [
