@@ -17,7 +17,7 @@ export class AuthService {
 
  
   login(username: string, password: string): Observable<any>  {
-    console.log(username,password,"credentials")
+    // console.log(username,password,"credentials")
    
     // if(username == 'neomakhubo25@gmail.com' && password == '12345678'){
     //   return true; 
@@ -39,9 +39,9 @@ export class AuthService {
 
 
 
-  register(name:string, surname:string,email:string,dob:string, city:string, studentgrade:string, password:string ): Observable<any> {
+  register(name:string, surname:string,email:string,dob:string, city:string, studentgrade:any, password:string ): Observable<any> {
     
-    console.log('testing',  name, surname,email,dob, city, studentgrade, password)
+    // console.log('testing',  name, surname,email,dob, city, studentGrade, password)
     return this.http.post(
       apiUrl + 'users/signup',
       {

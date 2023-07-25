@@ -10,14 +10,13 @@ import { AuthService } from 'src/app/_services/auth.service';
 export class RegisterComponent implements OnInit {
 
   form: any = {
-    firstName: null,
-    lastName:null,
-    email: null,
-    dateofBirth:null,
-    cityorTown:null,
-    studentGrade:null,
-    password: null,
-  confirmPassword:null
+    name: '',
+    surname:'',
+    email: '',
+    dob:'',
+    city:'',
+    studentgrade:'',
+    password: '',
   };
   isSuccessful = false;
   isSignUpFailed = false;
@@ -29,9 +28,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
+    const { name, surname,email,dob, city, studentgrade, password } = this.form;
     //This Method That Returns An Observable Object (authService.register())
-    this.authService.register(username, email, password).subscribe({
+    this.authService.register(name, surname,email,dob, city, studentgrade, password ).subscribe({
       next: (data) => {
         console.log(data);
         this.isSuccessful = true;

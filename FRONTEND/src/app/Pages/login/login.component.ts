@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(username, password).subscribe({
       next: data => {
-        debugger;
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
@@ -50,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         //alert("Login Successful")
-        this.reloadPage();
+        // this.reloadPage();
         // this.toastr.success("Login Successful")
         
       // window.location.replace("/homepage")
@@ -73,7 +72,7 @@ export class LoginComponent implements OnInit {
   //   }
     // return true
   }
-    reloadPage(): void {
-      window.location.reload();
-    }
+    // reloadPage(): void {
+    //   window.location.reload();
+    // }
   }

@@ -13,6 +13,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { CommonModule } from '@angular/common';
+import { HomepageComponent } from './Pages/homepage/homepage.component';
 
 
 
@@ -24,6 +25,7 @@ import { CommonModule } from '@angular/common';
     LoginComponent,
     RegisterComponent,
     SubjectsComponent,
+    HomepageComponent,
   
   ],
   imports: [
