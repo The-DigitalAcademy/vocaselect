@@ -13,11 +13,16 @@ const User = db.User;
 const signup = async (req, res) => {
  try {
    const { name, surname,email,dob, city, studentgrade, password } = req.body;
+
+  //  console.log( name, surname,email,dob, city, studentgrade, password )
    
    //if user exists
    // Check if the user with the given email already exists
-  //  const existingUser = await User.findOne({ email });
+   const existingUser = await User.findOne({ email });
+
+  //  console.log(existingUser)
   //  if (existingUser) {
+  //   console.log(existingUser)
   //    return res.status(409).send("User with this email already exists");
   //  }
 
@@ -33,9 +38,9 @@ const signup = async (req, res) => {
    //saving the user
    const user = await User.create(data);
 
-   //if user details is captured
-   //generate token with the user's id and the secretKey in the env file
-   // set cookie with the token generated
+  //  if user details is captured
+  //  generate token with the user's id and the secretKey in the env file
+  //  set cookie with the token generated
    if (user) {
      let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: '1d', // 1 day (24 hours)
@@ -49,7 +54,7 @@ const signup = async (req, res) => {
      return res.status(201).send({message: "User was registered successfully!"} );
 
    } else {
-     return res.status(409).send("Details are not correct");
+     return res.send("Details are not correct");
    }
  } catch (error) {
    console.log(error);

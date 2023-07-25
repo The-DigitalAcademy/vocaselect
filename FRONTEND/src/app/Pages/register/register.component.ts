@@ -9,7 +9,7 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  user: any = {
+  form: any = {
     // Initialize any properties you need for the registration form
     name: '',
     surname: '',
@@ -17,13 +17,16 @@ export class RegisterComponent implements OnInit {
     dob: '',
     city: '',
     studentgrade: '',
-    password: ''
+    password: '',
+
   };
+isSignUpFailed: any;
+errorMessage: any;
 
   constructor(private userService: UserService, private router: Router) {}
 
   signup() {
-    this.userService.signup(this.user).subscribe(
+    this.userService.signup(this.form).subscribe(
       (response) => {
         // Handle successful registration response if needed
         console.log('Registration successful:', response);
@@ -40,5 +43,19 @@ export class RegisterComponent implements OnInit {
 
   
 }
-  
+
+
+// form: any = {
+//   firstName: null,
+//   lastName:null,
+//   email: null,
+//   dateofBirth:null,
+//   cityorTown:null,
+//   studentGrade:null,
+//   password: null,
+// confirmPassword:null
+// };
+// isSuccessful = false;
+// isSignUpFailed = false;
+// errorMessage = '';
 
