@@ -179,32 +179,6 @@
                                       </div>
                                     </div>
                 
-                                    <div class="form-group pt-30" >
-                                        <label for="password">Confirm Password</label>
-                                        <input
-                                          type="password"
-                                          class="form-control"
-                                          name="password"
-                                          [(ngModel)]="form.confirmPassword"
-                                          required
-                                          minlength="8"
-                                          placeholder="Minimum 8 characters"
-                                          #password="ngModel"/>
-                    
-                                          <div
-                                          class="alert alert-danger"
-                                          role="alert"
-                                          *ngIf="password.errors && f.submitted"
-                                        >
-                                          <div *ngIf="password.errors?.['required']">
-                                            Password is required!
-                                          </div>
-                                          <div *ngIf="password.errors?.['minlength']">
-                                            Passwords do not match!
-                                          </div>
-                                        </div>
-                
-                                  </div>
                                 </div>
                                 </div>
 
