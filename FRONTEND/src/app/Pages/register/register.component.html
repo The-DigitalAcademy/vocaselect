@@ -2,188 +2,183 @@
 <div class="eclipse-4"></div>
 <div class="eclipse-5"></div>
 <div class="eclipse-6"></div>
-<form
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
->
-    <div class="bg-grey-lighter min-screen flex flex-col">
-        <div class="container  max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-3 ">
-            <div class="bg-white r-container px-6 py-8 rounded shadow-md text-black w-full">
-                <img 
-                class="card-img-top text-center img-logo" 
-                src="../../../assets/logo.png"
-                alt="Logo"
 
-              />
-                    
-              
-              <div class="names">
-                <div class="form-group pt-25" >
-                  <label for="name">Your First Name</label>  
-                <input 
+<div class="container register">
+  <form
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="bg-grey-lighter min-screen flex flex-col">
+      <div
+        class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-3"
+      >
+        <div
+          class="bg-white r-container px-6 py-8 rounded shadow-md text-gray w-full"
+        >
+          <img
+            class="img-logo card-img-top text-center h-60 w-50"
+            src="../../../assets/logo.png"
+            alt="Logo"
+          />
+
+          <div class="names">
+            <div class="form-group pt-25">
+              <label for="name">Name</label>
+              <input
                 type="text"
-                class=" form-control"
+                class="form-control"
                 name="name"
                 [(ngModel)]="form.name"
                 required
-                placeholder="Nandi"
-                #name="ngModel"/>
+                placeholder="your name"
+                #name="ngModel"
+              />
 
-                <label
+              <label
                 class="alert alert-danger"
                 role="alert"
                 *ngIf="name.errors && f.submitted"
               >
                 Your Firstname is required!
               </label>
+            </div>
+
+            <div class="form-group pt-25">
+              <label for="surname">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="surname"
+                [(ngModel)]="form.surname"
+                required
+                placeholder="your surname"
+                #surname="ngModel"
+              />
+
+              <label
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="surname.errors && f.submitted"
+              >
+                Your Surname is required!
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group pt-30">
+            <label for="username">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              [(ngModel)]="form.email"
+              required
+              placeholder="sample@example.com"
+              #email="ngModel"
+            />
+
+            <label
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="email.errors && f.submitted"
+            >
+              Your Email is required!
+            </label>
+          </div>
+
+          <div class="form-group pt-30">
+            <label for="dob">Date of Birth</label>
+            <input
+              type="date"
+              class="form-control"
+              name="dateofBirth"
+              [(ngModel)]="form.dob"
+              required
+              placeholder="yyyy-mm-dd"
+              #dob="ngModel"
+            />
+
+            <label
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="dob.errors && f.submitted"
+            >
+              Your Date of Birth is required!
+            </label>
+          </div>
+  <div class = "cityGrade">
+    <div class="form-group pt-30">
+      <label for="city">City/Town</label>
+      <input
+        type="text"
+        class="form-control"
+        name="city"
+        [(ngModel)]="form.city"
+        required
+        placeholder="e.g Pretoria"
+        #city="ngModel"
+      />
+
+      <label
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="city.errors && f.submitted"
+      >
+        Your City or Town is required!
+      </label>
+    </div>
+
+    <div class="form-group pt-30">
+      <label for="studentgrade">Your Grade</label>
+      <input
+        type="integer"
+        class="form-control"
+        name="studentgrade"
+        [(ngModel)]="form.studentgrade"
+        required
+        placeholder="eg.10"
+        #studentgrade="ngModel"
+      />
+
+      <label
+        class="alert alert-danger"
+        role="alert"
+        *ngIf="studentgrade.errors && f.submitted"
+      >
+        Your current Grade is required!
+      </label>
+    </div>
+
+  </div>
+    
+          <div class="passwords">
+            <div class="form-group pt-30">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="form.password"
+                required
+                minlength="8"
+                placeholder="Minimum 8 characters"
+                #password="ngModel"
+              />
+
+              <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                <div *ngIf="password.errors?.['required']">
+                  Password is required!
                 </div>
-                
-                <div class="form-group pt-25"  >
-                    
-                    <label for="surname">Your Last Name</label>
-                <input 
-                    type="text"
-                    class=" form-control"
-                    name="surname"
-                    [(ngModel)]="form.surname"
-                    required
-                    placeholder="Nxumalo"
-                    #surname="ngModel"/>
-    
-                    <label
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="surname.errors && f.submitted"
-                  >
-                    Your Surname is required!
-                  </label>
-                    </div>
+                <div *ngIf="password.errors?.['minlength']">
+                  Password must be at least 8 characters!
+                </div>
+              </div>
+            </div>
+          </div>
 
-
-
-              </div>  
-           
-
-                <div class="form-group pt-30">
-                    
-                    <label for="username">Your Email</label>
-                <input 
-                    type="email"
-                    class=" form-control"
-                    name="email"
-                    [(ngModel)]="form.email"
-                    required
-                    placeholder="NandiM@gmail.com"
-                    #email="ngModel"/>
-
-                    <label
-                    class="alert alert-danger"
-                    role="alert"
-                    *ngIf="email.errors && f.submitted"
-                  >
-                    Your Email is required!
-                  </label>
-                    </div>
-
-                    <div class="form-group pt-30">
-                    
-                        <label for="dob">Your Date of Birth</label>
-                    <input 
-                        type="date"
-                        class=" form-control"
-                        name="dateofBirth"
-                        [(ngModel)]="form.dob"
-                        required
-                        placeholder="yyyy-mm-dd"
-                        #dob="ngModel"/>
-    
-                        <label
-                        class="alert alert-danger"
-                        role="alert"
-                        *ngIf="dob.errors && f.submitted"
-                      >
-                       Your Date of Birth is required!
-                      </label>
-                        </div>
-
-                        <div class="form-group pt-30">
-                    
-                            <label for="city">Your City/Town</label>
-                        <input 
-                            type="text"
-                            class=" form-control"
-                            name="city"
-                            [(ngModel)]="form.city"
-                            required
-                            placeholder="Pretoria"
-                            #city="ngModel"/>
-        
-                            <label
-                            class="alert alert-danger"
-                            role="alert"
-                            *ngIf="city.errors && f.submitted"
-                          >
-                            Your City or Town is required!
-                          </label>
-                            </div>
-
-                            <div class="form-group pt-30">
-                    
-                                <label for="studentgrade">Your Student Grade</label>
-                            <input 
-                                type="integer"
-                                class=" form-control"
-                                name="studentgrade"
-                                [(ngModel)]="form.studentgrade"
-                                required
-                                placeholder="eg.10"
-                                #studentgrade="ngModel"/>
-            
-                                <label
-                                class="alert alert-danger"
-                                role="alert"
-                                *ngIf="studentgrade.errors && f.submitted"
-                              >
-                                Your current Grade is required!
-                              </label>
-                                </div>
-
-                                <div class="passwords">
-
-                                  <div class="form-group pt-30" >
-                                    <label for="password">Password</label>
-                                    <input
-                                      type="password"
-                                      class="form-control"
-                                      name="password"
-                                      [(ngModel)]="form.password"
-                                      required
-                                      minlength="8"
-                                      placeholder="Minimum 8 characters"
-                                      #password="ngModel"/>
-                
-                                      <div
-                                      class="alert alert-danger"
-                                      role="alert"
-                                      *ngIf="password.errors && f.submitted"
-                                    >
-                                      <div *ngIf="password.errors?.['required']">
-                                        Password is required!
-                                      </div>
-                                      <div *ngIf="password.errors?.['minlength']">
-                                        
-                                        Password must be at least 8 characters!
-                                        
-                                      </div>
-                                    </div>
-                
-                                </div>
-                                </div>
-
-                
-                  <!-- <label class="fr">
+          <!-- <label class="fr">
                     Forgot
                     <a
                       class="no-underline border-b border-grey-dark text-grey-dark text-blue-500"
@@ -193,27 +188,34 @@
                     </a>
                   </label>
      -->
-                <div ngClass="form-group mt-3 text-center">
-                    <button class="btn btn-primary btn-block" routerLink="/subjects">Register</button>
-                  </div>
-                  <div class="form-group">
-                    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                        Signup failed!<br />{{ errorMessage }}
-                      </div>
-            
-                  </div>
-                  <div class="text-grey-dark mt-2 text-black pt-4" id="cent">
-                    Already a member?
-                    <a
-                      class="no-underline border-b border-blue text-blue-500"
-                      href="../register/"
-                    >
-                     Login
-                    </a>
-                  </div>
+          <div ngClass="form-group mt-3 text-center">
+            <button class="btn btn-primary btn-block" routerLink="/subjects">
+              Register
+            </button>
+          </div>
+          <div class="form-group">
+            <div
+              class="alert alert-warning"
+              *ngIf="f.submitted && isSignUpFailed"
+            >
+              Signup failed!<br />{{ errorMessage }}
             </div>
+          </div>
+          <div class = "alreadyExist">
+          <div class="alreadyExist text-grey-dark mt-2 text-black pt-4" id="cent">
+            Already a member?
+            <a
+              class="no-underline border-b border-blue text-blue-500"
+              href="../register/"
+            >
+              Login
+            </a>
+          </div>
         </div>
+        </div>
+      </div>
     </div>
-</form>
+  </form>
+</div>
 <div class="eclipse-2"></div>
 <div class="eclipse-3"></div>

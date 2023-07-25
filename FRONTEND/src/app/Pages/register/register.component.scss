@@ -1,5 +1,12 @@
 
-.r-container{
+.register{
+
+  width: 100wh;
+  height: 100vh;
+  // overflow: hidden;
+  margin-top: -5rem;
+
+  .r-container{
     box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
     -webkit-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
     -moz-box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
@@ -12,7 +19,7 @@
   .container {
     margin-top: 100px;
     margin-bottom: 50px;
-   
+
       }
   
   .form-control{
@@ -27,6 +34,8 @@
   .img-logo{
     margin-bottom: -63px;
     margin-top: -88px;
+    margin-left: 4rem;
+   
   }
   
   button{
@@ -52,27 +61,23 @@
   .names{
     display: flex;
     justify-content: space-between;
+    gap: 8px;
   }
 
-  // .passwords input{
-  //   width: 9rem;
-  // }
-
-// .passwords{
-//   width:9rem;
-// }
-
-// .passwords{
-//   display:flex;
-//   justify-content: space-between;
-// }
+  .cityGrade{
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
 
  
-//   .forgot-ps{
-//       position: absolute;
-//       right: 50px;
-//   }
-form{
-  margin-top: -3rem;
-  margin-bottom: -3rem;
+// form{
+//   margin-top: -3rem;
+//   margin-bottom: -3rem;
+// }
+
+.alreadyExist{
+  margin-top: -2rem;
+  margin-left: 1.6rem;
+}
 }
