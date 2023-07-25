@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
-   if (this.tokenStorage.getToken())  {
+    this.tokenStorage.signOut();
+  // if (this.tokenStorage.getToken())  {
     //   this.isLoggedIn = true;
     //   this.roles = this.storageService.getUser().roles;
     // }else{
     //   //redirect to login screen
-    }
+    //}
   }
   
 
@@ -40,7 +41,8 @@ export class LoginComponent implements OnInit {
     const { username, password } = this.form;
 
     this.authService.login(username, password).subscribe({
-      next: (data) => {
+      next: data => {
+        debugger;
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
@@ -51,12 +53,13 @@ export class LoginComponent implements OnInit {
         this.reloadPage();
         // this.toastr.success("Login Successful")
         
-       window.location.replace("/homepage")
+      // window.location.replace("/homepage")
       //return this.isLoggedIn = true
         
       },
-      error: (err) => {
-        this.errorMessage = err.error.message;
+      error: err => {
+        console.log(err)
+        this.errorMessage = err?.error?.message;
         this.isLoginFailed = true;
         // this.toastr.error("Login Failed, Try Again")
       },

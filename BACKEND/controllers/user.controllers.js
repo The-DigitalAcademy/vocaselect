@@ -12,7 +12,11 @@ const User = db.User;
 //hashing users password before its saved to the database with bcrypt
 const signup = async (req, res) => {
  try {
+  
    const { name, surname,email,dob, city, studentgrade, password } = req.body;
+
+   console.log( req.body, ' json body ', name, surname,email,dob, city, studentgrade, password);
+
    const data = {
     name,
     surname,
@@ -52,12 +56,12 @@ const signup = async (req, res) => {
 //login authentication
 const login = async (req, res) => {
  try {
-const { email, password } = req.body;
-
+const { username, password } = req.body;
+console.log(req.body, 'login boddy', username, password)
    //find a user by their email
    const user = await User.findOne({
      where: {
-     email: email
+     email: username
    } 
      
    });

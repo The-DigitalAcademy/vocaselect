@@ -20,13 +20,13 @@ export class AuthService {
     console.log(username,password,"credentials")
    
     // if(username == 'neomakhubo25@gmail.com' && password == '12345678'){
-    //   return true;
+    //   return true; 
     // }
 
     // return false;
      return this.http.post(
 
-      apiUrl + 'signin',
+      apiUrl + 'users/login',
       {
         username,
         password,
@@ -39,13 +39,13 @@ export class AuthService {
 
 
 
-  register(username: string, email: string, password: string): Observable<any> {
+  register(name:string, surname:string,email:string,dob:string, city:string, studentgrade:string, password:string ): Observable<any> {
+    
+    console.log('testing',  name, surname,email,dob, city, studentgrade, password)
     return this.http.post(
-      apiUrl + 'signup',
+      apiUrl + 'users/signup',
       {
-        username,
-        email,
-        password,
+        name, surname,email,dob, city, studentgrade, password
       },
       httpOptions
     );
