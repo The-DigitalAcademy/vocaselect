@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-const API_URL = 'http://localhost:9000/api'; 
+const API_URL = 'https://backend-1-jclq.onrender.com/api'; 
 @Injectable({
   providedIn: 'root'
 })
