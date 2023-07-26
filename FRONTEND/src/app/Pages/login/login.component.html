@@ -116,7 +116,7 @@
 </div> -->
 
 <!-- component -->
-
+<div class = "container login-page">
 <div class="eclipse-1"></div>
 <div class="eclipse-4"></div>
 <div class="eclipse-5"></div>
@@ -127,11 +127,12 @@ name="form"
 #f="ngForm"
 novalidate
 >
+
     <div class="bg-grey-lighter min-h-screen flex flex-col">
         <div class="container  max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white l-container px-6 py-8 rounded shadow-md text-black w-full">
                 <img
-                class="card-img-top text-center img-logo"
+                class="card-img-top text-center img-logo h-60 w-50"
                 src="../../../assets/logo.png"
                 alt="Logo"
 
@@ -181,41 +182,36 @@ novalidate
                       </div>
                     </div>
                   </div>
-                  <label class="fr">
-                    Forgot
-                    <a
-                      class="no-underline border-b border-grey-dark text-grey-dark text-blue-500"
-                      href="/forgotPassword"
-                    >
-                       Password?
-                    </a>
-                  </label>
     
                 <div ngClass="form-group mt-4 text-center">
                     <button class="btn btn-primary btn-block"routerLink="/homepage">Login</button>
                   </div>
                   <div class="form-group">
-                    <div
-                      class="alert alert-danger"
-                      role="alert"
-                      *ngIf="f.submitted && isLoginFailed"
-                    >
+                    <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
                       Login failed: {{ errorMessage }}
                     </div>
                   </div>
-                  <div class="text-grey-dark mt-2 text-black pt-4" id="cent">
-                    Not a member?
+                  <div class = "forgot">
+                  <label class="fr">
+                    <p>Forgot
                     <a
-                      class="no-underline border-b border-blue text-blue-500"
-                      routerLink="/register"
+                      class="no-underline border-b border-grey-dark text-grey-dark text-blue-500"
+                      href="/forgotPassword"
                     >
-                      Register
-                    </a>
+                       Password?
+                    </a></p>
+                  </label>
+                  <div class="text-grey-dark text-black pt-2" id="cent">
+                    Not a member?
+                    <a class="no-underline border-b border-blue text-blue-500" routerLink="/register">
+                      Register</a>
                   </div>
+                </div>
             </div>
         </div>
     </div>
 </form>
+</div>
 <div class="eclipse-2"></div>
 <div class="eclipse-3"></div>
 
