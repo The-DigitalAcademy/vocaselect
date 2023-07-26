@@ -1,9 +1,73 @@
-// * {
-//     background: var(background-color)
+// .btn {
+//     color: #fff;
+//     padding: 15px 5px;
+//     background-color: var(--button-color);
+//     // background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 66% at 26% 20%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+//     // box-shadow: inset -3px -3px 9px rgba(255, 255, 255, 0.25), inset 0px 3px 9px rgba(255, 255, 255, 0.3), inset 0px 1px 1px rgba(255, 255, 255, 0.6), inset 0px -8px 36px rgba(0, 0, 0, 0.3), inset 0px 1px 5px rgba(255, 255, 255, 0.6), 2px 19px 31px rgba(0, 0, 0, 0.2);
+//     border-radius: 14px;
+//     font-weight: bold;
+//     font-size: 20px;
+//     width: 15rem;
+//     /* border: 0; /
+
+//     user-select: none;
+//     -webkit-user-select: none;
+//     touch-action: manipulation;
+
+//     cursor: pointer;
+//     // z-index: 9999999;
+// }
+
+// / * {
+//     background-color: #F2F6FD;
+// } /
+
+//  .page{
+//     overflow: hidden;
+//     // z-index: -9999;
+//     position: absolute;
+//     justify-items: auto;
+// }
+
+// .container{
+//     // z-index: -999999;
+//     overflow: hidden;
+//     position: sticky;
+//     width: fit-content;
+//     block-size: fit-content;
+//     padding-bottom: -60rem;
+//     background-color: #F2F6FD;
+
+
+//     p{
+//         font-weight: bolder;
+//         color: var(--text-color);
+//         margin-bottom: 2px;
+
+//     }
+//     .logo{
+//         margin-top: -3.5rem;
+//         margin-bottom: -4rem;
+//         margin-left: 4rem;
+//         height: 15rem;
+//         width: 15rem;
+//         display: flex;
+//         justify-content: center;
+//         / position: relative; */
+
+//     }
+//     #btn-getstarted{
+//         justify-content: center;
+//     }
+
+
+// #landing-header {
+//     font-size: 300px;
 // }
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap%27');
 
 
 body {
@@ -14,27 +78,31 @@ body {
 }
 
 .navbar {
-    // text-align: center;
-    // padding: 10px 0;
-    // position: relative;
-    // display: flex;
-    // justify-content: space-between;
     margin-top: -2.5rem;
 }
 
+// .logo {
+//     / justify-content: center; /
+
+// }
+
 
 .backbutton {
+    display: flex;
+    align-self: center;
     padding-top: 10px;
     padding-right: 60px;
     width: 30px;
     height: 40px;
+
+    padding: gree
 }
 
 
 .logo-img {
     // text-align: center;
-    margin: 0 auto;
-    width: 150px; /* Adjust the width as needed */
+    // margin: 0 auto; 
+    width: 150px; 
 }
 
 .question {
@@ -76,4 +144,3 @@ body {
     width: 800px; 
     height:300px; 
 }
-

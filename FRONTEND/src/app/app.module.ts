@@ -35,7 +35,6 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
     DreamJobComponent,
     FillCareerComponent,
     HomepageComponent
-  
   ],
   imports: [
     BrowserModule,
@@ -43,8 +42,7 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    HttpClientModule 
-  
+    HttpClientModule
   ],
   providers: [ UserService ],
   schemas: [NO_ERRORS_SCHEMA],

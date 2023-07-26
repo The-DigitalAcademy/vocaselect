@@ -1,7 +1,8 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
+import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-
+import Swal from 'sweetalert2';
 
 // Login Component Calls TokenStorageService Methods To Check The LoggedIn Status And Save Token And User Info To Session Storage.
 
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public _router: Router) { }
 
   ngOnInit(): void {
     this.tokenStorage.signOut();
@@ -48,18 +49,35 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+        
         //alert("Login Successful")
         // this.reloadPage();
         // this.toastr.success("Login Successful")
+
+        Swal.fire({
+          title: 'Login was Successful',
+           text: 'You are now logged in!',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        }).then((result)=>{
+          if (result.value){
+            this._router.navigate(['/home']);
+          }});
         
       // window.location.replace("/homepage")
-      //return this.isLoggedIn = true
+      //return this.isLoggedIn = true 
         
       },
       error: err => {
         console.log(err)
-        this.errorMessage = err?.error?.message;
+        if(err?.status == 401){
+          this.errorMessage = "Incorrect username or password provided!";
+        }else{
+          this.errorMessage = err.error.message;
+        }
+        
         this.isLoginFailed = true;
+
         // this.toastr.error("Login Failed, Try Again")
       },
       

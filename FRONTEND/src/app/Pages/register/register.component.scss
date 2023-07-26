@@ -5,6 +5,8 @@
   height: 100vh;
   // overflow: hidden;
   margin-top: -5rem;
+  z-index: 1;
+  position: relative;
 
   .r-container{
     box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);
@@ -80,4 +82,11 @@
   margin-top: -2rem;
   margin-left: 1.6rem;
 }
+
+}
+.swal2-container{
+  z-index: 999999999 !important;
+}  
+.swal2-backdrop-show{
+  z-index: 999999999 !important;
 }

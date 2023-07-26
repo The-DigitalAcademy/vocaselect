@@ -145,7 +145,7 @@ novalidate
                     name="username"
                     [(ngModel)]="form.username"
                     required
-                    placeholder="e.g NandiM@gmail.com"
+                    placeholder="sample@example.com"
                     #username="ngModel"/>
 
                     <label
@@ -165,8 +165,7 @@ novalidate
                       name="password"
                       [(ngModel)]="form.password"
                       required
-                      minlength="8"
-                      placeholder="Minimum 8 characters"
+                      placeholder="Password"
                       #password="ngModel"/>
 
                       <div
@@ -176,9 +175,6 @@ novalidate
                     >
                       <div *ngIf="password.errors?.['required']">
                         Password is required
-                      </div>
-                      <div *ngIf="password.errors?.['minlength']">
-                        Password must be at least 8 characters
                       </div>
                     </div>
                   </div>
