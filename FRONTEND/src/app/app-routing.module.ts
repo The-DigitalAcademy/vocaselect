@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', component: LandingPageComponent},
  { path: 'login', component:LoginComponent},
  { path: 'register', component: RegisterComponent},
- { path:'landing', component: LandingPageComponent},
+//  { path:'landing', component: LandingPageComponent},
  { path: 'subjects', component: SubjectsComponent},
  { path: 'dream-job', component: DreamJobComponent}
  

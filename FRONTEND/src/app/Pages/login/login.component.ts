@@ -1,4 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { UserService } from 'src/app/_services/user.service';
 // import { AuthService } from 'src/app/_services/auth.service';
 // import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
@@ -22,9 +23,31 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
+  // isLoading: '';
+  // roles: string[] = [];
 
-  constructor() { }
+  constructor(private userServ: UserService) { }
+
+  login() {
+    // this.isLoading = true;
+    this.userServ.login(this.credentials).subscribe(
+      (response) => {
+        // Handle successful login here
+        console.log('Login successful!', response);
+        // You can redirect to another page or perform other actions upon successful login
+        // this.isLoading = false;
+      },
+      (error) => {
+        // Handle login error here
+        console.error('Login failed!', error);
+        // this.isLoading = false;
+        // Show an error message to the user or perform other actions upon login failure
+      }
+    );
+  }
+  credentials(credentials: any) {
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit(): void {
   //  if (this.tokenStorage.getToken())  {

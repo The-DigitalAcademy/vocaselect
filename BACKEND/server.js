@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
 const subjectRoutes = require('./routes/subjects.routes')
 
+const { specs, swaggerUi } = require('./swagger');
 
 //Environment file
 require('dotenv').config();
@@ -28,6 +29,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Add the Swagger UI middleware
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 db.sequelize.sync()
   .then(() => {
