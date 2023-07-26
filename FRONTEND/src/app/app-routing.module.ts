@@ -6,6 +6,7 @@ import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { RegisterComponent } from './Pages/register/register.component';
+import { HomepageComponent } from './Pages/homepage/homepage.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
  { path:'landing', component: LandingPageComponent},
  { path: 'subjects', component: SubjectsComponent},
  { path: 'dream-job', component: DreamJobComponent},
+ { path: 'home', component: HomepageComponent},
 
   {path : 'welcome-quize' , component: WelcomeQuizComponent },
   {path : 'login' , component: LoginComponent },
@@ -21,7 +23,6 @@ const routes: Routes = [
   {path : 'subjects' , component: SubjectsComponent },
   {path: 'dream-job', component: DreamJobComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
-
 ];
 
 @NgModule({
