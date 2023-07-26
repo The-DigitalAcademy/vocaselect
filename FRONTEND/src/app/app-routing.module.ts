@@ -19,7 +19,6 @@ const routes: Routes = [
   {path : 'login' , component: LoginComponent },
   {path : 'landing' , component: LandingPageComponent},
   {path : 'subjects' , component: SubjectsComponent },
-  {path: 'dream-job', component: DreamJobComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 
 ];
