@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        //this._router.navigate(['/subjects'])
+        // this._router.navigate(['/subjects'])
         // this.reloadPage();
         //this.toastr.success("Registration Was Successful")
         
