@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -35,25 +36,48 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
-        this._router.navigate(['/subjects'])
+        //this._router.navigate(['/subjects'])
         // this.reloadPage();
-        // this.toastr.success("Registration Was Successful")
+        //this.toastr.success("Registration Was Successful")
         
         // window.location.replace("/login")
-        // Swal.fire({
-        //   title: 'Registration Was Successful',
-        //    text: 'You can now login!',
-        //   icon: 'success',
-        //   confirmButtonText: 'Login',
-        // }).then((result)=>{
-        //   if (result.value){
-        //     this._router.navigate(["/login"])
+        Swal.fire({
+          title: 'Registration Successful',
+           text: '',
+          icon: 'success',
+          //confirmButtonText: 'Login',
+        }).then((result)=>{
+          if (result.value){
+            this._router.navigate(["/subjects"])
             
-        //   }})
+          }});
          
       },
       error: (err) => {
-        this.errorMessage = err.error.message;
+       
+
+        if(err.error.errors.length > 0){
+          
+          // err.error.errors.forEach(element => {
+          //   this.errorMessage += element.message;
+          // });
+          for(var i =0; i < err.error.errors.length; i++){
+            this.errorMessage += err.error.errors[i].message;
+          }
+        }else{
+          this.errorMessage = err.error.message;
+        }
+
+        Swal.fire({
+          title: 'Registration was unsuccessful',
+           text: this.errorMessage,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        }).then((result)=>{
+          if (result.value){
+            //this._router.navigate(["/subjects"])
+            
+          }});
         this.isSignUpFailed = true;
         // this.toastr.error("Registration Failed, Try Again")
       }

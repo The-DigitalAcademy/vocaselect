@@ -32,7 +32,6 @@ import { HomepageComponent } from './Pages/homepage/homepage.component';
     DreamJobComponent,
     FillCareerComponent,
     HomepageComponent
-  
   ],
   imports: [
     BrowserModule,
@@ -40,8 +39,7 @@ import { HomepageComponent } from './Pages/homepage/homepage.component';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    HttpClientModule 
-  
+    HttpClientModule
   ],
   providers: [authInterceptorProviders],
   schemas: [NO_ERRORS_SCHEMA],
