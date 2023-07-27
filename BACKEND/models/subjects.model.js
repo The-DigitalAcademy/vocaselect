@@ -31,7 +31,7 @@ module.exports = (sequelize, Sequelize) => {
       });
     };
 
-    /// for marks and table
+    /// for marks and subject
 
     const SubjectAndMark = sequelize.define("subject", {
       subjectName: {

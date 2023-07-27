@@ -58,7 +58,7 @@ app.use('/api/subjects', subjectRoutes)
 
 // app.use('/app/getting')
 
-// app.use('/api/SubjectsAndMarks')
+ app.use('/api/SubjectsAndMarks', subjectRoutes)
 
 
 // Import the deleteUserById method (replace this with the actual path to your method file)

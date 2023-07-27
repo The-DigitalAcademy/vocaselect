@@ -9,7 +9,7 @@ const Subject = db.Subject;
       const { subjectName } = req.body;
       const data = {
        subjectName,
-      //  mark,
+        //mark,
       };
       //saving the subject
       const selectedsubject = await Subject.create(data);
