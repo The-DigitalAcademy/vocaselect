@@ -17,16 +17,16 @@ export class SubjectsComponent implements OnInit {
 
   }  
   ngOnInit() {
-    // this.subjectsService.getSubjects().subscribe({
-    //   next: (data: any) => {
-    //     this.subjects = data;
-    //     console.log(data, 'subjects');
-    //   },
-    //   error: (err: any) => {
-    //     // this.errorMessage = err.error.message;
-    //     // this.isLoginFailed = true;
-    //   }
-    // });
+    this.subjectsService.getSubjects().subscribe({
+      next: (data: any) => {
+        this.subjects = data;
+        console.log(data, 'subjects');
+      },
+      error: (err: any) => {
+        // this.errorMessage = err.error.message;
+        // this.isLoginFailed = true;
+      }
+    });
   }
 
   

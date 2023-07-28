@@ -77,8 +77,29 @@ const getAllsubjects = async (req, res) => {
   }
 };
 
+// DELETE BY ID
+const deleteSubjectById = async (req, res) => {
+  try {
+    const subjectId = req.params.id; 
+    const subject = await User.findByPk(subjectId);
+
+    if (!user) {
+      return res.status(404).send("subject not found");
+    }
+
+    // Perform the delete operation here
+    await user.destroy();
+
+    return res.status(200).send("subject deleted successfully");
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal Server Error");
+  }
+};
+
 
    module.exports = {
     createNewSubject,
-    getAllsubjects
+    getAllsubjects,
+    deleteSubjectById
    }

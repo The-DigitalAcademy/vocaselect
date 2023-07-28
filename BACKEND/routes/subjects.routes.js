@@ -8,6 +8,10 @@ const subjects = require('../controllers/subjects.controllers')
     //for getting all subjects
     router.get("/", subjects.getAllsubjects);
 
+    // Create the route for deleting a subject
+    router.delete('/:id', subjects.deleteSubjectById);
+
+
     module.exports = router
 
 

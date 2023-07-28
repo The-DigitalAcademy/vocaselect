@@ -3,123 +3,46 @@
     <div class="heading row">
       <p class="fs-1">Select the subjects you are doing</p>
       <p class="fs-2">To better guide you on your journey</p>
-    </div> -->
-  
-    <!-- <ul>
-      <li *ngFor="let subject of subjects">
-        <input type="checkbox" [(ngModel)]="subjects.checked">{{subjects.subject_name}}
-      </li>
-    </ul> -->
-  <!-- <div class = "sub">
-    <form>
-        <p>Subjects:</p>
-        <div class="eclipse-1"></div>
-        <div class="eclipse-6"></div>
-        <div>
-          <input type="checkbox" id="instagram" name="source" value="instagram">
-          <a>Mathematics</a>
-        </div>
-        <div>
-          <input type="checkbox" id="facebook" name="source" value="facebook">
-          <a>Maths Literacy</a>
-        </div>
-        <div>
-          <input type="checkbox" id="search-engine" name="source" value="search-engine">
-          <a>Business Studies</a>
-        </div>
-        <div>
-          <input type="checkbox" id="word-of-mouth" name="source" value="word-of-mouth">
-          <a>Tourism</a>
-        </div>
-        <div>
-          <input type="checkbox" id="press" name="source" value="press">
-          <a>Physical Sciences</a>
-        </div>
-        <div>
-          <input type="checkbox" id="event" name="source" value="event">
-          <a>Agriculture</a>
-        </div>
-        <div>
-          <input type="checkbox" id="billboard" name="source" value="billboard">
-          <a>E-conomics</a>
-        </div>
-        <div>
-          <input type="checkbox" id="billboard" name="source" value="billboard">
-          <a>E-conomics</a>
-        </div>
-        <div>
-          <input type="checkbox" id="billboard" name="source" value="billboard">
-          <a>Geography</a>
-        </div>
-        <div class="eclipse-2"></div>
-        <div class="eclipse-4"></div>
-      </form>
     </div>
-  
-  <div class = "next-btn">
-      <button type="button" class="btn" data-bs-toggle="button" routerLink="/dream-job">Next</button>
-    </div>
-  </div> -->
-  
-  <div class="container subject-Page">
 
-    <div class="heading row">
-      <p class="fs-1">Select the subjects you are doing</p>
-      <p class="fs-2">To better guide you on your journey</p>
-    </div>
+   
+    <div class="col-lg-12 control-section" style="height: 400px;">
+      <div class='control-wrapper' *ngFor="let subject of subjects">
+          <h4>Subjects </h4>
+          <input type="text" tabindex="{{subject.subject_name}}" id='template' [(ngModel)]="subjects.checked" /> 
+      </div>
+  </div>
   
-    <!-- <ul>
+</div> -->
+  
+    <!--<ul>
       <li *ngFor="let subject of subjects">
-        <input type="checkbox" [(ngModel)]="subjects.checked">{{subjects.subject_name}}
+        <input type="checkbox" [(ngModel)]="subject.checked"><p>{{subject.subject_name}}</p>
       </li>
     </ul> -->
-  <div class = "sub">
-    <form>
-        <p>Subjects:</p>
-        <div class="eclipse-1"></div>
-        <div class="eclipse-6"></div>
-        <div>
-          <input type="checkbox" id="instagram" name="source" value="instagram">
-          <a>Mathematics</a>
-        </div>
-        <div>
-          <input type="checkbox" id="facebook" name="source" value="facebook">
-          <a>Maths Literacy</a>
-        </div>
-        <div>
-          <input type="checkbox" id="search-engine" name="source" value="search-engine">
-          <a>Business Studies</a>
-        </div>
-        <div>
-          <input type="checkbox" id="word-of-mouth" name="source" value="word-of-mouth">
-          <a>Tourism</a>
-        </div>
-        <div>
-          <input type="checkbox" id="press" name="source" value="press">
-          <a>Physical Sciences</a>
-        </div>
-        <div>
-          <input type="checkbox" id="event" name="source" value="event">
-          <a>Agriculture</a>
-        </div>
-        <div>
-          <input type="checkbox" id="billboard" name="source" value="billboard">
-          <a>E-conomics</a>
-        </div>
-        <div>
-          <input type="checkbox" id="billboard" name="source" value="billboard">
-          <a>E-conomics</a>
-        </div>
-        <div>
-          <input type="checkbox" id="billboard" name="source" value="billboard">
-          <a>Geography</a>
-        </div>
-        <div class="eclipse-2"></div>
-        <div class="eclipse-4"></div>
-      </form>
-    </div>
-  
-  <div class = "next-btn">
-      <button type="button" class="btn" data-bs-toggle="button" routerLink="/dream-job">Next</button>
-    </div>
-  </div>
+    <mat-form-field>
+      <mat-label>Subjects</mat-label>
+      <mat-select [formControl]="subjects" multiple>
+        <mat-select-trigger>
+          {{subjects.value?.[0] || ''}}
+          <span *ngIf="(subjects.value?.length || 0) > 1" class="example-additional-selection">
+            (+{{(subjects.value?.length || 0) - 1}} {{subjects.value?.length === 2 ? 'other' : 'others'}})
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let subject of subjects" [value]="subject">{{subject}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <!-- <ng-container>
+      <div>
+          Selected:
+          <ul>
+              <li *ngFor="let SelVal of selectedValue">{{SelVal.name}}</li>
+          </ul>
+      </div>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <div>
+          Selected: {{selectedValue}}
+      </div>
+    </ng-template> -->
