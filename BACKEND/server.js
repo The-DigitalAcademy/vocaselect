@@ -3,6 +3,7 @@ const express = require("express");
 // const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
 const subjectRoutes = require('./routes/subjects.routes')
 
@@ -31,6 +32,7 @@ db.sequelize.sync()
 app.use(cors(corsOptions));
 
 //middleware
+app.use(bodyParser.json());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())

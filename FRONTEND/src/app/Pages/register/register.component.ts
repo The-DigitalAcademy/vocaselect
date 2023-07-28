@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import Swal from 'sweetalert2';
+import { parseISO, isValid, differenceInYears} from 'date-fns';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'; 
+import { log } from 'console';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +13,13 @@ import Swal from 'sweetalert2';
 })
 export class RegisterComponent implements OnInit {
 
+  registerForm!: FormGroup;
+  user: any;
   form: any = {
     name: '',
     surname:'',
     email: '',
-    dob:'',
+    dob: new FormControl('', [Validators.required]),
     city:'',
     studentgrade:'',
     password: '',
@@ -22,15 +27,73 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  regInvalid = false;
 
-  constructor(private authService: AuthService,  public _router: Router) { }
+  constructor(private authService: AuthService,  public router: Router, private formBuilder:FormBuilder) {
+    this.registerForm = this.formBuilder.group({
+      name:[null, [Validators.required, Validators.minLength(3)]],
+      surname:[null, [Validators.required, Validators.minLength(3)]],
+      email:[null, [Validators.required, Validators.email]],
+      dob:[null, [Validators.required, this.validateDateOfBirth]],
+      city:[null, [Validators.required, Validators.minLength(3)]],
+      studentgrade:[null, [Validators.required, Validators.minLength(1)]],
+      password:[null, [Validators.required, Validators.minLength(8), this.passwordValidator]]
+    })
+   }
 
   ngOnInit(): void {
+    this.form.dob.setValidators([Validators.required, this.validateDateOfBirth]); // Add custom validator
+    this.form.dob.updateValueAndValidity();
+    this.regInvalid = false;
   }
 
+  // Function to handle the button click event
+  get buttonLabel(): string {
+    return this.form.studentgrade >= 10 ?  'Next': 'Register';
+  }
+
+  // isButtonDisabled(): boolean {
+  //   return this.form.studentgrade <= 10 ? false : true;
+  // }
+
+  onButtonClick(): void {
+    if (this.form.studentgrade >= 10) {
+      // Handle the logic for the "Register" button click
+      // e.g., perform registration or any other action
+      
+      console.log('Next button clicked!');
+      this.router.navigate(['/subjects']);
+    } else {
+      // Handle the logic for the "Next" button click
+      // e.g., proceed to the next step or action
+     
+      console.log('Register button clicked!');
+      this.router.navigate(['/dream-job']);
+    }
+  }
+
+  passwordValidator(control:FormControl):{[key:string]:boolean}|null{             const value : string = control.value;             const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);             const hasNumber = /\d/.test(value);             const hasLetter = /[a-zA-Z]/.test(value);                    if (!hasSymbol||!hasNumber||!hasLetter){               return {invalidPassword:true};             }               return null;     
+}
+
+  validateDateOfBirth(control: FormControl) {
+    const selectedDate = parseISO(control.value);
+    const currentDate = new Date();
+    const age = differenceInYears(currentDate, selectedDate);
+
+    if (!isValid(selectedDate) || age < 13) {
+      return { invalidDateOfBirth: true };
+    }
+
+    return null;
+  }
   onSubmit(): void {
     const { name, surname,email,dob, city, studentgrade, password } = this.form;
     //This Method That Returns An Observable Object (authService.register())
+    if (dob && !isValid(parseISO(dob))) {
+      this.errorMessage = 'Invalid Date of Birth format. Please use yyyy-mm-dd.';
+      return;
+    }
+
     this.authService.register(name, surname,email,dob, city, studentgrade, password ).subscribe({
       next: (data) => {
         console.log(data);
@@ -48,11 +111,12 @@ export class RegisterComponent implements OnInit {
           //confirmButtonText: 'Login',
         }).then((result)=>{
           if (result.value){
-            this._router.navigate(["/subjects"])
+            this.router.navigate(["/subjects"])
             
           }});
          
       },
+      
       error: (err) => {
        
 
@@ -82,6 +146,24 @@ export class RegisterComponent implements OnInit {
         // this.toastr.error("Registration Failed, Try Again")
       }
     });
+  }
+
+  onRegister()
+  {
+    if (this.registerForm.valid){
+        this.authService.createUser(this.registerForm.value).subscribe(res=>{
+            this.user = res;
+            console.log('success' + res);
+            
+        });
+
+  console.log(this.registerForm.valid); // Check if the form is valid
+  console.log(this.registerForm.value); 
+    } else {
+      this.regInvalid = true;
+      console.log('form not valid');
+      
+    }
   }
 }
   

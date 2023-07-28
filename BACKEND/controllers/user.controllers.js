@@ -12,10 +12,10 @@ const User = db.User;
 //hashing users password before its saved to the database with bcrypt
 const signup = async (req, res) => {
  try {
-  
-   const { name, surname,email,dob, city, studentgrade, password } = req.body;
+  console.log("Hi-1")
+   const { name, surname, email,dob, city, studentgrade, password } = req.body;
 
-   console.log( req.body, ' json body ', name, surname,email,dob, city, studentgrade, password);
+   console.log( req.body, ' json body ', name, surname, email,dob, city, studentgrade, password);
 
    const data = {
     name,
@@ -26,13 +26,28 @@ const signup = async (req, res) => {
     studentgrade,
     password: await bcrypt.hash(password, 10),
    };
+
+   console.log("Data", data)
+   console.log("Hi-2")
+
+    // Check if the "email" field exists and is not empty or undefined
+    if (!email) {
+      return res.status(400).send("Email is required.");
+    }
+
+       // Check if the user with the same email already exists
+       const existingUser = await User.findOne({ where: { email } });
+       if (existingUser) {
+         return res.status(409).send("Email already exists");
+       }
+
    //saving the user
    const user = await User.create(data);
-
    //if user details is captured
    //generate token with the user's id and the secretKey in the env file
    // set cookie with the token generated
    if (user) {
+
      let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
       expiresIn: '1d', // 1 day (24 hours)
      });
