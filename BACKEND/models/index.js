@@ -33,7 +33,10 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.User = require("./user.models.js")(sequelize, Sequelize);
-db.Subject = require("../models/subjects.model")(sequelize, Sequelize);
+db.Subject = require("../models/subjects.model.js")(sequelize, Sequelize);
+db.Quiz = require("../models/quiz.model.js")(sequelize,Sequelize);
+
+
 
 
 // db.users = require("./users.model.js")(sequelize, Sequelize);

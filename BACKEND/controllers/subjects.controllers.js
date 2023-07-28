@@ -43,7 +43,7 @@ const getAllsubjects = async (req, res) => {
   }
 };
 
-/// create subjects table with marks and it has to post only marks
+// create subjects table with marks and it has to post only marks
 // without subjects, more like updating mark 
 
 const createsubjectAndMarks = async (req, res) => {
