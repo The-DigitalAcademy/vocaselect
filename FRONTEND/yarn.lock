@@ -1418,7 +1418,7 @@
     "node-gyp" "^8.2.0"
     "read-package-json-fast" "^2.0.1"
 
-"@popperjs/core@^2.11.7":
+"@popperjs/core@^2.11.7", "@popperjs/core@^2.9.3":
   "integrity" "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz"
   "version" "2.11.8"
@@ -3254,6 +3254,14 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.7.tgz"
   "version" "3.2.7"
 
+"flowbite@^1.7.0":
+  "integrity" "sha512-OTTmnhRgv85Rs+mcMaVU7zB6EvRQs7BaQziyMUsZLRjW9aUpeQyqKjLmxsVMMCdr8isYPCLd6UL7X1IaSVI0WQ=="
+  "resolved" "https://registry.npmjs.org/flowbite/-/flowbite-1.7.0.tgz"
+  "version" "1.7.0"
+  dependencies:
+    "@popperjs/core" "^2.9.3"
+    "mini-svg-data-uri" "^1.4.3"
+
 "follow-redirects@^1.0.0":
   "integrity" "sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.2.tgz"
@@ -4414,6 +4422,11 @@
   "version" "2.5.3"
   dependencies:
     "schema-utils" "^4.0.0"
+
+"mini-svg-data-uri@^1.4.3":
+  "integrity" "sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg=="
+  "resolved" "https://registry.npmjs.org/mini-svg-data-uri/-/mini-svg-data-uri-1.4.4.tgz"
+  "version" "1.4.4"
 
 "minimalistic-assert@^1.0.0":
   "integrity" "sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A=="
