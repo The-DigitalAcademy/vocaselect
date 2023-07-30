@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+//const { DataTypes } = require('sequelize');
 
 const db = require("../models")
 const Quiz = db.Quiz;
@@ -50,6 +50,8 @@ const getQuizQuestions = async (req, res) => {
       return res.status(500).send("Internal Server Error");
     }
   };
+
+
 
 
 

@@ -35,7 +35,7 @@ db.sequelize = sequelize;
 db.User = require("./user.models.js")(sequelize, Sequelize);
 db.Subject = require("../models/subjects.model.js")(sequelize, Sequelize);
 db.Quiz = require("../models/quiz.model.js")(sequelize,Sequelize);
-
+db.Survey = require("../models/survey.model")(sequelize,Sequelize);
 
 
 

@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
 const subjectRoutes = require('./routes/subjects.routes')
 const quizRoutes = require('./routes/quiz.routes')
+const getAllQuiz = require('./routes/quiz.routes')
+const surveyRoutes = require('./routes/survey.routes')
 
 
 //Environment file
@@ -64,6 +66,12 @@ app.use('/api/subjects', subjectRoutes)
 
  // route for quiz API
  app.use('/api/quiz', quizRoutes)
+
+  // route for getting all quiz API
+  app.use('/api/getAllQuiz', getAllQuiz)
+
+ // route for survey API
+ app.use('/api/survey', surveyRoutes)
 
 
 // Import the deleteUserById method (replace this with the actual path to your method file)

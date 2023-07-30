@@ -103,7 +103,7 @@ console.log(email, password+ "khomotso")
  }
 };
 
-//GET ALL 
+//GET ALL USERS
 const getUsers = async (req, res) => {
   try {
     // Fetch all users from the database
