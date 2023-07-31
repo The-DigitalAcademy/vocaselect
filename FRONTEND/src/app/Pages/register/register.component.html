@@ -109,7 +109,7 @@
     <div class="form-group pt-30">
       <label for="studentgrade">Your Grade</label>
       <input
-        type="integer"
+        type="number"
         class="form-control"
         formControlName="studentgrade"
         placeholder="eg.10"
@@ -151,7 +151,7 @@
           <div ngClass="form-group mt-3 text-center">
            
             <button class="btn btn-primary btn-block" type="submit">
-              Register
+              {{buttonLabel()}}
               
             </button>
 
