@@ -201,7 +201,6 @@ onCheck(){
       this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
         next: (data) => {
           console.log(data);
-          debugger;
           if (data == "true") {
             Swal.fire({
               title: 'This email already exists!',
@@ -226,8 +225,11 @@ onCheck(){
               // Handle the logic for the "Next" button click
               // e.g., proceed to the next step or action
         
-              console.log('Register button clicked!');
-              this.router.navigate(['/dream-job']);
+              this.authService.createUser(this.registerForm.value).subscribe(res => {
+                this.user = res;
+                this.router.navigate(['/dream-job']);
+        
+              });
             }
           }
           
