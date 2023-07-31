@@ -1,0 +1,34 @@
+.custom-no-wrap {
+    flex-wrap: nowrap;
+  }
+.logo-img {
+    // text-align: center;
+    // margin: 0 auto; 
+    width: 90px; 
+    // align-self: center;
+    // padding-top: 10px;
+    // padding-right: 60px;
+    
+}
+.navbar{
+    background: var(background-color)
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+  .card {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    height: 250px;
+    padding: 16px;
+    text-align: center;
+  }
