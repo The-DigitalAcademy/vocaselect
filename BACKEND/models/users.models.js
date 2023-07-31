@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const User  = sequelize.define("user", {
+    const Users  = sequelize.define("users", {
         //change DataTypes back Sequelize - if it breaks
         name: {
         type: Sequelize.STRING,
@@ -34,5 +34,5 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
   
-    return User;
+    return Users;
   };

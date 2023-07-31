@@ -61,6 +61,7 @@
             <input
               type="email"
               class="form-control"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
             formControlName="email"
               required
               placeholder="sample@example.com"
@@ -112,6 +113,7 @@
         class="form-control"
         formControlName="studentgrade"
         placeholder="eg.10"
+        (change)="buttonLabel()"
       />
 
       <div *ngIf="registerForm.get('studentgrade')?.invalid && (registerForm.get('studentgrade')?.dirty || registerForm.get('studentgrade')?.touched)" class="error-text">
@@ -147,14 +149,15 @@
           </div>
 
           <div ngClass="form-group mt-3 text-center">
-            <!-- <button class="btn btn-primary btn-block" (click)="onButtonClick()">
-              {{ buttonLabel }}
-              
-            </button> -->
-
-            <button type="submit" class="btn btn-primary btn-block">
+           
+            <button class="btn btn-primary btn-block" type="submit">
               Register
+              
             </button>
+
+            <!-- <button type="submit" class="btn btn-primary btn-block">
+              Register
+            </button> -->
           </div>
        
           <div class = "alreadyExist">

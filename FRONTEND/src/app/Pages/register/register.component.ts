@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import Swal from 'sweetalert2';
-import { parseISO, isValid, differenceInYears} from 'date-fns';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'; 
+import { parseISO, isValid, differenceInYears } from 'date-fns';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { log } from 'console';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -17,11 +18,11 @@ export class RegisterComponent implements OnInit {
   user: any;
   form: any = {
     name: '',
-    surname:'',
+    surname: '',
     email: '',
     dob: new FormControl('', [Validators.required]),
-    city:'',
-    studentgrade:'',
+    city: '',
+    studentgrade: '',
     password: '',
   };
   isSuccessful = false;
@@ -29,17 +30,17 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
   regInvalid = false;
 
-  constructor(private authService: AuthService,  public router: Router, private formBuilder:FormBuilder) {
+  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
-      name:[null, [Validators.required, Validators.minLength(3)]],
-      surname:[null, [Validators.required, Validators.minLength(3)]],
-      email:[null, [Validators.required, Validators.email]],
-      dob:[null, [Validators.required, this.validateDateOfBirth]],
-      city:[null, [Validators.required, Validators.minLength(3)]],
-      studentgrade:[null, [Validators.required, Validators.minLength(1)]],
-      password:[null, [Validators.required, Validators.minLength(8), this.passwordValidator]]
+      name: [null, [Validators.required, Validators.minLength(3)]],
+      surname: [null, [Validators.required, Validators.minLength(3)]],
+      email: [null, [Validators.required, Validators.email]],
+      dob: [null, [Validators.required, this.validateDateOfBirth]],
+      city: [null, [Validators.required, Validators.minLength(3)]],
+      studentgrade: [null, [Validators.required, Validators.minLength(1)]],
+      password: [null, [Validators.required, Validators.minLength(8), this.passwordValidator]]
     })
-   }
+  }
 
   ngOnInit(): void {
     this.form.dob.setValidators([Validators.required, this.validateDateOfBirth]); // Add custom validator
@@ -48,8 +49,8 @@ export class RegisterComponent implements OnInit {
   }
 
   // Function to handle the button click event
-  get buttonLabel(): string {
-    return this.form.studentgrade >= 10 ?  'Next': 'Register';
+  buttonLabel(): string {
+    return this.registerForm.value.studentgrade >= 10 ? 'Next' : 'Register';
   }
 
   // isButtonDisabled(): boolean {
@@ -57,23 +58,24 @@ export class RegisterComponent implements OnInit {
   // }
 
   onButtonClick(): void {
-    if (this.form.studentgrade >= 10) {
+    if (this.registerForm.value.studentgrade >= 10) {
       // Handle the logic for the "Register" button click
       // e.g., perform registration or any other action
-      
+      this.onRegister();
       console.log('Next button clicked!');
       this.router.navigate(['/subjects']);
     } else {
       // Handle the logic for the "Next" button click
       // e.g., proceed to the next step or action
-     
+
       console.log('Register button clicked!');
       this.router.navigate(['/dream-job']);
     }
   }
 
-  passwordValidator(control:FormControl):{[key:string]:boolean}|null{             const value : string = control.value;             const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value);             const hasNumber = /\d/.test(value);             const hasLetter = /[a-zA-Z]/.test(value);                    if (!hasSymbol||!hasNumber||!hasLetter){               return {invalidPassword:true};             }               return null;     
-}
+  passwordValidator(control: FormControl): { [key: string]: boolean } | null {
+    const value: string = control.value; const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value); const hasNumber = /\d/.test(value); const hasLetter = /[a-zA-Z]/.test(value); if (!hasSymbol || !hasNumber || !hasLetter) { return { invalidPassword: true }; } return null;
+  }
 
   validateDateOfBirth(control: FormControl) {
     const selectedDate = parseISO(control.value);
@@ -87,14 +89,14 @@ export class RegisterComponent implements OnInit {
     return null;
   }
   onSubmit(): void {
-    const { name, surname,email,dob, city, studentgrade, password } = this.form;
+    const { name, surname, email, dob, city, studentgrade, password } = this.form;
     //This Method That Returns An Observable Object (authService.register())
     if (dob && !isValid(parseISO(dob))) {
       this.errorMessage = 'Invalid Date of Birth format. Please use yyyy-mm-dd.';
       return;
     }
 
-    this.authService.register(name, surname,email,dob, city, studentgrade, password ).subscribe({
+    this.authService.register(name, surname, email, dob, city, studentgrade, password).subscribe({
       next: (data) => {
         console.log(data);
         this.isSuccessful = true;
@@ -102,69 +104,167 @@ export class RegisterComponent implements OnInit {
         // this._router.navigate(['/subjects'])
         // this.reloadPage();
         //this.toastr.success("Registration Was Successful")
-        
+
         // window.location.replace("/login")
         Swal.fire({
           title: 'Registration Successful',
-           text: '',
+          text: '',
           icon: 'success',
           //confirmButtonText: 'Login',
-        }).then((result)=>{
-          if (result.value){
+        }).then((result) => {
+          if (result.value) {
             this.router.navigate(["/subjects"])
-            
-          }});
-         
-      },
-      
-      error: (err) => {
-       
 
-        if(err.error.errors.length > 0){
-          
+          }
+        });
+
+      },
+
+      error: (err) => {
+
+
+        if (err.error.errors.length > 0) {
+
           // err.error.errors.forEach(element => {
           //   this.errorMessage += element.message;
           // });
-          for(var i =0; i < err.error.errors.length; i++){
+          for (var i = 0; i < err.error.errors.length; i++) {
             this.errorMessage += err.error.errors[i].message;
           }
-        }else{
+        } else {
           this.errorMessage = err.error.message;
         }
 
         Swal.fire({
           title: 'Registration was unsuccessful',
-           text: this.errorMessage,
+          text: this.errorMessage,
           icon: 'error',
           confirmButtonText: 'Ok',
-        }).then((result)=>{
-          if (result.value){
+        }).then((result) => {
+          if (result.value) {
             //this._router.navigate(["/subjects"])
-            
-          }});
+
+          }
+        });
         this.isSignUpFailed = true;
         // this.toastr.error("Registration Failed, Try Again")
       }
     });
   }
 
-  onRegister()
-  {
-    if (this.registerForm.valid){
-        this.authService.createUser(this.registerForm.value).subscribe(res=>{
-            this.user = res;
-            console.log('success' + res);
-            
-        });
 
-  console.log(this.registerForm.valid); // Check if the form is valid
-  console.log(this.registerForm.value); 
+onCheck(){
+  this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
+    next: (data) => {
+      console.log(data);
+      debugger;
+      if (data) {
+        Swal.fire({
+          title: 'This email already exists!',
+          text: '',
+          icon: 'error',
+        }).then((result) => {
+          if (result.value) {
+            return;
+          }
+        });
+      }
+
+    },
+
+    error: (err) => {
+
+      if (err.error?.errors?.length > 0) {
+
+        for (var i = 0; i < err.error?.errors?.length; i++) {
+          this.errorMessage += err.error?.errors[i]?.message;
+        }
+      } else {
+        this.errorMessage = err.error?.message;
+      }
+
+      Swal.fire({
+        title: 'Unsuccessful',
+        text: this.errorMessage,
+        icon: 'error',
+      }).then((result) => {
+        if (result.value) {
+
+        }
+      });
+    }
+  });
+}
+
+  onRegister() {
+    if (this.registerForm.valid) {
+
+      this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
+        next: (data) => {
+          console.log(data);
+          debugger;
+          if (data == "true") {
+            Swal.fire({
+              title: 'This email already exists!',
+              text: '',
+              icon: 'error',
+            }).then((result) => {
+              if (result.value) {
+                return;
+              }
+            });
+          }else{
+            if (this.registerForm.value.studentgrade >= 10) {
+              // Handle the logic for the "Register" button click
+              // e.g., perform registration or any other action
+              this.authService.createUser(this.registerForm.value).subscribe(res => {
+                this.user = res;
+                this.router.navigate(['/subjects']);
+        
+              });
+              
+            } else {
+              // Handle the logic for the "Next" button click
+              // e.g., proceed to the next step or action
+        
+              console.log('Register button clicked!');
+              this.router.navigate(['/dream-job']);
+            }
+          }
+          
+
+        },
+
+        error: (err) => {
+
+          if (err.error?.errors?.length > 0) {
+
+            for (var i = 0; i < err.error?.errors?.length; i++) {
+              this.errorMessage += err.error?.errors[i]?.message;
+            }
+          } else {
+            this.errorMessage = err.error?.message;
+          }
+
+          Swal.fire({
+            title: 'Unsuccessful',
+            text: this.errorMessage,
+            icon: 'error',
+          }).then((result) => {
+            if (result.value) {
+
+            }
+          });
+        }
+      });
+      
+      
+
+     
     } else {
       this.regInvalid = true;
       console.log('form not valid');
-      
+
     }
   }
 }
-  
-

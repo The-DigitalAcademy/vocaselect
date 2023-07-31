@@ -41,15 +41,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.tokenStorage.signOut();
-  // if (this.tokenStorage.getToken())  {
-    //   this.isLoggedIn = true;
-    //   this.roles = this.storageService.getUser().roles;
-    // }else{
-    //   //redirect to login screen
-    //}
     this.invalidCredentials = false;
-  }
-  
+  }  
 
  onSubmit(): void {
     const { username, password } = this.form;
@@ -62,24 +55,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        
-        //alert("Login Successful")
-        // this.reloadPage();
-        // this.toastr.success("Login Successful")
-
-        Swal.fire({
-          title: 'Login was Successful',
-           text: 'You are now logged in!',
-          icon: 'success',
-          confirmButtonText: 'OK',
-        }).then((result)=>{
-          if (result.value){
-            this.router.navigate(['/home']);
-          }});
-        
-      // window.location.replace("/homepage")
-      //return this.isLoggedIn = true 
-        
+        this.router.navigate(['/home']);                
       },
       error: err => {
         console.log(err)
@@ -137,16 +113,13 @@ export class LoginComponent implements OnInit {
             title: 'User not found',
             text: 'Please enter correct credentials.',
             confirmButtonColor: '#38A3A5',
-          })
-          
+          });
         }
       );
        
      } else {
       this.invalidCredentials = true;
       console.log("Wrong credentials");
-     }
-  
-    }
-  
+     }  
+    } 
   }

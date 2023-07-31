@@ -14,22 +14,25 @@ require('dotenv').config()
 //search the database to see if user exist
 //redunt code - for testing purpose 
  try {
-   
+   console.log(req.body.users?.email, 'testing on auth', req.body)
   //  checking if email already exist
    const emailcheck = await User.findOne({
      where: {
-       email: req.body.email,
+       email: req.body.users.email,
      },
    });
 
+   console.log(req.body, 'testing on auth line 25')
+
   //  if email exist in the database respond with a status of 409
    if (emailcheck) {
-     return res.json(409).send("Authentication failed");
+     return res.json(204).send({message:"username already exists"});
    }
 
    next();
  } catch (error) {
-   console.log(error);
+   console.log(error, 'this is on auth');
+   return res.json(204).send({message:"username already exists"});
  }
 };
 

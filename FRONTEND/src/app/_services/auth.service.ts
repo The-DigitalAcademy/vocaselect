@@ -16,42 +16,36 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
- 
-  login(username: string, password: string): Observable<any>  {
-    // console.log(username,password,"credentials")
-   
-    // if(username == 'neomakhubo25@gmail.com' && password == '12345678'){
-    //   return true; 
-    // }
 
-    // return false;
-     return this.http.post(
+  login(username: string, password: string): Observable<any> {
+
+    return this.http.post(
 
       apiUrl + 'users/login',
       {
         username,
         password,
       },
-    
+
       httpOptions
     );
-    
+
   }
 
 
 
-  register(name:string, surname:string,email:string,dob:string, city:string, studentgrade:any, password:string ): Observable<any> {
-    
+  register(name: string, surname: string, email: string, dob: string, city: string, studentgrade: any, password: string): Observable<any> {
+
     // console.log('testing',  name, surname,email,dob, city, studentGrade, password)
     return this.http.post(
       apiUrl + 'users/signup',
       {
-        name, surname,email,dob, city, studentgrade, password
+        name, surname, email, dob, city, studentgrade, password
       },
       httpOptions
     );
   }
-  
+
   logIn(credentials: { email: string, password: string }): Observable<any> {
     return this.http.post('${this.apiUrls}users/login', credentials).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -62,16 +56,16 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(apiUrl + 'signout', { }, httpOptions);
+    return this.http.post(apiUrl + 'signout', {}, httpOptions);
   }
 
-  createUser(users:Users):Observable<any>{
+  createUser(users: Users): Observable<any> {
 
     return this.http.post(
       apiUrl + 'users/signup', { users },
       httpOptions
-      );
+    );
   }
- 
+
 }
 console.log("test");
