@@ -36,6 +36,11 @@ const createQuiz = async (req, res) => {
    };
 
 
+
+   //create quizz using user id
+
+
+
 // get all quiz questions
 
 const getQuizQuestions = async (req, res) => {
@@ -50,6 +55,8 @@ const getQuizQuestions = async (req, res) => {
       return res.status(500).send("Internal Server Error");
     }
   };
+
+///  creating a quiz using using id from the user
 
 
 
