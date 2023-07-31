@@ -67,6 +67,9 @@ const login = async (req, res) => {
  try {
 const { email, password } = req.body;
 
+ console.log(email + password)
+console.log(email, password+ "khomotso")
+
    //find a user by their email
    const user = await User.findOne({
      where: {
@@ -93,7 +96,7 @@ const { email, password } = req.body;
        console.log("user", JSON.stringify(user, null, 2));
        console.log(token);
        //send user data
-       return res.status(201).send({message: "Successfully logged in!"});
+       return res.status(201).send({message: "Successfully logged in!", user, token});
      } else {
        return res.status(401).send("Authentication failed");
      }
@@ -105,7 +108,7 @@ const { email, password } = req.body;
  }
 };
 
-//GET ALL 
+//GET ALL USERS
 const getUsers = async (req, res) => {
   try {
     // Fetch all users from the database

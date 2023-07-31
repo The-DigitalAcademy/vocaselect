@@ -5,6 +5,9 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
 const subjectRoutes = require('./routes/subjects.routes')
+const quizRoutes = require('./routes/quiz.routes')
+const getAllQuiz = require('./routes/quiz.routes')
+const surveyRoutes = require('./routes/survey.routes')
 
 const { specs, swaggerUi } = require('./swagger');
 
@@ -57,6 +60,22 @@ app.use('/api/users', userRoutes)
 // app.use('/api/allSubjects', subjectRoutes)
 
 app.use('/api/subjects', subjectRoutes)
+
+// routes for getting all subjets
+
+// app.use('/app/getting')
+
+ app.use('/api/SubjectsAndMarks', subjectRoutes)
+
+
+ // route for quiz API
+ app.use('/api/quiz', quizRoutes)
+
+  // route for getting all quiz API
+  app.use('/api/getAllQuiz', getAllQuiz)
+
+ // route for survey API
+ app.use('/api/survey', surveyRoutes)
 
 
 // Import the deleteUserById method (replace this with the actual path to your method file)

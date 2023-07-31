@@ -3,17 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+
+// @import "tailwindcss/base";
+// @import "tailwindcss/components";
+// @import "./components/Header/Header.module.css";
+// @import "tailwindcss/utilities";
+
 :root {
     --primary-color: #fff;
     --background-color: #F2F6FD;
     --text-color: #073980;
     --button-color: #75A1DF;
     --cards-color:#E6E6FA;
-}
+  }
 
-body {
-    background-color: #F2F6FD;
-}
+//   *{
+//     background-color: #F2F6FD;
+
+// }
   
 
 .eclipse-1{
@@ -81,3 +88,6 @@ body {
     // background-color: #E6E6FA;
     background: linear-gradient(#fff, #cecef0);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

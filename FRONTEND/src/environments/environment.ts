@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   jwtSecret: 'vocaselect23',
-  apiURL: 'https://backend-1-jclq.onrender.com/api/users'
+  apiURL: 'http://localhost:9000/api/users',
+  apiUrl: 'http://localhost:9000/api/'
 };
 
 
