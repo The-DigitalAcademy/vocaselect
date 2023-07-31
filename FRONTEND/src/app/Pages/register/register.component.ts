@@ -157,7 +157,6 @@ onCheck(){
   this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
     next: (data) => {
       console.log(data);
-      debugger;
       if (data) {
         Swal.fire({
           title: 'This email already exists!',
