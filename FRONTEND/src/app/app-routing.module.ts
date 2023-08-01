@@ -8,6 +8,7 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
+import { HamburgerComponent } from './components/hamburger/hamburger.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'register', component: LoginComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'subjects', component: SubjectsComponent },
+  { path: 'hamburger', component: HamburgerComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 

@@ -1,6 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
+import { MultiSelectComponent, NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 import { FormsModule } from '@angular/forms';
@@ -34,7 +35,9 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
     WelcomeQuizComponent,
     DreamJobComponent,
     FillCareerComponent,
-    HomepageComponent
+    HomepageComponent,
+    
+   
   ],
   imports: [
     BrowserModule,
@@ -42,10 +45,12 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [ UserService ],
   schemas: [NO_ERRORS_SCHEMA],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, MultiSelectComponent]
+
 })
 export class AppModule { }
