@@ -20,7 +20,7 @@ export class SubjectsService {
   }
 
   sendSelectedSubjects(selectedSubjects: string[]): Observable<any> {
-    return this.http.post(APIUrl + 'save-selected-subjects', { selectedSubjects }, { responseType: 'json' });
+    return this.http.post(environment.apiUrl + 'user_selected_subjects', { selectedSubjects }, { responseType: 'json' });
   }
   
 

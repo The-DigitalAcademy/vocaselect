@@ -15,26 +15,7 @@ export class SubjectsComponent implements OnInit {
   subjects: any; 
   public selectedSubjects: string[] = [];
 
-  constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router)
-  {    
-
-  }  
-  // ngOnInit() {
-  //   this.subjectsService.getSubjects().subscribe({
-  //     next: (data: any) => {
-  //       this.subjects = data;
-  //       console.log(data, 'subjects');
-  //     },
-  //     error: (err: any) => {
-  //       console.error('Error fetching items from the API:', error);
-  //     }
-  //   });
-  // }
-
-  public isubjects: any[] = []; // Assuming the API returns an array of objects
-  public selectedItems: string[] = [];
-
-
+  constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router){}  
 
   ngOnInit() {
     // Fetch items from the API when the component initializes
@@ -55,15 +36,14 @@ export class SubjectsComponent implements OnInit {
 
   onCheckboxChange(subject: any) {
     if (this.isSelected(subject)) {
-      this.selectedItems = this.selectedItems.filter((selectedItem) => selectedItem !== subject.id);
+      this.selectedSubjects = this.selectedSubjects.filter((selectedSubject) => selectedSubject !== subject.id);
     } else {
-      this.selectedItems.push(subject.id);
+      this.selectedSubjects.push(subject.id);
     }
-
   }
 
   isSelected(subject: any): boolean {
-    return this.selectedItems.includes(subject.id);
+    return this.selectedSubjects.includes(subject.id);
   }
 
   sendSelectedSubjectsToServer() {
