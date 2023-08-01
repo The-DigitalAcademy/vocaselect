@@ -4,6 +4,8 @@ const Subject = db.Subject;
 
 
 
+
+
 // exports.create = (req, res) => {
 //     // Validate request
 //     const {subjectName, mark } = req.body;

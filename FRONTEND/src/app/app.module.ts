@@ -13,6 +13,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { CommonModule } from '@angular/common';
 import { UserService } from './_services/user.service';
+import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { UserService } from './_services/user.service';
     LoginComponent,
     RegisterComponent,
     SubjectsComponent,
+    CareerChoiceComponent,
   
   ],
   imports: [
