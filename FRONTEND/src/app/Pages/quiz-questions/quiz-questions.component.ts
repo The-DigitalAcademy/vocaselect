@@ -17,10 +17,10 @@ export class QuizQuestionsComponent implements OnInit {
   secondFormGroup = this._formBuilder.group({
     secondCtrl: ['', Validators.required],
   });
-  isLinear = false;
-  
+  isLinear = true;
+  hidden = false
 
-  data: any; // Assuming the data is an array of objects or any other data structure
+  quiz: any; // Assuming the data is an array of objects or any other data structure
 
   constructor(private dataService: QuizQuestionsService, private _formBuilder: FormBuilder){ }
 
@@ -35,8 +35,8 @@ export class QuizQuestionsComponent implements OnInit {
 
       {
         next: (data :any)=>{
-          this.data = data   ;
-          console.log(this.data , "   quizzes are here")
+          this.quiz = data   ;
+          console.log(this.quiz , "   quizzes are here")
         },
         
         error:(err:any)=>{

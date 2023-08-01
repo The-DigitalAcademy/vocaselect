@@ -1,53 +1,260 @@
 <app-navbar></app-navbar>
 
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+<div class="div">
+<!-- <div *ngIf="quiz">  -->
+<button *ngIf="hidden" mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
   {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
 </button>
 
-<mat-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+
+
+<mat-stepper [linear]="isLinear" #stepper >
+  <mat-step  [stepControl]="firstFormGroup" style="background-color: green;">
     <form [formGroup]="firstFormGroup">
-      <mat-progress-bar mode="determinate" value="0"></mat-progress-bar>
+      <!-- <mat-progress-bar mode="determinate" value="0"></mat-progress-bar> -->
+
+
+      <br><br>
+      <a  class="block max-w-sm p-6 bg-green border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+  <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+  <p class="font-normal text-gray-700 dark:text-gray-400">1.What are your favorite subjects or topics to learn about?</p>
+</a>
 
       
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
+      <mat-form-field style="justify-content: center;">
+        
+        <br><br><br><mat-label>Fill in your subjects</mat-label>
+        <!-- <input type="text" placeholder="English, Geography"> -->
+        <input matInput placeholder="eg. English, Geography" formControlName="firstCtrl"  required>
         
       </mat-form-field>
       
     <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  
+
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <p class="font-normal text-gray-700 dark:text-gray-400">2.What do you enjoy doing in your free time?</p>
+      </a>
+
+
+      <mat-form-field>
+        <br><br><br><mat-label>Your Hobbies</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder ="eg.Reading or Video games"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <p class="font-normal text-gray-700 dark:text-gray-400">3.How would you describe your personality?</p>
+      </a>
+
+
+      <mat-form-field>
+        <br><br><br><mat-label>Your Personality</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="eg.Helpful,Risk-taker,Creative"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <p class="font-normal text-gray-700 dark:text-gray-400">4.What are your long term career goals?
+      </a>
+
+
+      <mat-form-field>
+        <mat-label>Career Goals</mat-label>
+        <br><br><br><input matInput formControlName="secondCtrl" placeholder="eg.Promotion,Enterprenuer"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
 
   <mat-step [stepControl]="secondFormGroup" label="">
     <form [formGroup]="secondFormGroup">
-      <mat-progress-bar mode="determinate" value="10"></mat-progress-bar>
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <p class="font-normal text-gray-700 dark:text-gray-400">5.Are you interested in remote or prefer on-site positions?</p>
+      </a>
+
 
       <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+        <mat-label>Work Preference</mat-label>
+        <br><br><br><input matInput formControlName="secondCtrl" placeholder="eg.On-site or Remote"
                required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup"> -->
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <!-- <br><br><a  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"> -->
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <!-- <p class="font-normal text-gray-700 dark:text-gray-400">6.Are you willing to undergo additional training or education to pursue a dream job?</p>
+      </a> -->
+
+
+      <!-- <mat-form-field>
+        <mat-label>Education To pursue Dream Job </mat-label>
+        <br><br><br><input matInput formControlName="secondCtrl" placeholder="eg.Yes or No"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+      </div>
+    </form>
+  </mat-step> -->
+
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <p class="font-normal text-gray-700 dark:text-gray-400">6.Have you ever volunteered or had a job previously??</p>
+      </a>
+
+
+      <mat-form-field>
+        <mat-label>Ever Worked or Volunteered?</mat-label>
+        <br><br><br><input matInput formControlName="secondCtrl" placeholder="eg.Yes or No"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+ 
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <p class="font-normal text-gray-700 dark:text-gray-400">7.What job roles or positions have you always been curious about?</p>
+      </a>
+
+
+      <mat-form-field>
+        <mat-label>Roles you find interesting?</mat-label>
+        <br><br><br><input matInput formControlName="secondCtrl" placeholder="e.g Majestrate,Chef,Engineer"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup"> -->
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <!-- <br><br><a  class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"> -->
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <!-- <p class="font-normal text-gray-700 dark:text-gray-400">9.Are you willing to invest extra hours for a dream job</p>
+      </a> -->
+
+
+      <!-- <mat-form-field>
+        <mat-label>Invest Extra hours for dream job</mat-label>
+        <br><br><br><input matInput formControlName="secondCtrl" placeholder="Yes or No"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+      </div>
+    </form>
+  </mat-step> -->
+
+  
+
+  
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+
+      <br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
+        <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        <p class="font-normal text-gray-700 dark:text-gray-400">8.Is there any other infornation about yourself or your aspirations that you would like to share?</p>
+      </a>
+
+
+      <mat-form-field>
+        <mat-label>Aspirations and Interests</mat-label>
+        <br><br><br><input matInput formControlName="secondCtrl" placeholder="e.g.Blogging or Chess"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
 
 
-
-
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
+    <!-- <ng-template matStepLabel>Done</ng-template> -->
+    <b><h1>You are done now</h1></b>
     <div>
       <button mat-button matStepperPrevious>Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-stepper>
+</div>
+
+<div class="eclipse-4"></div> 
+<div class="eclipse-2"></div>
+<div class="eclipse-3"></div> 

@@ -1,8 +1,51 @@
 .mat-stepper-horizontal {
-    margin-top: 8px;
-  }
-  
-  .mat-mdc-form-field {
-    margin-top: 16px;
-  }
-  
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+#stepper {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+// .mat-step-header {
+//   overflow: hidden;
+//   outline: none;
+//   margin-left: -100px;
+//   cursor: pointer;
+//   position: relative;
+//   box-sizing: content-box;
+//   -webkit-tap-highlight-color: transparent;
+// }
+
+// .mat-horizontal-stepper-header-container {
+//   white-space: nowrap;
+//   display: none;
+//   align-items: center;
+//   background-color: rebeccapurple;
+// }
+
+// .mat-horizontal-stepper-header-container{
+//   display: none;
+// }
+
+#bcolor{
+  background-color: #75A1DF;
+  color: #FFFFFF;
+}
+#bcolor p{
+  color: #FFFFFF;
+}
+// .eclipse-4{
+//   margin-top:  300px; 
+//   z-index: 0;
+// }
+
+// .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+//   padding-bottom: 1.25em;
+//   margin-left: 5rem;
+// }
