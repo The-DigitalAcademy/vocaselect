@@ -16,7 +16,7 @@ router.post('/signup', userAuth.saveUser, signup)
 router.post('/login', login )
 
 // Route to get all users
-router.get("/getAll", userController.getUsers);
+router.get("/getAll", userAuth.verifyToken, userController.getUsers);
 
 // Route to check if email exists
 router.get("/emailExist/:email", userController.emailExists);

@@ -17,109 +17,54 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class LoginComponent implements OnInit {
-  form: any = {
-    username: null,
-    password: null
-  };
-  loginForm!:FormGroup;
+
+  loginForm!: FormGroup;
   users!: any;
   email!: string;
   invalidCredentials = false;
-
-  isLoggedIn = false;
-  isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public router: Router,  private formB : FormBuilder,) { 
-    this.loginForm=this.formB.group({
-      email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required]],
+
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public router: Router, private formB: FormBuilder,) {
+    this.loginForm = this.formB.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
     });
   }
 
   ngOnInit(): void {
     this.tokenStorage.signOut();
     this.invalidCredentials = false;
-  }  
-
- onSubmit(): void {
-    const { username, password } = this.form;
-
-    this.authService.login(username, password).subscribe({
-      next: data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
-        this.router.navigate(['/home']);                
-      },
-      error: err => {
-        console.log(err)
-        if(err?.status == 401){
-          this.errorMessage = "Incorrect username or password provided!";
-        }else{
-          this.errorMessage = err.error.message;
-        }
-        
-        this.isLoginFailed = true;
-
-        // this.toastr.error("Login Failed, Try Again")
-      },
-      
-   });
- 
-
-  // isAuthenticated(): boolean{
-  //   if (this.isLoggedIn = true){
-
-  //   }
-    // return true
   }
-    // reloadPage(): void {
-    //   window.location.reload();
-    // }
 
-    onLogin() {
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value).subscribe({
+        next: data => {
 
-      if (this.loginForm.valid) {       // Form is valid, perform login logic      
-      
-      this.authService.logIn(this.loginForm.value).subscribe(response => {
-          // Handle the successful response here.
-          console.log(response,"success");
-          //this.session.saveLoggedUser(response)
-           Swal.fire({
-            icon: 'success',
-            title: 'Login Successful!',
-            text: 'Successfully logged in.',
-            confirmButtonColor: '#38A3A5',
-            showConfirmButton: false,
-            timer: 1400
-          }).then((result)=>{
-            this.router.navigate(["/home"])
-            if (result.value){
-           
-            }})
-          
+          this.tokenStorage.saveToken(data.token);
+          this.tokenStorage.saveUser(data.user);
+          console.log(data)
+          this.router.navigate(['/home']);
         },
-        (error) => {
-          // Handle the error here or display it to the user.
-          console.error(error);
-          Swal.fire({
-            icon: 'error',
-            title: 'User not found',
-            text: 'Please enter correct credentials.',
-            confirmButtonColor: '#38A3A5',
-          });
-        }
-      );
-       
-     } else {
+        error: err => {
+          console.log(err)
+          if (err?.status == 401) {
+            this.errorMessage = "Incorrect username or password provided!";
+          } else {
+            this.errorMessage = err.error.message;
+          }
+
+          // this.toastr.error("Login Failed, Try Again")
+        },
+
+      });
+    } else {
       this.invalidCredentials = true;
       console.log("Wrong credentials");
-     }  
-    } 
+    }
+
   }
+
+}

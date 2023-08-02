@@ -136,8 +136,17 @@ const login = async (req, res) => {
         res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
         console.log("user", JSON.stringify(user, null, 2));
         console.log(token);
+        var userInfo = {
+          id: user.id,
+          name: user.name,
+          surname: user.surname,
+          email: user.email,
+          dob: user.dob,
+          city: user.city,
+          grade: user.studentgrade
+        }
         //send user data
-        return res.status(201).send({ message: "Successfully logged in!" });
+        return res.status(201).send({ message: "Successfully logged in!", token: token,user:userInfo  });
       } else {
         return res.status(401).send("Authentication failed");
       }

@@ -17,15 +17,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 
-  login(username: string, password: string): Observable<any> {
+  login(credentials:any): Observable<any> {
 
     return this.http.post(
 
       apiUrl + 'users/login',
-      {
-        username,
-        password,
-      },
+      credentials,
 
       httpOptions
     );
@@ -47,7 +44,7 @@ export class AuthService {
   }
 
   logIn(credentials: { email: string, password: string }): Observable<any> {
-    return this.http.post('${this.apiUrls}users/login', credentials).pipe(
+    return this.http.post(`${apiUrl}users/login`, credentials).pipe(
       catchError((error: HttpErrorResponse) => {
         // Handle the error here or rethrow it to be caught by the component.
         return throwError(error.error.message);
@@ -68,4 +65,3 @@ export class AuthService {
   }
 
 }
-console.log("test");
