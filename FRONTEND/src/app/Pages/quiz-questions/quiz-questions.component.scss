@@ -40,12 +40,22 @@
 #bcolor p{
   color: #FFFFFF;
 }
-// .eclipse-4{
-//   margin-top:  300px; 
-//   z-index: 0;
-// }
+.eclipse-2{
+  margin-bottom:  350px; 
+  z-index: 0;
+ margin-left: 20rem;;
+}
 
+.eclipse-4{
+  margin-bottom:  800px; 
+  z-index: -99999;
+ margin-left: 25rem;;
+}
 // .mat-form-field-appearance-legacy .mat-form-field-wrapper {
 //   padding-bottom: 1.25em;
 //   margin-left: 5rem;
 // }
+
+.mat-form-field-infix{
+  margin-left: 5rem;
+}
