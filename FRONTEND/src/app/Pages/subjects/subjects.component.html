@@ -12,16 +12,17 @@
     <input
       type="checkbox"
       [value]="subject.id"
-      (change)="onCheckboxChange(subject)"
-      [checked]="isSelected(subject)"
+      (change)="isChecked($event)"
     />
+     
     {{ subject.subjectName }}
   </label>
 </div>
 </div>
 
 <div class="row" id="btn-submit">
-  <button type="button" class="btn" (click)="sendSelectedSubjectsToServer()" routerLink="/dream-job">Submit</button>
+  <!-- <button type="button" class="btn" (click)="sendSelectedSubjectsToServer()" routerLink="/dream-job">Submit</button> -->
+  <button type="button" class="btn" (click)="onSubmit()">Submit</button>
 </div>
 </div>
 

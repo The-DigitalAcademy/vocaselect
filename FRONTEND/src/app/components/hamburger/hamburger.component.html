@@ -1,45 +1,32 @@
-<!-- <nav role="navigation">
-    <div id="menuToggle">
-      <input type="checkbox" />
-      
-      <span></span>
-      <span></span>
-      <span></span>
-      
-      <ul id="menu">
-        <div class = "home flex w-30 h-30" >
-          <i class="bi bi-house-door-fill"></i><a routerLink="/home"><li>Home</li></a>
-      </div>
-      <div class="">
-      <i class="bi bi-person-fill"></i>
-      <a routerLink=""><li>Account</li>
-      <i class="bi bi-chevron-right"></i></a>
-     
-    </div>
-      <i class="bi bi bi-person-fill"></i><a routerLink=""><li>About</li></a>
-      <i class="bi bi-box-arrow-right"></i><a routerLink="/landing"><li>Logout</li></a>
-      </ul>
-    </div>
-  </nav> -->
-  <div class="navbar custom-no-wrap">   
-    <div class="navbar-start">     
-    <div class="dropdown">       
-      <label tabindex="0" class="btn btn-ghost btn-circle">         
-      <svg xmlns="http://www.w3.org/2000/svg" class="nav-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">           
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>         
-      </svg>       
-    </label>       
-    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">         
-      <li><a>Homepage</a></li>         
-      <li><a>Portfolio</a></li>         
-      <li><a>About</a></li>       
-    </ul>     
-  </div>   
-</div>    
-<div class="navbar-center">     
-  <div class="logo">       
-    <img src="../../../assets/logo.png" class="logo-img" alt="..." />     
-  </div>   
-</div>   
-<div class="navbar-end"></div> 
+<div class="sidebar">
+  <header>My App</header>
+  <ul>
+    <li>
+      <a href="#"><i class="fas fa-qrcode"></i>Dashboard</a>
+    </li>
+    <li>
+      <a href="#"><i class="fas fa-link"></i>Shortcuts</a>
+    </li>
+    <li>
+      <a href="#"><i class="fas fa-stream"></i>Overview</a>
+    </li>
+    <li>
+      <a href="#"><i class="fas fa-calendar-week"></i>Events</a>
+    </li>
+    <li>
+      <a href="#"><i class="far fa-question-circle"></i>About</a>
+    </li>
+    <li>
+      <a href="#"><i class="fas fa-sliders-h"></i>Services</a>
+    </li>
+    <li>
+      <a href="#"><i class="far fa-envelope"></i>Contact</a>
+    </li>
+  </ul>
 </div>
+
+<input type="checkbox" id="check" />
+<label for="check">
+  <i class="fas fa-bars" id="btn"></i>
+  <i class="fas fa-times" id="cancel"></i>
+</label>

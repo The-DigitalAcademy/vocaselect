@@ -1,23 +1,17 @@
-// backend/routes/selectedSubjects.js
-const express = require('express');
-const router = express.Router();
-const Subject = require('../models/subjects.model');
+const Subject = require('../models/selectedSubject.models');
 
-// POST route to save selected subjects
-router.post('/user_selected_subjects', async (req, res) => {
+exports.saveSelectedSubjects = async (req, res) => {
+  const selectedIds = req.body;
+
+  // Save the selected subject IDs to the database
   try {
-    const selectedSubjects = req.body.selectedSubjects;
-    // Assuming selectedSubjects is an array of subject IDs received from the frontend
-
-    // You can perform additional validation if needed, e.g., checking if the subjects exist in the database
-
-    // Save the selected subjects to the database
-    const savedSubjects = await Subject.create(selectedSubjects);
-
-    res.status(201).json(savedSubjects);
+    const result = await Subject.saveSelectedSubjects(selectedIds);
+    if (result) {
+      res.status(200).json({ message: 'Selected subjects saved successfully' });
+    } else {
+      res.status(500).json({ error: 'Failed to save selected subjects to the database' });
+    }
   } catch (error) {
-    res.status(500).json({ error: 'Failed to store selected subjects' });
+    res.status(500).json({ error: 'Failed to save selected subjects to the database' });
   }
-});
-
-module.exports = router;
+};
