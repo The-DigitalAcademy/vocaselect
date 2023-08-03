@@ -11,10 +11,10 @@
 <mat-stepper [linear]="isLinear" #stepper >
   <mat-step  [stepControl]="firstFormGroup" style="background-color: green;">
     <form [formGroup]="firstFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="0"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate" value="0"></mat-progress-bar>
+      
 
-
-      <br><br><br>
+      <br><br><br><br>
       <a  class="block max-w-sm p-6 bg-green border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
   <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
   <p class="font-normal style=justify-content: center; text-gray-700 dark:text-gray-400">1.What are your favorite subjects or topics to learn about?</p>
@@ -26,12 +26,12 @@
         
         <br><br><br><br><mat-label>Fill in your subjects</mat-label>
         <!-- <input type="text" placeholder="English, Geography"> -->
-        <input matInput  placeholder="eg. English, Geography" formControlName="firstCtrl"  required >
+        <input matInput   placeholder="eg. English, Geography" formControlName="firstCtrl"  required >
         
       </mat-form-field>
       
     <div>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Next</button>
+        <button mat-button matStepperNext class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Next</button>
       </div>
     </form>
   </mat-step>
@@ -40,7 +40,7 @@
 
   <mat-step [stepControl]="secondFormGroup" label="">
     <form [formGroup]="secondFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate"  value="15"></mat-progress-bar>
 
       <br><br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
         <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
@@ -55,7 +55,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+        <button mat-button matStepperNext class="text-white  bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2  dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
@@ -64,7 +64,7 @@
 
   <mat-step [stepControl]="thirdFormGroup" label="">
     <form [formGroup]="thirdFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate" value="30"></mat-progress-bar>
 
       <br><br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
         <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
@@ -79,7 +79,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+        <button mat-button matStepperNext class="text-white  bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
@@ -87,7 +87,7 @@
 
   <mat-step [stepControl]="fourthFormGroup" label="">
     <form [formGroup]="fourthFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate" value="45"></mat-progress-bar>
 
       <br><br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
         <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
@@ -102,14 +102,14 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+        <button mat-button matStepperNext class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
 
   <mat-step [stepControl]="fifthFormGroup" label="">
     <form [formGroup]="fifthFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
 
       <br><br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
         <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
@@ -124,7 +124,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+        <button mat-button matStepperNext class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
@@ -153,7 +153,7 @@
 
   <mat-step [stepControl]="sixthFormGroup" label="">
     <form [formGroup]="sixthFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate" value="65"></mat-progress-bar>
 
       <br><br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
         <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
@@ -168,7 +168,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+        <button mat-button matStepperNext class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
@@ -176,7 +176,7 @@
  
   <mat-step [stepControl]="seventhFormGroup" label="">
     <form [formGroup]="seventhFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
 
       <br><br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
         <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
@@ -191,7 +191,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+        <button mat-button matStepperNext class="text-white  bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>
@@ -223,7 +223,7 @@
   
   <mat-step [stepControl]="eighthFormGroup" label="">
     <form [formGroup]="eighthFormGroup">
-      <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
+      <mat-progress-bar mode="determinate" value="100"></mat-progress-bar>
 
       <br><br><br><a  class="block max-w-sm p-6  border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="bcolor">
         <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
@@ -238,7 +238,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
+        <button mat-button matStepperNext class="text-white  bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >Next</button>
       </div>
     </form>
   </mat-step>

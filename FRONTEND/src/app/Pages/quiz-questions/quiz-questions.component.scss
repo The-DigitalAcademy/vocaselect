@@ -12,6 +12,51 @@
   overflow: hidden;
 }
 
+
+// Use This To Modify Your Scss For Angular Material
+:host {
+  ::ng-deep{
+    mat-progress-bar{
+      height: 1.8rem;
+      border-radius: 1rem;
+    }
+
+  }
+}
+
+:host {
+  ::ng-deep{
+    .mat-horizontal-stepper-header-container{
+      display: none;
+    }
+  }
+}
+
+
+:host {
+  ::ng-deep{
+    .mat-form-field-wrapper{
+     
+      width: 342px;
+    }
+  }
+}
+
+ :host {
+     ::ng-deep{
+      .div{
+          padding: 40px 40px;
+      }
+   }
+  }
+
+// :host {
+//   ::ng-deep{
+   
+//   }
+// }
+
+
 // .mat-step-header {
 //   overflow: hidden;
 //   outline: none;
@@ -41,16 +86,20 @@
   color: #FFFFFF;
 }
 .eclipse-2{
-  margin-bottom:  350px; 
-  z-index: 0;
- margin-left: 20rem;;
+  margin-bottom:  960px; 
+  z-index: -99999;
+ margin-left: 20rem;
+ margin-bottom: 0rem;
 }
 
 .eclipse-4{
   margin-bottom:  800px; 
   z-index: -99999;
- margin-left: 25rem;;
+
 }
+
+
+
 // .mat-form-field-appearance-legacy .mat-form-field-wrapper {
 //   padding-bottom: 1.25em;
 //   margin-left: 5rem;
