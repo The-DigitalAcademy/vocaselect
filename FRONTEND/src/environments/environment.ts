@@ -12,7 +12,8 @@ export const environment = {
   
 };
 
-export let SubjectsUrl: string = 'http://localhost:9000/subjects';
+
+// export let SubjectsUrl: string = 'http://localhost:9000/subjects';
 
 /*
  * For easier debugging in development mode, you can import the following file

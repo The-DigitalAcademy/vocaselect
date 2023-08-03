@@ -27,55 +27,40 @@ const signup = async (req, res) => {
       password
     );
 
-    const data = {
-      name,
-      surname,
-      email,
-      dob,
-      city,
-      studentgrade,
-      password: await bcrypt.hash(password, 10),
-    };
+   const data = {
+    name,
+    surname,
+    email,
+    dob,
+    city,
+    studentgrade,
+    password: await bcrypt.hash(password, 10),
+   };
+   //saving the user
+   const user = await User.create(data);
 
-    console.log("Data", data);
-    console.log("Hi-2");
+   //if user details is captured
+   //generate token with the user's id and the secretKey in the env file
+   // set cookie with the token generated
+   if (user) {
+     let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: '1d', // 1 day (24 hours)
+     });
 
-    // Check if the "email" field exists and is not empty or undefined
-    if (!email) {
-      return res.status(400).send("Email is required.");
-    }
+     res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
+     console.log("user", JSON.stringify(user, null, 2));
+     console.log(token);
+     //send users details
+    //  return res.status(201).send(user);
+     return res.status(201).send({message: "User was registered successfully!"} );
 
-    //Check if the user with the same email already exists
-    const existingUser = await User.findOne({ where: { email: email } });
-    if (existingUser) {
-      return res.status(409).send("Email already exists");
-    }
-
-    //saving the user
-    const user = await User.create(data);
-    //if user details is captured
-    //generate token with the user's id and the secretKey in the env file
-    // set cookie with the token generated
-    if (user) {
-      let token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-        expiresIn: "1d", // 1 day (24 hours)
-      });
-
-      res.cookie("jwt", token, { maxAge: 1 * 24 * 60 * 60, httpOnly: true });
-      console.log("user", JSON.stringify(user, null, 2));
-      console.log(token);
-      //send users details
-      //  return res.status(201).send(user);
-      return res
-        .status(201)
-        .send({ message: "User was registered successfully!" });
-    } else {
-      return res.status(409).send("Details are not correct");
-    }
-  } catch (error) {
-    console.log(error);
-    return res.status(409).send(error);
-  }
+   } else {
+     return res.status(409).send("Details are not correct");
+   }
+ } catch (error) {
+   console.log(error);
+   return res.status(409).send(error);
+ }
 };
 
 const emailExists = async (req, res) => {

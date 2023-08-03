@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-const API_URL = 'http://localhost:9000/api'; 
+let APIUrl = environment.apiUrl; 
 @Injectable({
   providedIn: 'root'
 })
@@ -12,10 +13,15 @@ export class SubjectsService {
   constructor(private http: HttpClient) { }
 
   getSubjects(): Observable<any> {
-    return this.http.get(API_URL + '/subjects', { responseType: 'json' });
+    return this.http.get(APIUrl = environment.apiUrl + 'subjects', { responseType: 'json' });
   }
   getSubjectsById(id:any): Observable<any> {
-    return this.http.get(API_URL+'/subjects'+ id, { responseType: 'json' });
+    return this.http.get(APIUrl = environment.apiUrl +'subjects'+ id, { responseType: 'json' });
   }
+
+  sendSelectedSubjects(selectedSubjects: string[]): Observable<any> {
+    return this.http.post(environment.apiUrl + 'user_selected_subjects', { selectedSubjects }, { responseType: 'json' });
+  }
+  
 
 }

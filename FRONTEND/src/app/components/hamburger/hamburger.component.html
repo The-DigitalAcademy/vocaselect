@@ -1,6 +1,4 @@
-<!--    Made by Erik Terwan    -->
-<!--   24th of November 2015   -->
-<!--        MIT License        -->
+
 <nav role="navigation">
     <div id="menuToggle">
       <!--
@@ -9,26 +7,22 @@
       -->
       <input type="checkbox" />
       
-      <!--
-      Some spans to act as a hamburger.
-      
-      They are acting like a real hamburger,
-      not that McDonalds stuff.
-      -->
       <span></span>
       <span></span>
       <span></span>
       
-      <!--
-      Too bad the menu has to be inside of the button
-      but hey, it's pure CSS magic.
-      -->
       <ul id="menu">
-        <a href="#"><li>Home</li></a>
-        <a href="#"><li>About</li></a>
-        <a href="#"><li>Info</li></a>
-        <a href="#"><li>Contact</li></a>
-        <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+        <div class = "home flex w-30 h-30" >
+          <i class="bi bi-house-door-fill"></i><a routerLink="/home"><li>Home</li></a>
+      </div>
+      <div class="">
+      <i class="bi bi-person-fill"></i>
+      <a routerLink=""><li>Account</li>
+      <i class="bi bi-chevron-right"></i></a>
+     
+    </div>
+      <i class="bi bi bi-person-fill"></i><a routerLink=""><li>About</li></a>
+      <i class="bi bi-box-arrow-right"></i><a routerLink="/landing"><li>Logout</li></a>
       </ul>
     </div>
   </nav>

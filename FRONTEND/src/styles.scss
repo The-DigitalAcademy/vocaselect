@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
     --primary-color: #fff;
     --background-color: #F2F6FD;
@@ -20,7 +21,7 @@
     background: linear-gradient(#c2e8e6, #9198e5);
     z-index: -999999;
     top: 40px;
-    left: 150px;
+    left: 60px;
 }
 .eclipse-2{
     position: fixed;

@@ -7,20 +7,24 @@ import { LandingPageComponent } from './Pages/landing-page/landing-page.componen
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
+import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
+import { HamburgerComponent } from './components/hamburger/hamburger.component';
 
 
 const routes: Routes = [
- { path: 'login', component:LoginComponent},
- { path: 'register', component:RegisterComponent},
- { path:'landing', component: LandingPageComponent},
- { path: 'subjects', component: SubjectsComponent},
- { path: 'dream-job', component: DreamJobComponent},
- { path: 'home', component: HomepageComponent},
-
-  {path : 'welcome-quize' , component: WelcomeQuizComponent },
-  {path : 'login' , component: LoginComponent },
-  {path : 'landing' , component: LandingPageComponent},
-  {path : 'subjects' , component: SubjectsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'landing', component: LandingPageComponent },
+  { path: 'subjects', component: SubjectsComponent },
+  { path: 'dream-job', component: DreamJobComponent },
+  { path: 'home', component: HomepageComponent },
+  { path: 'fill-career', component: FillCareerComponent },
+  { path: 'welcome-quize', component: WelcomeQuizComponent },
+  { path: 'login', component: RegisterComponent },
+  { path: 'register', component: LoginComponent },
+  { path: 'landing', component: LandingPageComponent },
+  { path: 'subjects', component: SubjectsComponent },
+  { path: 'hamburger', component: HamburgerComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 

@@ -87,23 +87,20 @@ body {
 // }
 
 
-.backbutton {
-    display: flex;
-    align-self: center;
-    padding-top: 10px;
-    padding-right: 60px;
-    width: 30px;
-    height: 40px;
-
-    padding: gree
-}
-
-
-.logo-img {
-    // text-align: center;
-    // margin: 0 auto; 
-    width: 150px; 
-}
+.navbar {
+    margin-top: -2.5rem;
+  //   display: flex;
+  
+    .backbutton {
+      cursor: pointer;
+      margin-left: 8px;
+    }
+  
+    .logo-img {
+  //    margin-right: 10rem;
+     width: 150px;
+    }
+  }
 
 .question {
     text-align: center;
