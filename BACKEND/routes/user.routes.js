@@ -24,4 +24,5 @@ router.get("/emailExist/:email", userController.emailExists);
 // Create the route for deleting a user
 router.delete('/:id', userController.deleteUserById);
 
+
 module.exports = router
