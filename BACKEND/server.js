@@ -59,7 +59,7 @@ app.use('/api/subjects', subjectRoutes)
 
 // app.use('/app/getting')
 
-app.use('/user_selected_subjects', selectedSubjectRoutes);
+app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 
 // app.use('/api', selectedSubjectsRouter); 
 // Import the deleteUserById method (replace this with the actual path to your method file)

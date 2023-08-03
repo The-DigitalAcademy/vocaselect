@@ -4,29 +4,29 @@
   <p class="fs-4">Select the subjects you are doing</p>
   <p class="fs-5">To better guide you on your journey</p>
   <!-- Sending selected subjects to be stored on database on Click -->
+  <div class = "subStyle">
+    <div class = "sub" *ngFor="let subject of subjects" >
+      <label>
+        <input
+          type="checkbox"
+          [value]="subject.id"
+          (change)="isChecked($event)"
+        />
+         
+        {{ subject.subjectName }}
+      </label>
+    </div>
+    </div>
+    
+    <div class="row" id="btn-submit">
+      <!-- <button type="button" class="btn" (click)="sendSelectedSubjectsToServer()" routerLink="/dream-job">Submit</button> -->
+      <button type="button" class="btn" (click)="onSubmit()">Submit</button>
+    </div>
+    </div>
+    
+    <div class="eclipse-2"></div>
+    <div class="eclipse-1"></div>
+    <div class="eclipse-6"></div>
+    <div class="eclipse-4"></div>
+</div>
 
-</div>
-<div class = "subStyle">
-<div class = "sub" *ngFor="let subject of subjects" >
-  <label>
-    <input
-      type="checkbox"
-      [value]="subject.id"
-      (change)="isChecked($event)"
-    />
-     
-    {{ subject.subjectName }}
-  </label>
-</div>
-</div>
-
-<div class="row" id="btn-submit">
-  <!-- <button type="button" class="btn" (click)="sendSelectedSubjectsToServer()" routerLink="/dream-job">Submit</button> -->
-  <button type="button" class="btn" (click)="onSubmit()">Submit</button>
-</div>
-</div>
-
-<div class="eclipse-2"></div>
-<div class="eclipse-1"></div>
-<div class="eclipse-6"></div>
-<div class="eclipse-4"></div>

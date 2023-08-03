@@ -46,7 +46,7 @@ const { sequelize } = require('../models');
 
 const UserSelectedSubject = sequelize.define('user_selected_subjects', {
   // You can add other properties to the junction table if needed
-  user_id: {
+    user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -54,6 +54,14 @@ const UserSelectedSubject = sequelize.define('user_selected_subjects', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  createdAt:{
+    type: DataTypes.DATE,
+    allowNull: true
+  },
+  createdAt:{
+    type: DataTypes.DATE,
+    allowNull: true
+  }
 });
 
 module.exports = UserSelectedSubject;
