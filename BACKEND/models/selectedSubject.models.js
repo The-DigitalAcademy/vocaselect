@@ -1,30 +1,61 @@
-const { Pool } = require('pg');
+// const { DataTypes } = require('sequelize');
+// const { sequelize } = require('../models');
+// // const db = require('../models'); // Make sure to replace '../models' with the actual path to your Sequelize setup file
 
-module.exports = {
-  async saveSelectedSubjects(selectedIds) {
-    try {
-      const client = await pool.connect();
-      await client.query('BEGIN');
+// const SelectedSubject = sequelize.define('selectedSubject', {
+//   subject_id: {
+//     type: DataTypes.INTEGER,
+//     allowNull: false,
+//   },
+// });
 
-      // Validate if selectedIds is an array of numbers
-      if (!Array.isArray(selectedIds) || selectedIds.some(isNaN)) {
-        await client.query('ROLLBACK');
-        throw new Error('Invalid selected IDs');
-      }
+// module.exports = {
+//   async saveSelectedSubjects(selectedIds) {
+//     try {
+//       // Validate if selectedIds is an array of numbers
+//       if (!Array.isArray(selectedIds) || selectedIds.some(isNaN)) {
+//         throw new Error('Invalid selected IDs');
+//       }
 
-      // Prepare the query
-      const insertQuery = 'INSERT INTO subjects(subject_id) VALUES($1)';
+//       // Insert each selected ID into the database using Sequelize
+//       await SelectedSubject.bulkCreate(
+//         selectedIds.map((subjectId) => ({
+//           subject_id: subjectId,
+//         }))
+//       );
 
-      // Insert each selected ID into the database
-      for (const subjectId of selectedIds) {
-        await client.query(insertQuery, [subjectId]);
-      }
+//       return true;
+//     } catch (error) {
+//       return false;
+//     }
+//   },
 
-      await client.query('COMMIT');
-      client.release();
-      return true;
-    } catch (error) {
-      return false;
-    }
+//   SelectedSubject.associate = (models) => {
+//     // Associate Subject with User (one-to-many relationship)
+//     SelectedSubject.belongsTo(models.User, {
+//       foreignKey: {
+//         allowNull: false,
+//       },
+//     });
+//   };
+// };
+
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../models');
+// const db = require('../models'); // Make sure to replace '../models' with the actual path to your Sequelize setup file
+
+const UserSelectedSubject = sequelize.define('user_selected_subjects', {
+  // You can add other properties to the junction table if needed
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
-};
+  subject_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
+
+module.exports = UserSelectedSubject;
+
+
