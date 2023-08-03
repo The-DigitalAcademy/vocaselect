@@ -19,9 +19,13 @@ export class SubjectsService {
     return this.http.get(APIUrl = environment.apiUrl +'subjects'+ id, { responseType: 'json' });
   }
 
-  sendSelectedSubjects(selectedSubjects: string[]): Observable<any> {
-    return this.http.post(environment.apiUrl + 'user_selected_subjects', { selectedSubjects }, { responseType: 'json' });
-  }
+  // sendSelectedSubjects(selectedSubjects: string[]): Observable<any> {
+  //   return this.http.post(environment.apiUrl + 'user_selected_subjects', { selectedSubjects }, { responseType: 'json' });
+  // }
   
+sendSelectedSubjects(selectedSubjects: string[]): Observable<any> {
+  return this.http.post(environment.apiUrl  + 'user_selected_subjects', { selectedSubjects }, { responseType: 'json' });
+}
+
 
 }

@@ -97,7 +97,6 @@ const deleteSubjectById = async (req, res) => {
   }
 };
 
-
    module.exports = {
     createNewSubject,
     getAllsubjects,
