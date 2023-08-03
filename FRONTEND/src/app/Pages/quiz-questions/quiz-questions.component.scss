@@ -56,7 +56,20 @@
 //   }
 // }
 
+:host {
+  ::ng-deep{
+   .mat-form-field-wrapper{
+    margin-top: 2rem;
+   }
+  }
+}
 
+
+// #bcolor[_ngcontent-iqx-c103] {
+//   background-color: #75A1DF;
+//   color: #FFFFFF;
+//   margin-bottom: 4rem;
+// }
 // .mat-step-header {
 //   overflow: hidden;
 //   outline: none;
@@ -98,6 +111,10 @@
 
 }
 
+.img{
+  padding-bottom: 3rem;
+}
+
 
 
 // .mat-form-field-appearance-legacy .mat-form-field-wrapper {
@@ -107,4 +124,12 @@
 
 .mat-form-field-infix{
   margin-left: 5rem;
+}
+
+.btns{
+  margin-left: 4rem;
+}
+
+h1{
+  text-align: center;
 }
