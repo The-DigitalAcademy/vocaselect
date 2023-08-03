@@ -11,6 +11,7 @@ export class CareerRecommendationService {
   constructor(private http: HttpClient) {}
 
   getCareerRecommendations(careerChoice: string): Observable<any> {
+    //input for the user 
     const requestBody = { careerChoice };
     return this.http.post<any>(`${this.apiUrl}/enterCareer`, requestBody);
   }

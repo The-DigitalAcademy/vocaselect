@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CareerRecommendationService } from 'src/app/services/careerChoice.service';
+import { CareerRecommendationService } from '../../services/careerChoice.service';
 
 @Component({
   selector: 'app-career-choice',
@@ -13,6 +13,9 @@ export class CareerChoiceComponent implements OnInit {
   isLoading: boolean = false; 
 
   constructor(private careerRecommendationService: CareerRecommendationService) {}
+
+
+  // getCareerRecommendations(careerChoice: string): Observable<any> {
 
   
 

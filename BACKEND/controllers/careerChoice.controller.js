@@ -2,21 +2,22 @@ const { OpenAIApi } = require("openai");
 const configuration = require("../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 
+const axios = require('axios');
+
 exports.generateCareer = async (req, res) => {
   try {
-    const { careerChoice } = req.body;
-
-    const prompt = `Recommended universities, maximum of six courses (only one course per university) and short description of course from the university prospectus for a ${careerChoice} in South Africa: Your response should be in JSON, career choice should be the outer array and within it uniName object, courseName object and courseDescription object as one json object for that course`;
-
+    const { careerChoice} = req.body;
+    const prompt = `Please recommend a maximum of six courses (only one course per university) and short description which is explained in laymans terms like to a 5 year old for this career ${careerChoice} in South Africa. Add also a faculty prospectus for that specific course. Everything should be in JSON format, easily accessible using array counting`;
+    
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt,
       temperature: 0,
-      max_tokens: 500,
+      max_tokens: 1000,
     });
 
-    const recommendations = completion.data.choices[0].text;
-    const jsonResult = { recommendations: recommendations.split('\n') };
+    const careerRecommendations = completion.data.choices[0].text;
+    const jsonResult = { careerRecommendations: careerRecommendations.split('\n') };
     res.status(200).json(jsonResult);
 
   } catch (err) {
@@ -24,3 +25,5 @@ exports.generateCareer = async (req, res) => {
     res.status(500).json({ error: "An error occurred while generating recommendations." });
   }
 };
+
+
