@@ -1,4 +1,4 @@
-const User = require('../models/user.models');
+const User = require('../models/users.models');
 const Subject = require('../models/subjects.model');
 const UserSelectedSubject = require('../models/selectedSubject.models');
 
