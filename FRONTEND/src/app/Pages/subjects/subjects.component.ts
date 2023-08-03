@@ -15,6 +15,8 @@ export class SubjectsComponent implements OnInit {
   subjects: any; 
   public selectedSubjects: string[] = [];
 
+  allSelectedId: number[] = []
+
   constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router){}  
 
   ngOnInit() {
@@ -34,31 +36,49 @@ export class SubjectsComponent implements OnInit {
     );
   }
 
-  onCheckboxChange(subject: any) {
-    if (this.isSelected(subject)) {
-      this.selectedSubjects = this.selectedSubjects.filter((selectedSubject) => selectedSubject !== subject.id);
+  isChecked(event: any):void {
+    
+    if (event.target.checked) {
+      this.allSelectedId.push(event.target.value)
     } else {
-      this.selectedSubjects.push(subject.id);
+      this.allSelectedId = this.allSelectedId.filter(id => id !== event.target.value)
     }
+
+    console.log(this.allSelectedId)
+
   }
 
-  isSelected(subject: any): boolean {
-    return this.selectedSubjects.includes(subject.id);
-  }
 
-  sendSelectedSubjectsToServer() {
-    this.subjectsService.sendSelectedSubjects(this.selectedSubjects).subscribe(
+  // onSubmit():void {
+    
+  //   if (this.allSelectedId.length == 0) {
+  //     console.log("Please select a course")
+  //     return;
+  //   }
+
+  //   console.log(this.allSelectedId)
+
+  //   this.router.navigate(['dream-job'])
+
+  // }
+
+  onSubmit(): void {
+    if (this.allSelectedId.length === 0) {
+      console.log("Please select a course");
+      return;
+    }
+  
+    // Make an HTTP POST request to the server with the selected subject IDs
+    this.subjectsService.saveSelectedSubjects(this.allSelectedId).subscribe(
       (response) => {
-        console.log('Selected subjects sent to the server:', response);
-        // Optionally, you can perform additional actions after sending the data, such as showing a success message.
+        console.log('Selected subjects sent successfully:', response);
+        // If needed, you can navigate to another route after successful submission
+        this.router.navigate(['dream-job']);
       },
       (error) => {
-        console.error('Error sending selected subjects to the server:', error);
-        // Optionally, you can handle error cases, such as showing an error message.
+        console.error('Error sending selected subjects:', error);
       }
     );
   }
-
-  
   
 }

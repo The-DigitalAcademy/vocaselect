@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
 const subjectRoutes = require('./routes/subjects.routes')
-const selectedSubjectsRouter = require('./controllers/selectedSubject.controller');
+const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
 
 
 //Environment file
@@ -59,7 +59,9 @@ app.use('/api/subjects', subjectRoutes)
 
 // app.use('/app/getting')
 
-app.use('/api', selectedSubjectsRouter); 
+app.use('/user_selected_subjects', selectedSubjectRoutes);
+
+// app.use('/api', selectedSubjectsRouter); 
 // Import the deleteUserById method (replace this with the actual path to your method file)
 const { deleteUserById } = require('./controllers/user.controllers');
 

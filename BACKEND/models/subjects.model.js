@@ -27,16 +27,6 @@ module.exports = (sequelize, Sequelize) => {
         }
       },
 
-      // mark: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false,
-      //   validator:{
-      //   isInt: true, // Should be an integer
-      //   min: 1, // Minimum value for studentgrade
-      //   max: 12, // Maximum value for studentgrade
-      //   }
-      // }
-      // Add other fields related to subjects as needed
     });
   
     Subject.associate = (models) => {
