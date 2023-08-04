@@ -4,12 +4,12 @@
 @tailwind utilities;
 
 .body{
-    background-color: #F2F6FD  ;
+    background-color: #F2F6FD !important ;
 }
 
 :root {
     --primary-color: #fff;
-    --background-color: #F2F6FD;
+    --background-color: #F2F6FD !important; 
     --text-color: #073980;
     --button-color: #75A1DF;
     --cards-color:#E6E6FA;
