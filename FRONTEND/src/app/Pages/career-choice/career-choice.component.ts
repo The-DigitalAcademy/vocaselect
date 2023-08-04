@@ -14,10 +14,8 @@ export class CareerChoiceComponent implements OnInit {
 
   constructor(private careerRecommendationService: CareerRecommendationService) {}
 
-
   // getCareerRecommendations(careerChoice: string): Observable<any> {
-
-  
+    // getCareerRecommendations
 
   ngOnInit(): void {
   }
@@ -35,6 +33,7 @@ export class CareerChoiceComponent implements OnInit {
         (response) => {
           this.recommendations = response.recommendations;
           this.isLoading = false; // Set isLoading to false when the API call is successful
+          console.log("bog guns" + this.recommendations)
         },
         (error) => {
           console.error('Error occurred:', error);

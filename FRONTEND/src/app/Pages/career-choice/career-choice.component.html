@@ -6,30 +6,18 @@
 
 <div *ngIf="isLoading; ">
 <!-- Show the loader while waiting for the API response -->
-<div class="loader">Loading...</div>
-</div>
-
-<!-- career-choice.component.html -->
-<div *ngIf="recommendations && recommendations.length > 0">
-  <h2>Career Recommendations</h2>
-  <ul>
-    <li *ngFor="let recommendation of recommendations">{{ recommendation }}</li>
-  </ul>
-</div>
-
-<div *ngIf="!recommendations || recommendations.length === 0">
-  <p>No career recommendations available.</p>
+<div class="loader">...</div>
 </div>
 
 
-<!-- <div *ngIf="recommendations.length > 0">
+<div *ngIf="recommendations.length > 0">
   <h3>Recommended universities and courses:</h3>
   <ul>
   <li *ngFor="let recommendation of recommendations">{{ recommendation }}</li>
   </ul>
 </div>
-
-
 <div *ngIf="recommendations.length === 0 && !isLoading">
   No career recommendations found.
-</div> -->
+</div>
+
+
