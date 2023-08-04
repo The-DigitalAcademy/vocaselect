@@ -29,15 +29,23 @@ module.exports = (sequelize, Sequelize) => {
 
     });
   
+    // Subject.associate = (models) => {
+    //   // Associate Subject with User (one-to-many relationship)
+    //   Subject.belongsTo(models.User, {
+    //     foreignKey: {
+    //       allowNull: false,
+    //     },
+    //   });
+    // };
+
     Subject.associate = (models) => {
-      // Associate Subject with User (one-to-many relationship)
-      Subject.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false,
-        },
+      Subject.belongsToMany(models.User, {
+        through: models.UserSubject,
+        as: "selectedByUsers",
+        foreignKey: "subjectId",
       });
     };
-  
+    
     return Subject;
   };
   

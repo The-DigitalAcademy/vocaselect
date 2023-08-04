@@ -33,6 +33,15 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false
       }
     });
+
+    User.associate = (models) => {
+      User.belongsToMany(models.Subject, {
+        through: models.UserSubject,
+        as: "selectedSubjects",
+        foreignKey: "userId",
+      });
+    };
+  
   
     return User;
   };
