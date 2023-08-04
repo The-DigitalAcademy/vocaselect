@@ -53,6 +53,8 @@ const router = express.Router();
  *               error: "An error occurred while processing the quiz and generating career recommendations."
  */
 
-router.post("/", quizController.generateQuizRecommendations);
+// router.post("/", quizController.generateQuizRecommendations);
+
+router.post('/quizGenerate', quizController.generateCareerQuiz);
 
 module.exports = router;
