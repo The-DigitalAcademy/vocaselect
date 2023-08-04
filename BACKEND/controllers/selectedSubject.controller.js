@@ -5,14 +5,12 @@ const UserSelectedSubject = require("../models/selectedSubject.models");
 
 exports.saveSelectedSubjects = async (req, res) => {
   var userSubjects = req.body;
-
   try {
     for (var i = 0; i < userSubjects.length; i++) {
       const user = await User.findByPk(userSubjects[i].userId);
       const subject = await Subject.findByPk(userSubjects[i].subjectId);
-
       if (user && subject) {
-        UserSelectedSubject.create({
+       UserSelectedSubject.create({
           user_id: userSubjects[i].userId,
           subject_id: userSubjects[i].subjectId,
         });
@@ -33,6 +31,7 @@ exports.saveSelectedSubjects = async (req, res) => {
       .json({ error: "Failed to save selected subjects to the database" });
   }
 };
+
 
 // const Subject = require('../models/selectedSubject.models');
 
