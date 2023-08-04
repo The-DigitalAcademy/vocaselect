@@ -74,11 +74,12 @@
 
           </div>
 
-          <div class="form-group pt-30">
+          <div class="form-group pt-30 file">
             <label for="dob">Date of Birth</label>
             <input
               type="date"
               class="form-control"
+              style = "flex-direction: row; color:gray"
               formControlName="dob" 
               placeholder="yyyy-mm-dd"
             
@@ -150,7 +151,7 @@
 
           <div ngClass="form-group mt-3 text-center">
            
-            <button class="btn btn-primary btn-block" type="submit">
+            <button class="btn btn-primary btn-block text-white" type="submit">
               {{buttonLabel()}}
               
             </button>

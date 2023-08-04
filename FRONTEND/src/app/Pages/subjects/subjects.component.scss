@@ -23,7 +23,7 @@
   width: 100vw;
   height: 100vh;
   align-content: center;
-  padding-top: .5rem;
+  padding-top: 1.5px;
   position: fixed;
   // display: block;
 
@@ -31,6 +31,7 @@
     font-weight: bolder;
     margin-left: 1rem;
     color: var(--text-color);
+    line-height: 1.2rem;
    
   }
 
@@ -51,8 +52,10 @@
     font-size: 20px;
     align-items: center;
     padding:.5px;
-    margin-left: .5rem;
+    margin-left: 1.5rem;
     font-family:'Times New Roman', Times, serif;
+    // overflow-y: scroll;
+    
 
     label { 
       display: block; 
