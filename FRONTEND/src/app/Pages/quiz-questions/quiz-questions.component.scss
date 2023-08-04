@@ -19,6 +19,7 @@
     mat-progress-bar{
       height: 1.8rem;
       border-radius: 1rem;
+      width: 17.5rem;
     }
 
   }
@@ -37,7 +38,8 @@
   ::ng-deep{
     .mat-form-field-wrapper{
      
-      width: 342px;
+      width: 380px;
+      
     }
   }
 }
@@ -46,9 +48,11 @@
      ::ng-deep{
       .div{
           padding: 40px 40px;
+          
       }
    }
   }
+  
 
 // :host {
 //   ::ng-deep{
@@ -101,13 +105,16 @@
 .eclipse-2{
   margin-bottom:  960px; 
   z-index: -99999;
- margin-left: 20rem;
+ margin-left: 15rem;
  margin-bottom: 0rem;
 }
 
 .eclipse-4{
-  margin-bottom:  800px; 
+  margin-top:  40rem;
+
   z-index: -99999;
+ margin-right: 10rem;
+  
 
 }
 
