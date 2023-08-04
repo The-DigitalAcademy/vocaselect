@@ -1,10 +1,8 @@
-
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const userSubjectController = require("../controllers/selectedSubject.controller");
+const subjectController = require('../controllers/selectedSubject.controller');
 
-// Route for linking a user to selected subjects
-router.post("/linkUserToSubjects", userSubjectController.linkUserToSubjects);
+router.post('/', subjectController.saveSelectedSubjects);
 
 module.exports = router;
 

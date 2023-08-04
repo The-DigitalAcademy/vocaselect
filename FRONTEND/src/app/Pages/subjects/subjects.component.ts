@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { SubjectsService } from 'src/app/services/subjects.service';
 import { environment } from 'src/environments/environment';
 
@@ -15,13 +16,16 @@ export class SubjectsComponent implements OnInit {
   subjects: any; 
   public selectedSubjects: string[] = [];
 
-  allSelectedId: number[] = []
+  allSelectedId: any = [];
+  userId: any;
 
-  constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router){}  
+  constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router, private tokenStorage: TokenStorageService){}  
 
   ngOnInit() {
     // Fetch items from the API when the component initializes
     this.fetchSubjects();
+    this.userId = this.tokenStorage.getUser().id;
+  console.log(this.userId, 'user id')
   }
 
   fetchSubjects() {
@@ -39,9 +43,9 @@ export class SubjectsComponent implements OnInit {
   isChecked(event: any):void {
     
     if (event.target.checked) {
-      this.allSelectedId.push(event.target.value)
+      this.allSelectedId.push({subjectId:event.target.value, userId: this.userId })
     } else {
-      this.allSelectedId = this.allSelectedId.filter(id => id !== event.target.value)
+      this.allSelectedId = this.allSelectedId.filter((userSubject:any) => userSubject.subjectId !== event.target.value)
     }
 
     console.log(this.allSelectedId)

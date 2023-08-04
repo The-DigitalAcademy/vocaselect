@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const User  = sequelize.define("user", {
+    const Users  = sequelize.define("users", {
         //change DataTypes back Sequelize - if it breaks
         name: {
         type: Sequelize.STRING,
@@ -34,14 +34,14 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
 
-    User.associate = (models) => {
-      User.belongsToMany(models.Subject, {
-        through: models.UserSubject,
-        as: "selectedSubjects",
-        foreignKey: "userId",
-      });
-    };
+    // User.associate = (models) => {
+    //   User.belongsToMany(models.Subject, {
+    //     through: models.UserSubject,
+    //     as: "selectedSubjects",
+    //     foreignKey: "userId",
+    //   });
+    // };
   
   
-    return User;
+    return Users;
   };

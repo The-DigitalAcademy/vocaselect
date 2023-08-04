@@ -32,7 +32,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.User = require("./user.models.js")(sequelize, Sequelize);
+db.User = require("./users.models.js")(sequelize, Sequelize);
 db.Subject = require("../models/subjects.model")(sequelize, Sequelize);
 
 
