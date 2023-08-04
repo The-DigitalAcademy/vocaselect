@@ -19,7 +19,7 @@ exports.generateCareer = async (req, res) => {
     // console.log(completion.data.choices[0].text)
 
     const careerRecommendations = completion.data.choices[0].text;
-    const jsonResult = { recommendations: careerRecommendations.split('\n') };
+    const jsonResult = { CourseRecommendations: careerRecommendations.split('\n') };
     res.status(200).json(jsonResult);
 
     

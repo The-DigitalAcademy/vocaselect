@@ -8,8 +8,8 @@ const router = express.Router();
  * @swagger
  * /quiz:
  *   post:
- *     summary: Receive quiz questions and answers, and get career recommendations.
- *     description: Returns career recommendations based on the user's quiz answers and traits.
+ *     summary: Get career recommendations based on quiz answers.
+ *     description: Returns career recommendations tailored to the user's preferences and traits.
  *     requestBody:
  *       required: true
  *       content:
@@ -21,9 +21,10 @@ const router = express.Router();
  *                 type: array
  *                 items:
  *                   type: string
- *                 description: The quiz answers provided by the user.
- *             example:
- *               answers: ["Technology", "Creativity", "Collaborative", "Extremely important", "Yes, occasionally", "Mid-level", "Yes"]
+ *                 description: List of user's quiz answers.
+ *                 example: ["Technology", "Creativity", "Collaboration", "Very important", "Yes, occasionally", "Intermediate", "Yes"]
+ *             required:
+ *               - answers
  *     responses:
  *       200:
  *         description: Successful response with career recommendations.
@@ -36,9 +37,19 @@ const router = express.Router();
  *                   type: array
  *                   items:
  *                     type: string
- *                   description: The recommended career choices based on the user's quiz responses and traits.
- *             example:
- *               recommendations: ["Software Engineer", "Graphic Designer", "Data Scientist", "Marketing Specialist", "UX/UI Designer"]
+ *                   description: List of recommended careers based on user's quiz responses.
+ *                   example: ["Software Engineer", "Graphic Designer", "Data Scientist", "Marketing Specialist", "UX/UI Designer"]
+ *       400:
+ *         description: Bad request due to missing or invalid input.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ *                   description: Description of the validation error.
+ *                   example: "Invalid input data. Please provide valid answers."
  *       500:
  *         description: Internal server error occurred.
  *         content:
@@ -48,13 +59,12 @@ const router = express.Router();
  *               properties:
  *                 error:
  *                   type: string
- *                   description: Error message indicating the cause of the error.
- *             example:
- *               error: "An error occurred while processing the quiz and generating career recommendations."
+ *                   description: Description of the internal error.
+ *                   example: "An error occurred while processing the quiz and generating career recommendations."
  */
 
 // router.post("/", quizController.generateQuizRecommendations);
 
-router.post('/quizGenerate', quizController.generateCareerQuiz);
+router.post('/', quizController.generateCareerQuiz);
 
 module.exports = router;

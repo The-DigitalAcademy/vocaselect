@@ -91,7 +91,7 @@ app.use('/api/users', userRoutes)
 
 // AI Routes
 app.use("/enterCareer", careerRoutes);
-app.use("/api", quizRoutes);
+app.use("/quiz", quizRoutes);
 
 
 
