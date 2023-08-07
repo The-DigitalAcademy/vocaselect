@@ -26,14 +26,14 @@ export class RegisterComponent implements OnInit {
     city: '',
     studentgrade: '',
     password: '',
-    
+
   };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
   regInvalid = false;
 
-  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder,  private tokenStorage: TokenStorageService,) {
+  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService,) {
     this.registerForm = this.formBuilder.group({
       name: [null, [Validators.required, Validators.minLength(3)]],
       surname: [null, [Validators.required, Validators.minLength(3)]],
@@ -91,135 +91,85 @@ export class RegisterComponent implements OnInit {
 
     return null;
   }
-  onSubmit(): void {
-    const { name, surname, email, dob, city, studentgrade, password } = this.form;
-    //This Method That Returns An Observable Object (authService.register())
-    if (dob && !isValid(parseISO(dob))) {
-      this.errorMessage = 'Invalid Date of Birth format. Please use yyyy-mm-dd.';
-      return;
-    }
 
-    this.authService.register(name, surname, email, dob, city, studentgrade, password).subscribe({
-      next: (data) => {
-        console.log(data); 
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        // this._router.navigate(['/subjects'])
-        // this.reloadPage();
-        //this.toastr.success("Registration Was Successful")
+  login() {
+    this.authService.login({ username: this.registerForm.value.email, password: this.registerForm.value.password }).subscribe({
+      next: data => {
 
-        // window.location.replace("/login")
+        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveUser(data.user);
+
         Swal.fire({
-          title: 'Registration Successful',
+          title: 'Successfully registered',
           text: '',
           icon: 'success',
-          //confirmButtonText: 'Login',
-        }).then((result) => {
-          if (result.value) {
-            this.router.navigate(["/subjects"])
-
-          }
-        });
-
-      },
-
-      error: (err) => {
-
-
-        if (err.error.errors.length > 0) {
-
-          // err.error.errors.forEach(element => {
-          //   this.errorMessage += element.message;
-          // });
-          for (var i = 0; i < err.error.errors.length; i++) {
-            this.errorMessage += err.error.errors[i].message;
-          }
-        } else {
-          this.errorMessage = err.error.message;
-        }
-
-        Swal.fire({
-          title: 'Registration was unsuccessful',
-          text: this.errorMessage,
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        }).then((result) => {
-          if (result.value) {
-            //this._router.navigate(["/subjects"])
-
-          }
-        });
-        this.isSignUpFailed = true;
-        // this.toastr.error("Registration Failed, Try Again")
-      }
-    });
-  }
-login(){
-  this.authService.login({username:this.registerForm.value.email,password:this.registerForm.value.password}).subscribe({
-    next: data => {
-
-      this.tokenStorage.saveToken(data.token);
-      this.tokenStorage.saveUser(data.user);
-      console.log(data)
-  
-      this.router.navigate(['/subjects']);
-    },
-    error: err => {
-      console.log(err)
-      if (err?.status == 401) {
-        this.errorMessage = "Incorrect username or password provided!";
-      } else {
-        this.errorMessage = err.error.message;
-      }
-
-      // this.toastr.error("Login Failed, Try Again")
-    },
-
-  });
-}
-
-
-onCheck(){
-  this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
-    next: (data) => {
-      console.log(data);
-      if (data) {
-        Swal.fire({
-          title: 'This email already exists!',
-          text: '',
-          icon: 'error',
         }).then((result) => {
           if (result.value) {
             return;
           }
         });
-      }
+ 
+        if (this.registerForm.value.studentgrade >= 10) {
+          // Handle the logic for the "Register" button click
+          // e.g., perform registration or any other action
+          this.router.navigate(['/subjects']);
+        } else {
+          // Handle the logic for the "Next" button click
+          // e.g., proceed to the next step or action 
 
-    },
-
-    error: (err) => {
-
-      if (err.error?.errors?.length > 0) {
-
-        for (var i = 0; i < err.error?.errors?.length; i++) {
-          this.errorMessage += err.error?.errors[i]?.message;
+          this.router.navigate(['/dream-job']);
         }
-      } else {
-        this.errorMessage = err.error?.message;
-      }
+      },
+      error: err => {
+        console.log(err)
+        
+        // this.toastr.error("Login Failed, Try Again")
+      },
 
-      Swal.fire({
-        title: 'Unsuccessful',
-        text: this.errorMessage,
-        icon: 'error',
-      }).then((result) => {
-        if (result.value) {
+    });
+  }
 
+  onCheck() {
+    this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
+      next: (data) => {
+        console.log(data);
+        if (data) {
+          Swal.fire({
+            title: 'This email already exists!',
+            text: '',
+            icon: 'error',
+          }).then((result) => {
+            if (result.value) {
+              return;
+            }
+          });
         }
-      });
-    }
-  });
-}
+
+      },
+
+      error: (err) => {
+
+        if (err.error?.errors?.length > 0) {
+
+          for (var i = 0; i < err.error?.errors?.length; i++) {
+            this.errorMessage += err.error?.errors[i]?.message;
+          }
+        } else {
+          this.errorMessage = err.error?.message;
+        }
+
+        Swal.fire({
+          title: 'Unsuccessful',
+          text: this.errorMessage,
+          icon: 'error',
+        }).then((result) => {
+          if (result.value) {
+
+          }
+        });
+      }
+    });
+  }
 
   onRegister() {
     if (this.registerForm.valid) {
@@ -237,38 +187,15 @@ onCheck(){
                 return;
               }
             });
-          }else{
-            if (this.registerForm.value.studentgrade >= 10) {
-              // Handle the logic for the "Register" button click
-              // e.g., perform registration or any other action
-              this.authService.createUser(this.registerForm.value).subscribe(res => {
-                this.user = res; 
-                this.login();
-                // this.router.navigate(['/subjects']);
-        
-              });
-              
-            } else {
-              // Handle the logic for the "Next" button click
-              // e.g., proceed to the next step or action
-        
-              this.authService.createUser(this.registerForm.value).subscribe(res => {
-                this.user = res;
-                this.router.navigate(['/dream-job']);
-                Swal.fire({
-                  title: 'Succussfully registered',
-                  text: '',
-                  icon: 'success',
-                }).then((result) => {
-                  if (result.value) {
-                    return;
-                  }
-                });
-        
-              });
-            }
+          } else {
+
+            this.authService.createUser(this.registerForm.value).subscribe(res => {
+              this.user = res;
+              this.login();              
+            });
+           
           }
-          
+
 
         },
 
@@ -294,10 +221,10 @@ onCheck(){
           });
         }
       });
-      
-      
 
-     
+
+
+
     } else {
       this.regInvalid = true;
       console.log('form not valid');
