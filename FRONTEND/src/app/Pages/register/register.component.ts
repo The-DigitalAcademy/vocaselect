@@ -6,6 +6,7 @@ import { parseISO, isValid, differenceInYears } from 'date-fns';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { log } from 'console';
 import { UserService } from 'src/app/_services/user.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
   user: any;
+  invalidCredentials = false;
   form: any = {
     name: '',
     surname: '',
@@ -24,13 +26,14 @@ export class RegisterComponent implements OnInit {
     city: '',
     studentgrade: '',
     password: '',
+    
   };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
   regInvalid = false;
 
-  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder,  private tokenStorage: TokenStorageService,) {
     this.registerForm = this.formBuilder.group({
       name: [null, [Validators.required, Validators.minLength(3)]],
       surname: [null, [Validators.required, Validators.minLength(3)]],
@@ -98,7 +101,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(name, surname, email, dob, city, studentgrade, password).subscribe({
       next: (data) => {
-        console.log(data);
+        console.log(data); 
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         // this._router.navigate(['/subjects'])
@@ -151,6 +154,29 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
+login(){
+  this.authService.login({username:this.registerForm.value.email,password:this.registerForm.value.password}).subscribe({
+    next: data => {
+
+      this.tokenStorage.saveToken(data.token);
+      this.tokenStorage.saveUser(data.user);
+      console.log(data)
+  
+      this.router.navigate(['/subjects']);
+    },
+    error: err => {
+      console.log(err)
+      if (err?.status == 401) {
+        this.errorMessage = "Incorrect username or password provided!";
+      } else {
+        this.errorMessage = err.error.message;
+      }
+
+      // this.toastr.error("Login Failed, Try Again")
+    },
+
+  });
+}
 
 
 onCheck(){
@@ -216,8 +242,9 @@ onCheck(){
               // Handle the logic for the "Register" button click
               // e.g., perform registration or any other action
               this.authService.createUser(this.registerForm.value).subscribe(res => {
-                this.user = res;
-                this.router.navigate(['/subjects']);
+                this.user = res; 
+                this.login();
+                // this.router.navigate(['/subjects']);
         
               });
               
@@ -228,6 +255,15 @@ onCheck(){
               this.authService.createUser(this.registerForm.value).subscribe(res => {
                 this.user = res;
                 this.router.navigate(['/dream-job']);
+                Swal.fire({
+                  title: 'Succussfully registered',
+                  text: '',
+                  icon: 'success',
+                }).then((result) => {
+                  if (result.value) {
+                    return;
+                  }
+                });
         
               });
             }
