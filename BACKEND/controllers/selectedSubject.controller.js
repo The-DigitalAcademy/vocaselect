@@ -10,7 +10,7 @@ exports.saveSelectedSubjects = async (req, res) => {
       const user = await User.findByPk(userSubjects[i].userId);
       console.log(user,'user information')
       const subject = await Subject.findByPk(userSubjects[i].subjectId);
-      console.log(subject,'subject info')
+      console.log(subject,'subject information')
       if (user && subject) {
        UserSelectedSubject.create({
           user_id: userSubjects[i].userId,

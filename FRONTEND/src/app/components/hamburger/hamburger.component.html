@@ -1,52 +1,31 @@
-<img
-  class="avatar mat-elevation-z8"
-  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-/>
-
-<h4 class="name">John Smith</h4>
-<p class="designation">Software Engineer</p>
-
-
-<mat-divider></mat-divider>
-<mat-sidenav class="hamburger mat-elevation-z8">
-  <button mat-button class="menu-button" routerLink="/home">
-    <i class="bi bi-house-door-fill" style="font-size:25px;" ></i>
-    <span>Home</span>
-    <i class="bi bi-chevron-right"></i>
-  </button>
-  <button mat-button class="menu-button" routerLink="">
-    <i class="bi bi-person-fill" style="font-size:25px;"></i>
-    <span>Account</span>
-    <i class="bi bi-chevron-right"></i>
-  </button>
-  <button mat-button class="menu-button" routerLink="">
-    <i class="bi bi-info-circle-fill" style="font-size:25px;"></i>
-    <span>About</span>
-    <i class="bi bi-chevron-right"></i>
-  </button>
-  <button mat-button class="menu-button" routerLink="/landing">
-    <i class="bi bi-box-arrow-right" style="font-size:25px;"></i>
-    <span>Logout</span>
-    <i class="bi bi-chevron-right"></i>
-  </button>
-
-  <mat-divider></mat-divider>
-
-</mat-sidenav>
-
-<!-- <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
-  </mat-drawer>
-
-  <div class="example-sidenav-content">
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
-  </div>
-
-</mat-drawer-container> -->
+<nav role='navigation'>
+		<div id="menuToggle">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul id="menu">
+      <img class="avatar mat-elevation-z8" src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png"/>
+      <h4 class="name">Username</h4>
+      <p class="designation">Software Engineer</p>
+      <mat-divider></mat-divider>
+				<a href="#">
+					<li><i class="bi bi-house-door-fill"></i>Home<i class="bi bi-chevron-right"></i></li>
+				</a>
+        <hr>
+				<a href="#">
+         
+					<li><i class="bi bi-person-fill"></i>Account<i class="bi bi-chevron-right"></i></li>
+				</a>
+        <hr>
+				<a href="#">
+					<li><i class="bi bi-house-door-fill"></i>About<i class="bi bi-chevron-right"></i></li>
+				</a>
+        <hr>
+				<a href="#">
+					<li><i class="bi bi-box-arrow-right"></i>Logout<i class="bi bi-chevron-right"></i></li>
+				</a>
+        <hr>
+			</ul>
+		</div>
+	</nav>

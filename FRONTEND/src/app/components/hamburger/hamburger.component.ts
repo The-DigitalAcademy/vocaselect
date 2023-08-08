@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-hamburger',
@@ -11,23 +11,30 @@ export class HamburgerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  // showFiller = false;
 
-  // @ViewChild(MatSidenav)
-  // sidenav!: MatSidenav;
+  
 
-  // constructor(private observer: BreakpointObserver) {}
+  
+  
+  // @ViewChild('nav', { static: true }) navContainer!: ElementRef<HTMLElement>;
 
   // ngAfterViewInit() {
-  //   this.observer.observe(["(max-width: 800px)"]).subscribe((res) => {
-  //     if (res.matches) {
-  //       this.sidenav.mode = "over";
-  //       this.sidenav.close();
-  //     } else {
-  //       this.sidenav.mode = "side";
-  //       this.sidenav.open();
-  //     }
-  //   });
+
+  // const toggle = this.navContainer.nativeElement.querySelector('.nav-toggle');
+
+  //   if (toggle) {
+  //     toggle.addEventListener('click', () => {
+  //       if (this.navContainer.nativeElement.classList.contains('is-active')) {
+  //         this.navContainer.nativeElement.classList.remove('is-active');
+  //       } else {
+  //         this.navContainer.nativeElement.classList.add('is-active');
+  //       }
+  //     });
+
+  //     this.navContainer.nativeElement.addEventListener('blur', () => {
+  //       this.navContainer.nativeElement.classList.remove('is-active');
+  //     });
+  //   }
   // }
 
 }

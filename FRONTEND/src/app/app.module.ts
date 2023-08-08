@@ -19,9 +19,9 @@ import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
+// import {MatButtonModule} from '@angular/material/button';
 
-import {MatSidenavModule} from '@angular/material/sidenav';
+// import {MatSidenavModule} from '@angular/material/sidenav';
 // import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 
@@ -50,7 +50,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     HttpClientModule,
     BrowserAnimationsModule,
     // MatSidenavModule, 
-    MatButtonModule
+    // MatButtonModule
     
   ],
   providers: [ UserService ],
