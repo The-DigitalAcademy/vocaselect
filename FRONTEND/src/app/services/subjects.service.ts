@@ -22,4 +22,11 @@ export class SubjectsService {
   saveSelectedSubjects(selectedIds: any[]): Observable<any> {
     return this.http.post(environment.apiUrl + 'user_selected_subjects', selectedIds, { responseType: 'json' });
   }
+
+  getSelectedSubjects(selectedIds: any[]): Observable<any> {
+    return this.http.get(environment.apiUrl + 'user_selected_subjects',{ responseType: 'json' });
+  }
+  saveSubjectMarks(data: any): Observable<any> {
+    return this.http.post(environment.apiUrl + 'user_selected_subjects/marks', data, { responseType: 'json' });
+  }
 }

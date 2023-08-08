@@ -1,0 +1,36 @@
+<!-- subjects.component.html -->
+
+<!-- ... -->
+<div class = "container content">
+    <div class = "subStyle">
+        <div class="sub" *ngFor="let subject of subjects">
+            <label>
+              <input
+                type="checkbox"
+                [value]="subject.id"
+                (change)="isChecked($event, subject.id)"
+              />
+              {{ subject.subjectName }}
+            </label>
+            <ng-container *ngIf="selectedSubjects.includes(subject.id)">
+              <input
+                type="number"
+                placeholder="Enter marks"
+                [(ngModel)]="subject.marks"
+              />
+              <button
+                type="button"
+                class="btn"
+                (click)="submitMarks(subject.id, subject.marks)"
+              >
+                Save/Update Marks
+              </button>
+            </ng-container>
+          </div>
+    </div>
+ 
+</div>
+
+  
+  <!-- ... -->
+  
