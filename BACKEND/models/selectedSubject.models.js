@@ -64,7 +64,6 @@ const UserSelectedSubject = sequelize.define('user_selected_subjects', {
   }
 });
 
-
 module.exports = UserSelectedSubject;
 
 
