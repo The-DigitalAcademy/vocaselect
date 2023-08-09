@@ -17,11 +17,11 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               careerChoice:
+ *               enterCareer:
  *                 type: string
  *                 description: The preferred career choice for which recommendations are needed.
  *             example:
- *               careerChoice: "Software Engineer"
+ *               enterCareer: "Software Engineer"
  *     responses:
  *       200:
  *         description: Successful response with recommendations.
