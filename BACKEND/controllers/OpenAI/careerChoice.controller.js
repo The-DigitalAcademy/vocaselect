@@ -1,16 +1,16 @@
 const { OpenAIApi } = require("openai");
-const configuration = require("../config/openaiConfig");
+const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 
 const axios = require('axios');
 
 exports.generateCourse = async (req, res) => {
   try {
-    const { enterCareer} = req.body;
+    const { enterCareer, uniName, courseName, courseDescription, admissionRequirements } = req.body;
     const prompt = `Provide South African courses recommendation based on the entered career.
     Recommend universities, maximum of six courses (only one course per university ) and a short description of the course from the university prospectus for a ${enterCareer} in South Africa. 
   
-    Provide uniName, courseName, courseDescription, admissionRequirements. This must be returned as a stringified JSON object.
+    Provide ${uniName}, ${courseName}, ${courseDescription}, ${admissionRequirements}. This must be returned as a stringified JSON object.
   
     Explain the course description and admission requirement in layman's terms for high school minors of age 15 years to understand.
   
@@ -19,16 +19,16 @@ exports.generateCourse = async (req, res) => {
     Here is an example: 
     [
       {
-        "uniName": "University of Johannesburg",
-        "courseName": "Bachelor of Science in Computer Science",
-        "courseDescription": "course description example",
-        "admissionRequirements": "admission example"
+        "${uniName}": "University of Johannesburg",
+        "${courseName}": "Bachelor of Science in Computer Science",
+        "${courseDescription}": "course description example",
+        "${admissionRequirements}": "admission example"
       },
       {
-        "uniName": "University of Pretoria",
-        "courseName": "Bachelor of Science in Information Systems",
-        "courseDescription": "course description example",
-        "admissionRequirements": "admission example"
+        "${uniName}": "University of Pretoria",
+        "${courseName}": "Bachelor of Science in Information Systems",
+        "${courseDescription}": "course description example",
+        "${admissionRequirements}": "admission example"
       },
     ]
   `;

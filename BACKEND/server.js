@@ -5,12 +5,11 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
 
-const careerRoutes = require("./routes/careerRoutes");
-const quizRoutes = require("./routes/quizRoutes");
+const careerRoutes = require("./routes/OpenAI/careerRoutes");
+const quizRoutes = require("./routes/OpenAI/quizRoutes");
 
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-// const subjectRoutes = require('./routes/subjects.routes')
 
 //SWAGGER 
 // const { specs, swaggerUi } = require('./swagger');
@@ -87,7 +86,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //routes for the user API
 app.use('/api/users', userRoutes)
-// app.use('/api/allSubjects', subjectRoutes)
 
 // AI Routes
 app.use("/enterCareer", careerRoutes);

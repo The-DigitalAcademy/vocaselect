@@ -1,23 +1,16 @@
-<div>
+<!-- main.component.html -->
+
+<div class="input-container">
   <label for="careerChoice">Enter your career choice:</label>
-  <input type="text" id="careerChoice" [(ngModel)]="careerChoice" />
-  <button (click)="generateRecommendations()">Get Recommendations</button>
+  <input type="text" id="careerChoice" [(ngModel)]="enterCareer">
+  <button (click)="generateCourses()">Generate Courses</button>
 </div>
 
-<div *ngIf="isLoading; ">
-<!-- Show the loader while waiting for the API response -->
-<div class="loader">...</div>
+<div class="course-list">
+  <div class="card" *ngFor="let course of courses; let i = index">
+    <div class="card-body">
+      <h5 class="card-title">{{ course.uniName }}</h5>
+      <p class="card-text">{{ course.courseName }}</p>
+    </div>
+  </div>
 </div>
-
-
-<div *ngIf="recommendations.length > 0">
-  <h3>Recommended universities and courses:</h3>
-  <ul>
-  <li *ngFor="let recommendation of recommendations">{{ recommendation }}</li>
-  </ul>
-</div>
-<div *ngIf="recommendations.length === 0 && !isLoading">
-  No career recommendations found.
-</div>
-
-

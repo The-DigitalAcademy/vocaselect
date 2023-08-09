@@ -1,5 +1,5 @@
 const { OpenAIApi } = require("openai");
-const configuration = require("../config/openaiConfig");
+const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 
 const axios = require('axios');

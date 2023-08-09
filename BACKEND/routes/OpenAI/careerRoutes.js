@@ -1,5 +1,5 @@
 const express = require("express");
-const careerController = require("../controllers/careerChoice.controller");
+const careerController = require("../../controllers/OpenAI/careerChoice.controller");
 
 const router = express.Router();
 
