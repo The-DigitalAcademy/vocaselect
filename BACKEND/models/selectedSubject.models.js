@@ -48,11 +48,15 @@ const UserSelectedSubject = sequelize.define('user_selected_subjects', {
   // You can add other properties to the junction table if needed
     user_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: false
   },
   subject_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    allowNull: false
+  },
+  subject_marks: {
+    type: DataTypes.INTEGER,
+    allowNull: true
   },
   createdAt:{
     type: DataTypes.DATE,
