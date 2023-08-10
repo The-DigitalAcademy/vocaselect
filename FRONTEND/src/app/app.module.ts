@@ -18,7 +18,6 @@ import { CommonModule } from '@angular/common';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
-import { SubjectMarksComponent } from './Pages/subject-marks/subject-marks.component';
 // import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 
@@ -35,7 +34,6 @@ import { SubjectMarksComponent } from './Pages/subject-marks/subject-marks.compo
     DreamJobComponent,
     FillCareerComponent,
     HomepageComponent,
-    SubjectMarksComponent,
     
    
   ],

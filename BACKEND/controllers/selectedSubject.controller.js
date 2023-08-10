@@ -33,8 +33,6 @@ exports.saveSelectedSubjects = async (req, res) => {
       .status(500)
       .json({ error: "Failed to save selected subjects to the database" });
   }
-
- 
 };
 
 

@@ -9,7 +9,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
-import { SubjectMarksComponent } from './Pages/subject-marks/subject-marks.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,7 +25,6 @@ const routes: Routes = [
   { path: 'landing', component: LandingPageComponent },
   { path: 'subjects', component: SubjectsComponent },
   { path: 'hamburger', component: HamburgerComponent},
-  { path: 'subjectMarks', component: SubjectMarksComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
