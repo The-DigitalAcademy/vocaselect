@@ -29,14 +29,19 @@ module.exports = (sequelize, Sequelize) => {
 
     });
   
-    Subject.associate = (models) => {
-      // Associate Subject with User (one-to-many relationship)
-      Subject.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false,
-        },
-      });
-    };
+    // Subject.associate = (models) => {
+    //   // Associate Subject with User (one-to-many relationship)
+    //   Subject.belongsTo(models.User, {
+    //     foreignKey: {
+    //       allowNull: false,
+    //     },
+    //   });
+    // };
+
+    // Subject.associate = (models) => {
+    //   // Associate Subject with User (one-to-many relationship)
+    //   Subject.hasMany(models.UserSelectedSubject);
+    // };
   
     return Subject;
   };
