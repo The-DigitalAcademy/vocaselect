@@ -5,19 +5,29 @@
   <button (click)="generateCourses()">Generate Recommendations</button>
 </div>
 
-
-
 <div>
-  <h3>Course Recommendations:</h3>
-      
+  <h3>Course Recommendations:</h3> 
   <ul>
-
     <li *ngFor="let recommendation of recommendations">
-   
       <strong>University:</strong> {{ recommendation["uniName"] }}<br />
       <strong>Course:</strong> {{ recommendation["courseName"] }}<br />
-      <!-- <strong>Description:</strong> {{ recommendation['"courseDescription"'] }}<br /> -->
-      <!-- <strong>Admission Requirements:</strong> {{ recommendation['"admissionRequirements"'] }}<br /> -->
+      <strong>Description:</strong> {{ recommendation["courseDescription"] }}<br /> 
+      <strong>Admission Requirements:</strong> {{ recommendation["admissionRequirements"] }}<br />
     </li>
   </ul>
 </div>
+
+<!-- <div class="container" style="overflow-y: scroll; min-height: 800px;">
+  <h1 class="category-heading">Course Recommendations</h1>
+  <div class="row">
+    <div class="col-sm-3" *ngFor="let recommendation of recommendations">
+      <div class="card mb-3">
+        <img [src]="" class="card-img-top" alt="" style="max-height: 160px;">
+        <div class="card-body">
+          <h2 class="card-title">{{ recommendation["uniName"]}}</h2>
+          <h2 class="card-title">{{ recommendation["courseName"]}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

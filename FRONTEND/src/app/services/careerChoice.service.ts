@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CareerRecommendationService {
   private apiUrl = 'http://localhost:9000/enterCareer'; // Replace with the actual backend API URL
 
-  constructor(private http: HttpClient) {} 
+  constructor(private http: HttpClient) {}
 
   generateCourses(careerChoice: string): Observable<any> {
     // return this.http.post(`${this.apiUrl}/enterCareer`, { careerChoice });

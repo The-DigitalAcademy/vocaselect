@@ -16,6 +16,7 @@ export class CareerChoiceComponent implements OnInit {
 
 
   ngOnInit(): void {
+    // this.generateCourses();
   }
 
   generateCourses(): void {
@@ -53,5 +54,7 @@ export class CareerChoiceComponent implements OnInit {
   //   return courses;
   // }
 
-
+  //using ngclass to change background color for each card
+  // cardBackgroundColors: string[] = ["#cde4f1", "#B9D9EB", "#B9D9EB", "#cde4f1"]; // Add more colors as desired
+  // #D8BFD8" - pink
 }
