@@ -13,7 +13,7 @@ exports.generateCareer = async (req, res) => {
   
     Explain the course description and admission requirement in layman's terms for high school minors of age 15 years to understand.
   
-    The object must have the following structure: { uniName: string, courseName: string, courseDescription: string, admissionRequirements: string }
+    The object must have the following structure: { uniName, courseName, courseDescription, admissionRequirements }
   
     Here is an example: 
     [
