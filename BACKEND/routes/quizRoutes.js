@@ -1,5 +1,5 @@
 const express = require("express");
-const quizController = require("../../controllers/OpenAI/quizController");
+const quizController = require("../controllers/OpenAI/quizController");
 
 const router = express.Router();
 

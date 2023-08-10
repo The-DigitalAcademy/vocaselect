@@ -6,11 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CareerRecommendationService {
-  private apiUrl = 'http://localhost:9000'; // Replace with the actual backend API URL
+  private apiUrl = 'http://localhost:9000/enterCareer'; // Replace with the actual backend API URL
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {} 
 
-  generateCourses(enterCareer: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/enterCareer`, { enterCareer });
+  generateCourses(careerChoice: string): Observable<any> {
+    // return this.http.post(`${this.apiUrl}/enterCareer`, { careerChoice });
+
+    return this.http.post<any>(this.apiUrl, { careerChoice });
   }
 }

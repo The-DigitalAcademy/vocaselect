@@ -5,8 +5,8 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const userRoutes = require ('./routes/user.routes')
 
-const careerRoutes = require("./routes/OpenAI/careerRoutes");
-const quizRoutes = require("./routes/OpenAI/quizRoutes");
+const careerRoutes = require("./routes/careerRoutes");
+const quizRoutes = require("./routes/quizRoutes");
 
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");

@@ -1,5 +1,5 @@
 const express = require("express");
-const careerController = require("../../controllers/OpenAI/careerChoice.controller");
+const careerController = require("../controllers/OpenAI/careerChoice.controller");
 
 const router = express.Router();
 
@@ -17,11 +17,11 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               enterCareer:
+ *               careerChoice:
  *                 type: string
  *                 description: The preferred career choice for which recommendations are needed.
  *             example:
- *               enterCareer: "Software Engineer"
+ *               careerChoice: "Software Engineer"
  *     responses:
  *       200:
  *         description: Successful response with recommendations.
@@ -51,6 +51,6 @@ const router = express.Router();
 
 // router.post("/", careerController.generateCareer);
 // Define the route for generating career courses
-router.post('/', careerController.generateCourse);
+router.post('/', careerController.generateCareer);
 
 module.exports = router;

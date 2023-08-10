@@ -2,7 +2,7 @@ const { OpenAIApi } = require("openai");
 const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 
-const axios = require('axios');
+
 
 exports.generateCareerQuiz = async (req, res) => {
   try {
