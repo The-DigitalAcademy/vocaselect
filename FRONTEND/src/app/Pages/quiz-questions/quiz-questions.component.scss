@@ -11,6 +11,10 @@
   flex-direction: row;
   overflow: hidden;
 }
+input{
+ width:67vw !important;
+}
+
 
 
 // Use This To Modify Your Scss For Angular Material
@@ -21,6 +25,9 @@
       border-radius: 1rem;
       width: 17.5rem;
     }
+    input{
+      width:67vw !important;
+     }
 
   }
 }
@@ -40,6 +47,9 @@
      
       width: 380px;
       
+    }
+    .mat-form-field-outline{
+
     }
   }
 }
@@ -68,6 +78,9 @@
   }
 }
 
+.btns{
+  align-items: center;
+}
 
 // #bcolor[_ngcontent-iqx-c103] {
 //   background-color: #75A1DF;
@@ -138,9 +151,81 @@
 }
 
 .btns{
-  margin-left: 4rem;
+  // margin-left: 4rem;
 }
 
 h1{
   text-align: center;
 }
+
+
+:host {
+  ::ng-deep{
+    #bcolor[_ngcontent-qap-c103] {
+      background-color: #75A1DF;
+      color: #FFFFFF;
+      margin-bottom: 2rem;
+  }
+    .mat-form-field-flex {
+      display: inline-flex;
+      align-items: baseline;
+      box-sizing: border-box;
+      width: 16.28rem;
+      // margin-top: 2rem;
+  }
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+ 
+  display: none;
+}
+.snd{
+  .mat-form-field {
+    display: none;
+    position: relative;
+    text-align: left;
+    margin-top: 3rem;
+  }
+     .mat-form-field-infix {
+  display: none;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: 180px;
+}
+
+
+}
+
+  }
+}
+
+
+:host {
+  ::ng-deep{
+    .mat-form-field {
+      position: relative;
+      text-align: left;
+      margin-top: 3rem;
+    }
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+      cursor: pointer;
+      width: 17rem;
+  }
+  }
+}
+
+
+
+// .mat-form-field-infix {
+//   display: none;
+//   position: relative;
+//   flex: auto;
+//   min-width: 0;
+//   width: 180px;
+// }
+
+
+// .mat-form-field {
+//   display: none;
+//   position: relative;
+//   text-align: left;
+// }

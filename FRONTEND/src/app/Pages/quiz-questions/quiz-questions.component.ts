@@ -15,22 +15,23 @@ export class QuizQuestionsComponent implements OnInit {
     firstCtrl: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
-    secondCtrl: ['', Validators.required],
+    // secondCtrl: ['', Validators.required],
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
   });
   fourthFormGroup = this._formBuilder.group({
-    fourthCtrl: ['', Validators.required],
+    // fourthCtrl: ['', Validators.required],
+
   });
   fifthFormGroup = this._formBuilder.group({
     fifthCtrl: ['', Validators.required],
   });
   sixthFormGroup = this._formBuilder.group({
-    sixthCtrl: ['', Validators.required],
+    // sixthCtrl: ['', Validators.required],
   });
   seventhFormGroup = this._formBuilder.group({
-    seventhCtrl: ['', Validators.required],
+    // seventhCtrl: ['', Validators.required],
   });
   eighthFormGroup = this._formBuilder.group({
     eighthCtrl: ['', Validators.required],
