@@ -18,14 +18,14 @@ exports.generateCareer = async (req, res) => {
     Here is an example: 
     [
       {
-        uniName: University of Johannesburg,
-        courseName: Bachelor of Science in Computer Science,
-        courseDescription: course description example,
+        uniName: University of Johannesburg
+        courseName: Bachelor of Science in Computer Science
+        courseDescription: course description example
         admissionRequirements: admission example
       },
       {
-        uniName: University of Pretoria,
-        courseName: Bachelor of Science in Information Systems,
+        uniName: University of Pretoria
+        courseName: Bachelor of Science in Information Systems
         courseDescription: course description example,
         admissionRequirements: admission example
       },
