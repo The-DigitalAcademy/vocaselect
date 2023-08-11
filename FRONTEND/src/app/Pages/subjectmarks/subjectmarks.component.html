@@ -1,0 +1,39 @@
+<div class="container content">
+  <div class="subjects-page">
+    <p class="fs-4">Subjects marks</p>
+    <!-- Sending selected subjects to be stored on database on Click -->
+    <div class="flex" *ngFor="let subject of subjects">
+      <div class="flex-col" >
+        <h2>
+          {{ subject.subjectName }}
+        </h2><br/>
+      </div>
+      <div class="flex-col">
+        
+        <div class="form-group pt-30">
+          <!-- <label for="studentgrade">Your Grade</label> -->
+          <input
+          [id]="subject.selectedid"
+            type="number"
+            class="form-control w-70"
+            [value]="subject.subject_marks"
+            (change)="isChanged($event)"
+          
+          />
+    
+        </div>
+        <br>
+      </div>
+    </div>
+
+    <div class="row" id="btn-submit">
+      <!-- <button type="button" class="btn" (click)="sendSelectedSubjectsToServer()" routerLink="/dream-job">Submit</button> -->
+      <button type="button" class="btn" (click)="onSubmit()">Submit</button>
+    </div>
+  </div>
+
+  <div class="eclipse-2"></div>
+  <div class="eclipse-1"></div>
+  <div class="eclipse-6"></div>
+  <div class="eclipse-4"></div>
+</div>

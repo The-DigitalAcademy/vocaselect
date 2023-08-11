@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomeQuizComponent } from './Pages/welcome-quiz/welcome-quiz.component';
 import { LoginComponent } from './Pages/login/login.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
+import { SubjectmarksComponent } from './Pages/subjectmarks/subjectmarks.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { RegisterComponent } from './Pages/register/register.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'register', component: LoginComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'subjects', component: SubjectsComponent },
+  { path: 'subjectmarks', component: SubjectmarksComponent },
   { path: 'hamburger', component: HamburgerComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
