@@ -10,13 +10,11 @@ export class CareerChoiceComponent implements OnInit {
   careerChoice: string = ''; // User's career choice
   recommendations: any[] = [];
 
-
-
   constructor(private courseService: CareerRecommendationService) {}
 
 
   ngOnInit(): void {
-    // this.generateCourses();
+    this.generateCourses();
   }
 
   generateCourses(): void {

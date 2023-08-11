@@ -22,24 +22,30 @@ module.exports = (sequelize, Sequelize) => {
         subjectName: {
         type: Sequelize.STRING,
         allowNull: false,
+        validator:{
+          notEmpty:true
+        }
       },
 
-      mark: {
-        type: Sequelize.STRING,
-        allowNull: false
-      }
-      // Add other fields related to subjects as needed
     });
   
+    // Subject.associate = (models) => {
+    //   // Associate Subject with User (one-to-many relationship)
+    //   Subject.belongsTo(models.User, {
+    //     foreignKey: {
+    //       allowNull: false,
+    //     },
+    //   });
+    // };
+
     Subject.associate = (models) => {
-      // Associate Subject with User (one-to-many relationship)
-      Subject.belongsTo(models.User, {
-        foreignKey: {
-          allowNull: false,
-        },
+      Subject.belongsToMany(models.User, {
+        through: models.UserSubject,
+        as: "selectedByUsers",
+        foreignKey: "subjectId",
       });
     };
-  
+    
     return Subject;
   };
   

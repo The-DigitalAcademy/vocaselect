@@ -3,16 +3,17 @@ const express = require("express");
 // const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
+// const subjectRoutes = require('./routes/subjects.routes')
 
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 
-const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
-
 //SWAGGER 
 // const { specs, swaggerUi } = require('./swagger');
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 //Environment file
 require('dotenv').config();
@@ -27,18 +28,6 @@ var corsOptions = {
 };
 
 const db = require("./models");
-
-
-app.use(cors(corsOptions));
-
-//middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-
-
-
 db.sequelize.sync()
   .then(() => {
     console.log("Connected to the Vocaselect database!");
@@ -47,6 +36,14 @@ db.sequelize.sync()
     console.log("Failed to sync db: " + err.message);
   })
 
+app.use(cors(corsOptions));
+
+//middleware
+app.use(bodyParser.json());
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser())
+
 // parse requests of content-type - application/json
 // app.use(bodyParser.json());
 
@@ -54,7 +51,13 @@ db.sequelize.sync()
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 
+// routes for getting all subjets
 
+// app.use('/app/getting')
+
+// app.use('/api/user_selected_subjects', selectedSubjectRoutes);
+
+// app.use('/api', selectedSubjectsRouter); 
 // Import the deleteUserById method (replace this with the actual path to your method file)
 const { deleteUserById } = require('./controllers/user.controllers');
 

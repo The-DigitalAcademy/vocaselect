@@ -1,8 +1,9 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { UserService } from 'src/app/_services/user.service';
-// import { AuthService } from 'src/app/_services/auth.service';
-// import { TokenStorageService } from 'src/app/_services/token-storage.service';
-
+import { AuthService } from 'src/app/_services/auth.service';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 // Login Component Calls TokenStorageService Methods To Check The LoggedIn Status And Save Token And User Info To Session Storage.
 
@@ -16,45 +17,55 @@ import { UserService } from 'src/app/_services/user.service';
   providedIn: 'root'
 })
 export class LoginComponent implements OnInit {
-  form: any = {
-    username: null,
-    password: null
-  };
-  isLoggedIn = false;
-  isLoginFailed = false;
+
+  loginForm!: FormGroup;
+  users!: any;
+  email!: string;
+  invalidCredentials = false;
   errorMessage = '';
   // isLoading: '';
   // roles: string[] = [];
 
-  constructor(private userServ: UserService) { }
 
-  login() {
-    // this.isLoading = true;
-    this.userServ.login(this.credentials).subscribe(
-      (response) => {
-        // Handle successful login here
-        console.log('Login successful!', response);
-        // You can redirect to another page or perform other actions upon successful login
-        // this.isLoading = false;
-      },
-      (error) => {
-        // Handle login error here
-        console.error('Login failed!', error);
-        // this.isLoading = false;
-        // Show an error message to the user or perform other actions upon login failure
-      }
-    );
-  }
-  credentials(credentials: any) {
-    throw new Error('Method not implemented.');
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public router: Router, private formB: FormBuilder,) {
+    this.loginForm = this.formB.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]],
+    });
   }
 
   ngOnInit(): void {
-  //  if (this.tokenStorage.getToken())  {
-    //   this.isLoggedIn = true;
-    //   this.roles = this.storageService.getUser().roles;
-    // }else{
-    //   //redirect to login screen
-    }
-}
+    this.tokenStorage.signOut();
+    this.invalidCredentials = false;
+  }
 
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      this.authService.login(this.loginForm.value).subscribe({
+        next: data => {
+          this.tokenStorage.saveToken(data.token);
+          console.log(data);
+          this.tokenStorage.saveUser(data.user);
+          console.log(data)
+          this.router.navigate(['/home']);
+        },
+        error: err => {
+          console.log(err)
+          if (err?.status == 401) {
+            this.errorMessage = "Incorrect username or password provided!";
+          } else {
+            this.errorMessage = err.error.message;
+          }
+
+          // this.toastr.error("Login Failed, Try Again")
+        },
+
+      });
+    } else {
+      this.invalidCredentials = true;
+      console.log("Wrong credentials");
+    }
+
+  }
+
+}

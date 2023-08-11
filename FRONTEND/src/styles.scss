@@ -1,7 +1,13 @@
+
+
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
+// @tailwind base;
 @tailwind components;
 @tailwind utilities;
+// @import '~material-icons/iconfont/material-icons.css';
+.body{
+    background-color: #F2F6FD  ;
+}
 
 :root {
     --primary-color: #fff;
@@ -24,7 +30,7 @@ body {
     background: linear-gradient(#c2e8e6, #9198e5);
     z-index: -999999;
     top: 40px;
-    left: 150px;
+    left: 60px;
 }
 .eclipse-2{
     position: fixed;
@@ -80,4 +86,18 @@ body {
     height: 200px;
     // background-color: #E6E6FA;
     background: linear-gradient(#fff, #cecef0);
+}
+.container{
+    z-index: 1;
+    position: relative;
+}
+
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
