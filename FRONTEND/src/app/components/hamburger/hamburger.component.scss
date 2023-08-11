@@ -1,30 +1,28 @@
-// body {
-// 	margin: 0;
-// 	padding: 0;
-// 	background: #efefef;
-// 	color: #333333;
-// 	font-family: "Roboto", sans-serif;
-// 	overflow-x: hidden;
-// }
 
 a {
 	text-decoration: none !important;
 	color: #232323;
 	transition: color 0.3s ease;
+	
 }
 
 a:hover {
-	color: #2ecc71;
+	color: #17A2B8;
 }
 
 #menuToggle {
 	display: block;
-	position: absolute;
+	position: fixed;
 	top: 50px;
-	right: 50px;
+	left: 50px;
 	z-index: 1;
 	-webkit-user-select: none;
 	user-select: none;
+
+	.profile{
+		padding-bottom: 2rem;
+	}
+	
 }
 
 #menuToggle input {
@@ -81,17 +79,17 @@ a:hover {
 
 #menu {
 	position: absolute;
-	width: 300px;
+	width: 250px;
 	margin: -100px 0 0 0;
-	padding: 50px;
+	padding: -50px;
 	padding-top: 100px;
-  height: 100vh;
-	right: -100px;
-	background: #ededed;
+    height: 60rem;
+	left: -50px;
+	background: var(--background-color);
 	list-style-type: none;
 	-webkit-font-smoothing: antialiased;
 	transform-origin: 0% 0%;
-	transform: translate(100%, 0);
+	transform: translate(-100%, 100%);
 
 	transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
 
@@ -100,11 +98,13 @@ a:hover {
     width: 80px;
     height: 80px;
     border-radius: 50%;
+	margin-left: 2rem;
   }
   
   .name {
     margin-top: 8px;
     font-weight: normal;
+	margin-left: .5rem;
   }
   
   .designation {
@@ -127,17 +127,33 @@ a:hover {
 #menu li {
 	padding: 10px 0;
 	font-size: 20px;
-  font-weight:500;
-  line-height: 3px;
+   font-weight:500;
+   line-height: 3px;
+   font-weight: bold;
 
   i{
     gap: 5px;
     padding: 0 15px;
   }
+
 }
 
 #menuToggle input:checked~ul {
 	transform: scale(1.0, 1.0);
 	opacity: 1;
+}
+
+.chevron {
+	display: flex;
+	justify-content: flex-end;
+	position: relative;
+	top: -5rem;
+	
+}
+
+.bi-chevron-right::before {
+    content: "\f285";
+    position: relative;
+    top: 3.9rem;
 }
 
