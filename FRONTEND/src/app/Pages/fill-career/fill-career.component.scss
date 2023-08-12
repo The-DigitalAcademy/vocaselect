@@ -81,3 +81,14 @@
     
 }
 
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px; /* Adjust as needed */
+}
+
+.loader-container img {
+  width: 50px; /* Adjust loader size */
+}
