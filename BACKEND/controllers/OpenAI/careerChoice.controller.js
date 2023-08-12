@@ -6,10 +6,20 @@ const openai = new OpenAIApi(configuration);
 
 exports.generateCareer = async (req, res) => {
   try {
+    
+    //uses the body-parser middleware - destructuring assigment
+    // Extract the user's chosen career choice from the request body
     const { careerChoice} = req.body;
+
+     // Check if the careerChoice is provided
+     if (!careerChoice || careerChoice.trim() === "") {
+      return res.status(400).json({ error: "Please provide a valid career choice." });
+    }
+
+    //AI prompt 
     const prompt = `Please recommend a maximum of six courses (only one course per university) and short description which is explained in laymans terms like to a 5 year old for this career ${careerChoice} in South Africa. Add also a faculty prospectus and admission criteria (laymans terms like to a 5 year old) for that specific course. Format the response JSON Format
     
-    This must be returned as a stringified JSON object.
+    This must be returned as a JSON object.
   
     Explain the course description and admission requirement in layman's terms for high school minors of age 15 years to understand.
   
@@ -32,6 +42,7 @@ exports.generateCareer = async (req, res) => {
     ]
     `;
     
+    //asking the AI to complete the prompt you've provided with additional text 
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt,
@@ -39,7 +50,6 @@ exports.generateCareer = async (req, res) => {
       max_tokens: 1000,
     });
     
-    // console.log(completion.data.choices[0].text)
 
      // Extract the course recommendations text from the API response
      const courseRecommendations = completion.data.choices[0].text;

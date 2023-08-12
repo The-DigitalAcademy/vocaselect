@@ -1,6 +1,5 @@
 //Packages
 const express = require("express");
-// const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
@@ -38,17 +37,16 @@ db.sequelize.sync()
 
 app.use(cors(corsOptions));
 
-//middleware
+//Middlewares
+// parse requests of content-type - application/json
 app.use(bodyParser.json());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-// parse requests of content-type - application/json
-// app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // routes for getting all subjets
