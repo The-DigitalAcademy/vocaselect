@@ -12,7 +12,7 @@ import { LoginComponent } from './Pages/login/login.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { WelcomeQuizComponent } from './Pages/welcome-quiz/welcome-quiz.component';
-import { UserService } from './_services/user.service';
+// import { UserService } from './_services/user.service';
 import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
 
 import { CommonModule } from '@angular/common';
@@ -21,6 +21,7 @@ import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesComponent } from './Pages/courses/courses.component';
+import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
 // import {MatButtonModule} from '@angular/material/button';
 
 // import {MatSidenavModule} from '@angular/material/sidenav';
@@ -68,7 +69,7 @@ import { CoursesComponent } from './Pages/courses/courses.component';
     // MatButtonModule
     
   ],
-  providers: [ UserService ],
+  providers: [ SharedDataService ],
   schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 

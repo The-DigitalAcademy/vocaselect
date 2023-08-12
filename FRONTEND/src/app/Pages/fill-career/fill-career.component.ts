@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
-import { Router } from '@angular/router';
 
+import { Router } from '@angular/router';
+// ApiSharedService
 @Component({
   selector: 'app-fill-career',
   templateUrl: './fill-career.component.html',
@@ -11,7 +12,12 @@ export class FillCareerComponent implements OnInit {
   careerChoice: string = ''; // User's career choice
   recommendations: any[] = [];
 
-  constructor(private router: Router, private courseService: CareerRecommendationService) { }
+  showRecommendations: boolean = false;
+
+  constructor(
+    private router: Router, 
+    private courseService: CareerRecommendationService,
+    ) { }
 
   ngOnInit(): void {
     
@@ -23,15 +29,14 @@ export class FillCareerComponent implements OnInit {
   generateCourses(): void {
     if (this.careerChoice) {
       this.courseService.generateCourses(this.careerChoice)
-        .subscribe((response) => {
-          this.recommendations = response;
-
-           // Navigate to CoursesComponent with careerChoice parameter
-           this.router.navigate(['/courses', this.careerChoice]);
-        },
-        (error) => {
-          console.error('Error occurred:', error);
-        } 
+        .subscribe(
+          (response) => {
+            this.recommendations = response;
+            this.showRecommendations = true; // Show the recommendations
+          },
+          (error) => {
+            console.error('Error occurred:', error);
+          }
         );
     }
   }
