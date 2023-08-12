@@ -6,7 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CareerRecommendationService {
-  private apiUrl = 'http://localhost:9000/enterCareer'; // Replace with the actual backend API URL
+  //hosted backend
+  private apiUrl = 'https://backend-ai-a6r3.onrender.com/enterCareer';
+
+  //local backend URL
+  // private apiUrl = 'http://localhost:9000/enterCareer'; 
 
   constructor(private http: HttpClient) {}
 

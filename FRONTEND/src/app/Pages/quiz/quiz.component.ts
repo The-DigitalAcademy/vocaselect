@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CareerQuizService } from '../../services/quiz.service';
+import { CareerQuizService } from '../../_services/_ChatGPT_Services/quiz.service';
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',

@@ -6,7 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CareerQuizService {
-  private backendUrl = 'http://localhost:9000';
+  
+  // HOSTED BACKEND
+  private backendUrl = 'https://backend-ai-a6r3.onrender.com'
+
+  //LOCAL BACKEND 
+  // private backendUrl = 'http://localhost:9000';
 
   constructor(private http: HttpClient) {}
 

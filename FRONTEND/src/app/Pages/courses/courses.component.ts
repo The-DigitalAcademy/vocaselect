@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CareerRecommendationService } from '../../services/careerChoice.service';
+import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
 import {  ActivatedRoute, Router } from '@angular/router';
 
 @Component({
