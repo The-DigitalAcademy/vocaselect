@@ -20,18 +20,23 @@ exports.generateCareer = async (req, res) => {
     const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a stringified JSON representation.
 
     Explain the course description and admission requirements in layman's terms for high school minors of age 15 years to understand.
-
-    The object must have the following structure:
+    
+    The JSON Format object must have the following structure:
     [
       {
-        "uniName": "[uniName]",
-        "courseName": "[courseName]",
-        "courseDescription": "[courseDescription]",
-        "admissionRequirements": "[admissionRequirements]"
+        uniName: University of Johannesburg,
+        courseName: Bachelor of Science in Computer Science,
+        courseDescription: Course description example,
+        admissionRequirements: Admission example
       },
-      // ... (more courses)
-    ]`;
-
+      {
+        uniName: University of Pretoria,
+        courseName: Bachelor of Science in Information Systems,
+        courseDescription: Course description example,
+        admissionRequirements: Admission example
+      }
+    ]    
+    `;
     
     //asking the AI to complete the prompt you've provided with additional text 
     const completion = await openai.createCompletion({
@@ -68,8 +73,7 @@ function parseCourseRecommendations(text) {
     const [key, value] = line.split(':').map(part => part.trim());
 
     if (key && value) {
-      // Replace placeholders with actual values
-      currentCourse[key] = value.replace(/\[|\]/g, '');
+      currentCourse[key] = value;
     } else if (Object.keys(currentCourse).length > 0) {
       courses.push(currentCourse);
       currentCourse = {};
@@ -82,5 +86,4 @@ function parseCourseRecommendations(text) {
 
   return courses;
 }
-
 
