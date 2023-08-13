@@ -102,9 +102,13 @@
 }
 
 .card-title {
-  font-size: 22px;
+  font-size: 20px;
+  font-weight: normal;
 }
 
+.card {
+  pointer: cursor;
+}
 
 .eclipse-2, .eclipse-1{
   background: linear-gradient(#fff, #cecef0);

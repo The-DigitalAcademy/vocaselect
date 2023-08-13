@@ -53,14 +53,31 @@ exports.generateCareer = async (req, res) => {
      // Parse the course recommendations text into structured course objects
      const courses = parseCourseRecommendations(courseRecommendations);
  
-     // Send the parsed course recommendations as a JSON response
-     res.status(200).json(courses);
+     const extractedCourses = [];
+
+     for (const course of courses) {
+      const uniName = course.uniName || "";
+      const courseName = course.courseName || "";
+      const admissionRequirements = course.admissionRequirements || "";
+      const courseDescription = course.courseDescription || "";
+
+      extractedCourses.push({
+        uniName,
+        courseName,
+        admissionRequirements,
+        courseDescription,
+      });
+    }
+
+    // Send the extracted course recommendations as a JSON response
+    res.status(200).json(extractedCourses);
     
   } catch (err) {
     console.error("Error occurred:", err);
     res.status(500).json({ error: "An error occurred while generating recommendations." });
   }
 };
+
 
 
 // Function to parse course recommendations text into structured course objects

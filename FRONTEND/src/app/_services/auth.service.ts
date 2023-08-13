@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Users } from '../types/users';
+import { Users } from '../_Interface/users';
 
 const apiUrl = environment.baseUrl;
 const httpOptions = {

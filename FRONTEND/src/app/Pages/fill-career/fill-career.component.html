@@ -44,11 +44,11 @@
 <div  *ngIf="showRecommendations"  class="container">
     <h1 class="category-heading">Suitable Courses</h1>
     <div class="row">
-        <div class="col-sm-3" *ngFor="let recommendation of recommendations; let i=index">
-            <div class="card mb-3" [style.background-color]="cardBackgroundColors[i]">
+        <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
+            <div class="mb-3 card" [style.background-color]="cardBackgroundColors[i]" [routerLink]="['/careerChoice', ]">
                 <div class="card-body">
                     <!-- <h2 class="card-title">{{ recommendation["uniName"] }}</h2> -->
-                    <h3 class="card-title">{{ recommendation["courseName"] }}</h3>
+                    <h3 class="card-title">{{ course.courseName }}</h3>
                 </div>
             </div>
         </div>

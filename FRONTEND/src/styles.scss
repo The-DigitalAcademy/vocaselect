@@ -5,9 +5,17 @@
 @tailwind components;
 @tailwind utilities;
 // @import '~material-icons/iconfont/material-icons.css';
-.body{
-    background-color: #F2F6FD  ;
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: ; */
+
 }
+
 
 :root {
     --primary-color: #fff;
@@ -18,7 +26,7 @@
 }
 
 body {
-    background-color: #F2F6FD;
+    background-color: var(--background-color);
 }
   
 

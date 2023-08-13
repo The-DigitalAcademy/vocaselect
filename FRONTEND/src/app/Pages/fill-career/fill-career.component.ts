@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
 
 import { Router } from '@angular/router';
+import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 // ApiSharedService
 @Component({
   selector: 'app-fill-career',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class FillCareerComponent implements OnInit {
   careerChoice: string = ''; // User's career choice
-  recommendations: any[] = [];
+  courseRecommendations: CourseRecommendation[] = [];;
 
   //show course recommendations from api
   showRecommendations: boolean = false;
@@ -37,8 +38,7 @@ export class FillCareerComponent implements OnInit {
         .subscribe(
           (response) => {
           
-          
-            this.recommendations = response;
+            this.courseRecommendations = response;
             console.log(response)
             this.showLoader = false; // Hide the loader and message
             this.showRecommendations = true; // Show the recommendations
@@ -51,7 +51,7 @@ export class FillCareerComponent implements OnInit {
   }
 
   //using ngclass to change background color for each card
-  cardBackgroundColors: string[] = ["#D8BFD8", "#B9D9EB", "#B9D9EB", "#cde4f1", "#D8BFD8", "#D8BFD8"];
+  cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
   // #D8BFD8" - pink
 
 }
