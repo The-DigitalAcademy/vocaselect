@@ -54,8 +54,7 @@ exports.generateCareer = async (req, res) => {
      const courses = parseCourseRecommendations(courseRecommendations);
  
      // Send the parsed course recommendations as a JSON response
-     // Stringify the courses array and send as JSON response
-    res.status(200).json(JSON.stringify(courses, null, 2)); // The second argument (null) is for replacer, and the third argument (2) is for indentation
+     res.status(200).json(courses);
     
   } catch (err) {
     console.error("Error occurred:", err);
