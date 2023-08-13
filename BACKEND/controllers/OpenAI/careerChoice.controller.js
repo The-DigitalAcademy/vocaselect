@@ -17,27 +17,25 @@ exports.generateCareer = async (req, res) => {
     }
 
     //AI prompt 
-    const prompt = `Please recommend a maximum of six courses (only one course per university) and short description which is explained in laymans terms like to a 5 year old for this career ${careerChoice} in South Africa. Provide only undergraduate qualification / course. Add also a faculty prospectus and admission criteria (laymans terms like to a 5 year old) for that specific course. Format the response JSON representation
-  
-    Explain the course description and admission requirement in layman's terms for high school minors of age 15 years to understand.
-  
-    The object must have the following structure: { uniName, courseName, courseDescription, admissionRequirements }
-  
-    Here is an example: 
+    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a JSON representation.
+
+    Explain the course description and admission requirements in layman's terms for high school minors of age 15 years to understand.
+    
+    The object must have the following structure:
     [
       {
-        uniName: e.g University of Johannesburg
-        courseName: e.g Bachelor of Science in Computer Science
-        courseDescription: e.g course description example
-        admissionRequirements: e.g admission example
+        "uniName": "University of Johannesburg",
+        "courseName": "Bachelor of Science in Computer Science",
+        "courseDescription": "Course description example",
+        "admissionRequirements": "Admission example"
       },
       {
-        uniName: e.g University of Pretoria
-        courseName: e.g Bachelor of Science in Information Systems
-        courseDescription: e.g course description example,
-        admissionRequirements: e.g admission example
-      },
-    ]
+        "uniName": "University of Pretoria",
+        "courseName": "Bachelor of Science in Information Systems",
+        "courseDescription": "Course description example",
+        "admissionRequirements": "Admission example"
+      }
+    ]    
     `;
     
     //asking the AI to complete the prompt you've provided with additional text 
