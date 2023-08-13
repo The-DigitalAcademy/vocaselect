@@ -36,6 +36,8 @@ export class FillCareerComponent implements OnInit {
       this.courseService.generateCourses(this.careerChoice)
         .subscribe(
           (response) => {
+          
+          
             this.recommendations = response;
             console.log(response)
             this.showLoader = false; // Hide the loader and message
@@ -47,5 +49,7 @@ export class FillCareerComponent implements OnInit {
         );
     }
   }
+
+ 
 
 }
