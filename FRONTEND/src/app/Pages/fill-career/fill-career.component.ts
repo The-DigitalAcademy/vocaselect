@@ -3,32 +3,35 @@ import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/c
 
 import { Router } from '@angular/router';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
-// ApiSharedService
+
 @Component({
   selector: 'app-fill-career',
   templateUrl: './fill-career.component.html',
   styleUrls: ['./fill-career.component.scss']
 })
-export class FillCareerComponent implements OnInit {
-  careerChoice: string = ''; // User's career choice
-  courseRecommendations: CourseRecommendation[] = [];;
 
-  //show course recommendations from api
+export class FillCareerComponent implements OnInit {
+  // User's career choice
+  careerChoice: string = ''; 
+  
+  // Store course recommendations
+  courseRecommendations: CourseRecommendation[] = [];
+
+  // Flag to show course recommendations from the API
   showRecommendations: boolean = false;
 
-  //loader
+  // Flag to show a loader while generating recommendations
   showLoader: boolean = false;
 
-  constructor(
+  constructor (
     private router: Router, 
     private courseService: CareerRecommendationService,
-    ) { }
+  ) { }
+
 
   ngOnInit(): void {
-    
+    // Generate courses on component initialization
     this.generateCourses();
-    console.log("ffffffff")
-
   }
 
   generateCourses(): void {
@@ -37,7 +40,7 @@ export class FillCareerComponent implements OnInit {
       this.courseService.generateCourses(this.careerChoice)
         .subscribe(
           (response) => {
-          
+            // Store the generated recommendations
             this.courseRecommendations = response;
             console.log(response)
             this.showLoader = false; // Hide the loader and message
@@ -50,8 +53,7 @@ export class FillCareerComponent implements OnInit {
     }
   }
 
-  //using ngclass to change background color for each card
+  // Define colors for card background using ngClass
   cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
-  // #D8BFD8" - pink
 
 }

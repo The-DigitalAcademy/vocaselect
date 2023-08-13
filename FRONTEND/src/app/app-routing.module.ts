@@ -11,6 +11,7 @@ import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
 import { CoursesComponent } from './Pages/courses/courses.component';
+import { QuizComponent } from './Pages/quiz/quiz.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'hamburger', component: HamburgerComponent},
   { path: 'careerChoice', component: CareerChoiceComponent},
   { path: 'courses', component: CoursesComponent},
+  { path: 'quiz', component: QuizComponent},
+
 
 
   { path: '', redirectTo: 'landing', pathMatch: 'full' }

@@ -8,7 +8,7 @@ import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 })
 export class CareerRecommendationService {
   //hosted backend
-  // private apiUrl = 'https://backend-ai-a6r3.onrender.com/enterCareer';
+  // private apiUrl = 'https://backend-ai-a6r3.onrender.com';
 
   //local backend URL
   private apiUrl = 'http://localhost:9000/enterCareer'; 

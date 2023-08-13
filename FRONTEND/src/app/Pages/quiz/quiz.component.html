@@ -1,1 +1,7 @@
-<p>quiz works!</p>
+
+    <!-- Display career recommendations -->
+    <div *ngFor="let career of careerRecommendations">
+      <h2>{{ career.careerName }}</h2>
+      <p>{{ career.careerDescription }}</p>
+      <p>Salary: {{ career.careerSalary }}</p>
+    </div>

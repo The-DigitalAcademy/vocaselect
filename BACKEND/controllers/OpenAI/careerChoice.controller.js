@@ -109,3 +109,29 @@ function parseCourseRecommendations(text) {
   return courses;
 }
 
+// New endpoint for displaying course details
+exports.displayCourseDetails = async (req, res) => {
+  try {
+    const { extractedCourses } = req.body;
+    const { selectedCourseName } = req.params;
+
+    if (!selectedCourseName || selectedCourseName.trim() === "") {
+      return res.status(400).json({ error: "Please provide a valid course name." });
+    }
+
+    const selectedCourse = extractedCourses.find(course => course.courseName === selectedCourseName);
+
+    if (!selectedCourse) {
+      return res.status(404).json({ error: "Course not found." });
+    }
+
+    res.status(200).json(selectedCourse);
+
+  } catch (err) {
+    console.error("Error occurred:", err);
+    res.status(500).json({ error: "An error occurred while fetching course details." });
+  }
+};
+
+In 
+

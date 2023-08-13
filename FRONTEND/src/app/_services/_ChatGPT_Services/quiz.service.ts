@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 export class CareerQuizService {
   
   // HOSTED BACKEND
-  private backendUrl = 'https://backend-ai-a6r3.onrender.com'
+  // private backendUrl = 'https://backend-ai-a6r3.onrender.com'
 
   //LOCAL BACKEND 
-  // private backendUrl = 'http://localhost:9000';
+  private apiUrl = 'http://localhost:9000';
 
   constructor(private http: HttpClient) {}
 
-  submitQuizAnswers(answers: any): Observable<any> {
-    return this.http.post(`${this.backendUrl}/quiz`, answers);
+  generateCareerQuiz(answers: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/quiz`, answers);
   }
 }

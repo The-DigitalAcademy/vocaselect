@@ -1,8 +1,9 @@
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule,} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule} from '@angular/common/http';
 
 import { FormsModule } from '@angular/forms';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,7 +71,7 @@ import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.serv
     
   ],
   providers: [ SharedDataService ],
-  schemas: [NO_ERRORS_SCHEMA],
+  schemas: [],
   bootstrap: [AppComponent]
 
 })

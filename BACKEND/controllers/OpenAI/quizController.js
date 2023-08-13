@@ -53,7 +53,7 @@ exports.generateCareerQuiz = async (req, res) => {
 
     // Filter out empty lines and display at least 4 suitable careers
     const suitableCareers = recommendedCareers.filter(career => career.trim() !== '');
-    const displayedCareers = suitableCareers.slice(0, Math.min(22, suitableCareers.length)); 
+    const displayedCareers = suitableCareers.slice(0, Math.min(4, suitableCareers.length)); 
 
     const jsonResult = { quizRecommendations: displayedCareers };
     res.status(200).json(jsonResult);
