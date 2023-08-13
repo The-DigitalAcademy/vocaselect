@@ -50,6 +50,8 @@ export class FillCareerComponent implements OnInit {
     }
   }
 
- 
+  //using ngclass to change background color for each card
+  cardBackgroundColors: string[] = ["#D8BFD8", "#B9D9EB", "#B9D9EB", "#cde4f1", "#D8BFD8", "#D8BFD8"];
+  // #D8BFD8" - pink
 
 }
