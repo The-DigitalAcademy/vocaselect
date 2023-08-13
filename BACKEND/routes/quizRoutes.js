@@ -22,7 +22,7 @@ const router = express.Router();
  *                 items:
  *                   type: string
  *                 description: List of user's quiz answers.
- *                 example: ["Technology", "Creativity", "Collaboration", "Very important", "Yes, occasionally", "Intermediate", "Yes"]
+ *                 example: ["answer1":"reading books", answer2:"outgoing and creative",    "answer3":"teamwork or individual work ", "answer4":"Maths and Science (STEM)", "answer5":"dynamic work environment", "answer6":"drawn to unpredictability", "answer7":"growth opportunities", "answer8": "learn many skills", "answer9":"", "answer10":""]
  *             required:
  *               - answers
  *     responses:

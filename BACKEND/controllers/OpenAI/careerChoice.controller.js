@@ -38,13 +38,16 @@ exports.generateCareer = async (req, res) => {
     ]    
     `;
     
-    //asking the AI to complete the prompt you've provided with additional text 
-    const completion = await openai.createCompletion({
-      model: "text-davinci-003",
-      prompt,
-      temperature: 0.6,
-      max_tokens: 1000,
-    });
+    
+
+   //asking the AI to complete the prompt you've provided with additional text
+   const completion = await openai.createCompletion({
+     model: "text-davinci-003",
+     prompt,
+     temperature: 0.6,
+     max_tokens: 1000,
+   });
+
     
 
      // Extract the course recommendations text from the API response
@@ -68,15 +71,17 @@ exports.generateCareer = async (req, res) => {
         courseDescription,
       });
     }
-
-    // Send the extracted course recommendations as a JSON response
+     // Send the extracted course recommendations as a JSON response
     res.status(200).json(extractedCourses);
+
     
   } catch (err) {
     console.error("Error occurred:", err);
     res.status(500).json({ error: "An error occurred while generating recommendations." });
   }
 };
+
+
 
 
 

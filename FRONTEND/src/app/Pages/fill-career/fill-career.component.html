@@ -47,8 +47,9 @@
         <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
             <div class="mb-3 card" [style.background-color]="cardBackgroundColors[i]" [routerLink]="['/careerChoice', ]">
                 <div class="card-body">
-                    <!-- <h2 class="card-title">{{ recommendation["uniName"] }}</h2> -->
+                   
                     <h3 class="card-title">{{ course.courseName }}</h3>
+                     <h2 class="card-title">{{ course.uniName  }}</h2>
                 </div>
             </div>
         </div>

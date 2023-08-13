@@ -22,12 +22,27 @@ exports.generateCareerQuiz = async (req, res) => {
     9. How do you handle risk? (${answer9})\n
     10. What's your dream way to spend a year off work? (${answer10})\n
 
-    Based on your answers, please recommend a maximum of six (careers) careers and short interesting  description of what each profession does layman's terms to appeal to younger people(like you are explaining to a 5-year-old) in South Africa. Format the response JSON Format.`;
+    Based on your answers, please recommend a maximum of 4 (four) careers and short interesting  description of what each profession does in layman's terms to appeal to younger people(like you are explaining to a 5-year-old) in South Africa. Format the response in JSON  representation.
+    
+    Follow this object:
+    [
+      career1:
+      {
+        careerName: University of Johannesburg,
+        careerDescription: sample description like explaining to 5 year old,
+        careerSalary: salary in Rand,
+      },
+      career2
+      {
+        so on...
+      }
+    ]    
+    `;
 
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt,
-      temperature: 0,
+      temperature: 0.5,
       max_tokens: 1000,
     });
 
@@ -38,7 +53,7 @@ exports.generateCareerQuiz = async (req, res) => {
 
     // Filter out empty lines and display at least 4 suitable careers
     const suitableCareers = recommendedCareers.filter(career => career.trim() !== '');
-    const displayedCareers = suitableCareers.slice(0, Math.min(16, suitableCareers.length)); 
+    const displayedCareers = suitableCareers.slice(0, Math.min(22, suitableCareers.length)); 
 
     const jsonResult = { quizRecommendations: displayedCareers };
     res.status(200).json(jsonResult);
