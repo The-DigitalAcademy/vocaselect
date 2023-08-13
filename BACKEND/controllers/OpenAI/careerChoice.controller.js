@@ -17,7 +17,7 @@ exports.generateCareer = async (req, res) => {
     }
 
     //AI prompt 
-    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a JSON representation.
+    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a stringified JSON representation.
 
     Explain the course description and admission requirements in layman's terms for high school minors of age 15 years to understand.
     
@@ -54,7 +54,8 @@ exports.generateCareer = async (req, res) => {
      const courses = parseCourseRecommendations(courseRecommendations);
  
      // Send the parsed course recommendations as a JSON response
-     res.status(200).json(courses);
+     // Stringify the courses array and send as JSON response
+    res.status(200).json(JSON.stringify(courses, null, 2)); // The second argument (null) is for replacer, and the third argument (2) is for indentation
     
   } catch (err) {
     console.error("Error occurred:", err);

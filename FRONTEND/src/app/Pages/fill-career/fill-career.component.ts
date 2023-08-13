@@ -37,6 +37,7 @@ export class FillCareerComponent implements OnInit {
         .subscribe(
           (response) => {
             this.recommendations = response;
+            console.log(response)
             this.showLoader = false; // Hide the loader and message
             this.showRecommendations = true; // Show the recommendations
           },
