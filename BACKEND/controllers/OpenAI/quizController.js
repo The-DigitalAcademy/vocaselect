@@ -1,14 +1,19 @@
 const { OpenAIApi } = require("openai");
 const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
-const QuizAnswer = require("../../models/quizAnswers.model"); // Import your Sequelize model here
-const db = require("../../config/db.config");
+// const QuizAnswer = require("../../models/quizAnswers.model"); // Import your Sequelize model here
+// const db = require("../../config/db.config");
 
 exports.generateCareerQuiz = async (req, res) => {
   try {
     const {
       answer1,answer2,answer3,answer4,answer5,answer6,answer7,answer8,answer9, answer10
     } = req.body;
+
+    // Check if all answers are provided
+    // if (!answer1 || !answer2 || !answer3 || !answer4 || !answer5 || !answer6 || !answer7 || !answer8 || !answer9 || !answer10) {
+    //   return res.status(400).json({ error: "All answers are required." });
+    // }
 
     const prompt = `Quiz for Career Recommendation:\n
     1. What's your favorite way to spend free time? (${answer1})\n
@@ -30,12 +35,15 @@ exports.generateCareerQuiz = async (req, res) => {
       {
         careerName: University of Johannesburg,
         careerDescription: sample description like explaining to 5 year old,
-        careerSalary: salary in Rand,
+        careerSalary: Rand - month salary,
       },
       career2
       {
-        so on...
-      }
+        careerName: university name,
+        careerDescription: sample description like explaining to 5 year old,
+        careerSalary: Rand - month salary,
+      },
+      so on....
     ]    
     `;
 
@@ -53,18 +61,20 @@ exports.generateCareerQuiz = async (req, res) => {
 
     // Filter out empty lines and display at least 4 suitable careers
     const suitableCareers = recommendedCareers.filter(career => career.trim() !== '');
-    const displayedCareers = suitableCareers.slice(0, Math.min(4, suitableCareers.length)); 
+    console.log(suitableCareers)
+
+    const displayedCareers = suitableCareers.slice(0, Math.min(22, suitableCareers.length)); 
 
     const jsonResult = { quizRecommendations: displayedCareers };
 
-    // Assuming you have a Sequelize model QuizAnswer to store the generated recommendations
-    const quizAnswers = {
-      answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10,
-      careerRecommendations: JSON.stringify(jsonResult.quizRecommendations) // Store the recommendations as JSON
-    };
+    // // Assuming you have a Sequelize model QuizAnswer to store the generated recommendations
+    // const quizAnswers = {
+    //   answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10,
+    //   careerRecommendations: JSON.stringify(jsonResult.quizRecommendations) // Store the recommendations as JSON
+    // };
 
     // Use Sequelize's create method to insert the quiz answers and recommendations into the database
-    await QuizAnswer.create(quizAnswers);
+    // await QuizAnswer.create(quizAnswers);
 
     res.status(200).json(jsonResult);
 

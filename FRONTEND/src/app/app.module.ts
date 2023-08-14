@@ -1,10 +1,9 @@
 import { NgModule,} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
-import { FormsModule } from '@angular/forms';
 
-import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
@@ -21,19 +20,14 @@ import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesComponent } from './Pages/courses/courses.component';
-import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
+// import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
+
 // import {MatButtonModule} from '@angular/material/button';
 
 // import {MatSidenavModule} from '@angular/material/sidenav';
 // import { authInterceptorProviders } from './helpers/auth.interceptor';
 
 
-// import { CommonModule } from '@angular/common';
-// import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
-// import { HomepageComponent } from './Pages/homepage/homepage.component';
-// import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {MatButtonModule} from '@angular/material/button';
 
 // import {MatSidenavModule} from '@angular/material/sidenav';
 // import { authInterceptorProviders } from './helpers/auth.interceptor';
@@ -58,17 +52,16 @@ import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.serv
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
     CommonModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
     // MatSidenavModule, 
-    // MatButtonModule
-    
+    // MatButtonModule 
   ],
-  providers: [ SharedDataService ],
+  providers: [ ],
   schemas: [],
   bootstrap: [AppComponent]
 

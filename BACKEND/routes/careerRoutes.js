@@ -52,6 +52,6 @@ const router = express.Router();
 // router.post("/", careerController.generateCareer);
 // Define the route for generating career courses
 router.post('/', careerController.generateCareer);
-router.post('/display-course-details/:selectedCourseName', careerController.displayCourseDetails);
+// router.post('/display-course-details/:selectedCourseName', careerController.displayCourseDetails);
 
 module.exports = router;

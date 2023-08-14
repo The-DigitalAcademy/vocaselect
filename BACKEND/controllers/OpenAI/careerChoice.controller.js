@@ -37,8 +37,6 @@ exports.generateCareer = async (req, res) => {
       }
     ]    
     `;
-    
-    
 
    //asking the AI to complete the prompt you've provided with additional text
    const completion = await openai.createCompletion({
@@ -47,8 +45,6 @@ exports.generateCareer = async (req, res) => {
      temperature: 0.6,
      max_tokens: 1000,
    });
-
-    
 
      // Extract the course recommendations text from the API response
      const courseRecommendations = completion.data.choices[0].text;
@@ -115,28 +111,28 @@ function parseCourseRecommendations(text) {
 }
 
 // New endpoint for displaying course details
-exports.displayCourseDetails = async (req, res) => {
-  try {
-    const { extractedCourses } = req.body;
-    const { selectedCourseName } = req.params;
+// exports.displayCourseDetails = async (req, res) => {
+//   try {
+//     const { extractedCourses } = req.body;
+//     const { selectedCourseName } = req.params;
 
-    if (!selectedCourseName || selectedCourseName.trim() === "") {
-      return res.status(400).json({ error: "Please provide a valid course name." });
-    }
+//     if (!selectedCourseName || selectedCourseName.trim() === "") {
+//       return res.status(400).json({ error: "Please provide a valid course name." });
+//     }
 
-    const selectedCourse = extractedCourses.find(course => course.courseName === selectedCourseName);
+//     const selectedCourse = extractedCourses.find(course => course.courseName === selectedCourseName);
 
-    if (!selectedCourse) {
-      return res.status(404).json({ error: "Course not found." });
-    }
+//     if (!selectedCourse) {
+//       return res.status(404).json({ error: "Course not found." });
+//     }
 
-    res.status(200).json(selectedCourse);
+//     res.status(200).json(selectedCourse);
 
-  } catch (err) {
-    console.error("Error occurred:", err);
-    res.status(500).json({ error: "An error occurred while fetching course details." });
-  }
-};
+//   } catch (err) {
+//     console.error("Error occurred:", err);
+//     res.status(500).json({ error: "An error occurred while fetching course details." });
+//   }
+// };
 
 
 
