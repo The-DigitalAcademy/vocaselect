@@ -5,8 +5,8 @@
   height: 100vh;
   // overflow: hidden;
   margin-top: -5rem;
-  z-index: 1;
-  position: relative;
+  // z-index: 1;
+  position: static;
 
   .r-container{
     box-shadow: 1px 3px 5px 4px rgba(0,0,0,0.24);

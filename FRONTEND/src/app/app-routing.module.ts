@@ -10,6 +10,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'subjects', component: SubjectsComponent },
   { path: 'subjectmarks', component: SubjectmarksComponent },
   { path: 'hamburger', component: HamburgerComponent},
+  { path: 'nav', component: NavbarComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 

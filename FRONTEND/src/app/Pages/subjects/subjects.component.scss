@@ -1,12 +1,10 @@
-
-
 .btn {
   color: #fff;
   padding: 10px 5px;
   background-color: var(--button-color);
   border-radius: 14px;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 22px;
   width: 14rem;
   border: 0;
 
@@ -17,20 +15,23 @@
 }
 #btn-submit{
   justify-content: center;
-  padding: 18px;
+  // padding: 18px;
+  padding-top: 34rem;
 }
   
 .content{
   width: 100vw;
   height: 100vh;
   align-content: center;
-  padding-top: 1.5rem;
+  padding-top: 1.5px;
+  position: fixed;
   // display: block;
 
   p{
     font-weight: bolder;
     margin-left: 1rem;
     color: var(--text-color);
+    line-height: 1.2rem;
    
   }
 
@@ -40,7 +41,9 @@
   border-radius: 10px;
   height: 75%; 
   overflow: auto; 
-  // width: 100px; 
+  position: fixed;
+  width: 90%; 
+  margin-left:.5rem;
   border: 1px solid rgb(129, 127, 127);
   // padding-top: 10px;
   margin-top: 18px;
@@ -49,8 +52,10 @@
     font-size: 20px;
     align-items: center;
     padding:.5px;
-    margin-left: .5rem;
+    margin-left: 1.5rem;
     font-family:'Times New Roman', Times, serif;
+    // overflow-y: scroll;
+    
 
     label { 
       display: block; 

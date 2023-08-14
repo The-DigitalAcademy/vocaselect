@@ -1,6 +1,6 @@
 .navbar {
   margin-top: -2.5rem;
-//   display: flex;
+  display: flex;
 
   .backbutton {
     cursor: pointer;
@@ -8,7 +8,7 @@
   }
 
   .logo-img {
-//    margin-right: 10rem;
+   margin-right: 10rem;
    width: 150px;
   }
 }
@@ -16,13 +16,14 @@
 .career{
     justify-content: center;
     width:100wh;
+    position: fixed;
     
 
     img{
         // position: center;
         align-content: center;
         margin-bottom: -95px;
-        padding:20px 15px;
+        padding:15px 10px;
         width: 500px;
 
     }
@@ -33,7 +34,7 @@
     font-size: 25px;
     
     label{
-        margin-left: 2.5rem;
+        margin-left: 2.8rem;
     }
     input {
         margin-top: 0.5rem;
@@ -44,7 +45,7 @@
         border-style: solid;
         position: inherit;
         width:22rem;
-        margin-left: .5rem;
+        margin-left: 1.3rem;
 
     }
     

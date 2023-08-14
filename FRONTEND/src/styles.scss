@@ -1,8 +1,10 @@
+
+
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
+// @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+// @import '~material-icons/iconfont/material-icons.css';
 .body{
     background-color: #F2F6FD !important ;
 }
@@ -83,6 +85,15 @@
 }
 .container{
     z-index: 1;
-  position: relative;
+    position: relative;
 }
 
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}

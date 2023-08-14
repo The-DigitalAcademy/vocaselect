@@ -25,7 +25,7 @@ export class SubjectsComponent implements OnInit {
     // Fetch items from the API when the component initializes
     this.fetchSubjects();
     this.userId = this.tokenStorage.getUser().id;
-console.log(this.userId, 'user id')
+  console.log(this.userId, 'user id')
   }
 
   fetchSubjects() {

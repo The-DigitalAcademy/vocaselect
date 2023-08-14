@@ -23,6 +23,7 @@ export class UserService {
     return this.http.post<any>(apiUrl+ '/users', body)
   }
 
+  
   checkEmailExists(email:any): Observable<any> {
     return this.http.get(apiUrl + 'users/emailexist/' + email, { responseType: 'text' });
   }
