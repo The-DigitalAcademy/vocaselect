@@ -5,7 +5,7 @@ const subjectController = require('../controllers/selectedSubject.controller');
 router.post('/', subjectController.saveSelectedSubjects);
 
 router.post('/update', subjectController.updateSelectedSubjects);
-router.get('/:id', subjectController.getSelectedSubjects);
+router.get('/', subjectController.getSelectedSubjects);
 
 module.exports = router;
 

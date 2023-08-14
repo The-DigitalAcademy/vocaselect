@@ -24,9 +24,9 @@ export class SubjectmarksComponent implements OnInit {
   ngOnInit() {
     // Fetch items from the API when the component initializes
    
-    // if(!this.tokenStorage.getToken()){
-    //   //redirect to login page
-    // }
+    if(!this.tokenStorage.getToken()){
+      //redirect to login page
+    }
 
     this.fetchSubjects();
 
@@ -35,12 +35,9 @@ export class SubjectmarksComponent implements OnInit {
 
   fetchSubjects() {
     // const apiUrl = 'YOUR_API_ENDPOINT'; // Replace with your actual API endpoint URL
-    this.userId = this.tokenStorage.getUser().id;
-    this.subjectsService.getSelectedSubjects(this.userId).subscribe(
-      
+    this.subjectsService.getSelectedSubjects().subscribe(
       (response) => {
         console.log(response, 'subjects selecetd')
-        
         this.subjects = response;
       },
       (error) => {
