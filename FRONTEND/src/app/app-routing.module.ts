@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'subjects', component: SubjectsComponent },
-  { path: 'dream-job', component: DreamJobComponent },
+  { path: 'dream-job', component: DreamJobComponent, data: { showNav: true }},
   { path: 'home', component: HomepageComponent },
   { path: 'fill-career', component: FillCareerComponent },
   { path: 'welcome-quize', component: WelcomeQuizComponent },

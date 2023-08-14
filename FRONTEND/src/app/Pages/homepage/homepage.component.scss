@@ -1,26 +1,11 @@
-.custom-no-wrap {
-    flex-wrap: nowrap;
-  }
-.logo-img {
-    // text-align: center;
-    // margin: 0 auto; 
-    width: 90px; 
-    // align-self: center;
-    // padding-top: 10px;
-    // padding-right: 60px;
-    
-}
-.navbar{
-    background: var(background-color)
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-  }
 
-
+.homepage{
+  height: 100vh;
+  width: 100vw;
+  align-content: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+ 
 
   .card {
     background-color: white;
@@ -73,30 +58,32 @@ body {
   width: 35px;
 }
 
-.eclipse-2 {
-  bottom: inherit;
-  left: inherit; 
-  right: -70px;
-  top: -50px;
 }
+  
+// .eclipse-2 {
+//   bottom: inherit;
+//   left: inherit; 
+//   right: -70px;
+//   top: -50px;
+// }
 
-.eclipse-3 {
-  right: inherit;
-  left: -74px;
-  bottom: 124px;
-}
+// .eclipse-3 {
+//   right: inherit;
+//   left: -74px;
+//   bottom: 124px;
+// }
 
-.eclipse-4 {
-  height: 150px;
-  width: 150px;
-  left: 50px;
-  top: -120px;
-  right: inherit;
-}
+// .eclipse-4 {
+//   height: 150px;
+//   width: 150px;
+//   left: 50px;
+//   top: -120px;
+//   right: inherit;
+// }
 
-.eclipse-1 {
-  bottom: -35px;
-  right: 25px;
-  top: inherit;
-  left: inherit;
-}
+// .eclipse-1 {
+//   bottom: -35px;
+//   right: 25px;
+//   top: inherit;
+//   left: inherit;
+// }
