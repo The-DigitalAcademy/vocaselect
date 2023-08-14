@@ -21,6 +21,8 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { SubjectmarksComponent } from './Pages/subjectmarks/subjectmarks.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
+import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 // import {MatButtonModule} from '@angular/material/button';
 
 // import {MatSidenavModule} from '@angular/material/sidenav';
@@ -42,6 +44,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HomepageComponent,
     SubjectmarksComponent,
     NavbarComponent,
+    PasswordResetComponent,
+    RequestPasswordResetComponent,
    
    
   ],
