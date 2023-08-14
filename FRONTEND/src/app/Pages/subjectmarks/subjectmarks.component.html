@@ -5,10 +5,13 @@
         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" routerLink="/home"/>
       </svg>
 </div>
+<div class="marks-container">
   <h1>Subject Marks</h1>
 </div>
+</div>
   <div class="subjects-page">
-    <p>Update your marks:</p>
+    <div class="marks-container">
+      <p>Update your marks:</p>
     <!-- Sending selected subjects to be stored on the database on Click -->
     <div class="subject-card" *ngFor="let subject of subjects">
       <div class="subject-name">
@@ -32,6 +35,7 @@
       <button type="button" class="btn" (click)="onSubmit()">Update</button>
     </div>
   </div>
+    </div>
   <div class="eclipse-2"></div>
   <div class="eclipse-6"></div>
   <div class="eclipse-4"></div>

@@ -2,8 +2,6 @@
 .content{
     height: 100vh;
     justify-content: center;
-    // padding-top: 10px;
-    position: fixed;
 
     .heading{
         display: flex;
@@ -22,6 +20,12 @@
             margin-left: 3.8rem;
         }
     }
+
+    .marks-container {
+      margin-left: auto;
+      margin-right: auto;
+      width: 350px;
+  }
 
     .subjects-page{
       padding-top: 20px;

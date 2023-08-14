@@ -93,39 +93,36 @@ export class RegisterComponent implements OnInit {
   }
 
   login() {
+    //log the user in using the credentials provided on register
     this.authService.login({ username: this.registerForm.value.email, password: this.registerForm.value.password }).subscribe({
       next: data => {
 
+        //save the token and user data on token storage service.
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data.user);
 
+        //show notification that the user was successfully registered
         Swal.fire({
           title: 'Successfully registered',
           text: '',
           icon: 'success',
         }).then((result) => {
           if (result.value) {
+            //navigate the user to subjects page if the student is in grade 10 or above
+            //if the student is in a grade lower than 10 then the user will be navigated to dream-job page
+            if (this.registerForm.value.studentgrade >= 10) {
+              this.router.navigate(['/subjects']);
+            } else {
+              this.router.navigate(['/dream-job']);
+            }
             return;
           }
         });
- 
-        if (this.registerForm.value.studentgrade >= 10) {
-          // Handle the logic for the "Register" button click
-          // e.g., perform registration or any other action
-          this.router.navigate(['/subjects']);
-        } else {
-          // Handle the logic for the "Next" button click
-          // e.g., proceed to the next step or action 
-
-          this.router.navigate(['/dream-job']);
-        }
       },
       error: err => {
         console.log(err)
-        
         // this.toastr.error("Login Failed, Try Again")
-      },
-
+      }
     });
   }
 
@@ -174,6 +171,9 @@ export class RegisterComponent implements OnInit {
   onRegister() {
     if (this.registerForm.valid) {
 
+      //check if the email used for reistration doesn't exist
+      //if it exist return an alert with email already exist
+      //if email doen't exist create a new user
       this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
         next: (data) => {
           console.log(data);
@@ -189,14 +189,13 @@ export class RegisterComponent implements OnInit {
             });
           } else {
 
+            // create new user 
             this.authService.createUser(this.registerForm.value).subscribe(res => {
               this.user = res;
-              this.login();              
+              //if user registration was successfull login in the user
+              this.login();
             });
-           
           }
-
-
         },
 
         error: (err) => {
@@ -216,19 +215,14 @@ export class RegisterComponent implements OnInit {
             icon: 'error',
           }).then((result) => {
             if (result.value) {
-
+              return;
             }
           });
         }
       });
-
-
-
-
     } else {
       this.regInvalid = true;
       console.log('form not valid');
-
     }
   }
 }

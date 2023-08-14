@@ -24,9 +24,9 @@ export class TokenStorageService {
   public getToken(): any {
     
     const logged= window.sessionStorage.getItem(TOKEN_KEY);
-    if (logged) return JSON.parse(logged)
+    if (logged) return logged;
 
-    return null
+    return null;
   }
   
 

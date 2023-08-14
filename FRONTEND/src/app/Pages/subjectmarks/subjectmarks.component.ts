@@ -16,25 +16,24 @@ export class SubjectmarksComponent implements OnInit {
   subjects: any;
   public selectedSubjects: string[] = [];
 
-  allSelectedId: any = [];
+  updatedSubjectMarks: any = [];
   userId: any;
 
   constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
-    // Fetch items from the API when the component initializes
-   
-    // if(!this.tokenStorage.getToken()){
-    //   //redirect to login page
-    // }
+    //redirect to login page when there's no token or the user is not logged in
+    if(!this.tokenStorage.getToken()){
+      this.router.navigate(['login']);
+      
+    }
 
+    // Fetch subject items from the API when the component initializes
     this.fetchSubjects();
-
     
   }
 
   fetchSubjects() {
-    // const apiUrl = 'YOUR_API_ENDPOINT'; // Replace with your actual API endpoint URL
     this.userId = this.tokenStorage.getUser().id;
     this.subjectsService.getSelectedSubjects(this.userId).subscribe(
       
@@ -50,42 +49,36 @@ export class SubjectmarksComponent implements OnInit {
   }
 
   isChanged(event: any): void {
-   
-    if (this.allSelectedId.length > 0) {
+   // check if the subject marks changed and updated
+    if (this.updatedSubjectMarks.length > 0) {
       var isIncluded = false;
-      this.allSelectedId.map((obj: any) => {
+      this.updatedSubjectMarks.map((obj: any) => {
 
         if (obj.id === event.target.id) {
           obj.subject_marks = event.target.value;
           isIncluded = true;
         }
 
-
         return obj;
       });
 
       if (!isIncluded) {
-        this.allSelectedId.push({ id: event.target.id, subject_marks: event.target.value });
+        this.updatedSubjectMarks.push({ id: event.target.id, subject_marks: event.target.value });
       }
 
     } else {
-      this.allSelectedId.push({ id: event.target.id, subject_marks: event.target.value });
+      this.updatedSubjectMarks.push({ id: event.target.id, subject_marks: event.target.value });
     }
   }
 
-
-  // onSubmit():void {
-
-
-
   onSubmit(): void {
-    if (this.allSelectedId.length === 0) {
-      console.log("Please select a course");
+    if (this.updatedSubjectMarks.length === 0) {
+      console.log("Please update marks of the subjects");
       return;
     }
 
     // Make an HTTP POST request to the server with the selected subject IDs
-    this.subjectsService.updateSelectedSubjects(this.allSelectedId).subscribe(
+    this.subjectsService.updateSelectedSubjects(this.updatedSubjectMarks).subscribe(
       (response) => {
         console.log('Selected subjects sent successfully:', response);
         // If needed, you can navigate to another route after successful submission
