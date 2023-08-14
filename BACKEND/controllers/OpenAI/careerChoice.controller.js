@@ -59,11 +59,16 @@ exports.generateCareer = async (req, res) => {
      const extractedCourses = [];
 
      for (const course of courses) {
+      // If 'course.uniName' is falsy, assign an empty string to 'uniName'
       const uniName = course.uniName || "";
+      // If 'course.courseName' is falsy, assign an empty string to 'courseName'
       const courseName = course.courseName || "";
+
       const admissionRequirements = course.admissionRequirements || "";
+  
       const courseDescription = course.courseDescription || "";
 
+      // Create an object containing extracted course information and push it to 'extractedCourses' array
       extractedCourses.push({
         uniName,
         courseName,

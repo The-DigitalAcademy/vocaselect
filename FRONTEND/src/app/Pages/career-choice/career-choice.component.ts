@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
 
+import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
+
 @Component({
   selector: 'app-career-choice',
   templateUrl: './career-choice.component.html',
@@ -8,7 +10,9 @@ import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/c
 })
 export class CareerChoiceComponent implements OnInit {
   careerChoice: string = ''; // User's career choice
-  recommendations: any[] = [];
+  
+  // Store course recommendations
+  courseRecommendations: CourseRecommendation[] = [];
 
   constructor(private courseService: CareerRecommendationService) {}
 
@@ -20,13 +24,15 @@ export class CareerChoiceComponent implements OnInit {
   generateCourses(): void {
     if (this.careerChoice) {
       this.courseService.generateCourses(this.careerChoice)
-        .subscribe((response) => {
-          this.recommendations = response;
-          console.log(response)
-        },
-        (error) => {
-          console.error('Error occurred:', error);
-        } 
+        .subscribe(
+          (response) => {
+            // Store the generated recommendations
+            this.courseRecommendations = response;
+            console.log(response)
+          },
+          (error) => {
+            console.error('Error occurred:', error);
+          }
         );
     }
   }

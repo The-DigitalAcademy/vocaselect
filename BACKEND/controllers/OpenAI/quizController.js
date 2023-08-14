@@ -1,8 +1,8 @@
 const { OpenAIApi } = require("openai");
 const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
-
-
+const QuizAnswer = require("../../models/quizAnswers.model"); // Import your Sequelize model here
+const db = require("../../config/db.config");
 
 exports.generateCareerQuiz = async (req, res) => {
   try {
@@ -56,6 +56,16 @@ exports.generateCareerQuiz = async (req, res) => {
     const displayedCareers = suitableCareers.slice(0, Math.min(4, suitableCareers.length)); 
 
     const jsonResult = { quizRecommendations: displayedCareers };
+
+    // Assuming you have a Sequelize model QuizAnswer to store the generated recommendations
+    const quizAnswers = {
+      answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10,
+      careerRecommendations: JSON.stringify(jsonResult.quizRecommendations) // Store the recommendations as JSON
+    };
+
+    // Use Sequelize's create method to insert the quiz answers and recommendations into the database
+    await QuizAnswer.create(quizAnswers);
+
     res.status(200).json(jsonResult);
 
   } catch (err) {

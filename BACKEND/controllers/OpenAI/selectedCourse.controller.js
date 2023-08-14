@@ -10,7 +10,7 @@ router.post('/getUniversities', async (req, res) => {
     const { selectedCourseName } = req.body;
 
     // Construct a prompt using the selected course name
-    const prompt = `Please recommend universities offering ${selectedCourseName} in South Africa.`;
+    const prompt = `Please recommend 5 top universities offering ${selectedCourseName} in South Africa.`;
 
     // Make a request to the OpenAI API
     const completion = await openai.createCompletion({
