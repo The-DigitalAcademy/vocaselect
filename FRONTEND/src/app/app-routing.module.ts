@@ -8,7 +8,6 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { RegisterComponent } from './Pages/register/register.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
-import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
 import { CoursesComponent } from './Pages/courses/courses.component';
 import { QuizComponent } from './Pages/quiz/quiz.component';
@@ -27,7 +26,6 @@ const routes: Routes = [
   { path: 'register', component: LoginComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'subjects', component: SubjectsComponent },
-  { path: 'hamburger', component: HamburgerComponent},
   { path: 'careerChoice', component: CareerChoiceComponent},
   { path: 'courses', component: CoursesComponent},
   { path: 'quiz', component: QuizComponent},
