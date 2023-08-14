@@ -13,11 +13,10 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { CommonModule } from '@angular/common';
 import { UserService } from './_services/user.service';
-import { Login2Component } from './Pages/login2/login2.component';
+
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { WelcomeQuizComponent } from './Pages/welcome-quiz/welcome-quiz.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormBuilder, Validators} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -34,7 +33,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
     LoginComponent,
     RegisterComponent,
     SubjectsComponent,
-    Login2Component,
     NavbarComponent,
     WelcomeQuizComponent,
     QuizQuestionsComponent

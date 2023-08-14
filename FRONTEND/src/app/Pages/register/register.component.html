@@ -2,13 +2,13 @@
 <div class="eclipse-4"></div>
 <div class="eclipse-5"></div>
 <div class="eclipse-6"></div>
-<form
+<!-- <form
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
         #f="ngForm"
         novalidate
->
-    <div class="bg-grey-lighter min-screen flex flex-col">
+> -->
+    <!-- <div class="bg-grey-lighter min-screen flex flex-col">
         <div class="container  max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-3 ">
             <div class="bg-white r-container px-6 py-8 rounded shadow-md text-black w-full">
                 <img 
@@ -16,10 +16,10 @@
                 src="../../../assets/logo.png"
                 alt="Logo"
 
-              />
+              /> -->
                     
               
-              <div class="names">
+              <!-- <div class="names">
                 <div class="form-group pt-25" >
                   <label for="name">Your First Name</label>  
                 <input 
@@ -38,12 +38,12 @@
               >
                 Your Firstname is required!
               </label>
-                </div>
+                </div> -->
                 
-                <div class="form-group pt-25"  >
+                <!-- <div class="form-group pt-25"  >
                     
-                    <label for="surname">Your Last Name</label>
-                <input 
+                    <label for="surname">Your Last Name</label> -->
+                <!-- <input 
                     type="text"
                     class=" form-control"
                     name="surname"
@@ -51,15 +51,15 @@
                     required
                     placeholder="Nxumalo"
                     #surname="ngModel"/>
-    
-                    <label
+     -->
+                    <!-- <label
                     class="alert alert-danger"
                     role="alert"
                     *ngIf="surname.errors && f.submitted"
                   >
                     Your Surname is required!
-                  </label>
-                    </div>
+                  </label> -->
+                    <!-- </div>
 
 
 
@@ -68,29 +68,29 @@
 
                 <div class="form-group pt-30">
                     
-                    <label for="username">Your Email</label>
-                <input 
+                    <label for="username">Your Email</label> -->
+                <!-- <input 
                     type="email"
                     class=" form-control"
                     name="email"
                     [(ngModel)]="form.email"
                     required
                     placeholder="NandiM@gmail.com"
-                    #email="ngModel"/>
+                    #email="ngModel"/> -->
 
-                    <label
+                    <!-- <label
                     class="alert alert-danger"
                     role="alert"
                     *ngIf="email.errors && f.submitted"
-                  >
-                    Your Email is required!
+                  > -->
+                    <!-- Your Email is required!
                   </label>
                     </div>
 
                     <div class="form-group pt-30">
                     
-                        <label for="dob">Your Date of Birth</label>
-                    <input 
+                        <label for="dob">Your Date of Birth</label> -->
+                    <!-- <input 
                         type="date"
                         class=" form-control"
                         name="dateofBirth"
@@ -98,8 +98,8 @@
                         required
                         placeholder="yyyy-mm-dd"
                         #dob="ngModel"/>
-    
-                        <label
+     -->
+                        <!-- <label
                         class="alert alert-danger"
                         role="alert"
                         *ngIf="dob.errors && f.submitted"
@@ -110,29 +110,29 @@
 
                         <div class="form-group pt-30">
                     
-                            <label for="city">Your City/Town</label>
-                        <input 
+                            <label for="city">Your City/Town</label> -->
+                        <!-- <input 
                             type="text"
                             class=" form-control"
                             name="city"
                             [(ngModel)]="form.city"
                             required
                             placeholder="Pretoria"
-                            #city="ngModel"/>
+                            #city="ngModel"/> -->
         
-                            <label
+                            <!-- <label
                             class="alert alert-danger"
                             role="alert"
                             *ngIf="city.errors && f.submitted"
                           >
                             Your City or Town is required!
                           </label>
-                            </div>
+                            </div> -->
 
-                            <div class="form-group pt-30">
+                            <!-- <div class="form-group pt-30">
                     
-                                <label for="studentgrade">Your Student Grade</label>
-                            <input 
+                                <label for="studentgrade">Your Student Grade</label> -->
+                            <!-- <input 
                                 type="integer"
                                 class=" form-control"
                                 name="studentgrade"
@@ -140,8 +140,8 @@
                                 required
                                 placeholder="eg.10"
                                 #studentgrade="ngModel"/>
-            
-                                <label
+             -->
+                                <!-- <label
                                 class="alert alert-danger"
                                 role="alert"
                                 *ngIf="studentgrade.errors && f.submitted"
@@ -153,8 +153,8 @@
                                 <div class="passwords">
 
                                   <div class="form-group pt-30" >
-                                    <label for="password">Password</label>
-                                    <input
+                                    <label for="password">Password</label> -->
+                                    <!-- <input
                                       type="password"
                                       class="form-control"
                                       name="password"
@@ -162,9 +162,9 @@
                                       required
                                       minlength="8"
                                       placeholder="Minimum 8 characters"
-                                      #password="ngModel"/>
+                                      #password="ngModel"/> -->
                 
-                                      <div
+                                      <!-- <div
                                       class="alert alert-danger"
                                       role="alert"
                                       *ngIf="password.errors && f.submitted"
@@ -179,8 +179,8 @@
                                       </div>
                                     </div>
                 
-                                </div>
-                                </div>
+                                </div> -->
+                                <!-- </div> -->
 
                 
                   <!-- <label class="fr">
@@ -193,15 +193,15 @@
                     </a>
                   </label>
      -->
-                <div ngClass="form-group mt-3 text-center">
+                <!-- <div ngClass="form-group mt-3 text-center">
                     <button class="btn btn-primary btn-block" routerLink="/subjects">Register</button>
                   </div>
                   <div class="form-group">
                     <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
                         Signup failed!<br />{{ errorMessage }}
                       </div>
-            
-                  </div>
+             -->
+                  <!-- </div>
                   <div class="text-grey-dark mt-2 text-black pt-4" id="cent">
                     Already a member?
                     <a
@@ -209,12 +209,12 @@
                       href="../register/"
                     >
                      Login
-                    </a>
-                  </div>
+                    </a> -->
+                  <!-- </div>
             </div>
         </div>
     </div>
-</form> 
+</form>  -->
 
 
 <div class="eclipse-2"></div>

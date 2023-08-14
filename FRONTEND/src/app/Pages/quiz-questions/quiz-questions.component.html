@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 
 <div class="div">
   <!-- <div *ngIf="quiz">  -->
@@ -22,7 +22,7 @@
           class="block max-w-sm p-6 bg-green border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+        
           <p
             class="font-normal style=justify-content: center; text-gray-700 dark:text-gray-400"
           >
@@ -51,7 +51,7 @@
         </mat-form-field>
         
 
-        <div>
+        <div class="nextBtn">
           <button
             mat-button
             matStepperNext
@@ -62,7 +62,7 @@
         </div>
       </form>
     </mat-step>
-<!-- second select-->
+    <!-- second select-->
     <mat-step [stepControl]="secondFormGroup" label="" >
       <form [formGroup]="secondFormGroup">
         <mat-progress-bar mode="determinate" value="15"></mat-progress-bar>
@@ -72,44 +72,45 @@
           class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+          
           <p class="font-normal text-gray-700 dark:text-gray-400">
-           second How would you describe your personality?
+           How would you describe your personality?
           </p>
         </a>
-
+<!-- 
         <mat-form-field class="snd">
-          <!-- <br /><br /><br /><br /><mat-label>Your Personality</mat-label> -->
+        
           <input
             matInput
             formControlName="secondCtrl"
             placeholder="eg.Helpful,Risk-taker,Creative"
             required
           />
-        </mat-form-field>
-        <div>
+        </mat-form-field> -->
+        <div class="mvbuttons ">
 
           <button
             class="btns"
             mat-button
             formControlName="secondCtrl"
             matStepperNext
-            class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Risk-taker
+            Introverted
           </button>
-          <br /><br />
+         
           <button
             class="btns"
             mat-button
             matStepperNext
-            class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Next
+            Extroverted
           </button>
 
-          <br /><button mat-button matStepperPrevious>Back</button>
+          
         </div>
+        <button mat-button matStepperPrevious>Back</button>
       </form>
     </mat-step>
 <!-- third input-->
@@ -121,7 +122,7 @@
           class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+          
           <p class="font-normal text-gray-700 dark:text-gray-400">
             What do you enjoy doing in your free time?
           </p>
@@ -158,7 +159,7 @@
           class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+         
           <p class="font-normal text-gray-700 dark:text-gray-400">
             Are you interested in remote or prefer on-site positions?
           </p></a
@@ -173,24 +174,26 @@
             required
           />
         </mat-form-field> -->
-        <div>
+        <div class="mvbuttons">
           <button
           mat-button
           matStepperNext
-          class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Next
+        Remote
         </button><br>
           <button
+          
           mat-button
           matStepperNext
-          class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Next
-        </button><br>
-          <button mat-button matStepperPrevious>Back</button>
+        On-Site
+        </button>
+          
 
         </div>
+        <button mat-button matStepperPrevious>Back</button>
       </form>
     </mat-step>
 <!-- fifth input-->
@@ -202,18 +205,18 @@
           class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+          
           <p class="font-normal text-gray-700 dark:text-gray-400">
-            What are your long term career goals?
+          What is your most exciting experience? 
           </p>
         </a>
 
         <mat-form-field style="justify-content: center;" appearance="outline">
-          <mat-label>Career Goals</mat-label>
+          <mat-label>Most fun you've had ! </mat-label>
           <br /><br /><br /><br /><input
             matInput
             formControlName="fifthCtrl"
-            placeholder="eg.Promotion,Enterprenuer"
+            placeholder="eg.Camping,Sky-diving"
             required
           />
         </mat-form-field>
@@ -240,7 +243,7 @@
           class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+         
           <p class="font-normal text-gray-700 dark:text-gray-400">
             Have you ever volunteered or had a job previously??
           </p>
@@ -255,24 +258,25 @@
             required
           />
         </mat-form-field> -->
-        <div>
+        <div class="mvbuttons">
           <button
           mat-button
           matStepperNext
-          class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Next
+          Yes I have
         </button><br>
           <button
           mat-button
           matStepperNext
-          class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Next
-        </button><br>
-          <button mat-button matStepperPrevious>Back</button>
+          No I haven't 
+        </button>
 
         </div>
+
+        <button mat-button matStepperPrevious>Back</button>
       </form>
     </mat-step>
 <!-- seventh select -->
@@ -284,31 +288,32 @@
           class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+         
           <p class="font-normal text-gray-700 dark:text-gray-400">
             Are you willing to invest extra hours for a dream job
           </p>
         </a>
 
        
-        <div>
+        <div class="mvbuttons">
           <button
           mat-button
           matStepperNext
-          class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Next
+         Yes I am
         </button><br>
           <button
           mat-button
           matStepperNext
-          class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Next
-        </button><br>
-          <button mat-button matStepperPrevious>Back</button>
+         No I am not
+        </button>
+         
 
         </div>
+        <button mat-button matStepperPrevious>Back</button>
       </form>
     </mat-step>
 
@@ -321,7 +326,7 @@
           class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
-          <!-- <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5> -->
+          
           <p class="font-normal text-gray-700 dark:text-gray-400">
             Is there any other infornation about yourself or your aspirations
             that you would like to share?
@@ -356,7 +361,7 @@
       <!-- <mat-progress-bar mode="determinate" value="100"></mat-progress-bar> -->
       <!-- <ng-template matStepLabel>Done</ng-template> -->
       <h1 class="header text-blue-400" style="justify-content: center;">
-        Well Done.You have completed the Quiz!!
+        Well Done.You have completed the Quiz!
       </h1>
       <br />
       <div>
@@ -368,7 +373,7 @@
             alt=""
           />
         </a>
-        <div class="btns">
+        <div class="bts">
           <br /><button
             class="btn-submit"
             type="button"

@@ -60,6 +60,29 @@ input{
           padding: 40px 40px;
           
       }
+      .mvbuttons {
+        // padding: 1.5rem;
+        // height: 9rem;
+        margin-top: 3rem;
+        cursor: pointer;
+        
+    }
+
+    .mvbuttons button{
+      // padding: 1.5rem;
+      // height: 9rem;
+      // border-radius: -5rem;
+      border-color: #75A1DF;
+      height: 3.5rem;
+      margin-top: 2rem;
+      
+      
+      // width:20%
+  }
+    .nextBtn button{
+     
+    }
+  
    }
   }
   
@@ -208,11 +231,22 @@ h1{
     }
     [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
       cursor: pointer;
-      width: 17rem;
+      width: 16rem;
+      // border-radius: 30px;
+      border-radius: 7px;
   }
   }
 }
 
+
+// :host {
+//   ::ng-deep{
+//  .nextBtn{
+//   width: 1rem;
+//  }
+
+// }
+// }
 
 
 // .mat-form-field-infix {
