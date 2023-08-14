@@ -20,6 +20,7 @@ import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesComponent } from './Pages/courses/courses.component';
+import { Quiz2Component } from './Pages/quiz2/quiz2.component';
 // import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
 
 // import {MatButtonModule} from '@angular/material/button';
@@ -31,6 +32,15 @@ import { CoursesComponent } from './Pages/courses/courses.component';
 
 // import {MatSidenavModule} from '@angular/material/sidenav';
 // import { authInterceptorProviders } from './helpers/auth.interceptor';
+
+
+// import {FormBuilder, Validators} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { NavbarComponent } from './components/navbar/navbar.component'
 
 
 
@@ -47,6 +57,8 @@ import { CoursesComponent } from './Pages/courses/courses.component';
     FillCareerComponent,
     HomepageComponent,
     CoursesComponent,
+    Quiz2Component,
+    NavbarComponent,
    
    
   ],
@@ -57,9 +69,14 @@ import { CoursesComponent } from './Pages/courses/courses.component';
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
-    BrowserAnimationsModule
-    // MatSidenavModule, 
-    // MatButtonModule 
+    BrowserAnimationsModule,
+
+    MatInputModule,
+    MatFormFieldModule,
+    MatStepperModule,
+    MatButtonModule,
+    MatProgressBarModule
+    
   ],
   providers: [ ],
   schemas: [],
