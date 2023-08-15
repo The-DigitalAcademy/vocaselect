@@ -8,7 +8,7 @@ import { AuthService } from '../../_services/auth.service';
   styleUrls: ['./request-password-reset.component.scss']
 })
 export class RequestPasswordResetComponent implements OnInit {
-  showRequestPasswordForm = false;
+  showRequestPasswordForm = true;
   requestPasswordForm: FormGroup;
   
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {

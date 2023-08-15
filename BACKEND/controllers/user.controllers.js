@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 // Assigning users to the variable User
 const User = db.User;
+const optGenerated = 0;
 
 //signing a user up
 //hashing users password before its saved to the database with bcrypt
@@ -242,35 +243,39 @@ const sendResetOTP = async (req, res) => {
 
     const generatedOTP = generateOTP();
 
+    this.optGenerated = generatedOTP;
+    console.log(generatedOTP ,'generated pin');
     // Store the OTP in the database or cache
     // For simplicity, let's assume you have a 'otp' field in the User model
-    await user.update({ otp: generatedOTP });
+   // await user.update({ otp: generatedOTP });
 
     // Send OTP to the user's email
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail', // Change to your email service
-      auth: {
-        user: 'vocaselect@gmail.com',
-        pass: 'Voca@2023',
-      },
-    });
+    // const transporter = nodemailer.createTransport({
+    //   service: 'Gmail', // Change to your email service
+    //   auth: {
+    //     user: 'vocaselect@gmail.com',
+    //     pass: 'beqedpjvbnxnnanl',
+    //   },
+    // });
 
-    const mailOptions = {
-      from: 'vocaselect@gmail.com',
-      to: email,
-      subject: 'Password Reset OTP',
-      text: `Your OTP: ${generatedOTP}`,
-    };
+    // const mailOptions = {
+    //   from: 'vocaselect@gmail.com',
+    //   to: email,
+    //   subject: 'Password Reset OTP',
+    //   text: `Your OTP: ${generatedOTP}`,
+    // };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({ message: 'Error sending OTP email' });
-      } else {
-        console.log('OTP email sent:', info.response);
-        res.status(200).json({ message: 'OTP sent successfully' });
-      }
-    });
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.error('Error sending email:', error);
+    //     res.status(500).json({ message: 'Error sending OTP email' });
+    //   } else {
+    //     console.log('OTP email sent:', info.response);
+    //     res.status(200).json({ message: 'OTP sent successfully' });
+    //   }
+    // });
+
+    res.status(200).json({ message: 'OTP sent successfully ' + generatedOTP });
   } catch (error) {
     console.error('Error sending OTP:', error);
     res.status(500).json({ message: 'Internal server error' });
@@ -278,11 +283,13 @@ const sendResetOTP = async (req, res) => {
 };
 
 const resetPassword = async (req, res) => {
-  const { otp, newPassword } = req.body;
+
+  console.log('testing=== (' +  this.optGenerated , ' }====')
+  const { otp, newPassword,email } = req.body;
 
   try {
     const user = await db.User.findOne({
-      where: { otp },
+      where: { email },
     });
 
     if (!user) {
@@ -290,7 +297,12 @@ const resetPassword = async (req, res) => {
     }
 
     // Update the user's password
-    await user.update({ password: newPassword, otp: null });
+    // if(otp == this.optGenerated)
+    // {
+      await User.update({ password: newPassword 
+     
+    },{where: {email}}, )
+    // }
 
     res.status(200).json({ message: 'Password reset successfully' });
   } catch (error) {

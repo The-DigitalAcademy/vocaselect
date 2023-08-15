@@ -24,8 +24,8 @@ router.get("/emailExist/:email", userController.emailExists);
 // Create the route for deleting a user
 router.delete('/:id', userController.deleteUserById);
 
-router.post('/users/send-reset-otp', sendResetOTP);
+router.post('/sendresetotp', sendResetOTP);
 
 // Endpoint to reset password
-router.post('/users/reset-password', resetPassword);
+router.post('/resetpassword', resetPassword);
 module.exports = router

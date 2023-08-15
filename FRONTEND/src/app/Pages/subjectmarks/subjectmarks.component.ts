@@ -18,28 +18,29 @@ export class SubjectmarksComponent implements OnInit {
 
   updatedSubjectMarks: any = [];
   userId: any;
+  belowAverage: any = [];
 
   constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
     //redirect to login page when there's no token or the user is not logged in
-    if(!this.tokenStorage.getToken()){
+    if (!this.tokenStorage.getToken()) {
       this.router.navigate(['login']);
-      
+
     }
 
     // Fetch subject items from the API when the component initializes
     this.fetchSubjects();
-    
+
   }
 
   fetchSubjects() {
     this.userId = this.tokenStorage.getUser().id;
     this.subjectsService.getSelectedSubjects(this.userId).subscribe(
-      
+
       (response) => {
         console.log(response, 'subjects selecetd')
-        
+
         this.subjects = response;
       },
       (error) => {
@@ -48,8 +49,25 @@ export class SubjectmarksComponent implements OnInit {
     );
   }
 
+  marksValidation() {
+    if (this.updatedSubjectMarks.length > 0) {
+
+      this.belowAverage = this.updatedSubjectMarks.map((subjectMark: any) => {
+
+        if (subjectMark.subject_marks < 50) {
+          const subject = this.subjects.find((el:any)=> {if (el.selectedid.toString() === subjectMark.id.toString()) return el; });
+          if(subject){
+            return subject.subjectName;
+          }
+          return subjectMark.id;
+        }
+      });
+    }
+    console.log(this.belowAverage, 'belowAverage items');
+  }
+
   isChanged(event: any): void {
-   // check if the subject marks changed and updated
+    // check if the subject marks changed and updated
     if (this.updatedSubjectMarks.length > 0) {
       var isIncluded = false;
       this.updatedSubjectMarks.map((obj: any) => {
@@ -69,6 +87,9 @@ export class SubjectmarksComponent implements OnInit {
     } else {
       this.updatedSubjectMarks.push({ id: event.target.id, subject_marks: event.target.value });
     }
+
+       this.marksValidation();
+    
   }
 
   onSubmit(): void {

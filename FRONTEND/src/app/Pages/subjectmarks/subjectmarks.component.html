@@ -7,6 +7,11 @@
 </div>
 <div class="marks-container">
   <h1>Subject Marks</h1>
+  <div *ngIf="belowAverage.length > 0">
+    <label >You are below average of 50% on 
+      <span *ngFor="let subject of belowAverage"> {{subject}},</span>
+     </label><br>
+  </div>
 </div>
 </div>
   <div class="subjects-page">
