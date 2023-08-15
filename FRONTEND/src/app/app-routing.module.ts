@@ -13,6 +13,7 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
 import { TimelineComponent } from './Pages/timeline/timeline.component';
+import { CareersComponent } from './Pages/careers/careers.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'nav', component: NavbarComponent},
   { path: 'viewcareer', component: ViewCareeerComponent },
   { path: 'timeline', component: TimelineComponent},
+  { path: 'careers', component: CareersComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
