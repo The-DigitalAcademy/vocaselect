@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import {  FormlyFieldConfig } from '@ngx-formly/core';
 
 import { FormBuilder,  Validators } from '@angular/forms';
+import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
+import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
+ // Inject the service
 // import { MatRadioModule } from '@angular/material/radio';
 
 export interface StepType {
@@ -31,7 +34,9 @@ export class Quiz2Component implements OnInit {
   quiz: any; // Assuming the data is an array of objects or any other data structure
   option: any;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  careerRecommendations: CareerRecommendation[] = [];
+
+  constructor(private careerQuizService: CareerQuizService, private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     // this.getDataFromServer();
@@ -73,7 +78,7 @@ export class Quiz2Component implements OnInit {
       questionId: 1,
       questionText:
         '1. Are you interested in remote work or prefer on-site positions?',
-      options: ['remote' , 'on-site'],
+      options: ['remote' , 'on-site', 'remote', ''],
       selectedOption: [''],
       
     },
@@ -142,14 +147,24 @@ export class Quiz2Component implements OnInit {
   answers: any;
   
   submitQuiz() {
-    // Get the selected options and store them in an array of answers
     this.answers = this.quizQuestions.map((question) => ({
       questionId: question.questionId,
-
-      selectedOption: [question.selectedOption],
-    
-     
+      selectedOption: question.selectedOption[0] || '', // Assuming selectedOption is an array, get the first element or use an empty string
+  
     }));
+  
+    // Use the careerQuizService to send the answers to the API
+    this.careerQuizService.generateCareerQuiz(this.answers)
+      .subscribe(
+        (response) => {
+          // Handle the API response if needed
+          console.log('API Response:', response);
+        },
+        (error) => {
+          // Handle errors if needed
+          console.error('API Error:', error);
+        }
+      );
   }
 
   selected1(question: any, option: any) {

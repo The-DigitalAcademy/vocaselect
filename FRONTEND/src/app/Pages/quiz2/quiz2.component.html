@@ -143,7 +143,7 @@
               </p>
             </a>
 
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input
                 matInput
                 placeholder="Field 2"
@@ -151,14 +151,41 @@
                 [(ngModel)]="question.selectedOption"
                 [value]="option"
               />
-            </mat-form-field>
+            </mat-form-field> -->
+
+            <button
+                mat-button
+                matStepperNext
+                
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
+                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600
+                 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                
+                 [value]="question.options[0]"
+                 (click)="selected1(question, question.options[0])"
+              >
+              Yes
+              </button>
+
+              <button type="text"
+                mat-button
+                matStepperNext
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 m-2 font-medium 
+                rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
+                focus:outline-none dark:focus:ring-blue-800"
+                 
+                [value]="question.options[1]"
+                (click)="selected1(question, question.options[1])"
+              >
+                No
+              </button>
           </div>
         </div>
-
-        <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <!-- <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
-        </div>
+        </div> -->
       </form>
     </mat-step>
 
@@ -268,7 +295,7 @@
 
     <mat-step [stepControl]="sixthFormGroup">
       <form [formGroup]="sixthFormGroup">
-        <ng-template matStepLabel>Step 6</ng-template>
+        <!-- <ng-template matStepLabel>Step 6</ng-template> -->
         <div *ngFor="let question of quizQuestions">
           <div *ngIf="question.questionId == 6">
             <a
@@ -281,7 +308,7 @@
                 {{ question.questionText }}
               </p>
             </a>
-            <mat-form-field>
+            <!-- <mat-form-field>
               <input
                 matInput
                 placeholder="Field 6"
@@ -289,14 +316,41 @@
                 [(ngModel)]="question.selectedOption"
                 [value]="option"
               />
-            </mat-form-field>
+            </mat-form-field> -->
+
+            <button
+                mat-button
+                matStepperNext
+                
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
+                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600
+                 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                
+                 [value]="question.options[0]"
+                 (click)="selected1(question, question.options[0])"
+              >
+              Yes
+              </button>
+
+              <button type="text"
+                mat-button
+                matStepperNext
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 m-2 font-medium 
+                rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
+                focus:outline-none dark:focus:ring-blue-800"
+                 
+                [value]="question.options[1]"
+                (click)="selected1(question, question.options[1])"
+              >
+                No
+              </button>
           </div>
         </div>
-
-        <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <!-- <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
-        </div>
+        </div> -->
       </form>
     </mat-step>
 
