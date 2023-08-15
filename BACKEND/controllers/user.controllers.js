@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-
 // Assigning users to the variable User
 const User = db.User;
 
@@ -224,6 +223,83 @@ const deleteUserById = async (req, res) => {
   }
 };
 
+const generateOTP = () => {
+  // Logic to generate OTP (e.g., using a library)
+  return Math.floor(1000 + Math.random() * 9000).toString();
+};
+
+const sendResetOTP = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await db.User.findOne({
+      where: { email },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const generatedOTP = generateOTP();
+
+    // Store the OTP in the database or cache
+    // For simplicity, let's assume you have a 'otp' field in the User model
+    await user.update({ otp: generatedOTP });
+
+    // Send OTP to the user's email
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail', // Change to your email service
+      auth: {
+        user: 'vocaselect@gmail.com',
+        pass: 'Voca@2023',
+      },
+    });
+
+    const mailOptions = {
+      from: 'vocaselect@gmail.com',
+      to: email,
+      subject: 'Password Reset OTP',
+      text: `Your OTP: ${generatedOTP}`,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ message: 'Error sending OTP email' });
+      } else {
+        console.log('OTP email sent:', info.response);
+        res.status(200).json({ message: 'OTP sent successfully' });
+      }
+    });
+  } catch (error) {
+    console.error('Error sending OTP:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+const resetPassword = async (req, res) => {
+  const { otp, newPassword } = req.body;
+
+  try {
+    const user = await db.User.findOne({
+      where: { otp },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Invalid OTP' });
+    }
+
+    // Update the user's password
+    await user.update({ password: newPassword, otp: null });
+
+    res.status(200).json({ message: 'Password reset successfully' });
+  } catch (error) {
+    console.error('Error resetting password:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+  
+
 module.exports = {
   signup,
   login,
@@ -232,4 +308,6 @@ module.exports = {
   getUserById,
   updateUserById,
   deleteUserById,
+  sendResetOTP, 
+  resetPassword 
 };

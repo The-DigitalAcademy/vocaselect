@@ -12,6 +12,8 @@ import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthGuardsService } from './_services/auth-guards.service';
+import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
+import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,7 +27,10 @@ const routes: Routes = [
   { path: 'subjectmarks', component: SubjectmarksComponent , canActivate: [AuthGuardsService]},
   { path: 'hamburger', component: HamburgerComponent},
   { path: 'nav', component: NavbarComponent},
+  { path: 'passwordReset', component: PasswordResetComponent},
+  { path: 'requestPasswordReset', component: RequestPasswordResetComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
+  
 ];
 
 @NgModule({
