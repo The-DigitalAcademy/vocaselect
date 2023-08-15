@@ -11,22 +11,18 @@ import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { AuthGuardsService } from './_services/auth-guards.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'landing', component: LandingPageComponent },
-  { path: 'subjects', component: SubjectsComponent },
-  { path: 'dream-job', component: DreamJobComponent },
-  { path: 'home', component: HomepageComponent },
-  { path: 'fill-career', component: FillCareerComponent },
-  { path: 'welcome-quize', component: WelcomeQuizComponent },
-  { path: 'login', component: RegisterComponent },
-  { path: 'register', component: LoginComponent },
-  { path: 'landing', component: LandingPageComponent },
-  { path: 'subjects', component: SubjectsComponent },
-  { path: 'subjectmarks', component: SubjectmarksComponent },
+  { path: 'subjects', component: SubjectsComponent , canActivate: [AuthGuardsService]},
+  { path: 'dream-job', component: DreamJobComponent , canActivate: [AuthGuardsService]},
+  { path: 'home', component: HomepageComponent, canActivate: [AuthGuardsService]},
+  { path: 'fill-career', component: FillCareerComponent , canActivate: [AuthGuardsService]},
+  { path: 'welcome-quize', component: WelcomeQuizComponent , canActivate: [AuthGuardsService]},
+  { path: 'subjectmarks', component: SubjectmarksComponent , canActivate: [AuthGuardsService]},
   { path: 'hamburger', component: HamburgerComponent},
   { path: 'nav', component: NavbarComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
@@ -34,6 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuardsService]
 })
 export class AppRoutingModule { }
