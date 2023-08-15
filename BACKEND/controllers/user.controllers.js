@@ -299,9 +299,10 @@ const resetPassword = async (req, res) => {
     // Update the user's password
     // if(otp == this.optGenerated)
     // {
-      await User.update({ password: newPassword 
+      const password =  await bcrypt.hash(newPassword, 10);
+      await User.update({ password: password
      
-    },{where: {email}}, )
+    },{where: {email}} )
     // }
 
     res.status(200).json({ message: 'Password reset successfully' });
