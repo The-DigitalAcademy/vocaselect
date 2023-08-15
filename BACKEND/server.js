@@ -5,8 +5,11 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
+const nodemailer = require('nodemailer');
 const subjectRoutes = require('./routes/subjects.routes')
 const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
+const { sendResetOTP, resetPassword } = require('./controllers/user.controllers');
+
 
 
 //Environment file
@@ -68,6 +71,12 @@ const { deleteUserById } = require('./controllers/user.controllers');
 // Create the route for deleting a user
 app.delete('/:id', deleteUserById);
 
+
+// Endpoint to send OTP
+app.post('/', sendResetOTP);
+
+// Endpoint to reset password
+app.post('/', resetPassword);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

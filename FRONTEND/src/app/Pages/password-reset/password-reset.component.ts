@@ -9,30 +9,29 @@ import { AuthService } from '../../_services/auth.service';
   styleUrls: ['./password-reset.component.scss']
 })
 export class PasswordResetComponent implements OnInit {
+  showResetPasswordForm = false;
   resetPasswordForm: FormGroup;
-  //token: string;
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private authService: AuthService) {
-    //this.token = this.route.snapshot.queryParams.email || '';
-
-    this.resetPasswordForm = this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]]
+  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+    this.resetPasswordForm = this.formBuilder.group({
+      resetOTP: ['', Validators.required],
+      newPassword: ['', Validators.required],
     });
   }
-  ngOnInit(): void {}
+   ngOnInit(): void {}
 
-  onSubmit() {
-    if (this.resetPasswordForm.valid) {
-      const password = this.resetPasswordForm.value.password;
-      // this.authService.resetPassword(this.token, password).subscribe(
-      //   () => {
-      //     // Handle success, show a message or redirect
-      //   },
-      //   (error) => {
-      //     // Handle error
-      //   }
-      // );
-    }
-  }
+ 
+
+  onResetPasswordSubmit() {
+    const otp = this.resetPasswordForm.get('resetOTP')?.value;
+    const newPassword = this.resetPasswordForm.get('newPassword')?.value;
+    // You can also include user's email or additional info in this method
+    this.authService.resetPasswordWithOTP(otp, newPassword).subscribe(
+      () => {
+        // Password reset successfully, show a message or redirect
+      },
+      (error) => {
+        // Handle error, e.g., show error message
+      }
+    );
+   }
 }
-
