@@ -11,12 +11,21 @@
     background-color: white;
     border: 1px solid #A1C2F3;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 150px;
     height: 150px;
     padding: 16px;
     text-align: center;
+    cursor: pointer;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  
   }
+
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
 .c-container{
     max-width: 550px;
     margin-right: auto;
@@ -59,31 +68,3 @@
 }
 
 }
-  
-// .eclipse-2 {
-//   bottom: inherit;
-//   left: inherit; 
-//   right: -70px;
-//   top: -50px;
-// }
-
-// .eclipse-3 {
-//   right: inherit;
-//   left: -74px;
-//   bottom: 124px;
-// }
-
-// .eclipse-4 {
-//   height: 150px;
-//   width: 150px;
-//   left: 50px;
-//   top: -120px;
-//   right: inherit;
-// }
-
-// .eclipse-1 {
-//   bottom: -35px;
-//   right: 25px;
-//   top: inherit;
-//   left: inherit;
-// }

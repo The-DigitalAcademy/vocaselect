@@ -18,8 +18,13 @@ import { CommonModule } from '@angular/common';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
+import { SubjectmarksComponent } from './Pages/subjectmarks/subjectmarks.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
+import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
+import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
+import { TimelineComponent } from './Pages/timeline/timeline.component';
 // import {MatButtonModule} from '@angular/material/button';
 
 // import {MatSidenavModule} from '@angular/material/sidenav';
@@ -39,7 +44,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DreamJobComponent,
     FillCareerComponent,
     HomepageComponent,
+    SubjectmarksComponent,
     NavbarComponent,
+    PasswordResetComponent,
+    RequestPasswordResetComponent,
+    ViewCareeerComponent,
+    TimelineComponent,
    
    
   ],

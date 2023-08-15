@@ -6,6 +6,7 @@ import { parseISO, isValid, differenceInYears } from 'date-fns';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { log } from 'console';
 import { UserService } from 'src/app/_services/user.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
   user: any;
+  invalidCredentials = false;
   form: any = {
     name: '',
     surname: '',
@@ -24,13 +26,14 @@ export class RegisterComponent implements OnInit {
     city: '',
     studentgrade: '',
     password: '',
+
   };
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
   regInvalid = false;
 
-  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService,) {
     this.registerForm = this.formBuilder.group({
       name: [null, [Validators.required, Validators.minLength(3)]],
       surname: [null, [Validators.required, Validators.minLength(3)]],
@@ -88,116 +91,89 @@ export class RegisterComponent implements OnInit {
 
     return null;
   }
-  onSubmit(): void {
-    const { name, surname, email, dob, city, studentgrade, password } = this.form;
-    //This Method That Returns An Observable Object (authService.register())
-    if (dob && !isValid(parseISO(dob))) {
-      this.errorMessage = 'Invalid Date of Birth format. Please use yyyy-mm-dd.';
-      return;
-    }
 
-    this.authService.register(name, surname, email, dob, city, studentgrade, password).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        // this._router.navigate(['/subjects'])
-        // this.reloadPage();
-        //this.toastr.success("Registration Was Successful")
+  login() {
+    //log the user in using the credentials provided on register
+    this.authService.login({ username: this.registerForm.value.email, password: this.registerForm.value.password }).subscribe({
+      next: data => {
 
-        // window.location.replace("/login")
+        //save the token and user data on token storage service.
+        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveUser(data.user);
+
+        //show notification that the user was successfully registered
         Swal.fire({
-          title: 'Registration Successful',
+          title: 'Successfully registered',
           text: '',
           icon: 'success',
-          //confirmButtonText: 'Login',
         }).then((result) => {
           if (result.value) {
-            this.router.navigate(["/subjects"])
-
+            //navigate the user to subjects page if the student is in grade 10 or above
+            //if the student is in a grade lower than 10 then the user will be navigated to dream-job page
+            if (this.registerForm.value.studentgrade >= 10) {
+              this.router.navigate(['/subjects']);
+            } else {
+              this.router.navigate(['/dream-job']);
+            }
+            return;
           }
         });
+      },
+      error: err => {
+        console.log(err)
+        // this.toastr.error("Login Failed, Try Again")
+      }
+    });
+  }
+
+  onCheck() {
+    this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
+      next: (data) => {
+        console.log(data);
+        if (data) {
+          Swal.fire({
+            title: 'This email already exists!',
+            text: '',
+            icon: 'error',
+          }).then((result) => {
+            if (result.value) {
+              return;
+            }
+          });
+        }
 
       },
 
       error: (err) => {
 
+        if (err.error?.errors?.length > 0) {
 
-        if (err.error.errors.length > 0) {
-
-          // err.error.errors.forEach(element => {
-          //   this.errorMessage += element.message;
-          // });
-          for (var i = 0; i < err.error.errors.length; i++) {
-            this.errorMessage += err.error.errors[i].message;
+          for (var i = 0; i < err.error?.errors?.length; i++) {
+            this.errorMessage += err.error?.errors[i]?.message;
           }
         } else {
-          this.errorMessage = err.error.message;
+          this.errorMessage = err.error?.message;
         }
 
         Swal.fire({
-          title: 'Registration was unsuccessful',
+          title: 'Unsuccessful',
           text: this.errorMessage,
           icon: 'error',
-          confirmButtonText: 'Ok',
         }).then((result) => {
           if (result.value) {
-            //this._router.navigate(["/subjects"])
 
           }
         });
-        this.isSignUpFailed = true;
-        // this.toastr.error("Registration Failed, Try Again")
       }
     });
   }
 
-
-onCheck(){
-  this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
-    next: (data) => {
-      console.log(data);
-      if (data) {
-        Swal.fire({
-          title: 'This email already exists!',
-          text: '',
-          icon: 'error',
-        }).then((result) => {
-          if (result.value) {
-            return;
-          }
-        });
-      }
-
-    },
-
-    error: (err) => {
-
-      if (err.error?.errors?.length > 0) {
-
-        for (var i = 0; i < err.error?.errors?.length; i++) {
-          this.errorMessage += err.error?.errors[i]?.message;
-        }
-      } else {
-        this.errorMessage = err.error?.message;
-      }
-
-      Swal.fire({
-        title: 'Unsuccessful',
-        text: this.errorMessage,
-        icon: 'error',
-      }).then((result) => {
-        if (result.value) {
-
-        }
-      });
-    }
-  });
-}
-
   onRegister() {
     if (this.registerForm.valid) {
 
+      //check if the email used for reistration doesn't exist
+      //if it exist return an alert with email already exist
+      //if email doen't exist create a new user
       this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
         next: (data) => {
           console.log(data);
@@ -211,29 +187,15 @@ onCheck(){
                 return;
               }
             });
-          }else{
-            if (this.registerForm.value.studentgrade >= 10) {
-              // Handle the logic for the "Register" button click
-              // e.g., perform registration or any other action
-              this.authService.createUser(this.registerForm.value).subscribe(res => {
-                this.user = res;
-                this.router.navigate(['/subjects']);
-        
-              });
-              
-            } else {
-              // Handle the logic for the "Next" button click
-              // e.g., proceed to the next step or action
-        
-              this.authService.createUser(this.registerForm.value).subscribe(res => {
-                this.user = res;
-                this.router.navigate(['/dream-job']);
-        
-              });
-            }
-          }
-          
+          } else {
 
+            // create new user 
+            this.authService.createUser(this.registerForm.value).subscribe(res => {
+              this.user = res;
+              //if user registration was successfull login in the user
+              this.login();
+            });
+          }
         },
 
         error: (err) => {
@@ -253,19 +215,14 @@ onCheck(){
             icon: 'error',
           }).then((result) => {
             if (result.value) {
-
+              return;
             }
           });
         }
       });
-      
-      
-
-     
     } else {
       this.regInvalid = true;
       console.log('form not valid');
-
     }
   }
 }

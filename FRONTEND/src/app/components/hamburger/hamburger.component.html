@@ -14,7 +14,7 @@
 	  <!-- user profile picture and name -->
 	  <div class = "profile">
       <img class="avatar mat-elevation-z8" src="https://www.iprcenter.gov/image-repository/blank-profile-picture.png/@@images/image.png"/>
-      <h4 class="name">Name Surname</h4>
+      <h4 class="name">{{user.name}} {{user.surname}}</h4>
 	</div>
       <mat-divider></mat-divider>
 
@@ -32,7 +32,7 @@
 				</a>
         <hr>
 				<a href="#" >
-					<li><i class="bi bi-box-arrow-right"></i>Logout<i class="bi bi-chevron-right chevron"></i></li>
+					<li><i class="bi bi-box-arrow-right"><a (click)="logout()"></a></i>Logout<i class="bi bi-chevron-right chevron"></i></li>
 				</a>
         <hr>
 			</ul>
