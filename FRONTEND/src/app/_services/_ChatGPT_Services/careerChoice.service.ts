@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
+import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +23,8 @@ export class CareerRecommendationService {
   }
 
   // Define a method to fetch course details by name
-  getCourseDetailsByName(courseName: string, uniName: string, admissionRequirements: string, courseDescription:string): Observable<any> {
+  getCourseDetailsByName(courseName: string, uniName: string, admissionRequirements: string, courseDescription:string): Observable<CareerRecommendation[]> {
     const body = { courseName, uniName, admissionRequirements, courseDescription };
-    return this.http.post<any>(`${this.apiUrl}/enterCareer`, body);
+    return this.http.post<CareerRecommendation[]>(`${this.apiUrl}/enterCareer`, body);
   }
 }
