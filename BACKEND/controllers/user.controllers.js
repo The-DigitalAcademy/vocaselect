@@ -4,7 +4,9 @@ const db = require("../models");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 // Assigning users to the variable User
-const User = db.User;
+const User = require('../models/users.models');
+const nodemailer = require('nodemailer');
+const otpManager = require('../otp/otpManager');
 const optGenerated = 0;
 
 //signing a user up
@@ -143,6 +145,8 @@ const login = async (req, res) => {
   }
 };
 
+
+
 //GET ALL
 const getUsers = async (req, res) => {
   try {
@@ -226,7 +230,10 @@ const deleteUserById = async (req, res) => {
 
 const generateOTP = () => {
   // Logic to generate OTP (e.g., using a library)
-  return Math.floor(1000 + Math.random() * 9000).toString();
+ // return Math.floor(1000 + Math.random() * 9000).toString();
+  const generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+  console.log('Generated OTP:', generatedOTP);
+  return generatedOTP;
 };
 
 const sendResetOTP = async (req, res) => {
@@ -241,51 +248,84 @@ const sendResetOTP = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    const generatedOTP = generateOTP();
+    // const generatedOTP = generateOTP();
+    // Generate OTP
+    const optGenerated = generateOTP();
+     // Set the OTP value using otpManager
+   otpManager.setOTP(optGenerated);
 
-    this.optGenerated = generatedOTP;
-    console.log(generatedOTP ,'generated pin');
+    //this.optGenerated =  optGenerated;
+    console.log(optGenerated ,'generated pin');
+    console.log('Stored OTP:', otpManager.getOTP());
     // Store the OTP in the database or cache
     // For simplicity, let's assume you have a 'otp' field in the User model
-   // await user.update({ otp: generatedOTP });
+   await user.update({ otp: optGenerated });
 
-    // Send OTP to the user's email
-    // const transporter = nodemailer.createTransport({
-    //   service: 'Gmail', // Change to your email service
-    //   auth: {
-    //     user: 'vocaselect@gmail.com',
-    //     pass: 'beqedpjvbnxnnanl',
-    //   },
-    // });
+    //Send OTP to the user's email
+    const transporter = nodemailer.createTransport({
+      service: 'Gmail', // Change to your email service
+      auth: {
+        user: 'vocaselect@gmail.com',
+        pass: 'beqedpjvbnxnnanl',
+      },
+    });
 
-    // const mailOptions = {
-    //   from: 'vocaselect@gmail.com',
-    //   to: email,
-    //   subject: 'Password Reset OTP',
-    //   text: `Your OTP: ${generatedOTP}`,
-    // };
+    const mailOptions = {
+      from: 'vocaselect@gmail.com',
+      to: email,
+      subject: 'Password Reset OTP',
+      text: `Your OTP: ${optGenerated}`,
+    };
 
-    // transporter.sendMail(mailOptions, (error, info) => {
-    //   if (error) {
-    //     console.error('Error sending email:', error);
-    //     res.status(500).json({ message: 'Error sending OTP email' });
-    //   } else {
-    //     console.log('OTP email sent:', info.response);
-    //     res.status(200).json({ message: 'OTP sent successfully' });
-    //   }
-    // });
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        res.status(500).json({ message: 'Error sending OTP email' });
+      } else {
+        console.log('OTP email sent:', info.response);
+        res.status(200).json({ message: 'OTP sent successfully' });
+      }
+    });
 
-    res.status(200).json({ message: 'OTP sent successfully ' + generatedOTP });
+    res.status(200).json({ message: 'OTP sent successfully ' + optGenerated });
   } catch (error) {
     console.error('Error sending OTP:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-const resetPassword = async (req, res) => {
+// const resetPassword = async (req, res) => {
 
-  console.log('testing=== (' +  this.optGenerated , ' }====')
-  const { otp, newPassword,email } = req.body;
+//   console.log('testing=== (' +  this.optGenerated , ' }====')
+//   const { otp, newPassword,email } = req.body;
+
+//   try {
+//     const user = await db.User.findOne({
+//       where: { email },
+//     });
+
+//     if (!user) {
+//       return res.status(404).json({ message: 'Invalid OTP' });
+//     }
+
+//     // Update the user's password
+//     // if(otp == this.optGenerated)
+//     // {
+//       const password =  await bcrypt.hash(newPassword, 10);
+//       await User.update({ password: password
+     
+//     },{where: {email}} )
+//     // }
+
+//     res.status(200).json({ message: 'Password reset successfully' });
+//   } catch (error) {
+//     console.error('Error resetting password:', error);
+//     res.status(500).json({ message: 'Internal server error' });
+//   }
+// };
+
+const resetPassword = async (req, res) => {
+  const { otp, password, email } = req.body;
 
   try {
     const user = await db.User.findOne({
@@ -293,17 +333,22 @@ const resetPassword = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(404).json({ message: 'Invalid OTP' });
+      return res.status(404).json({ message: 'Invalid user' });
     }
 
-    // Update the user's password
-    // if(otp == this.optGenerated)
-    // {
-      const password =  await bcrypt.hash(newPassword, 10);
-      await User.update({ password: password
-     
-    },{where: {email}} )
-    // }
+    // Uncomment the OTP verification if condition
+    console.log('Entered OTP:', otp);
+    console.log('Stored OTP:', otpManager.getOTP());
+
+    if (otp !== otpManager.getOTP()) {
+      console.log('OTP mismatch');
+      return res.status(400).json({ message: 'Invalid OTP' });
+    }
+
+    // Assuming you have access to the 'user' instance
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await user.update({ password: hashedPassword }, { where: { email } });
+    console.log('Password reset for:', user.email);
 
     res.status(200).json({ message: 'Password reset successfully' });
   } catch (error) {
@@ -311,6 +356,8 @@ const resetPassword = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
+
+
   
 
 module.exports = {
