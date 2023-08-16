@@ -8,6 +8,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { WelcomeQuizComponent } from './Pages/welcome-quiz/welcome-quiz.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
+import { TimelineComponent } from './Pages/timeline/timeline.component';
 
 const routes: Routes = [
   { path: '', component: LandingPageComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
  {path:'welcome-quiz', component: WelcomeQuizComponent},
  {path:'navbar', component:NavbarComponent},
  {path:'quiz-questions', component:QuizQuestionsComponent},
-
+ {path:'timeline', component:TimelineComponent},
  
 ];
 

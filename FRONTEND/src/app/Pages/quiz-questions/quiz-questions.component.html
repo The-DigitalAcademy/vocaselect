@@ -12,7 +12,7 @@
   </button>
 
   <mat-stepper [linear]="isLinear" #stepper>
-    <!-- first input-->
+<!-- first input -->
     <mat-step [stepControl]="firstFormGroup" style="background-color: green;">
       <form [formGroup]="firstFormGroup">
         <mat-progress-bar mode="determinate" value="0"></mat-progress-bar>
@@ -62,7 +62,7 @@
         </div>
       </form>
     </mat-step>
-    <!-- second select-->
+<!--second select -->
     <mat-step [stepControl]="secondFormGroup" label="" >
       <form [formGroup]="secondFormGroup">
         <mat-progress-bar mode="determinate" value="15"></mat-progress-bar>
@@ -77,16 +77,7 @@
            How would you describe your personality?
           </p>
         </a>
-<!-- 
-        <mat-form-field class="snd">
-        
-          <input
-            matInput
-            formControlName="secondCtrl"
-            placeholder="eg.Helpful,Risk-taker,Creative"
-            required
-          />
-        </mat-form-field> -->
+
         <div class="mvbuttons ">
 
           <button
@@ -94,8 +85,10 @@
             mat-button
             formControlName="secondCtrl"
             matStepperNext
-            class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
+            class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            
+
+            >
             Introverted
           </button>
          
@@ -103,8 +96,9 @@
             class="btns"
             mat-button
             matStepperNext
-            class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
+            class="text-black bg-blue-200 shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            
+            >
             Extroverted
           </button>
 
@@ -113,7 +107,7 @@
         <button mat-button matStepperPrevious>Back</button>
       </form>
     </mat-step>
-<!-- third input-->
+ <!-- third input-->
     <mat-step [stepControl]="thirdFormGroup" label="">
       <form [formGroup]="thirdFormGroup">
         <mat-progress-bar mode="determinate" value="30"></mat-progress-bar>
@@ -165,20 +159,12 @@
           </p></a
         >
 
-        <!-- <mat-form-field>
-          <mat-label>Work Preference</mat-label>
-          <br /><br /><br /><br /><input
-            matInput
-            formControlName="fourthCtrl"
-            placeholder="eg.On-site or Remote"
-            required
-          />
-        </mat-form-field> -->
+        
         <div class="mvbuttons">
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200 shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
         Remote
         </button><br>
@@ -186,7 +172,7 @@
           
           mat-button
           matStepperNext
-          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
         On-Site
         </button>
@@ -212,7 +198,7 @@
         </a>
 
         <mat-form-field style="justify-content: center;" appearance="outline">
-          <mat-label>Most fun you've had ! </mat-label>
+          <mat-label>Most fun you've had </mat-label>
           <br /><br /><br /><br /><input
             matInput
             formControlName="fifthCtrl"
@@ -249,27 +235,19 @@
           </p>
         </a>
 
-        <!-- <mat-form-field>
-          <mat-label>Ever Worked or Volunteered?</mat-label>
-          <br /><br /><br /><br /><input
-            matInput
-            formControlName="sixthCtrl"
-            placeholder="eg.Yes or No"
-            required
-          />
-        </mat-form-field> -->
+       
         <div class="mvbuttons">
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Yes I have
         </button><br>
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           No I haven't 
         </button>
@@ -299,14 +277,14 @@
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
          Yes I am
         </button><br>
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
          No I am not
         </button>
@@ -358,8 +336,7 @@
 
     <!-- Last page  -->
     <mat-step>
-      <!-- <mat-progress-bar mode="determinate" value="100"></mat-progress-bar> -->
-      <!-- <ng-template matStepLabel>Done</ng-template> -->
+      
       <h1 class="header text-blue-400" style="justify-content: center;">
         Well Done.You have completed the Quiz!
       </h1>

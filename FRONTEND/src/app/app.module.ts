@@ -23,7 +23,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
-import {MatProgressBarModule} from '@angular/material/progress-bar'
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { TimelineComponent } from './Pages/timeline/timeline.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar'
     SubjectsComponent,
     NavbarComponent,
     WelcomeQuizComponent,
-    QuizQuestionsComponent
+    QuizQuestionsComponent,
+    TimelineComponent
   
   ],
   imports: [

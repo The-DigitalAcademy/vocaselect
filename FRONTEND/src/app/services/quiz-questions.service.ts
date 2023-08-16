@@ -20,4 +20,8 @@ export class QuizQuestionsService {
     return this.http.get(APIUrl = environment.apiUrl + 'quizzes', { responseType: 'json' });
   }
 
+  postQuizToPostgres(data: any[]): Observable<any> {
+    return this.http.post(APIUrl = environment.apiUrl + 'Answers', data, { responseType: 'json' });
+  }
+
 }

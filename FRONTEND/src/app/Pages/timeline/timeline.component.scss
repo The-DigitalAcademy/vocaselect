@@ -1,0 +1,17 @@
+.heading{
+    display: flex;
+    align-items: center;
+    margin-top: -2rem;
+
+    .backbutton {
+        cursor: pointer;
+        margin-left: 8px;
+      }
+
+    h1{
+        font-weight: bolder;
+        color: var(--text-color);
+        line-height: 1.2rem;
+        margin-left: 3.8rem;
+    }
+}
