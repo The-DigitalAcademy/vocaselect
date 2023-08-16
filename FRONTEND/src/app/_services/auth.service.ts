@@ -63,11 +63,11 @@ export class AuthService {
       httpOptions
     );
   }
-  sendPasswordResetOTP(email: string): Observable<any> {
-    return this.http.post(`${apiUrl}users/send-reset-otp`, { email }, httpOptions);
+  sendPasswordResetOTP(email: string, link:string): Observable<any> {
+    return this.http.post(`${apiUrl}users/sendresetotp`, { email, link }, httpOptions);
   }
 
-  resetPasswordWithOTP(otp: string, newPassword: string): Observable<any> {
-    return this.http.post(`${apiUrl}users/reset-password`, { otp, newPassword }, httpOptions);
+  resetPasswordWithOTP(data:any): Observable<any> {
+    return this.http.post(`${apiUrl}users/resetpassword`, data, httpOptions);
   }
 }

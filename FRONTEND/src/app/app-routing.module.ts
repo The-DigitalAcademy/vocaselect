@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'subjectmarks', component: SubjectmarksComponent , canActivate: [AuthGuardsService]},
   { path: 'hamburger', component: HamburgerComponent},
   { path: 'nav', component: NavbarComponent},
-  { path: 'passwordReset', component: PasswordResetComponent},
+  { path: 'passwordReset/:email', component: PasswordResetComponent},
   { path: 'requestPasswordReset', component: RequestPasswordResetComponent},
   { path: 'subjects', component: SubjectsComponent },
   { path: 'dream-job', component: DreamJobComponent, data: { showNav: true }},

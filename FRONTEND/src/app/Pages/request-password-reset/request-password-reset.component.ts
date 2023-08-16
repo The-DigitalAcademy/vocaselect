@@ -10,18 +10,19 @@ import { AuthService } from '../../_services/auth.service';
 export class RequestPasswordResetComponent implements OnInit {
   showRequestPasswordForm = true;
   requestPasswordForm: FormGroup;
-  
+
   constructor(private authService: AuthService, private formBuilder: FormBuilder) {
     this.requestPasswordForm = this.formBuilder.group({
       requestEmail: ['', [Validators.required, Validators.email]],
     });
   }
-  
-    ngOnInit(): void {}
-   
-onRequestPasswordSubmit() {
+
+  ngOnInit(): void {}
+
+  onRequestPasswordSubmit() {
     const email = this.requestPasswordForm.get('requestEmail')?.value;
-    this.authService.sendPasswordResetOTP(email).subscribe(
+    const link = window.location.host + '/passwordReset/' + btoa(email);
+    this.authService.sendPasswordResetOTP(email, link).subscribe(
       () => {
         // OTP sent successfully, show a message or redirect
       },
@@ -29,12 +30,5 @@ onRequestPasswordSubmit() {
         // Handle error, e.g., show error message
       }
     );
-   }
   }
-
-
-
-
-
-
-
+}

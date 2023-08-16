@@ -100,7 +100,7 @@ const login = async (req, res) => {
     const { username, password } = req.body;
     console.log(req.body, "login body", username, password);
     //find a user by their email
-    const user = await User.findOne({
+    const user = await db.User.findOne({
       where: {
         email: username,
       },
@@ -144,8 +144,6 @@ const login = async (req, res) => {
     console.log(error);
   }
 };
-
-
 
 //GET ALL
 const getUsers = async (req, res) => {
@@ -237,7 +235,7 @@ const generateOTP = () => {
 };
 
 const sendResetOTP = async (req, res) => {
-  const { email } = req.body;
+  const { email, link } = req.body;
 
   try {
     const user = await db.User.findOne({
@@ -274,7 +272,7 @@ const sendResetOTP = async (req, res) => {
       from: 'vocaselect@gmail.com',
       to: email,
       subject: 'Password Reset OTP',
-      text: `Your OTP: ${optGenerated}`,
+      text: `Your OTP: ${optGenerated}, click on reset password to reset your password <a href="${link}">Reset Password</a>`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -340,7 +338,7 @@ const resetPassword = async (req, res) => {
     console.log('Entered OTP:', otp);
     console.log('Stored OTP:', otpManager.getOTP());
 
-    if (otp !== otpManager.getOTP()) {
+    if (otp.toString() !== otpManager.getOTP().toString()) {
       console.log('OTP mismatch');
       return res.status(400).json({ message: 'Invalid OTP' });
     }
@@ -356,9 +354,6 @@ const resetPassword = async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
-
-
-  
 
 module.exports = {
   signup,
