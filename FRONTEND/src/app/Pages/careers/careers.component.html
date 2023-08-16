@@ -8,18 +8,38 @@
         <h2>Recommended Careers</h2>
     </div>
 
-    <div class="row cards" width="100%">
+    <!-- <div class="row cards " width="100%">
         <div class="col-md-3" *ngFor="let career of careers">
-            <div class="card mb-10" style="width: 100%;">
+            <div class="card mt-10" style="width: 100%;">
                
                 <div class="card-body">
                     <span class = "name">{{career.name}}</span><br>
-                    <span>{{career.description}}</span><br>
+                    <p>{{career.description}}</p><br>
                     <a routerLink="">Related courses<i class="bi bi-forward-fill"></i></a>
                 </div>
               </div>
         </div>
-    </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-3 mx-auto my-3" *ngFor="let career of careers">
+            <mdb-card class="card">
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h4>{{career.name}}</h4>
+                </mdb-card-title>
+      
+                <mdb-card-text>
+                  <p>{{career.description}}</p>
+                </mdb-card-text>
+      
+                <a routerLink="" class="">Related courses<i class="bi bi-forward-fill"></i></a>
+              </mdb-card-body>
+            </mdb-card>
+          </div>
+        </div>
+      </div>
 </div>
 <div class="eclipse-2"></div>
 <div class="eclipse-6"></div>

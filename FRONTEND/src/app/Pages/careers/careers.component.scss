@@ -2,6 +2,7 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    position: absolute;
 
     .heading{
         display: flex;
@@ -17,19 +18,26 @@
     }
 
     .card{
-        width: 80%;
+        width: 100%;
         background-color: var(--career-cards);
-        height: 80%;
-
+        height: 30vh;
+        justify-content: center;
+        padding: 15px 5px;
+        position: inherit;
+      
         .name{
             font-size: 20px;
             font-weight: bolder; 
         }
 
-        .card-body a{
-            margin-left: 10rem;
+        a{
+            margin-right: 10rem;
             text-decoration: none;
-            // color: black;
+            // position: inherit;
+        }
+
+        p{
+            padding-bottom: -5rem;
         }
     }
 
