@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{html,js}",
-    "./node_modules/flowbite/**/*.js"
-],
+  content: ["./src/**/*.{html,ts}",
+  "./node_modules/flowbite/**/*.js"],
   theme: { screens: {
     'sm': '640px',
     // => @media (min-width: 640px) { ... }
@@ -29,6 +27,7 @@ module.exports = {
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/aspect-ratio'),
     // require('@tailwindcss/container-queries'),
-    require('flowbite/plugin')
-  ],
+    // require('flowbite/plugin'),
+    require("daisyui")
+  ]
 }

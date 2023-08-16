@@ -1,34 +1,42 @@
-<!--    Made by Erik Terwan    -->
-<!--   24th of November 2015   -->
-<!--        MIT License        -->
-<nav role="navigation">
-    <div id="menuToggle">
-      <!--
-      A fake / hidden checkbox is used as click reciever,
-      so you can use the :checked selector on it.
-      -->
-      <input type="checkbox" />
-      
-      <!--
-      Some spans to act as a hamburger.
-      
-      They are acting like a real hamburger,
-      not that McDonalds stuff.
-      -->
-      <span></span>
-      <span></span>
-      <span></span>
-      
-      <!--
-      Too bad the menu has to be inside of the button
-      but hey, it's pure CSS magic.
-      -->
-      <ul id="menu">
-        <a href="#"><li>Home</li></a>
-        <a href="#"><li>About</li></a>
-        <a href="#"><li>Info</li></a>
-        <a href="#"><li>Contact</li></a>
-        <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
-      </ul>
-    </div>
-  </nav>
+
+<div class = "container navHam">
+	<div class="logo ">
+		<img src="../../../assets/logo.png" class="logo-img" alt="...">
+	</div>
+<nav role='navigation'>
+
+	<div id="menuToggle">
+			<input type="checkbox" />
+			<span></span>
+			<span></span>
+			<span></span>
+			<ul id="menu">
+	  <!-- user profile picture and name -->
+	  <div class = "profile">
+      <img class="avatar mat-elevation-z8" src="https://www.iprcenter.gov/image-repository/blank-profile-picture.png/@@images/image.png"/>
+      <h4 class="name">{{user.name}} {{user.surname}}</h4>
+	</div>
+      <mat-divider></mat-divider>
+
+				<a href="" class="icons" >
+					<li><i class="bi bi-house-door-fill"></i>Home<a><i class="bi bi-chevron-right chevron"></i></a></li>
+				</a>
+        <hr>
+				<a href="#" >
+         
+					<li><i class="bi bi-person"></i>Account<a><i class="bi bi-chevron-right chevron"></i></a></li>
+				</a>
+        <hr>
+				<a href="#" >
+					<li><i class="bi bi-info-circle-fill"></i>About<i class="bi bi-chevron-right chevron"></i></li>
+				</a>
+        <hr>
+				<a href="#" >
+					<li><i class="bi bi-box-arrow-right"><a (click)="logout()"></a></i>Logout<i class="bi bi-chevron-right chevron"></i></li>
+				</a>
+        <hr>
+			</ul>
+			
+	</div>
+</nav>
+</div>

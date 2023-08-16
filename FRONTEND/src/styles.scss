@@ -1,67 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
+// @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-// @import "tailwindcss/base";
-// @import "tailwindcss/components";
-// @import "./components/Header/Header.module.css";
-// @import "tailwindcss/utilities";
+body{
+    background-color: var(--background-color)  ;
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
 
 :root {
-  --primary-color: #fff;
-  --background-color: #f2f6fd;
-  --text-color: #073980;
-  --button-color: #75a1df;
-  --cards-color: #e6e6fa;
+    --primary-color: #fff;
+    --background-color: #F2F6FD !important; 
+    --text-color: #073980;
+    --button-color: #75A1DF;
+    --cards-color:#E6E6FA;
+    --career-cards:#A1C2F3;
+  }
+  
+
+.eclipse-1{
+    position: fixed;
+    height: 100px;
+    border-radius: 50%;
+    width: 100px;
+    background: linear-gradient(#c2e8e6, #9198e5);
+    z-index: -999999;
+    top: 40px;
+    left: 60px;
+}
+.eclipse-2{
+    position: fixed;
+    height: 200px;
+    border-radius: 50%;
+    width: 200px;
+    background: linear-gradient( #9198e5, #c2e8e6);
+    z-index: -999999;
+    bottom: -40px;
+    left:-40px;
 }
 
-//   *{
-//     background-color: #F2F6FD;
-
-// }
-
-.eclipse-1 {
-  position: fixed;
-  height: 100px;
-  border-radius: 50%;
-  width: 100px;
-  background: linear-gradient(#c2e8e6, #9198e5);
-  z-index: -999999;
-  top: 40px;
-  left: 150px;
-}
-.eclipse-2 {
-  position: fixed;
-  height: 200px;
-  border-radius: 50%;
-  width: 200px;
-  background: linear-gradient(#9198e5, #c2e8e6);
-  z-index: -999999;
-  bottom: -40px;
-  left: -40px;
+.eclipse-3{
+    position: fixed;
+    height: 350px;
+    border-radius: 50%;
+    width: 350px;
+    z-index: -999999;
+    right: 380px;
+    bottom: 40px;
+    background: linear-gradient(#ffffff, #AED3E8);
 }
 
-.eclipse-3 {
-  position: fixed;
-  height: 350px;
-  border-radius: 50%;
-  width: 350px;
-  z-index: -999999;
-  right: 380px;
-  bottom: 40px;
-  background: linear-gradient(#ffffff, #aed3e8);
+.eclipse-4{
+    position: fixed;
+    border-radius: 50%;
+    background-color: #E6E6FA;
+    z-index: -999999;
+    right: -90px;
+    top: -100px;
+    width: 250px;
+    height: 250px;
 }
 
-.eclipse-4 {
-  position: fixed;
-  border-radius: 50%;
-  background-color: #e6e6fa;
-  z-index: -999999;
-  right: -90px;
-  top: -100px;
-  width: 250px;
-  height: 250px;
+.eclipse-5{
+    position: fixed;
+    height: 250px;
+    border-radius: 50%;
+    width: 250px;
+    background: linear-gradient(#def3f2, #b8bce4);
+    z-index: -999999;
+    top: -40px;
+    left:450px;
 }
 
 .eclipse-5 {
@@ -96,3 +104,13 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+.container{
+    z-index: 1;
+    position: relative;
+}
+
+
+html, body { 
+    height: 100%; 
+}
+

@@ -36,23 +36,21 @@ export class QuizQuestionsComponent implements OnInit {
   eighthFormGroup = this._formBuilder.group({
     eighthCtrl: ['', Validators.required],
   });
-  
+
   isLinear = true;
   hidden = false
 
   quiz: any; // Assuming the data is an array of objects or any other data structure
+option: any;
 
-  constructor(private dataService: QuizQuestionsService, private _formBuilder: FormBuilder){ }
+  constructor(private dataService: QuizQuestionsService, private _formBuilder: FormBuilder) { }
 
-  ngOnInit(): void {
-    this.getDataFromServer();
-  }
 
   quizQuestions = [
     {
       questionId: 1,
       questionText:
-        '1.What are your favourite topic to learn about?',
+        'What are your favourite topic to learn about?',
       options: [''],
       selectedOption: [''],
 
@@ -60,83 +58,127 @@ export class QuizQuestionsComponent implements OnInit {
     {
       questionId: 2,
       questionText:
-        '2.How would you describe your personality?',
+        'How would you describe your personality?',
       options: ['introverted', 'extroverted'],
       selectedOption: [''],
     },
-    
+
 
     {
       questionId: 3,
-      questionText: '3.What do you enjoy doing in your free time?',
+      questionText: 'What do you enjoy doing in your free time?',
       options: [''],
       selectedOption: [''],
     },
 
+    // {
+    //   questionId: 4,
+    //   questionText: '4.What do you enjoy doing on your free time?',
+    //   options: [''],
+    //   selectedOption: [''],
+    // },
     {
       questionId: 4,
-      questionText: '4.What do you enjoy doing on your free time?',
-      options: [''],
+      questionText: 'Are you interested in remote or prefer on-site',
+      options: ['remote', 'on-site'],
       selectedOption: [''],
     },
     {
       questionId: 5,
-      questionText: '5.Are you interested in remote or prefer on-site',
-      options: ['remote','on-site'],
-      selectedOption: [''],
-    },
-    {
-      questionId: 6,
-      questionText: '6.Most exciting experience?',
+      questionText: 'What is your most exciting experience?',
       options: [''],
       selectedOption: [''],
     },
     {
-      questionId: 7,
-      questionText: '7.Have you ever had a job or volunteered previously?',
-      options: ['Yes I had a job/volunteered before','No I havent volunteered/worked before'],
+      questionId: 6,
+      questionText: 'Have you ever had a job or volunteered previously?',
+      options: ['Yes I had a job/volunteered before', 'No I havent volunteered/worked before'],
       selectedOption: [''],
     },
     {
-      questionId: 8,
-      questionText: '8.Are you willing to invest extra hours for a job you are passionate about?',
+      questionId: 7,
+      questionText: 'Are you willing to invest extra hours for a job you are passionate about?',
       options: ['yes', 'no'],
       selectedOption: [''],
     },
+    // {
+    //   questionId: 9,
+    //   questionText: '9.Are you willing to invest extra hours on a dream job?',
+    //   options: ['Yes i am willing to invest extra hours for a dream job', 'No i am not willing to invest extra hours for a dream job'],
+    //   selectedOption: [''],
+    // },
     {
-      questionId: 9,
-      questionText: '9.Are you willing to invest extra hours on a dream job?',
-      options: ['Yes i am willing to invest extra hours for a dream job','No i am not willing to invest extra hours for a dream job'],
-      selectedOption: [''],
-    },
-    {
-      questionId: 10,
-      questionText: '10.Is there any other information or aspirations you would like about yourself?',
+      questionId: 8,
+      questionText: 'Is there any other information or aspirations you would like about you?',
       options: [''],
       selectedOption: [''],
     },
   ];
 
+  //amswers from user are from here
+
+  answers: any;
+
+  submitQuiz() {
+    // Get the selected options and store them in an array of answers
+    this.answers = this.quizQuestions.map((question) => ({
+      questionId: question.questionId,
+
+      selectedOption: [question.selectedOption],
+
+
+    }));
+
+
+
+    this.dataService.postQuizToPostgres(this.answers).subscribe(
+      {
+        next: (data: any) => {
+          this.quiz = data;
+          console.log(this.quiz, "   quizzes are here")
+        },
+        error: (err: any) => {
+          console.log(err, "its not posting")
+        }
+      }
+    );
+
+    // Do whatever you want with the answers, e.g., send them to a backend server
+    console.log(this.answers, "     mpelemane");
+
+
+
+  }
+
+
+
+  selected1(question: any, option: any) {
+    question.selectedOption = option;
+  }
+
+
+  ngOnInit(): void {
+    this.getDataFromServer();
+  }
+
 
   getDataFromServer() {
 
     this.dataService.getData().subscribe(
-    
+
 
       {
-        next: (data :any)=>{
-          this.quiz = data   ;
-          console.log(this.quiz , "   quizzes are here")
+        next: (data: any) => {
+          this.quiz = data;
+          console.log(this.quiz, "   quizzes are here")
         },
-        
-        error:(err:any)=>{
+
+        error: (err: any) => {
 
         }
       }
     );
   }
 
-  
 
- 
 }

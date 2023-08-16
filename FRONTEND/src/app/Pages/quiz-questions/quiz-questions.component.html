@@ -1,7 +1,7 @@
 <!-- <app-navbar></app-navbar> -->
 
 <div class="div">
-  <!-- <div *ngIf="quiz">  -->
+  
   <button
     *ngIf="hidden"
     mat-raised-button
@@ -12,9 +12,11 @@
   </button>
 
   <mat-stepper [linear]="isLinear" #stepper>
-<!-- first input -->
+    <!-- first input-->
     <mat-step [stepControl]="firstFormGroup" style="background-color: green;">
       <form [formGroup]="firstFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 1">
         <mat-progress-bar mode="determinate" value="0"></mat-progress-bar>
 
         <br /><br /><br /><br />
@@ -26,7 +28,7 @@
           <p
             class="font-normal style=justify-content: center; text-gray-700 dark:text-gray-400"
           >
-            What are your favorite subjects or topics to learn about?
+          {{question.questionText}}
           </p>
         </a>
 
@@ -39,6 +41,9 @@
             placeholder="eg. English, Geography"
             formControlName="firstCtrl"
             required
+            [(ngModel)]="question.selectedOption"
+            [value]="option"
+            
           />
 
           <!-- <button
@@ -60,11 +65,16 @@
             Next
           </button>
         </div>
+      </div>
+    </div>
       </form>
+   
     </mat-step>
-<!--second select -->
+    <!-- second select-->
     <mat-step [stepControl]="secondFormGroup" label="" >
       <form [formGroup]="secondFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 2">
         <mat-progress-bar mode="determinate" value="15"></mat-progress-bar>
 
         <br /><br /><br />
@@ -74,7 +84,7 @@
         >
           
           <p class="font-normal text-gray-700 dark:text-gray-400">
-           How would you describe your personality?
+            {{question.questionText}}
           </p>
         </a>
 
@@ -83,11 +93,12 @@
           <button
             class="btns"
             mat-button
-            formControlName="secondCtrl"
+            formControlName=""
             matStepperNext
-            class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             
-
+            [value]="question.options[0]"
+            (click)="selected1(question, question.options[0])"
             >
             Introverted
           </button>
@@ -96,20 +107,24 @@
             class="btns"
             mat-button
             matStepperNext
-            class="text-black bg-blue-200 shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            
-            >
+            class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            [value]="question.options[1]"
+            (click)="selected1(question, question.options[1])">
             Extroverted
           </button>
 
           
         </div>
         <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </div>
       </form>
     </mat-step>
- <!-- third input-->
+<!-- third input-->
     <mat-step [stepControl]="thirdFormGroup" label="">
       <form [formGroup]="thirdFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 3">
         <mat-progress-bar mode="determinate" value="30"></mat-progress-bar>
 
         <br /><br /><br /><a
@@ -118,7 +133,7 @@
         >
           
           <p class="font-normal text-gray-700 dark:text-gray-400">
-            What do you enjoy doing in your free time?
+           {{question.questionText}}
           </p>
         </a>
 
@@ -129,6 +144,8 @@
             formControlName="thirdCtrl"
             placeholder="eg.Reading or Video games"
             required
+            [(ngModel)]="question.selectedOption"
+            [value]="option"
           />
         </mat-form-field>
         <div>
@@ -140,13 +157,16 @@
             Next
           </button>
           <button mat-button matStepperPrevious>Back</button>
-          
+        </div>
+      </div>
         </div>
       </form>
     </mat-step>
 <!-- fourth select-->
     <mat-step [stepControl]="fourthFormGroup" label="">
       <form [formGroup]="fourthFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 4">
         <mat-progress-bar mode="determinate" value="45"></mat-progress-bar>
 
         <br /><br /><br /><a
@@ -155,36 +175,53 @@
         >
          
           <p class="font-normal text-gray-700 dark:text-gray-400">
-            Are you interested in remote or prefer on-site positions?
+           {{question.questionText}}
           </p></a
         >
 
-        
+        <!-- <mat-form-field>
+          <mat-label>Work Preference</mat-label>
+          <br /><br /><br /><br /><input
+            matInput
+            formControlName="fourthCtrl"
+            placeholder="eg.On-site or Remote"
+            required
+          />
+        </mat-form-field> -->
         <div class="mvbuttons">
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200 shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        
+          [value]="question.options[0]"
+          (click)="selected1(question, question.options[0])"  >
         Remote
         </button><br>
           <button
           
           mat-button
           matStepperNext
-          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        
+          [value]="question.options[1]"
+          (click)="selected1(question, question.options[1])"
+            >
         On-Site
         </button>
           
 
         </div>
         <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </div>
       </form>
     </mat-step>
 <!-- fifth input-->
     <mat-step [stepControl]="fifthFormGroup" label="">
       <form [formGroup]="fifthFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 5">
         <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
 
         <br /><br /><br /><a
@@ -193,17 +230,19 @@
         >
           
           <p class="font-normal text-gray-700 dark:text-gray-400">
-          What is your most exciting experience? 
+          {{question.questionText}}
           </p>
         </a>
 
         <mat-form-field style="justify-content: center;" appearance="outline">
-          <mat-label>Most fun you've had </mat-label>
+          <mat-label>Most fun you've had ! </mat-label>
           <br /><br /><br /><br /><input
             matInput
             formControlName="fifthCtrl"
             placeholder="eg.Camping,Sky-diving"
             required
+            [(ngModel)]="question.selectedOption"
+            [value]="option"
           />
         </mat-form-field>
         <div>
@@ -217,12 +256,16 @@
           <button mat-button matStepperPrevious>Back</button>
           
         </div>
+      </div>
+    </div>
       </form>
     </mat-step>
 
 <!-- sixth select-->
     <mat-step [stepControl]="sixthFormGroup" label="">
       <form [formGroup]="sixthFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 6">
         <mat-progress-bar mode="determinate" value="65"></mat-progress-bar>
 
         <br /><br /><br /><a
@@ -231,35 +274,51 @@
         >
          
           <p class="font-normal text-gray-700 dark:text-gray-400">
-            Have you ever volunteered or had a job previously??
+            {{question.questionText}}
           </p>
         </a>
 
-       
+        <!-- <mat-form-field>
+          <mat-label>Ever Worked or Volunteered?</mat-label>
+          <br /><br /><br /><br /><input
+            matInput
+            formControlName="sixthCtrl"
+            placeholder="eg.Yes or No"
+            required
+          />
+        </mat-form-field> -->
         <div class="mvbuttons">
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [value]="question.options[0]"
+          (click)="selected1(question, question.options[0])"
+          >
           Yes I have
         </button><br>
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [value]="question.options[1]"
+            (click)="selected1(question, question.options[1])"
+          >
           No I haven't 
         </button>
 
         </div>
 
         <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </div>
       </form>
     </mat-step>
 <!-- seventh select -->
     <mat-step [stepControl]="seventhFormGroup" label="">
       <form [formGroup]="seventhFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 7">
         <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
 
         <br /><br /><br /><a
@@ -268,7 +327,7 @@
         >
          
           <p class="font-normal text-gray-700 dark:text-gray-400">
-            Are you willing to invest extra hours for a dream job
+            {{question.questionText}}
           </p>
         </a>
 
@@ -277,27 +336,35 @@
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        
+          [value]="question.options[0]"
+          (click)="selected1(question, question.options[0])"  >
          Yes I am
         </button><br>
           <button
           mat-button
           matStepperNext
-          class="text-black bg-blue-200  shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
+          class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          [value]="question.options[1]"
+          (click)="selected1(question, question.options[1])"
+          >
          No I am not
         </button>
          
 
         </div>
         <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </div>
       </form>
     </mat-step>
 
-  <!-- eighth input -->
+<!-- eighth input -->
     <mat-step [stepControl]="eighthFormGroup" label="">
       <form [formGroup]="eighthFormGroup">
+        <div *ngFor="let question of quizQuestions">
+          <div *ngIf="question.questionId == 8">
         <mat-progress-bar mode="determinate" value="95"></mat-progress-bar>
 
         <br /><br /><br /><a
@@ -306,8 +373,7 @@
         >
           
           <p class="font-normal text-gray-700 dark:text-gray-400">
-            Is there any other infornation about yourself or your aspirations
-            that you would like to share?
+           {{question.questionText}}
           </p>
         </a>
 
@@ -318,6 +384,8 @@
             formControlName="eighthCtrl"
             placeholder="e.g.Blogging or Chess"
             required
+            [(ngModel)]="question.selectedOption"
+            [value]="option"
           />
         </mat-form-field>
         <div>
@@ -331,12 +399,15 @@
           <button mat-button matStepperPrevious>Back</button>
           
         </div>
+      </div>
+    </div>
       </form>
     </mat-step>
 
-    <!-- Last page  -->
+<!-- Last page  -->
     <mat-step>
-      
+      <!-- <mat-progress-bar mode="determinate" value="100"></mat-progress-bar> -->
+      <!-- <ng-template matStepLabel>Done</ng-template> -->
       <h1 class="header text-blue-400" style="justify-content: center;">
         Well Done.You have completed the Quiz!
       </h1>
@@ -357,7 +428,7 @@
             id="button"
             class="px-10 py-3.5 text-base font-medium text-white bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600"
             routerLink=""
-          >
+            (click)="submitQuiz()">
             Submit!
           </button>
           <br /><br /><button mat-button matStepperPrevious>Back</button>
