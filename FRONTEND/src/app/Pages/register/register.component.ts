@@ -56,10 +56,6 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.value.studentgrade >= 10 ? 'Next' : 'Register';
   }
 
-  // isButtonDisabled(): boolean {
-  //   return this.form.studentgrade <= 10 ? false : true;
-  // }
-
   onButtonClick(): void {
     if (this.registerForm.value.studentgrade >= 10) {
       // Handle the logic for the "Register" button click
@@ -129,19 +125,18 @@ export class RegisterComponent implements OnInit {
   onCheck() {
     this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
       next: (data) => {
-        console.log(data);
-        if (data) {
+        if (data.toString() === "true") {
           Swal.fire({
             title: 'This email already exists!',
             text: '',
             icon: 'error',
           }).then((result) => {
             if (result.value) {
+              //return in this case means exit the function;
               return;
             }
           });
         }
-
       },
 
       error: (err) => {

@@ -81,7 +81,7 @@ const emailExists = async (req, res) => {
     }
 
     //Check if the user with the same email already exists
-    const existingUser = await User.findOne({ where: { email: email } });
+    const existingUser = await db.User.findOne({ where: { email: email } });
     if (existingUser) {
       return res.status(200).send(true);
     }
