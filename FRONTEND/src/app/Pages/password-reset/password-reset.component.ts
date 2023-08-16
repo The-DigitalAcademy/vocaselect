@@ -20,18 +20,13 @@ export class PasswordResetComponent implements OnInit {
   }
    ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
-      
-      console.log( params.get('email'), 'encrypted email');
+      // decrypting the email parameter using atob
       this.email = atob( params.get('email')?? "");
-
-      console.log(this.email,'decrypted email')
-
-
     });
    }
 
   onResetPasswordSubmit() {
-    // You can also include user's email or additional info in this method
+    //creating an object for changing password
 
     const data = {
       email: this.email,

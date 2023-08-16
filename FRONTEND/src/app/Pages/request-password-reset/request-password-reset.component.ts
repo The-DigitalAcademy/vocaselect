@@ -21,7 +21,7 @@ export class RequestPasswordResetComponent implements OnInit {
 
   onRequestPasswordSubmit() {
     const email = this.requestPasswordForm.get('requestEmail')?.value;
-    const link = window.location.host + '/passwordReset/' + btoa(email);
+    const link = window.location.origin + '/passwordReset/' + btoa(email);
     this.authService.sendPasswordResetOTP(email, link).subscribe(
       () => {
         // OTP sent successfully, show a message or redirect
