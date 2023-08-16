@@ -21,13 +21,14 @@
 
     img{
         // position: center;
+        display: flex;
         align-content: center;
         margin-bottom: -95px;
         padding:15px 15px;
 
     }
-.type{
 
+.type {
     justify-items: center;
     padding-top: 3rem;
     font-size: 25px;
@@ -60,20 +61,21 @@
 
 .btn {
     color: #fff;
-    padding: 10px 5px;
+    padding: 12px 5px;
     background-color: var(--button-color);
     border-radius: 14px;
     font-weight: bold;
     font-size: 20px;
     width: 12rem;
     border: 0;
-  
     user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  
+    text-transform: none;
+    box-shadow: 0px 4px 6px rgb(132, 168, 170);
+    /* -webkit-user-select: none;
+    touch-action: manipulation; */
   }
-  #btn-submit{
+
+  #btn-submit {
     justify-content: center;
     padding: 18px;
 }

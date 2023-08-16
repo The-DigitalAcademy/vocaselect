@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import Swal from 'sweetalert2';
 import { parseISO, isValid, differenceInYears } from 'date-fns';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { log } from 'console';
+// import { log } from 'console';
 import { UserService } from 'src/app/_services/user.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 

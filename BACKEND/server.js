@@ -1,13 +1,18 @@
 //Packages
 const express = require("express");
-// const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
-const subjectRoutes = require('./routes/subjects.routes')
-const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
+// const subjectRoutes = require('./routes/subjects.routes')
 
+const careerRoutes = require("./routes/careerRoutes");
+const quizRoutes = require("./routes/quizRoutes");
+
+//SWAGGER 
+// const { specs, swaggerUi } = require('./swagger');
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 
 //Environment file
 require('dotenv').config();
@@ -32,34 +37,23 @@ db.sequelize.sync()
 
 app.use(cors(corsOptions));
 
-//middleware
+//Middlewares
+// parse requests of content-type - application/json
 app.use(bodyParser.json());
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-// parse requests of content-type - application/json
-// app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-//simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Vocaselect" });
-});
-
-//routes for the user API
-app.use('/api/users', userRoutes)
-// app.use('/api/allSubjects', subjectRoutes)
-
-app.use('/api/subjects', subjectRoutes)
 
 // routes for getting all subjets
 
 // app.use('/app/getting')
 
-app.use('/api/user_selected_subjects', selectedSubjectRoutes);
+// app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 
 // app.use('/api', selectedSubjectsRouter); 
 // Import the deleteUserById method (replace this with the actual path to your method file)
@@ -69,8 +63,47 @@ const { deleteUserById } = require('./controllers/user.controllers');
 app.delete('/:id', deleteUserById);
 
 
+// Initialize swagger-jsdoc
+// const swaggerSpec = swaggerJSDoc(swaggerOptions);
+
+// Swagger configuration options
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "VocaSelect API",
+      version: "1.0.0",
+      description: "API to get recommendations for a preferred career choice in South Africa",
+    },
+  },
+  apis: ['./routes/*.js'], // Point to the route files containing Swagger comments
+};
+
+// Initialize swagger-jsdoc
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+
+// Serve Swagger API documentation
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+//routes for the user API
+app.use('/api/users', userRoutes)
+
+// AI Routes
+app.use("/enterCareer", careerRoutes);
+app.use("/quiz", quizRoutes);
+
+
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is connected on port ${PORT}.`);
+<<<<<<< HEAD
+=======
+});
+
+//simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Vocaselect" });
+>>>>>>> 522ea38e32899d7aae40927525b3c71bc1500402
 });

@@ -2,7 +2,7 @@
 const bcrypt = require("bcryptjs");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
+require('dotenv').config();
 
 // Assigning users to the variable User
 const User = db.User;

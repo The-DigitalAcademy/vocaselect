@@ -1,4 +1,4 @@
-.btn {
+.btn2 {
     color: #fff;
     padding: 10px 5px;
     background-color: var(--button-color);
@@ -19,7 +19,7 @@
     overflow: hidden;
     position: absolute;
     justify-items: auto;
- }
+}
 
 .container{
     overflow: hidden;
@@ -27,6 +27,8 @@
     width: fit-content;
     block-size: fit-content;
     padding-bottom: -60rem;
+    background-color: #F2F6FD;
+
 
     p{
         font-weight: bolder;
@@ -35,16 +37,22 @@
         
     }
     .logo{
-        margin-top: -2.5rem;
+        margin-top: -3.5rem;
         margin-bottom: -4rem;
         margin-left: 3rem;
         height: 15rem;
         width: 15rem;
-        position: relative;
+        display: flex;
+        justify-content: center;
+        /* position: relative; */
      
     }
 
     #btn-getstarted{
         justify-content: center;
     }
+}
+
+#landing-header {
+    font-size: 300px;
 }

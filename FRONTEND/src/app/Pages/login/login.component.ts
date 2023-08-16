@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   email!: string;
   invalidCredentials = false;
   errorMessage = '';
-  roles: string[] = [];
+  // isLoading: '';
+  // roles: string[] = [];
 
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public router: Router, private formB: FormBuilder,) {

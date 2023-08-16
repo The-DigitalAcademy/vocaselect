@@ -1,5 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { HamburgerComponent } from 'src/app/components/hamburger/hamburger.component';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({

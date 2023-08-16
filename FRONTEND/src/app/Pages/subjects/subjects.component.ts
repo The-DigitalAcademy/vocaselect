@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { SubjectsService } from 'src/app/services/subjects.service';
-import { environment } from 'src/environments/environment';
+import { SubjectsService } from 'src/app/_services/_ChatGPT_Services/subjects.service';
 
 @Component({
   selector: 'app-subjects',

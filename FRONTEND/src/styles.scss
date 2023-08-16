@@ -8,6 +8,7 @@ body{
     font-family: Roboto, "Helvetica Neue", sans-serif; 
 }
 
+
 :root {
     --primary-color: #fff;
     --background-color: #F2F6FD !important; 
@@ -15,7 +16,11 @@ body{
     --button-color: #75A1DF;
     --cards-color:#E6E6FA;
     --career-cards:#A1C2F3;
-  }
+}
+
+body {
+    background-color: var(--background-color);
+}
   
 
 .eclipse-1{
@@ -29,6 +34,7 @@ body{
     left: 60px;
 }
 .eclipse-2{
+    position: fixed;
     position: fixed;
     height: 200px;
     border-radius: 50%;
