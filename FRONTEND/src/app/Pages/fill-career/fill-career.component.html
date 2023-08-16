@@ -3,22 +3,21 @@
 <div class="eclipse-2"></div>
 <!-- <div class="eclipse-1"></div> -->
 <div class="eclipse-6"></div>
-<div class="eclipse-4"></div>
+<!-- <div class="eclipse-4"></div> -->
 
 
 <!--NAVBAR - To be converted to component-->
-<nav class="navbar">
+<app-navbar></app-navbar>
+<!-- <nav class="navbar">
     <div class="backbutton">
-        <!-- Back Button Icon -->
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" fill="#073980" class="bi bi-arrow-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" routerLink="/dream-job"/>
           </svg>
    </div>
    <div class="logo ">
-         <!-- Application Logo -->
         <img src="../../../assets/logo.png" class="logo-img" alt="...">
    </div>
-</nav> 
+</nav>  -->
 
 <!--MAIN CONTENT & INPUT FIELD-->
 <div *ngIf="!showLoader && !showRecommendations" class = "container career">
@@ -48,12 +47,13 @@
     <div class="row">
         <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
             <div class="mb-3 card" [style.background-color]="cardBackgroundColors[i]" [routerLink]="['/careerChoice', ]">
-                <div class="card-body">
-                   
+                <div class="card-body">                
                     <h3 class="card-title">{{ course.courseName }}</h3>
-                     <button>View Course</button>
+                    <!-- <h3 class="card-title">{{ course.courseDescription }}</h3>
+                    <h3 class="card-title">{{ course.admissionRequirements}}</h3> -->
+                     <button (click)="selectedCourse(course.uniName)">View Course</button>
                 </div>
             </div>
         </div>
     </div>
-  </div>
+</div>

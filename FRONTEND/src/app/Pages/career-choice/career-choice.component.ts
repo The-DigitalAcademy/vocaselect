@@ -26,6 +26,7 @@ export class CareerChoiceComponent implements OnInit {
       this.courseService.generateCourses(this.careerChoice)
         .subscribe(
           (response) => {
+            
             // Store the generated recommendations
             this.courseRecommendations = response;
             console.log(response)

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
 
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 
 @Component({
@@ -23,9 +23,12 @@ export class FillCareerComponent implements OnInit {
   // Flag to show a loader while generating recommendations
   showLoader: boolean = false;
 
+  selecteCourse: any = ''
+
   constructor (
     private router: Router, 
     private courseService: CareerRecommendationService,
+    private route: ActivatedRoute
   ) { }
 
 
@@ -43,6 +46,12 @@ export class FillCareerComponent implements OnInit {
             // Store the generated recommendations
             this.courseRecommendations = response;
             console.log(response)
+
+            // Remove strings, commas, and single quotes from the course names
+          this.courseRecommendations.forEach(course => {
+            course.courseName = course.courseName.replace(/["',]/g, '');
+          });
+          
             this.showLoader = false; // Hide the loader and message
             this.showRecommendations = true; // Show the recommendations
           },
@@ -55,5 +64,10 @@ export class FillCareerComponent implements OnInit {
 
   // Define colors for card background using ngClass
   cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
-
+  
+  
+  selectedCourse(course:any){
+    this.selecteCourse
+    this.router.navigate(['/career']);
+  }
 }

@@ -143,7 +143,7 @@
               </p>
             </a>
 
-            <!-- <mat-form-field>
+            <mat-form-field>
               <input
                 matInput
                 placeholder="Field 2"
@@ -151,41 +151,14 @@
                 [(ngModel)]="question.selectedOption"
                 [value]="option"
               />
-            </mat-form-field> -->
-
-            <button
-                mat-button
-                matStepperNext
-                
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
-                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600
-                 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                
-                 [value]="question.options[0]"
-                 (click)="selected1(question, question.options[0])"
-              >
-              Yes
-              </button>
-
-              <button type="text"
-                mat-button
-                matStepperNext
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 m-2 font-medium 
-                rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
-                focus:outline-none dark:focus:ring-blue-800"
-                 
-                [value]="question.options[1]"
-                (click)="selected1(question, question.options[1])"
-              >
-                No
-              </button>
+            </mat-form-field>
           </div>
         </div>
-        <button mat-button matStepperPrevious>Back</button>
-        <!-- <div>
+
+        <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
-        </div> -->
+        </div>
       </form>
     </mat-step>
 
@@ -225,7 +198,7 @@
     <br />
 
     <mat-step [stepControl]="fouthFormGroup">
-      <form [formGroup]="fouthFormGroup"> -->
+      <form [formGroup]="fouthFormGroup"> 
         <!-- <ng-template matStepLabel>Step 4</ng-template> -->
          <div *ngFor="let question of quizQuestions">
           <div *ngIf="question.questionId == 4">
@@ -295,7 +268,7 @@
 
     <mat-step [stepControl]="sixthFormGroup">
       <form [formGroup]="sixthFormGroup">
-        <!-- <ng-template matStepLabel>Step 6</ng-template> -->
+        <ng-template matStepLabel>Step 6</ng-template>
         <div *ngFor="let question of quizQuestions">
           <div *ngIf="question.questionId == 6">
             <a
@@ -308,7 +281,7 @@
                 {{ question.questionText }}
               </p>
             </a>
-            <!-- <mat-form-field>
+            <mat-form-field>
               <input
                 matInput
                 placeholder="Field 6"
@@ -316,41 +289,14 @@
                 [(ngModel)]="question.selectedOption"
                 [value]="option"
               />
-            </mat-form-field> -->
-
-            <button
-                mat-button
-                matStepperNext
-                
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
-                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600
-                 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                
-                 [value]="question.options[0]"
-                 (click)="selected1(question, question.options[0])"
-              >
-              Yes
-              </button>
-
-              <button type="text"
-                mat-button
-                matStepperNext
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 m-2 font-medium 
-                rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 
-                focus:outline-none dark:focus:ring-blue-800"
-                 
-                [value]="question.options[1]"
-                (click)="selected1(question, question.options[1])"
-              >
-                No
-              </button>
+            </mat-form-field>
           </div>
         </div>
-        <button mat-button matStepperPrevious>Back</button>
-        <!-- <div>
+
+        <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
-        </div> -->
+        </div>
       </form>
     </mat-step>
 
@@ -393,7 +339,7 @@
     <mat-step>
      
 
-      <a
+      <!-- <a
         class="block max-w-sm p-5 bg-green border mb-20 mt-16 border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
         id="bcolor"
       >
@@ -402,7 +348,13 @@
         >
           please wait for thr generated career for you
         </p>
-      </a>
+      </a> -->
+
+      <!--LOADER-->
+    <div *ngIf="showLoader" class="loader-container">
+      <img src="../../../assets/blue loader.gif" alt="Loading...">
+      <p>Generating course recommendations...</p>
+    </div>
 
       <div>
         <button mat-button matStepperPrevious>Back</button>
@@ -414,3 +366,16 @@
 <div class="eclipse-4"></div>
 <div class="eclipse-2"></div>
 <div class="eclipse-3"></div>
+
+
+<div class="container">
+  <h1 class="category-heading">Suitable Careers</h1>
+  <div class="row">
+      <div class="col-sm-3" *ngFor="let course of careerRecommendations; let i=index">
+        <div class="card-body">                
+            <h3 class="card-title">{{ course.careerName }}</h3>
+            <!-- <h3 class="card-title">{{ course.courseDescription }}</h3>
+            <h3 class="card-title">{{ course.admissionRequirements}}</h3> -->
+        </div>
+      </div>
+</div>

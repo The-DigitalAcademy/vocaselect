@@ -34,6 +34,9 @@ export class Quiz2Component implements OnInit {
   quiz: any; // Assuming the data is an array of objects or any other data structure
   option: any;
 
+  // Flag to show a loader while generating recommendations
+  showLoader: boolean = false;
+
   careerRecommendations: CareerRecommendation[] = [];
 
   constructor(private careerQuizService: CareerQuizService, private _formBuilder: FormBuilder) { }
@@ -143,20 +146,18 @@ export class Quiz2Component implements OnInit {
   ];
 
   //answers from the user are here now
-
   answers: any;
   
   submitQuiz() {
     this.answers = this.quizQuestions.map((question) => ({
       questionId: question.questionId,
-      selectedOption: question.selectedOption[0] || '', // Assuming selectedOption is an array, get the first element or use an empty string
-  
+       selectedOption: question.selectedOption, // Assuming selectedOption is an array, get the first element or use an empty string
     }));
-  
     // Use the careerQuizService to send the answers to the API
     this.careerQuizService.generateCareerQuiz(this.answers)
       .subscribe(
         (response) => {
+          
           // Handle the API response if needed
           console.log('API Response:', response);
         },
@@ -171,3 +172,24 @@ export class Quiz2Component implements OnInit {
     question.selectedOption = option;
   }
 }
+
+
+
+// generateCourses(): void {
+//   if (this.careerChoice) {
+//     this.showLoader = true; // Display the loader and message
+//     this.courseService.generateCourses(this.careerChoice)
+//       .subscribe(
+//         (response) => {
+//           // Store the generated recommendations
+//           this.courseRecommendations = response;
+//           console.log(response)
+//           this.showLoader = false; // Hide the loader and message
+//           this.showRecommendations = true; // Show the recommendations
+//         },
+//         (error) => {
+//           console.error('Error occurred:', error);
+//         }
+//       );
+//   }
+// }
