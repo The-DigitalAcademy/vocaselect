@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
 
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-career-choice',
@@ -9,26 +10,35 @@ import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
   styleUrls: ['./career-choice.component.scss']
 })
 export class CareerChoiceComponent implements OnInit {
-  careerChoice: string = ''; // User's career choice
-  
+  courseName: string | null = null; 
+  uniName: any;
+  courseDetails: any;
+
   // Store course recommendations
   courseRecommendations: CourseRecommendation[] = [];
+  course: any;
 
-  constructor(private courseService: CareerRecommendationService) {}
+
+  constructor(
+    private route: ActivatedRoute, 
+    private courseService: CareerRecommendationService
+  ) {}
 
 
   ngOnInit(): void {
-    this.generateCourses();
+    // Get the course ID from the route parameters
+    this.route.params.subscribe(params => {
+      this.courseName = params['courseName']; // Assuming 'id' is the parameter name in the route
+      // You can use this courseId to fetch and display the detailed course data
+    });
   }
 
-  generateCourses(): void {
-    if (this.careerChoice) {
-      this.courseService.generateCourses(this.careerChoice)
+  fetchCourseDetails(courseName: string, uniName: string, admissionRequirements: string, courseDescription: string): void {
+    if (courseName) {
+      this.courseService.getCourseDetailsByName(courseName, uniName, admissionRequirements, courseDescription)
         .subscribe(
           (response) => {
-            
-            // Store the generated recommendations
-            this.courseRecommendations = response;
+            this.courseDetails = response; // Store course details
             console.log(response)
           },
           (error) => {

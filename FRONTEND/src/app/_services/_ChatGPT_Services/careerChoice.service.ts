@@ -11,13 +11,19 @@ export class CareerRecommendationService {
   // private apiUrl = 'https://backend-ai-a6r3.onrender.com';
 
   //local backend URL
-  private apiUrl = 'http://localhost:9000/enterCareer'; 
+  private apiUrl = 'http://localhost:9000'; 
 
   constructor(private http: HttpClient) {}
 
   generateCourses(careerChoice: string): Observable<CourseRecommendation[]> {
     // return this.http.post(`${this.apiUrl}/enterCareer`, { careerChoice });
     const body = { careerChoice };
-    return this.http.post<CourseRecommendation[]>(`${this.apiUrl}`, body);
+    return this.http.post<CourseRecommendation[]>(`${this.apiUrl}/enterCareer`, body);
+  }
+
+  // Define a method to fetch course details by name
+  getCourseDetailsByName(courseName: string, uniName: string, admissionRequirements: string, courseDescription:string): Observable<any> {
+    const body = { courseName, uniName, admissionRequirements, courseDescription };
+    return this.http.post<any>(`${this.apiUrl}/enterCareer`, body);
   }
 }

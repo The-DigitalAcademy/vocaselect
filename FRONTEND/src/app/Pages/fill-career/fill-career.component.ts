@@ -23,7 +23,7 @@ export class FillCareerComponent implements OnInit {
   // Flag to show a loader while generating recommendations
   showLoader: boolean = false;
 
-  selecteCourse: any = ''
+  course: any = ''
 
   constructor (
     private router: Router, 
@@ -66,8 +66,7 @@ export class FillCareerComponent implements OnInit {
   cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
   
   
-  selectedCourse(course:any){
-    this.selecteCourse
-    this.router.navigate(['/career']);
-  }
+  // selectedCourse(_course:any){
+  //   this.selecteCourse
+  // }
 }
