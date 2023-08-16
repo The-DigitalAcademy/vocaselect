@@ -13,5 +13,3 @@ const subjects = require('../controllers/subjects.controllers')
 
 
     module.exports = router
-
-

@@ -15,10 +15,10 @@ import { QuizComponent } from './Pages/quiz/quiz.component';
 import { Quiz2Component } from './Pages/quiz2/quiz2.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
-import { TimelineComponent } from './Pages/timeline/timeline.component';
+
 import { CareersComponent } from './Pages/careers/careers.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
-
+import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,8 +38,10 @@ const routes: Routes = [
 
   { path: 'nav', component: NavbarComponent},
   { path: 'viewcareer', component: ViewCareeerComponent },
-  { path: 'timeline', component: TimelineComponent},
+  
   { path: 'careers', component: CareersComponent},
+  { path: 'quiz-questions', component: QuizQuestionsComponent},
+  
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 

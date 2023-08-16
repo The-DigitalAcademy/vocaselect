@@ -1,22 +1,4 @@
-// module.exports = (sequelize, Sequelize) => {
-//     const SubjectMark  = sequelize.define("subjects", {
-//         //change DataTypes back Sequelize - if it breaks
-//         subjectName: {
-//         type: Sequelize.STRING,
-//         allowNull: false
-//       },
-//       mark: {
-//         type: Sequelize.STRING,
-//         allowNull: false
-//       }
-      
-//     });
-  
-//     return SubjectMark;
-//   };
 
-
-// models/subject.js
 module.exports = (sequelize, Sequelize) => {
   const Subject = sequelize.define("subject", {
       subjectName: {

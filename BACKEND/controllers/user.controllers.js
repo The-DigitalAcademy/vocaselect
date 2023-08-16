@@ -97,6 +97,9 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
     console.log(req.body, "login body", username, password);
+ console.log(email + password)
+console.log(email, password+ "khomotso")
+
     //find a user by their email
     const user = await User.findOne({
       where: {

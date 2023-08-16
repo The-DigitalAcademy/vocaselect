@@ -8,6 +8,9 @@ const apiUrl = environment.baseUrl;
   providedIn: 'root'
 })
 export class UserService {
+  isAuthenticated(): boolean {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) { }
 

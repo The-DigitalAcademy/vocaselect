@@ -22,13 +22,14 @@ import { SubjectmarksComponent } from './Pages/subjectmarks/subjectmarks.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesComponent } from './Pages/courses/courses.component';
 import { Quiz2Component } from './Pages/quiz2/quiz2.component';
+import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 // import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
-import { TimelineComponent } from './Pages/timeline/timeline.component';
+
 import { CareersComponent } from './Pages/careers/careers.component';
 
 import {MatInputModule} from '@angular/material/input';
@@ -37,6 +38,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
+
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
     SubjectsComponent,
     CareerChoiceComponent,
     WelcomeQuizComponent,
+    QuizQuestionsComponent,
     DreamJobComponent,
     FillCareerComponent,
     HomepageComponent,
@@ -58,7 +61,7 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
     PasswordResetComponent,
     RequestPasswordResetComponent,
     ViewCareeerComponent,
-    TimelineComponent,
+    
     CareersComponent,
     HamburgerComponent,
     SubjectmarksComponent
