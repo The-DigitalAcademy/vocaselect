@@ -98,12 +98,9 @@ app.use("/quiz", quizRoutes);
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is connected on port ${PORT}.`);
-<<<<<<< HEAD
-=======
 });
 
 //simple route
 app.get("/", (req, res) => {
   res.json({ message: "Vocaselect" });
->>>>>>> 522ea38e32899d7aae40927525b3c71bc1500402
 });
