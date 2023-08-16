@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fill-career',
@@ -6,10 +7,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fill-career.component.scss']
 })
 export class FillCareerComponent implements OnInit {
+// User's career choice
+careerChoice: string = ''; 
+  
+// Store course recommendations
+courseRecommendations: CourseRecommendation[] = [];
 
-  constructor() { }
+// Flag to show course recommendations from the API
+showRecommendations: boolean = false;
 
-  ngOnInit(): void {
+// Flag to show a loader while generating recommendations
+showLoader: boolean = false;
+
+constructor (
+  private router: Router, 
+  private courseService: CareerRecommendationService,
+) { }
+
+
+ngOnInit(): void {
+  // Generate courses on component initialization
+  this.generateCourses();
+}
+
+generateCourses(): void {
+  if (this.careerChoice) {
+    this.showLoader = true; // Display the loader and message
+    this.courseService.generateCourses(this.careerChoice)
+      .subscribe(
+        (response) => {
+          // Store the generated recommendations
+          this.courseRecommendations = response;
+          console.log(response)
+          this.showLoader = false; // Hide the loader and message
+          this.showRecommendations = true; // Show the recommendations
+        },
+        (error) => {
+          console.error('Error occurred:', error);
+        }
+      );
   }
+}
+
+// Define colors for card background using ngClass
+cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
 
 }

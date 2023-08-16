@@ -23,6 +23,31 @@
         <button type="button" class="btn" data-bs-toggle="button" routerLink="">Submit</button>
       </div>
 </div>
+
+<!--LOADER-->
+<div *ngIf="showLoader" class="loader-container">
+    <img src="../../../assets/blue loader.gif" alt="Loading...">
+    <p>Generating course recommendations...</p>
+</div>
+
+
+
+<!--Course cards-->
+<div  *ngIf="showRecommendations"  class="container">
+    <h1 class="category-heading">Suitable Courses</h1>
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
+            <div class="mb-3 card" [style.background-color]="cardBackgroundColors[i]" [routerLink]="['/careerChoice', ]">
+                <div class="card-body">
+                   
+                    <h3 class="card-title">{{ course.courseName }}</h3>
+                     <button>View Course</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
 <div class="eclipse-2"></div>
 <div class="eclipse-1"></div>
 <div class="eclipse-4"></div>
