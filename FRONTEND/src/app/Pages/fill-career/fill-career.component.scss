@@ -1,17 +1,17 @@
 .navbar {
-  margin-top: -2.5rem;
-  display: flex;
-
-  .backbutton {
-    cursor: pointer;
-    margin-left: 8px;
+    margin-top: -2.5rem;
+    display: flex;
+  
+    .backbutton {
+      cursor: pointer;
+      margin-left: 8px;
+    }
+  
+    .logo-img {
+     margin-left: 10rem;
+     width: 150px;
+    }
   }
-
-  .logo-img {
-   margin-right: 10rem;
-   width: 150px;
-  }
-}
 
 .career{
     justify-content: center;
@@ -23,8 +23,7 @@
         // position: center;
         align-content: center;
         margin-bottom: -95px;
-        padding:15px 10px;
-        width: 500px;
+        padding:15px 15px;
 
     }
 .type{
@@ -34,18 +33,17 @@
     font-size: 25px;
     
     label{
-        margin-left: 2.8rem;
+        margin-left: 2rem;
     }
     input {
         margin-top: 0.5rem;
         font-size: 22px;
-        // font-family: 'Times New Roman', Times, serif;
-        padding:10px 25px;
+        padding:15px 25px;
         border-radius: 12px;
         border-style: solid;
         position: inherit;
         width:22rem;
-        margin-left: 1.3rem;
+        margin-left: .5rem;
 
     }
     
@@ -66,8 +64,8 @@
     background-color: var(--button-color);
     border-radius: 14px;
     font-weight: bold;
-    font-size: 24px;
-    width: 14rem;
+    font-size: 20px;
+    width: 12rem;
     border: 0;
   
     user-select: none;

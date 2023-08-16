@@ -23,6 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
+import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
+import { TimelineComponent } from './Pages/timeline/timeline.component';
+import { CareersComponent } from './Pages/careers/careers.component';
 // import {MatButtonModule} from '@angular/material/button';
 
 // import {MatSidenavModule} from '@angular/material/sidenav';
@@ -46,6 +49,9 @@ import { RequestPasswordResetComponent } from './Pages/request-password-reset/re
     NavbarComponent,
     PasswordResetComponent,
     RequestPasswordResetComponent,
+    ViewCareeerComponent,
+    TimelineComponent,
+    CareersComponent,
    
    
   ],
@@ -57,8 +63,6 @@ import { RequestPasswordResetComponent } from './Pages/request-password-reset/re
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    // MatSidenavModule, 
-    // MatButtonModule
     
   ],
   providers: [ UserService ],

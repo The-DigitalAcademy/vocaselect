@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 @Component({
   selector: 'app-hamburger',
@@ -6,35 +8,18 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./hamburger.component.scss']
 })
 export class HamburgerComponent implements OnInit {
-
-  constructor() { }
+  user: any = {};
+  constructor(public router: Router,private tokenStorage: TokenStorageService,) { }
 
   ngOnInit(): void {
+     this.user = this.tokenStorage.getUser();  
   }
 
-  
+  logout(){
+    console.log("tetsts")
+    this.tokenStorage.signOut();
+    this.router.navigate(['/login']);
+  }
 
-  
-  
-  // @ViewChild('nav', { static: true }) navContainer!: ElementRef<HTMLElement>;
-
-  // ngAfterViewInit() {
-
-  // const toggle = this.navContainer.nativeElement.querySelector('.nav-toggle');
-
-  //   if (toggle) {
-  //     toggle.addEventListener('click', () => {
-  //       if (this.navContainer.nativeElement.classList.contains('is-active')) {
-  //         this.navContainer.nativeElement.classList.remove('is-active');
-  //       } else {
-  //         this.navContainer.nativeElement.classList.add('is-active');
-  //       }
-  //     });
-
-  //     this.navContainer.nativeElement.addEventListener('blur', () => {
-  //       this.navContainer.nativeElement.classList.remove('is-active');
-  //     });
-  //   }
-  // }
 
 }

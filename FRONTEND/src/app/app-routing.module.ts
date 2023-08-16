@@ -14,6 +14,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthGuardsService } from './_services/auth-guards.service';
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
+import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
+import { TimelineComponent } from './Pages/timeline/timeline.component';
+import { CareersComponent } from './Pages/careers/careers.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,6 +33,21 @@ const routes: Routes = [
   { path: 'nav', component: NavbarComponent},
   { path: 'passwordReset', component: PasswordResetComponent},
   { path: 'requestPasswordReset', component: RequestPasswordResetComponent},
+  { path: 'subjects', component: SubjectsComponent },
+  { path: 'dream-job', component: DreamJobComponent, data: { showNav: true }},
+  { path: 'home', component: HomepageComponent },
+  { path: 'fill-career', component: FillCareerComponent },
+  { path: 'welcome-quize', component: WelcomeQuizComponent },
+  { path: 'login', component: RegisterComponent },
+  { path: 'register', component: LoginComponent },
+  { path: 'landing', component: LandingPageComponent },
+  { path: 'subjects', component: SubjectsComponent },
+  { path: 'subjectmarks', component: SubjectmarksComponent },
+  { path: 'hamburger', component: HamburgerComponent},
+  { path: 'nav', component: NavbarComponent},
+  { path: 'viewcareer', component: ViewCareeerComponent },
+  { path: 'timeline', component: TimelineComponent},
+  { path: 'careers', component: CareersComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
   
 ];
