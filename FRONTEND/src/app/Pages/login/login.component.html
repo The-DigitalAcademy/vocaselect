@@ -8,15 +8,16 @@
 <div class = "container login-page" >
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"
 >
-    <div class="bg-grey-lighter min-h-screen flex flex-col">
-        <div class="container  max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
-            <div class=" l-container px-6 py-8 rounded shadow-md text-black w-full">
+    <div class="flex flex-col min-h-screen bg-grey-lighter">
+        <div class="container flex flex-col items-center justify-center flex-1 max-w-sm px-2 mx-auto">
+            <div class="w-full px-6 py-8 text-black rounded shadow-md l-container">
                 <img
-                class="card-img-top text-center img-logo h-60 w-50"
+                class="h-0 text-center card-img-top img-logo"
                 src="../../../assets/logo.png"
                 alt="Logo"
 
               />
+              <h1 class="form-heading">Login</h1>
                 <div class="form-group pt-30">
                     <label for="username">Your Email</label>
                 <input 
@@ -39,27 +40,27 @@
                     />
 
                   </div>
-                  <div *ngIf="invalidCredentials" class="text-center text-danger mb-3">
+                  <div *ngIf="invalidCredentials" class="mb-3 text-center text-danger">
                     Fill in your credentials
                   </div>
     
                 <div ngClass="form-group mt-4 text-center">
-                    <button type="submit" class="btn btn-primary btn-block text-white">Login</button>
+                    <button type="submit" class="text-white btn btn-primary btn-block">Login</button>
                   </div>
 
                   <div class = "forgot">
                   <label class="fr">
                     <p>Forgot
                     <a
-                      class="no-underline border-b border-grey-dark text-grey-dark text-blue-500"
+                      class="text-blue-500 no-underline border-b border-grey-dark text-grey-dark"
                       href="/forgotPassword"
                     >
                        Password?
                     </a></p>
                   </label>
-                  <div class="text-grey-dark text-black pt-2" id="cent">
+                  <div class="pt-2 text-black text-grey-dark" id="cent">
                     Not a member?
-                    <a class="no-underline border-b border-blue text-blue-500" routerLink="/register">
+                    <a class="text-blue-500 no-underline border-b border-blue" routerLink="/register">
                       Register</a>
                   </div>
                 </div>

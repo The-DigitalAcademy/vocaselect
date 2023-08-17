@@ -51,7 +51,7 @@ export class QuizQuestionsComponent implements OnInit {
   // Flag to show a loader while generating recommendations
   showLoader: boolean = false;
 
-  quizRecommendations: CareerRecommendation[] = [] = [];
+  careers: CareerRecommendation[] = [] = [];
 
   constructor
   (
@@ -145,7 +145,7 @@ export class QuizQuestionsComponent implements OnInit {
           (response) => {
            
             // Handle the API response if needed
-            console.log('API Responsesssssssss:', response);
+            console.log('careers:', response);
 
             // Assuming response has the generated career information
             // const careers = response.quizRecommendations;

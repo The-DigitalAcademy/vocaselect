@@ -5,19 +5,19 @@
 
 <div class="container register">
   <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
-    <div class="bg-grey-lighter min-screen flex flex-col">
+    <div class="flex flex-col bg-grey-lighter min-screen">
       <div
-        class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-3"
+        class="container flex flex-col items-center justify-center flex-1 max-w-sm px-3 mx-auto"
       >
         <div
-          class="bg-white r-container px-6 py-8 rounded shadow-md text-gray w-full"
+          class="w-full px-6 py-8 bg-white rounded shadow-md r-container text-gray"
         >
-          <img
-            class="img-logo card-img-top text-center h-60 w-50"
+          <!-- <img
+            class="text-center img-logo card-img-top h-60 w-50"
             src="../../../assets/logo.png"
             alt="Logo"
-          />
-
+          /> -->
+          <h1 class="form-heading">Register</h1>
           <div class="names">
             <div class="form-group pt-25">
               <label for="name">Name</label>
@@ -225,24 +225,24 @@
             </div>
           </div>
 
-          <div *ngIf="regInvalid" class="text-center text-danger mb-3">
+          <div *ngIf="regInvalid" class="mb-3 text-center text-danger">
             Please fill in all required fields
           </div>
 
           <div ngClass="form-group mt-3 text-center">
-            <button class="btn btn-primary btn-block text-white" type="submit">
+            <button class="text-white btn btn-primary btn-block" type="submit">
               {{ buttonLabel() }}
             </button>
           </div>
 
           <div class="alreadyExist">
             <div
-              class="alreadyExist text-grey-dark mt-2 text-black pt-4"
+              class="pt-4 mt-2 text-black alreadyExist text-grey-dark"
               id="cent"
             >
               Already a member?
               <a
-                class="no-underline border-b border-blue text-blue-500"
+                class="text-blue-500 no-underline border-b border-blue"
                 href="../login/"
               >
                 Login
