@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth.service';
 
@@ -12,7 +12,7 @@ export class PasswordResetComponent implements OnInit {
   showResetPasswordForm = false;
   resetPasswordForm: FormGroup;
   email:any;
-  constructor(private authService: AuthService, private formBuilder: FormBuilder,private activatedRoute: ActivatedRoute) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder,public router: Router,private activatedRoute: ActivatedRoute) {
     this.resetPasswordForm = this.formBuilder.group({
       otp: ['', Validators.required],
       password: ['', Validators.required],
@@ -37,8 +37,11 @@ export class PasswordResetComponent implements OnInit {
     this.authService.resetPasswordWithOTP(data).subscribe(
       () => {
         // Password reset successfully, show a message or redirect
+        this.router.navigate(['/login']);
       },
       (error) => {
+
+        console.log(error);
         // Handle error, e.g., show error message
       }
     );

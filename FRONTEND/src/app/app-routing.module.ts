@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'hamburger', component: HamburgerComponent},
   { path: 'nav', component: NavbarComponent},
   { path: 'passwordReset/:email', component: PasswordResetComponent},
-  { path: 'requestPasswordReset', component: RequestPasswordResetComponent},
+  { path: 'forgotPassword', component: RequestPasswordResetComponent},
   { path: 'subjects', component: SubjectsComponent },
   { path: 'dream-job', component: DreamJobComponent, data: { showNav: true }},
   { path: 'home', component: HomepageComponent },

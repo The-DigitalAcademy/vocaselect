@@ -7,7 +7,8 @@ require("dotenv").config();
 const User = require('../models/users.models');
 const nodemailer = require('nodemailer');
 const otpManager = require('../otp/otpManager');
-const optGenerated = 0;
+const otpGenerated = 0;
+const sendEmail = require("../utils/email/sendEmail");
 
 //signing a user up
 //hashing users password before its saved to the database with bcrypt
@@ -39,7 +40,7 @@ const signup = async (req, res) => {
     password: await bcrypt.hash(password, 10),
    };
    //saving the user
-   const user = await User.create(data);
+   const user = await db.User.create(data);
 
    //if user details is captured
    //generate token with the user's id and the secretKey in the env file
@@ -248,79 +249,58 @@ const sendResetOTP = async (req, res) => {
 
     // const generatedOTP = generateOTP();
     // Generate OTP
-    const optGenerated = generateOTP();
+    const otpGenerated = generateOTP();
      // Set the OTP value using otpManager
-   otpManager.setOTP(optGenerated);
+   otpManager.setOTP(otpGenerated);
 
-    //this.optGenerated =  optGenerated;
-    console.log(optGenerated ,'generated pin');
+    //this.otpGenerated =  otpGenerated;
+    console.log(otpGenerated ,'generated pin');
     console.log('Stored OTP:', otpManager.getOTP());
     // Store the OTP in the database or cache
     // For simplicity, let's assume you have a 'otp' field in the User model
-   await user.update({ otp: optGenerated });
+   await user.update({ otp: otpGenerated });
 
-    //Send OTP to the user's email
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail', // Change to your email service
-      auth: {
-        user: 'vocaselect@gmail.com',
-        pass: 'beqedpjvbnxnnanl',
-      },
-    });
+   //Send OTP to the user's email
+    // const transporter = nodemailer.createTransport({
+    //   service: 'Gmail', // Change to your email service
+    //   auth: {
+    //     user: 'vocaselect@gmail.com',
+    //     pass: 'beqedpjvbnxnnanl',
+    //   },
+    // });
 
-    const mailOptions = {
-      from: 'vocaselect@gmail.com',
-      to: email,
-      subject: 'Password Reset OTP',
-      text: `Your OTP: ${optGenerated}, click on reset password to reset your password <a href="${link}">Reset Password</a>`,
+    // const mailOptions = {
+    //   from: 'vocaselect@gmail.com',
+    //   to: options.to,
+    //   subject: options.subject,
+    //   html : htmlToSend
+    // //  text: `Your OTP: ${otpGenerated}, click on reset password to reset your password <a href="${link}">Reset Password</a>`,
+    // };
+
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.error('Error sending email:', error);
+    //     res.status(500).json({ message: 'Error sending OTP email' });
+    //   } else {
+    //     console.log('OTP email sent:', info.response);
+    //     res.status(200).json({ message: 'OTP sent successfully' });
+    //   }
+    // });
+
+    const data = {
+      otpGenerated:otpGenerated,
+      link:link
     };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error('Error sending email:', error);
-        res.status(500).json({ message: 'Error sending OTP email' });
-      } else {
-        console.log('OTP email sent:', info.response);
-        res.status(200).json({ message: 'OTP sent successfully' });
-      }
-    });
+    sendEmail({ to: user.email, subject: "Password Reset Request", name: user.name, data: data, templatePath: "./utils/email/templates/requestPasswordReset.html" });
 
-    res.status(200).json({ message: 'OTP sent successfully ' + optGenerated });
-  } catch (error) {
-    console.error('Error sending OTP:', error);
+  res.status(200).json({ message: 'OTP sent successfully ' + otpGenerated });
+   } catch (error) {
+   console.error('Error sending OTP:', error);
     res.status(500).json({ message: 'Internal server error' });
-  }
+   }
 };
 
-// const resetPassword = async (req, res) => {
-
-//   console.log('testing=== (' +  this.optGenerated , ' }====')
-//   const { otp, newPassword,email } = req.body;
-
-//   try {
-//     const user = await db.User.findOne({
-//       where: { email },
-//     });
-
-//     if (!user) {
-//       return res.status(404).json({ message: 'Invalid OTP' });
-//     }
-
-//     // Update the user's password
-//     // if(otp == this.optGenerated)
-//     // {
-//       const password =  await bcrypt.hash(newPassword, 10);
-//       await User.update({ password: password
-     
-//     },{where: {email}} )
-//     // }
-
-//     res.status(200).json({ message: 'Password reset successfully' });
-//   } catch (error) {
-//     console.error('Error resetting password:', error);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// };
 
 const resetPassword = async (req, res) => {
   const { otp, password, email } = req.body;

@@ -21,6 +21,7 @@ export class RequestPasswordResetComponent implements OnInit {
 
   onRequestPasswordSubmit() {
     const email = this.requestPasswordForm.get('requestEmail')?.value;
+    //generate link for password reset using and encrypting parameter email using btoa
     const link = window.location.origin + '/passwordReset/' + btoa(email);
     this.authService.sendPasswordResetOTP(email, link).subscribe(
       () => {
