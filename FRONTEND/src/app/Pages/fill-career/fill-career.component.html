@@ -10,9 +10,10 @@
 <app-navbar></app-navbar>
 
 
-<div class = "container career">
-        <img src="../../../assets/career.png" class="logo-img h-100 w-100" alt="...">
-<form>  
+<!--MAIN CONTENT & INPUT FIELD-->
+<div *ngIf="!showLoader && !showRecommendations" class = "container career">
+        <img src="../../../assets/career.png" class="logo-img" alt="...">
+    <!-- <form>   -->
     <div class = "type">
         <label for="first-name">What is your career choice?</label><br>
         <input id="careerChoice" type="text" name ="career" [(ngModel)]="careerChoice" placeholder="Enter your career choice" required/>
@@ -21,6 +22,7 @@
     <div class="row" id="btn-submit">
         <button type="button" class="btn btn-custom" data-bs-toggle="button" (click)="generateCourses()" >Submit</button>
     </div>
+</div>
 
 <!--LOADER-->
 <div *ngIf="showLoader" class="loader-container">
@@ -42,8 +44,13 @@
 
                     <!-- <h3 class="card-title">{{ course.courseDescription }}</h3>
                     <h3 class="card-title">{{ course.admissionRequirements}}</h3> -->
-                     <button [routerLink]="['/career', course.courseName]">View Course</button>
+                     <!-- <button [routerLink]="['/career', course.courseName]">View Course</button> -->
+                     <div class="courseDetails">
+                        <a routerLink="'/career', course.courseName]" class="">Course Details<i class="bi bi-forward-fill"></i></a>
+                     </div>
+                     
                 </div>
             </div>
         </div>
+    </div>
 </div>

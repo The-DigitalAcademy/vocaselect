@@ -72,7 +72,7 @@ app.use('/api/Answers', quizAnswers)
 // Endpoint to send OTP
 // app.post('/', sendResetOTP);
 
-// // Endpoint to reset password
+//  Endpoint to reset password
 // app.post('/', resetPassword);
 
 // Initialize swagger-jsdoc
@@ -99,10 +99,10 @@ const swaggerSpec = swaggerJSDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
-//routes for the user API
+//User AUTH routes for the user API
 app.use('/api/users', userRoutes)
 
-// AI Routes
+// OpenAI API Routes
 app.use("/enterCareer", careerRoutes);
 app.use("/quiz", quizRoutes);
 

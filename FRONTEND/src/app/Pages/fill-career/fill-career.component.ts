@@ -35,6 +35,15 @@ export class FillCareerComponent implements OnInit {
   ngOnInit(): void {
     // Generate courses on component initialization
     this.generateCourses();
+
+    // Retrieve stored data on component initialization
+    const storedRecommendations = localStorage.getItem('courseRecommendations');
+    if (storedRecommendations) {
+      this.courseRecommendations = JSON.parse(storedRecommendations);
+      this.showRecommendations = true;
+    } else {
+      this.generateCourses();
+    }
   }
 
   generateCourses(): void {
@@ -51,9 +60,14 @@ export class FillCareerComponent implements OnInit {
           this.courseRecommendations.forEach(course => {
             course.courseName = course.courseName.replace(/["',]/g, '');
           });
+
+          // Store the recommendations in local or session storage
+          localStorage.setItem('courseRecommendations', JSON.stringify(this.courseRecommendations));
+
+
           
-            this.showLoader = false; // Hide the loader and message
-            this.showRecommendations = true; // Show the recommendations
+          this.showLoader = false; // Hide the loader and message
+          this.showRecommendations = true; // Show the recommendations
           },
           (error) => {
             console.error('Error occurred:', error);
