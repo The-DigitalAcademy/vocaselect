@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { error } from 'console';
 import { QuizQuestionsService } from 'src/app/_services/_ChatGPT_Services/quiz-questions.service';
+import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
 
 
 
@@ -42,9 +42,14 @@ export class QuizQuestionsComponent implements OnInit {
   hidden = false
 
   quiz: any; // Assuming the data is an array of objects or any other data structure
-option: any;
+  option: any;
 
-  constructor(private dataService: QuizQuestionsService, private _formBuilder: FormBuilder) { }
+  constructor
+  (
+    private dataService: QuizQuestionsService, 
+    private _formBuilder: FormBuilder,
+    private careerQuizService: CareerQuizService
+  ) { }
 
 
   quizQuestions = [
@@ -130,22 +135,35 @@ option: any;
 
     }));
 
+    // Use the careerQuizService to send the answers to the API
+      this.careerQuizService.generateCareerQuiz(this.answers)
+        .subscribe(
+          (response) => {
+            
+            // Handle the API response if needed
+            console.log('API Response:', response);
+          },
+          (error) => {
+            // Handle errors if needed
+            console.error('API Error:', error);
+          }
+        );
 
 
-    this.dataService.postQuizToPostgres(this.answers).subscribe(
-      {
-        next: (data: any) => {
-          this.quiz = data;
-          console.log(this.quiz, "   quizzes are here")
-        },
-        error: (err: any) => {
-          console.log(err, "its not posting")
-        }
-      }
-    );
+    // this.dataService.postQuizToPostgres(this.answers).subscribe(
+    //   {
+    //     next: (data: any) => {
+    //       this.quiz = data;
+    //       console.log(this.quiz, "   quizzes are here")
+    //     },
+    //     error: (err: any) => {
+    //       console.log(err, "its not posting")
+    //     }
+    //   }
+    // );
 
     // Do whatever you want with the answers, e.g., send them to a backend server
-    console.log(this.answers, "     mpelemane");
+    // console.log(this.answers, "     mpelemane");
 
 
 
