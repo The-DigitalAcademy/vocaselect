@@ -10,6 +10,8 @@ const router = express.Router();
  *   post:
  *     summary: Get career recommendations based on quiz answers.
  *     description: Returns career recommendations tailored to the user's preferences and traits.
+ *     tags: [OpenAI]
+ * 
  *     requestBody:
  *       required: true
  *       content:
@@ -17,12 +19,11 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
- *               answers:
  *                 type: array
  *                 items:
  *                   type: string
  *                 description: List of user's quiz answers.
- *                 example: ["answer1":"reading books", answer2":"outgoing and creative",    "answer3":"teamwork or individual work", "answer4":"Maths and Science (STEM)", "answer5":"dynamic work environment", "answer6":"drawn to unpredictability", "answer7":"growth opportunities", "answer8": "learn many skills", "answer9":"", "answer10":""]
+ *                 example: ["answer1":"reading novels", answer2":"outgoing and creative",    "answer3":"teamwork or individual work", "answer4":"Maths and Science (STEM)", "answer5":"dynamic work environment", "answer6":"drawn to unpredictability", "answer7":"growth opportunities", "answer8": "learn many skills", "answer9":"", "answer10":""]
  *             required:
  *               - answers
  *     responses:

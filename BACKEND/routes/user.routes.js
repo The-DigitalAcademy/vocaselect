@@ -1,7 +1,4 @@
 
-
-
-
 //importing modules
 const express = require('express')
 const userController = require('../controllers/user.controllers')

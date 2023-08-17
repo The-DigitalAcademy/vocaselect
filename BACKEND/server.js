@@ -82,8 +82,10 @@ const swaggerOptions = {
 // Initialize swagger-jsdoc
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
+
 // Serve Swagger API documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 
 //routes for the user API
 app.use('/api/users', userRoutes)
