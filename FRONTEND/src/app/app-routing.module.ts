@@ -36,7 +36,11 @@ const routes: Routes = [
   { path: 'register', component: LoginComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'subjects', component: SubjectsComponent },
+  //fill the career course details route
   { path: 'career/:courseName', component: CareerChoiceComponent},
+
+  { path: 'career', component: CareerChoiceComponent},
+
   { path: 'courses', component: CoursesComponent},
   { path: 'quiz', component: QuizComponent},
   { path: 'quiz2', component: Quiz2Component},

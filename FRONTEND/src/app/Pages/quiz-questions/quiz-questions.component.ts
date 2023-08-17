@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { QuizQuestionsService } from 'src/app/_services/_ChatGPT_Services/quiz-questions.service';
 import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
-
+import { Router } from '@angular/router';
+import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
 
 
 @Component({
@@ -44,11 +45,20 @@ export class QuizQuestionsComponent implements OnInit {
   quiz: any; // Assuming the data is an array of objects or any other data structure
   option: any;
 
+   // Flag to show course recommendations from the API
+  showRecommendations: boolean = false;
+
+  // Flag to show a loader while generating recommendations
+  showLoader: boolean = false;
+
+  careers: CareerRecommendation[] = [] = [];
+
   constructor
   (
     private dataService: QuizQuestionsService, 
     private _formBuilder: FormBuilder,
-    private careerQuizService: CareerQuizService
+    private careerQuizService: CareerQuizService,
+    private router: Router // Inject the Router service
   ) { }
 
 
@@ -56,7 +66,7 @@ export class QuizQuestionsComponent implements OnInit {
     {
       questionId: 1,
       questionText:
-        'What are your favourite topic to learn about?',
+        "What's your favorite way to spend free time?",
       options: [''],
       selectedOption: [''],
 
@@ -65,7 +75,7 @@ export class QuizQuestionsComponent implements OnInit {
       questionId: 2,
       questionText:
         'How would you describe your personality?',
-      options: ['introverted', 'extroverted'],
+        options: ['outgoing', 'analytical', 'creative', 'introverted', 'extroverted'],
       selectedOption: [''],
     },
 
@@ -77,12 +87,6 @@ export class QuizQuestionsComponent implements OnInit {
       selectedOption: [''],
     },
 
-    // {
-    //   questionId: 4,
-    //   questionText: '4.What do you enjoy doing on your free time?',
-    //   options: [''],
-    //   selectedOption: [''],
-    // },
     {
       questionId: 4,
       questionText: 'Are you interested in remote or prefer on-site',
@@ -125,7 +129,7 @@ export class QuizQuestionsComponent implements OnInit {
 
   answers: any;
 
-  submitQuiz() {
+  generateCareerQuiz() {
     // Get the selected options and store them in an array of answers
     this.answers = this.quizQuestions.map((question) => ({
       questionId: question.questionId,
@@ -134,14 +138,23 @@ export class QuizQuestionsComponent implements OnInit {
 
 
     }));
-
+    this.showLoader = true; // Display the loader and message
     // Use the careerQuizService to send the answers to the API
       this.careerQuizService.generateCareerQuiz(this.answers)
         .subscribe(
           (response) => {
-            
+           
             // Handle the API response if needed
-            console.log('API Response:', response);
+            console.log('API Responsesssssssss:', response);
+
+            // Assuming response has the generated career information
+            // const careers = response.quizRecommendations;
+            
+            // Navigate to the CareersComponent with the career information
+            // this.router.navigate(['/careers'], { state: { careers } });
+
+            this.showLoader = false; // Hide the loader and message
+            this.showRecommendations = true; // Show the recommendations
           },
           (error) => {
             // Handle errors if needed

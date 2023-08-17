@@ -1,6 +1,6 @@
 <!-- <app-navbar></app-navbar> -->
 
-<div class="div">
+<div *ngIf="!showLoader && !showRecommendations" class="div">
   
   <button
     *ngIf="hidden"
@@ -427,8 +427,8 @@
             type="button"
             id="button"
             class="px-10 py-3.5 text-base font-medium text-white bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600"
-            routerLink=""
-            (click)="submitQuiz()">
+            
+            (click)="generateCareerQuiz()">
             Submit!
           </button>
           <br /><br /><button mat-button matStepperPrevious>Back</button>
@@ -443,3 +443,31 @@
 <div class="eclipse-2"></div>
 <div class="eclipse-3"></div>
 
+<!--LOADER-->
+<div *ngIf="showLoader" class="loader-container">
+  <img src="../../../assets/blue loader.gif" alt="Loading...">
+  <p>Generating careers, please wait...</p>
+</div>
+
+
+<div  *ngIf="showRecommendations"  class="container">
+  <h1 class="category-heading">Suitable Courses</h1>
+  <div class="row">
+      <div class="col-sm-3" *ngFor="let career of careers; let i=index">
+          <div class="mb-3 card">
+              <div class="card-body">      
+                  <h3 class="card-title">{{ career.careerName}}</h3>
+                  <!-- <h3 class="card-title">{{ course.uniName }}</h3> -->
+
+                  <!-- <h3 class="card-title">{{ course.courseDescription }}</h3>
+                  <h3 class="card-title">{{ course.admissionRequirements}}</h3> -->
+                   <!-- <button [routerLink]="['/career', course.courseName]">View Course</button> -->
+                   <div class="courseDetails">
+                      <a routerLink="['/career', course.courseName]">View Course <i class="bi bi-forward-fill"></i></a>
+                   </div>
+                   
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
