@@ -19,11 +19,12 @@ const router = express.Router();
  *           schema:
  *             type: object
  *             properties:
+ *               answers:                  # Change 'type' to 'answers'
  *                 type: array
  *                 items:
  *                   type: string
  *                 description: List of user's quiz answers.
- *                 example: ["answer1":"reading novels", answer2":"outgoing and creative",    "answer3":"teamwork or individual work", "answer4":"Maths and Science (STEM)", "answer5":"dynamic work environment", "answer6":"drawn to unpredictability", "answer7":"growth opportunities", "answer8": "learn many skills", "answer9":"", "answer10":""]
+ *                 example: ["reading novels", "outgoing and creative", "teamwork or individual work", "Maths and Science (STEM)", "dynamic work environment", "drawn to unpredictability", "growth opportunities", "learn many skills", "", ""]
  *             required:
  *               - answers
  *     responses:

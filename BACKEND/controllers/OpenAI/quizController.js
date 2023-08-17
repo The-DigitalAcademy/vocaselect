@@ -65,7 +65,7 @@ exports.generateCareerQuiz = async (req, res) => {
 
     const displayedCareers = suitableCareers.slice(0, Math.min(22, suitableCareers.length)); 
 
-    const jsonResult = { quizRecommendations: displayedCareers };
+    const jsonResult = { displayedCareers };
 
     // // Assuming you have a Sequelize model QuizAnswer to store the generated recommendations
     // const quizAnswers = {
