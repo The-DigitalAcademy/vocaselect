@@ -29,19 +29,17 @@ exports.generateCareerQuiz = async (req, res) => {
 
     Based on your answers, please recommend a maximum of 4 (four) careers and short interesting  description of what each profession does in layman's terms to appeal to younger people(like you are explaining to a 5-year-old) in South Africa. Format the response in JSON  representation.
     
-    Follow this object:
+    The JSON Format object must have the following structure:
     [
-      career1:
       {
-        careerName: University of Johannesburg,
+        careerName: sample career,
         careerDescription: sample description like explaining to 5 year old,
-        careerSalary: Rand - month salary,
+        careerSalary: Rand - month salary estimation,
       },
-      career2
       {
-        careerName: university name,
+        careerName: sample  career,
         careerDescription: sample description like explaining to 5 year old,
-        careerSalary: Rand - month salary,
+        careerSalary: Rand - month salary estimation,
       },
       so on....
     ]    
@@ -56,16 +54,30 @@ exports.generateCareerQuiz = async (req, res) => {
 
     const careerRecommendations = completion.data.choices[0].text;
 
-    // Assuming career recommendations are separated by lines
-    const recommendedCareers = careerRecommendations.split('\n');
+    // Parse the course recommendations text into structured course objects
+    const careers = parseCareerRecommendation(careerRecommendations);
 
-    // Filter out empty lines and display at least 4 suitable careers
-    const suitableCareers = recommendedCareers.filter(career => career.trim() !== '');
-    console.log(suitableCareers)
+    const extractedCareers = [];
 
-    const displayedCareers = suitableCareers.slice(0, Math.min(22, suitableCareers.length)); 
+    for (const career of careers) {
+      // If 'career.careerName' is falsy, assign an empty string to 'uniName'
+      const careerName = career.careerName || "";
+      // If 'course.courseName' is falsy, assign an empty string to 'courseName'
+      const careerDescription = career.careerDescription || "";
+  
+      const careerSalary = career.careerSalary || "";
 
-    const jsonResult = { displayedCareers };
+      // Create an object containing extracted course information and push it to 'extractedCourses' array
+      extractedCareers.push({
+        careerName,
+        careerDescription,
+        careerSalary,
+      });
+    }
+
+   // Send the extracted course recommendations as a JSON response
+   res.status(200).json(extractedCareers);
+
 
     // // Assuming you have a Sequelize model QuizAnswer to store the generated recommendations
     // const quizAnswers = {
@@ -76,7 +88,7 @@ exports.generateCareerQuiz = async (req, res) => {
     // Use Sequelize's create method to insert the quiz answers and recommendations into the database
     // await QuizAnswer.create(quizAnswers);
 
-    res.status(200).json(jsonResult);
+    // res.status(200).json(jsonResult);
 
   } catch (err) {
     console.error("Error occurred:", err);
@@ -84,3 +96,26 @@ exports.generateCareerQuiz = async (req, res) => {
   }
 };
 
+// Function to parse course recommendations text into structured course objects
+function parseCareerRecommendation(text) {
+  const careers = [];
+  const lines = text.split('\n');
+
+  let currentCareer = {};
+  for (const line of lines) {
+    const [key, value] = line.split(':').map(part => part.trim());
+
+    if (key && value) {
+      currentCareer[key] = value;
+    } else if (Object.keys(currentCareer).length > 0) {
+      careers.push(currentCareer);
+      currentCareer = {};
+    }
+  }
+
+  if (Object.keys(currentCareer).length > 0) {
+    careers.push(currentCareer);
+  }
+
+  return careers;
+}

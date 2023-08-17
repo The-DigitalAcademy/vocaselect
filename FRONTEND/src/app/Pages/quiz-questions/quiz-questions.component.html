@@ -453,10 +453,10 @@
 <div  *ngIf="showRecommendations"  class="container">
   <h1 class="category-heading">Suitable Courses</h1>
   <div class="row">
-      <div class="col-sm-3" *ngFor="let career of careers; let i=index">
+      <div class="col-sm-3" *ngFor="let career of quizRecommendations; let i=index">
           <div class="mb-3 card">
               <div class="card-body">      
-                  <h3 class="card-title">{{ career.careerName}}</h3>
+                  <h3 class="card-title">{{ career}}</h3>
                   <!-- <h3 class="card-title">{{ course.uniName }}</h3> -->
 
                   <!-- <h3 class="card-title">{{ course.courseDescription }}</h3>

@@ -51,7 +51,7 @@ export class QuizQuestionsComponent implements OnInit {
   // Flag to show a loader while generating recommendations
   showLoader: boolean = false;
 
-  careers: CareerRecommendation[] = [] = [];
+  quizRecommendations: CareerRecommendation[] = [] = [];
 
   constructor
   (
