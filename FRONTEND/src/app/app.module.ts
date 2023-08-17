@@ -1,4 +1,4 @@
-import { NgModule,} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule,} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
@@ -18,29 +18,26 @@ import { CommonModule } from '@angular/common';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
+import { SubjectmarksComponent } from './Pages/subjectmarks/subjectmarks.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoursesComponent } from './Pages/courses/courses.component';
 import { Quiz2Component } from './Pages/quiz2/quiz2.component';
+import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 // import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
 
-// import {MatButtonModule} from '@angular/material/button';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
+import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
+import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
 
-// import {MatSidenavModule} from '@angular/material/sidenav';
-// import { authInterceptorProviders } from './helpers/auth.interceptor';
+import { CareersComponent } from './Pages/careers/careers.component';
 
-
-
-// import {MatSidenavModule} from '@angular/material/sidenav';
-// import { authInterceptorProviders } from './helpers/auth.interceptor';
-
-
-// import {FormBuilder, Validators} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-import { NavbarComponent } from './components/navbar/navbar.component'
+import { HamburgerComponent } from './components/hamburger/hamburger.component';
 
 
 
@@ -53,12 +50,21 @@ import { NavbarComponent } from './components/navbar/navbar.component'
     SubjectsComponent,
     CareerChoiceComponent,
     WelcomeQuizComponent,
+    QuizQuestionsComponent,
     DreamJobComponent,
     FillCareerComponent,
     HomepageComponent,
     CoursesComponent,
     Quiz2Component,
     NavbarComponent,
+    NavbarComponent,
+    PasswordResetComponent,
+    RequestPasswordResetComponent,
+    ViewCareeerComponent,
+    
+    CareersComponent,
+    HamburgerComponent,
+    SubjectmarksComponent
    
    
   ],
@@ -75,11 +81,12 @@ import { NavbarComponent } from './components/navbar/navbar.component'
     MatFormFieldModule,
     MatStepperModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    
     
   ],
   providers: [ ],
-  schemas: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 
 })

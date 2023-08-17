@@ -8,6 +8,9 @@ const apiUrl = environment.baseUrl;
   providedIn: 'root'
 })
 export class UserService {
+  isAuthenticated(): boolean {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -23,6 +26,7 @@ export class UserService {
     return this.http.post<any>(apiUrl+ '/users', body)
   }
 
+  
   checkEmailExists(email:any): Observable<any> {
     return this.http.get(apiUrl + 'users/emailexist/' + email, { responseType: 'text' });
   }

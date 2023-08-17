@@ -4,13 +4,16 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
+const nodemailer = require('nodemailer');
 // const subjectRoutes = require('./routes/subjects.routes')
+const { sendResetOTP, resetPassword } = require('./controllers/user.controllers');
 
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
+const quizAnswers = require('./routes/quizAnswers.routes')
 
 //SWAGGER 
-// const { specs, swaggerUi } = require('./swagger');
+// const quizAnswers = require('./routes/quizAnswers.routes')
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
@@ -62,6 +65,15 @@ const { deleteUserById } = require('./controllers/user.controllers');
 // Create the route for deleting a user
 app.delete('/:id', deleteUserById);
 
+//API for answers
+
+app.use('/api/Answers', quizAnswers)
+
+// Endpoint to send OTP
+// app.post('/', sendResetOTP);
+
+// // Endpoint to reset password
+// app.post('/', resetPassword);
 
 // Initialize swagger-jsdoc
 // const swaggerSpec = swaggerJSDoc(swaggerOptions);
