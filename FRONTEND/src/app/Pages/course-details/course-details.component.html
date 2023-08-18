@@ -1,13 +1,16 @@
-<div class="container">
-    <h1>Course Details</h1>
-    <div *ngIf="selectedCourseId">
-        <h2>{{ selectedCourseId.courseName }}</h2>
-        <p>University Name: {{ selectedCourseId.uniName }}</p>
-        <p>Course Duration: {{ selectedCourseId.courseDuration }}</p>
-        <p>Course Description: {{ selectedCourseId.courseDescription }}</p>
-        <p>Admission Requirements: {{ selectedCourseId.admissionRequirements }}</p>
-    </div>
-    <div *ngIf="!selectedCourseId">
-        <p>No course selected.</p>
+<div *ngIf="showRecommendations" class="container">
+    <h1 class="category-heading">Suitable Courses</h1>
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
+            <div class="mb-3 card">
+                <div class="card-body">
+                    <h3 class="card-title">{{ course.courseName }}</h3>
+                    <p><strong>University:</strong> {{ course.uniName }}</p>
+                    <p><strong>Duration:</strong> {{ course.courseDuration }}</p>
+                    <p><strong>Admission Requirements:</strong> {{ course.admissionRequirements }}</p>
+                
+                </div>
+            </div>
+        </div>
     </div>
 </div>

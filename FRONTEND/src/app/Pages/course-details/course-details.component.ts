@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 import { SelectedCourseService } from 'src/app/_services/_ChatGPT_Services/selected-course.service';
 
@@ -10,26 +10,28 @@ import { SelectedCourseService } from 'src/app/_services/_ChatGPT_Services/selec
 })
 export class CourseDetailsComponent implements OnInit {
 
-  selectedCourseId: any;
+  courseRecommendations: CourseRecommendation[] = [];
+  showRecommendations = true;
 
-
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private selectedCourseService: SelectedCourseService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   
   ngOnInit(): void {
-    // Retrieve the selected course from the Router state
-    // this.selectedCourseId = this.route.snapshot.paramMap.('courseName');
+    const courseName = this.route.snapshot.queryParamMap.get('courseName');
+    if (courseName) {
+      this.selectedCourseService.getSelectedCourses(courseName)
+        .subscribe(
+          (courses) => {
+            this.courseRecommendations = courses;
+          },
+          (error) => {
+            console.error('Error:', error);
+          }
+        );
+    }
   }
 
-  // fetchSelectedCourse() {
-  //   this.selectedCourseService.getSelectedCourses(this.courseName)
-  //     .subscribe(
-  //       (courses) => {
-  //         this.selectedCourse = courses;
-  //         console.log(this.selectedCourse)
-  //       },
-  //       (error) => {
-  //         console.error('Error:', error);
-  //       }
-  //     );
-  // }
 }

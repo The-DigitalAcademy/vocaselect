@@ -59,7 +59,8 @@
                     <h3 class="card-title">{{ course.admissionRequirements}}</h3> -->
                      <!-- <button [routerLink]="['/career', course.courseName]">View Course</button> -->
                      <div class="courseDetails">
-                        <a (click)="viewCourseDetails(course)">View Course <i class="bi bi-forward-fill"></i></a>
+                         <!-- Pass the course name as a query parameter -->
+                         <a [routerLink]="['/course-details']" [queryParams]="{ courseName: course.courseName }">View Course <i class="bi bi-forward-fill"></i></a>
                      </div>
                      
                 </div>
