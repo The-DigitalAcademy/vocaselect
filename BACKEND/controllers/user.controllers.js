@@ -2,10 +2,13 @@
 const bcrypt = require("bcryptjs");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
-require('dotenv').config();
-
+require("dotenv").config();
 // Assigning users to the variable User
-const User = db.User;
+const User = require('../models/users.models');
+const nodemailer = require('nodemailer');
+const otpManager = require('../otp/otpManager');
+const otpGenerated = 0;
+const sendEmail = require("../utils/email/sendEmail");
 
 //signing a user up
 //hashing users password before its saved to the database with bcrypt
@@ -37,7 +40,7 @@ const signup = async (req, res) => {
     password: await bcrypt.hash(password, 10),
    };
    //saving the user
-   const user = await User.create(data);
+   const user = await db.User.create(data);
 
    //if user details is captured
    //generate token with the user's id and the secretKey in the env file
@@ -79,7 +82,7 @@ const emailExists = async (req, res) => {
     }
 
     //Check if the user with the same email already exists
-    const existingUser = await User.findOne({ where: { email: email } });
+    const existingUser = await db.User.findOne({ where: { email: email } });
     if (existingUser) {
       return res.status(200).send(true);
     }
@@ -97,11 +100,8 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
     console.log(req.body, "login body", username, password);
- console.log(email + password)
-console.log(email, password+ "khomotso")
-
     //find a user by their email
-    const user = await User.findOne({
+    const user = await db.User.findOne({
       where: {
         email: username,
       },
@@ -227,6 +227,114 @@ const deleteUserById = async (req, res) => {
   }
 };
 
+const generateOTP = () => {
+  // Logic to generate OTP (e.g., using a library)
+ // return Math.floor(1000 + Math.random() * 9000).toString();
+  const generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+  console.log('Generated OTP:', generatedOTP);
+  return generatedOTP;
+};
+
+const sendResetOTP = async (req, res) => {
+  const { email, link } = req.body;
+
+  try {
+    const user = await db.User.findOne({
+      where: { email },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // const generatedOTP = generateOTP();
+    // Generate OTP
+    const otpGenerated = generateOTP();
+     // Set the OTP value using otpManager
+   otpManager.setOTP(otpGenerated);
+
+    //this.otpGenerated =  otpGenerated;
+    console.log(otpGenerated ,'generated pin');
+    console.log('Stored OTP:', otpManager.getOTP());
+    // Store the OTP in the database or cache
+    // For simplicity, let's assume you have a 'otp' field in the User model
+   await user.update({ otp: otpGenerated });
+
+   //Send OTP to the user's email
+    // const transporter = nodemailer.createTransport({
+    //   service: 'Gmail', // Change to your email service
+    //   auth: {
+    //     user: 'vocaselect@gmail.com',
+    //     pass: 'beqedpjvbnxnnanl',
+    //   },
+    // });
+
+    // const mailOptions = {
+    //   from: 'vocaselect@gmail.com',
+    //   to: options.to,
+    //   subject: options.subject,
+    //   html : htmlToSend
+    // //  text: `Your OTP: ${otpGenerated}, click on reset password to reset your password <a href="${link}">Reset Password</a>`,
+    // };
+
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //   if (error) {
+    //     console.error('Error sending email:', error);
+    //     res.status(500).json({ message: 'Error sending OTP email' });
+    //   } else {
+    //     console.log('OTP email sent:', info.response);
+    //     res.status(200).json({ message: 'OTP sent successfully' });
+    //   }
+    // });
+
+    const data = {
+      otpGenerated:otpGenerated,
+      link:link
+    };
+
+    sendEmail({ to: user.email, subject: "Password Reset Request", name: user.name, data: data, templatePath: "./utils/email/templates/requestPasswordReset.html" });
+
+  res.status(200).json({ message: 'OTP sent successfully ' + otpGenerated });
+   } catch (error) {
+   console.error('Error sending OTP:', error);
+    res.status(500).json({ message: 'Internal server error' });
+   }
+};
+
+
+const resetPassword = async (req, res) => {
+  const { otp, password, email } = req.body;
+
+  try {
+    const user = await db.User.findOne({
+      where: { email },
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Invalid user' });
+    }
+
+    // Uncomment the OTP verification if condition
+    console.log('Entered OTP:', otp);
+    console.log('Stored OTP:', otpManager.getOTP());
+
+    if (otp.toString() !== otpManager.getOTP().toString()) {
+      console.log('OTP mismatch');
+      return res.status(400).json({ message: 'Invalid OTP' });
+    }
+
+    // Assuming you have access to the 'user' instance
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await user.update({ password: hashedPassword }, { where: { email } });
+    console.log('Password reset for:', user.email);
+
+    res.status(200).json({ message: 'Password reset successfully' });
+  } catch (error) {
+    console.error('Error resetting password:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   signup,
   login,
@@ -235,4 +343,6 @@ module.exports = {
   getUserById,
   updateUserById,
   deleteUserById,
+  sendResetOTP, 
+  resetPassword 
 };
