@@ -56,15 +56,13 @@ export class FillCareerComponent implements OnInit {
             this.courseRecommendations = response;
             console.log(response)
 
-            // Remove strings, commas, and single quotes from the course names
+          // Remove strings, commas, and single quotes from the course names
           this.courseRecommendations.forEach(course => {
             course.courseName = course.courseName.replace(/["',]/g, '');
           });
 
           // Store the recommendations in local or session storage
           // localStorage.setItem('courseRecommendations', JSON.stringify(this.courseRecommendations));
-
-
           
           this.showLoader = false; // Hide the loader and message
           this.showRecommendations = true; // Show the recommendations
@@ -83,8 +81,5 @@ export class FillCareerComponent implements OnInit {
   // Define colors for card background using ngClass
   cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
   
-  
-  // selectedCourse(_course:any){
-  //   this.selecteCourse
-  // }
+
 }
