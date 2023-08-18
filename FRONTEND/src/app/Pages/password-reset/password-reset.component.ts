@@ -12,7 +12,11 @@ export class PasswordResetComponent implements OnInit {
   showResetPasswordForm = false;
   resetPasswordForm: FormGroup;
   email:any;
-  constructor(private authService: AuthService, private formBuilder: FormBuilder,public router: Router,private activatedRoute: ActivatedRoute) {
+  resetSuccess: boolean = false;
+  resetFailed: boolean = false;
+  loading: boolean = false;
+
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, public router: Router, private activatedRoute: ActivatedRoute,) {
     this.resetPasswordForm = this.formBuilder.group({
       otp: ['', Validators.required],
       password: ['', Validators.required],
@@ -26,6 +30,12 @@ export class PasswordResetComponent implements OnInit {
    }
 
   onResetPasswordSubmit() {
+
+    if (this.resetPasswordForm.invalid) {
+      // Mark form controls as touched to trigger validation
+      this.resetPasswordForm.markAllAsTouched();
+      return;
+    }
     //creating an object for changing password
 
     const data = {
@@ -33,14 +43,21 @@ export class PasswordResetComponent implements OnInit {
       otp: this.resetPasswordForm.get('otp')?.value,
       password: this.resetPasswordForm.get('password')?.value
     }
+
+    this.loading = true; 
     
     this.authService.resetPasswordWithOTP(data).subscribe(
       () => {
+        this.resetSuccess = true;
         // Password reset successfully, show a message or redirect
-        this.router.navigate(['/login']);
+        setTimeout(() => {
+          this.loading = false; // Reset loading
+          this.router.navigate(['/login']);
+        }, 2000); // 3 seconds delay before redirection
+
       },
       (error) => {
-
+        this.resetFailed = true;
         console.log(error);
         // Handle error, e.g., show error message
       }
