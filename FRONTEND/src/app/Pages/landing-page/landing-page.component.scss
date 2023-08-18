@@ -1,0 +1,58 @@
+.btn2 {
+    color: #fff;
+    padding: 10px 5px;
+    background-color: var(--button-color);
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 18px;
+    width: 15rem;
+    border: 0;
+  
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  
+    cursor: pointer;
+  }
+
+ .page{
+    overflow: hidden;
+    position: absolute;
+    justify-items: auto;
+}
+
+.container{
+    overflow: hidden;
+    position: sticky;
+    width: fit-content;
+    block-size: fit-content;
+    padding-bottom: -60rem;
+    background-color: #F2F6FD;
+
+
+    p{
+        font-weight: bolder;
+        color: var(--text-color);
+        margin-bottom: 2px;
+        
+    }
+    .logo{
+        margin-top: -3.5rem;
+        margin-bottom: -4rem;
+        margin-left: 3rem;
+        height: 15rem;
+        width: 15rem;
+        display: flex;
+        justify-content: center;
+        /* position: relative; */
+     
+    }
+
+    #btn-getstarted{
+        justify-content: center;
+    }
+}
+
+#landing-header {
+    font-size: 300px;
+}

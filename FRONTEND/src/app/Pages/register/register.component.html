@@ -1,1 +1,258 @@
-<p>register works!</p>
+<div class="eclipse-1"></div>
+<div class="eclipse-4"></div>
+<div class="eclipse-5"></div>
+<div class="eclipse-6"></div>
+
+<div class="container register">
+  <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+    <div class="bg-grey-lighter min-screen flex flex-col">
+      <div
+        class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-3"
+      >
+        <div
+          class="bg-white r-container px-6 py-8 rounded shadow-md text-gray w-full"
+        >
+          <img
+            class="img-logo card-img-top text-center h-60 w-50"
+            src="../../../assets/logo.png"
+            alt="Logo"
+          />
+
+          <div class="names">
+            <div class="form-group pt-25">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name"
+                required
+                placeholder="your name"
+              />
+
+              <div
+                *ngIf="
+                  registerForm.get('name')?.invalid &&
+                  (registerForm.get('name')?.dirty ||
+                    registerForm.get('name')?.touched)
+                "
+                class="error-text"
+              >
+                <div *ngIf="registerForm.get('name')?.errors?.['required']">
+                  Name is required.
+                </div>
+                <div *ngIf="registerForm.get('name')?.errors?.['minlength']">
+                  Name must be at least 3 characters long.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group pt-25">
+              <label for="surname">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="surname"
+                required
+                placeholder="your surname"
+              />
+
+              <div
+                *ngIf="
+                  registerForm.get('surname')?.invalid &&
+                  (registerForm.get('surname')?.dirty ||
+                    registerForm.get('surname')?.touched)
+                "
+                class="error-text"
+              >
+                <div *ngIf="registerForm.get('surname')?.errors?.['required']">
+                  Surname is required.
+                </div>
+                <div *ngIf="registerForm.get('surname')?.errors?.['minlength']">
+                  Surname must be at least 3 characters long.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group pt-30">
+            <label for="username">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+              formControlName="email"
+              required
+              placeholder="sample@example.com"
+            />
+
+            <div
+              *ngIf="
+                registerForm.get('email')?.invalid &&
+                (registerForm.get('email')?.dirty ||
+                  registerForm.get('email')?.touched)
+              "
+              class="error-text"
+            >
+              <div *ngIf="registerForm.get('email')?.errors?.['required']">
+                Email is required.
+              </div>
+              <div *ngIf="registerForm.get('email')?.errors?.['email']">
+                Email is not valid..
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group pt-30 file">
+            <label for="dob">Date of Birth</label>
+            <input
+              type="date"
+              class="form-control"
+              style="flex-direction: row; color: gray"
+              formControlName="dob"
+              placeholder="yyyy-mm-dd"
+            />
+
+            <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="
+                registerForm.get('dob')?.errors &&
+                (registerForm.get('dob')?.touched ||
+                  registerForm.get('dob')?.dirty)
+              "
+            >
+              <div *ngIf="registerForm.get('dob')?.errors?.['required']">
+                Date of Birth is required!
+              </div>
+              <div
+                *ngIf="registerForm.get('dob')?.errors?.['invalidDateOfBirth']"
+              >
+                Age must be at least 13 years old!
+              </div>
+            </div>
+          </div>
+          <div class="cityGrade">
+            <div class="form-group pt-30">
+              <label for="city">City/Town</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="city"
+                placeholder="e.g Pretoria"
+              />
+              <div
+                *ngIf="
+                  registerForm.get('city')?.invalid &&
+                  (registerForm.get('city')?.dirty ||
+                    registerForm.get('city')?.touched)
+                "
+                class="error-text"
+              >
+                <div *ngIf="registerForm.get('city')?.errors?.['required']">
+                  City is required.
+                </div>
+                <div *ngIf="registerForm.get('city')?.errors?.['minlength']">
+                  City must be at least 3 characters long.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group pt-30">
+              <label for="studentgrade">Your Grade</label>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="studentgrade"
+                placeholder="eg.10"
+                (change)="buttonLabel()"
+              />
+
+              <div
+                *ngIf="
+                  registerForm.get('studentgrade')?.invalid &&
+                  (registerForm.get('studentgrade')?.dirty ||
+                    registerForm.get('studentgrade')?.touched)
+                "
+                class="error-text"
+              >
+                <div
+                  *ngIf="registerForm.get('studentgrade')?.errors?.['required']"
+                >
+                  Grade is required.
+                </div>
+                <div
+                  *ngIf="registerForm.get('studentgrade')?.errors?.['minlength']"
+                >
+                  Grade must be at least one number.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="passwords">
+            <div class="form-group pt-30">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                placeholder="Minimum 8 characters"
+              />
+
+              <div
+                *ngIf="
+                  registerForm.get('password')?.invalid &&
+                  (registerForm.get('password')?.dirty ||
+                    registerForm.get('password')?.touched)
+                "
+                class="error-text"
+              >
+                <div *ngIf="registerForm.get('password')?.errors?.['required']">
+                  Password is required.
+                </div>
+                <div
+                  *ngIf="registerForm.get('password')?.errors?.['minlength']"
+                >
+                  Password must be at least 8 characters long.
+                </div>
+                <div
+                  *ngIf="registerForm.get('password')?.errors?.['invalidPassword']"
+                >
+                  Password must contain at least one symbol, one number, and one
+                  letter.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="regInvalid" class="text-center text-danger mb-3">
+            Please fill in all required fields
+          </div>
+
+          <div ngClass="form-group mt-3 text-center">
+            <button class="btn btn-primary btn-block text-white" type="submit">
+              {{ buttonLabel() }}
+            </button>
+          </div>
+
+          <div class="alreadyExist">
+            <div
+              class="alreadyExist text-grey-dark mt-2 text-black pt-4"
+              id="cent"
+            >
+              Already a member?
+              <a
+                class="no-underline border-b border-blue text-blue-500"
+                href="../login/"
+              >
+                Login
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="eclipse-2"></div>
+<div class="eclipse-3"></div>

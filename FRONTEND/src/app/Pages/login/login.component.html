@@ -1,1 +1,74 @@
-<p>login works!</p>
+<!-- component -->
+
+<div class="eclipse-1"></div>
+<div class="eclipse-4"></div>
+<div class="eclipse-5"></div>
+<div class="eclipse-6"></div>
+
+<div class = "container login-page" >
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()"
+>
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+        <div class="container  max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+            <div class=" l-container px-6 py-8 rounded shadow-md text-black w-full">
+                <img
+                class="card-img-top text-center img-logo h-60 w-50"
+                src="../../../assets/logo.png"
+                alt="Logo"
+
+              />
+                <div class="form-group pt-30">
+                    <label for="username">Your Email</label>
+                <input 
+                    type="text"
+                    class=" form-control"
+                    formControlName="username"
+                 
+                    placeholder="sample@example.com"
+                   />
+
+                  </div>
+    
+                  <div class="form-group pt-15">
+                    <label for="password">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      formControlName="password"
+                      placeholder="password"
+                    />
+
+                  </div>
+                  <div *ngIf="invalidCredentials" class="text-center text-danger mb-3">
+                    Fill in your credentials
+                  </div>
+    
+                <div ngClass="form-group mt-4 text-center">
+                    <button type="submit" class="btn btn-primary btn-block text-white">Login</button>
+                  </div>
+
+                  <div class = "forgot">
+                  <label class="fr">
+                    <p>Forgot
+                    <a
+                      class="no-underline border-b border-grey-dark text-grey-dark text-blue-500"
+                      href="/forgotPassword"
+                    >
+                       Password?
+                    </a></p>
+                  </label>
+                  <div class="text-grey-dark text-black pt-2" id="cent">
+                    Not a member?
+                    <a class="no-underline border-b border-blue text-blue-500" routerLink="/register">
+                      Register</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+<div class="eclipse-2"></div>
+<div class="eclipse-3"></div>
+
+
