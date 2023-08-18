@@ -1,5 +1,10 @@
-
-<div class="div">
+<!-- <app-navbar></app-navbar> -->
+      <div class="backbutton">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" fill="#073980" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" routerLink="/home"/>
+                </svg>
+      </div>
+<div *ngIf="!showLoader && !showRecommendations" class="div">
   
   <button
     *ngIf="hidden"
@@ -20,7 +25,7 @@
 
         <br /><br /><br /><br />
         <a
-          class="block max-w-sm p-6 bg-green border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+          class="block max-w-sm p-6 border border-gray-200 rounded-lg shadow bg-green hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
           id="bcolor"
         >
         
@@ -33,11 +38,11 @@
 
         <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
         <mat-form-field style="justify-content: center;" appearance="outline">
-          <br /><br /><br /><br /><mat-label>Fill in your subjects</mat-label>
+          <br /><br /><br /><br /><mat-label>What's your favorite way to spend free time?</mat-label>
           <!-- <input type="text" placeholder="English, Geography"> -->
           <input
             matInput
-            placeholder="eg. English, Geography"
+            placeholder="eg. Reading, painting"
             formControlName="firstCtrl"
             required
             [(ngModel)]="question.selectedOption"
@@ -407,7 +412,7 @@
     <mat-step>
       <!-- <mat-progress-bar mode="determinate" value="100"></mat-progress-bar> -->
       <!-- <ng-template matStepLabel>Done</ng-template> -->
-      <h1 class="header text-blue-400" style="justify-content: center;">
+      <h1 class="text-blue-400 header" style="justify-content: center;">
         Well Done.You have completed the Quiz!
       </h1>
       <br />
@@ -426,8 +431,8 @@
             type="button"
             id="button"
             class="px-10 py-3.5 text-base font-medium text-white bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600"
-            routerLink=""
-            (click)="submitQuiz()">
+            
+            (click)="generateCareerQuiz()">
             Submit!
           </button>
           <br /><br /><button mat-button matStepperPrevious>Back</button>
@@ -442,3 +447,32 @@
 <div class="eclipse-2"></div>
 <div class="eclipse-3"></div>
 
+<!--LOADER-->
+<div *ngIf="showLoader" class="loader-container">
+  <img src="../../../assets/blue loader.gif" alt="Loading...">
+  <p>Generating your careers, please wait...</p>
+</div>
+
+
+<div  *ngIf="showRecommendations"  class="container">
+  <h1 class="category-heading">Suitable Careers</h1>
+  <div class="row">
+      <div class="col-sm-3" *ngFor="let career of careers;">
+          <div class="mb-3 card">
+              <div class="card-body">    
+                  <h1>hekki</h1>  
+                  <h3 class="card-title">{{career.careerName}}</h3>
+                  <!-- <h3 class="card-title">{{ course.uniName }}</h3> -->
+
+                  <!-- <h3 class="card-title">{{ course.courseDescription }}</h3>
+                  <h3 class="card-title">{{ course.admissionRequirements}}</h3> -->
+                   <!-- <button [routerLink]="['/career', course.courseName]">View Course</button> -->
+                   <div class="courseDetails">
+                      <a routerLink="['/career', course.courseName]">View Course <i class="bi bi-forward-fill"></i></a>
+                   </div>
+                  <div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,12 +1,11 @@
 const express = require("express");
-const careerController = require("../controllers/OpenAI/careerChoice.controller");
-// const selectedCourse = require("../controllers/OpenAI/selectedCourse.controller")
+const selectedCourseController = require("../controllers/OpenAI/courseInfo.controller");
 const router = express.Router();
 
 
 /**
  * @swagger
- * /enterCareer:
+ * /selectedCourse:
  *   post:
  *     summary: Get recommendations for a preferred career choice
  *     description: Returns university and course recommendations for a specified career choice in South Africa.
@@ -53,7 +52,7 @@ const router = express.Router();
 
 // router.post("/", careerController.generateCareer);
 // Define the route for generating career courses
-router.post('/', careerController.generateCareer);
-// router.post('/display-course-details/:selectedCourseName', careerController.displayCourseDetails);
+router.post('/', selectedCourseController.selectedCourse);
+router.get("/", selectedCourseController.getSelectedCourses);
 
 module.exports = router;

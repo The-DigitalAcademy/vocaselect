@@ -22,6 +22,7 @@ import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.componen
 import { CareersComponent } from './Pages/careers/careers.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
+import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 import { TimelineComponent } from './Pages/timeline/timeline.component';
 
 const routes: Routes = [
@@ -45,6 +46,18 @@ const routes: Routes = [
   { path: 'welcome-quiz', component: WelcomeQuizComponent },
   { path: 'subjectmarks', component: SubjectmarksComponent },
   { path: 'careerChoice', component: CareerChoiceComponent},
+  { path: 'welcome-quize', component: WelcomeQuizComponent },
+  { path: 'login', component: RegisterComponent },
+  { path: 'register', component: LoginComponent },
+  { path: 'landing', component: LandingPageComponent },
+  { path: 'subjects', component: SubjectsComponent },
+  //fill the career course details route
+  { path: 'career/:courseName', component: CareerChoiceComponent},
+  //Course Details - AI from fill career
+  { path: 'course-details', component: CourseDetailsComponent},
+
+  { path: 'career', component: CareerChoiceComponent},
+
   { path: 'courses', component: CoursesComponent},
   { path: 'quiz', component: QuizComponent},
   { path: 'quiz2', component: Quiz2Component},
@@ -55,6 +68,8 @@ const routes: Routes = [
   
   { path: 'careers', component: CareersComponent},
   { path: 'quiz-questions', component: QuizQuestionsComponent},
+  
+
   
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
   

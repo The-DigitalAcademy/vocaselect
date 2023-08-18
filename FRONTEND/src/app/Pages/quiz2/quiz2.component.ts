@@ -20,143 +20,128 @@ export interface StepType {
   styleUrls: ['./quiz2.component.scss']
 })
 export class Quiz2Component implements OnInit {
-  firstFormGroup : any;
-  secondFormGroup : any;
-  thirdFormGroup : any;
-  fouthFormGroup : any;
-  fifthFormGroup : any;
-  sixthFormGroup : any;
-  seventhFormGroup : any;
-  eighthFormGroup : any;
-  ninethFormGroup : any;
-  tenthFormGroup : any;
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    // secondCtrl: ['', Validators.required],
+  });
+  thirdFormGroup = this._formBuilder.group({
+    thirdCtrl: ['', Validators.required],
+  });
+  fourthFormGroup = this._formBuilder.group({
+    // fourthCtrl: ['', Validators.required],
+
+  });
+  fifthFormGroup = this._formBuilder.group({
+    fifthCtrl: ['', Validators.required],
+  });
+  sixthFormGroup = this._formBuilder.group({
+    // sixthCtrl: ['', Validators.required],
+  });
+  seventhFormGroup = this._formBuilder.group({
+    // seventhCtrl: ['', Validators.required],
+  });
+  eighthFormGroup = this._formBuilder.group({
+    eighthCtrl: ['', Validators.required],
+  });
+
+  isLinear = true;
+  hidden = false
 
   quiz: any; // Assuming the data is an array of objects or any other data structure
   option: any;
-
-  careerRecommendations: CareerRecommendation[] = [];
 
   constructor(private careerQuizService: CareerQuizService, private _formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     // this.getDataFromServer();
-    // this.submitQuiz();
-    this.firstFormGroup = this._formBuilder.group({
-      field1: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      field2: ['', Validators.required]
-    });
-    this.thirdFormGroup = this._formBuilder.group({
-      field3: ['', Validators.required]
-    });
-    this.fouthFormGroup = this._formBuilder.group({
-      field4: ['', Validators.required]
-    });
-    this.fifthFormGroup = this._formBuilder.group({
-      field5: ['', Validators.required]
-    });
-    this.sixthFormGroup = this._formBuilder.group({
-      field6: ['', Validators.required]
-    });
-    this.seventhFormGroup = this._formBuilder.group({
-      field7: ['', Validators.required]
-    });
-    this.eighthFormGroup = this._formBuilder.group({
-      field8: ['', Validators.required]
-    });
-    this.ninethFormGroup = this._formBuilder.group({
-      field9: ['', Validators.required]
-    });
-    this.tenthFormGroup = this._formBuilder.group({
-      field10: ['', Validators.required]
-    });
+    
   }
 
   quizQuestions = [
     {
       questionId: 1,
       questionText:
-        '1. Are you interested in remote work or prefer on-site positions?',
-      options: ['remote' , 'on-site', 'remote', ''],
+        'What are your favourite topic to learn about?',
+      options: [''],
       selectedOption: [''],
-      
+
     },
     {
       questionId: 2,
       questionText:
-        '2. Are you willing to undergo additional training or education to pursue a dream job?',
-      options: ['yes', 'no'],
+        'How would you describe your personality?',
+      options: ['introverted', 'extroverted'],
       selectedOption: [''],
     },
-    // Add more quiz questions here...
+
 
     {
       questionId: 3,
-      questionText: '3.How would you describe your personality? (e.g., outgoing, analytical, creative, etc.)',
+      questionText: 'What do you enjoy doing in your free time?',
       options: [''],
       selectedOption: [''],
     },
 
+    // {
+    //   questionId: 4,
+    //   questionText: '4.What do you enjoy doing on your free time?',
+    //   options: [''],
+    //   selectedOption: [''],
+    // },
     {
       questionId: 4,
-      questionText: 'What are your favorite subjects or topics to learn about?',
-      options: [''],
+      questionText: 'Are you interested in remote or prefer on-site',
+      options: ['remote', 'on-site'],
       selectedOption: [''],
     },
     {
       questionId: 5,
-      questionText: '4.What are your long-term career goals?',
+      questionText: 'What is your most exciting experience?',
       options: [''],
       selectedOption: [''],
     },
     {
       questionId: 6,
-      questionText: '7.Have you ever volunteered or had job previous?',
-      options: [''],
+      questionText: 'Have you ever had a job or volunteered previously?',
+      options: ['Yes I had a job/volunteered before', 'No I havent volunteered/worked before'],
       selectedOption: [''],
     },
     {
       questionId: 7,
-      questionText: '8.What job roles or positions have you always been curious about?',
-      options: [''],
+      questionText: 'Are you willing to invest extra hours for a job you are passionate about?',
+      options: ['yes', 'no'],
       selectedOption: [''],
     },
+    // {
+    //   questionId: 9,
+    //   questionText: '9.Are you willing to invest extra hours on a dream job?',
+    //   options: ['Yes i am willing to invest extra hours for a dream job', 'No i am not willing to invest extra hours for a dream job'],
+    //   selectedOption: [''],
+    // },
     {
       questionId: 8,
-      questionText: '9.Are you willing to invest extra hours for a job you are passionate about?',
-      options: [''],
-      selectedOption: [''],
-    },
-    {
-      questionId: 9,
-      questionText: '.Is there any other information about yourself or your aspirations that you would like to share?',
-      options: [''],
-      selectedOption: [''],
-    },
-    {
-      questionId: 10,
-      questionText: 'What do you enjoy doing in your free time?',
+      questionText: 'Is there any other information or aspirations you would like about you?',
       options: [''],
       selectedOption: [''],
     },
   ];
 
-  //answers from the user are here now
+  //amswers from user are from here
 
   answers: any;
   
   submitQuiz() {
     this.answers = this.quizQuestions.map((question) => ({
       questionId: question.questionId,
-      selectedOption: question.selectedOption[0] || '', // Assuming selectedOption is an array, get the first element or use an empty string
-  
+       selectedOption: question.selectedOption, // Assuming selectedOption is an array, get the first element or use an empty string
     }));
-  
     // Use the careerQuizService to send the answers to the API
     this.careerQuizService.generateCareerQuiz(this.answers)
       .subscribe(
         (response) => {
+          
           // Handle the API response if needed
           console.log('API Response:', response);
         },
@@ -171,3 +156,7 @@ export class Quiz2Component implements OnInit {
     question.selectedOption = option;
   }
 }
+
+
+
+

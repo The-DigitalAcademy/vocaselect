@@ -49,9 +49,11 @@
         padding-top: 15px;
     }
     .img-logo{
-      margin-bottom: -63px;
-      margin-top: -88px;
-      margin-left: 5rem;
+        /* width: 180px;
+        height: 100px; */
+        margin-bottom: -10px; 
+        margin-top: -20px; 
+        margin-left: 5rem; 
     }
     
     button{
@@ -74,4 +76,10 @@
         right: 50px;
     }    
 
+    .form-heading {
+        font-size: 30px;
+        text-align: center;
+        margin-top: 27px;
+
+    }
 }

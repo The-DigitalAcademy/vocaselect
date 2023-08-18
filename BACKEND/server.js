@@ -8,8 +8,14 @@ const timelineRoutes = require('./routes/timeline.routes');
 const subjectRoutes = require('./routes/subjects.routes')
 const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
 const { sendResetOTP, resetPassword } = require('./controllers/user.controllers')
+// const nodemailer = require('nodemailer');
+
+//ChatGPT Routes
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
+const selectedCourseController = require("./routes/selectedCourse");
+
+
 const quizAnswers = require('./routes/quizAnswers.routes')
 
 //SWAGGER 
@@ -77,7 +83,7 @@ app.use('/api/Answers', quizAnswers)
 // Endpoint to send OTP
 // app.post('/', sendResetOTP);
 
-// // Endpoint to reset password
+//  Endpoint to reset password
 // app.post('/', resetPassword);
 
 // Initialize swagger-jsdoc
@@ -99,12 +105,21 @@ const swaggerOptions = {
 // Initialize swagger-jsdoc
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
+
 // Serve Swagger API documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// AI Routes
+
+//User AUTH routes for the user API
+app.use('/api/users', userRoutes)
+
+// app.use('/api/allSubjects', subjectRoutes)
+app.use('/api/subjects', subjectRoutes)
+
+// OpenAI API Routes
 app.use("/enterCareer", careerRoutes);
 app.use("/quiz", quizRoutes);
+app.use("/courseInfo", selectedCourseController );
 
 
 
