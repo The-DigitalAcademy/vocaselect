@@ -19,6 +19,7 @@ import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.componen
 import { CareersComponent } from './Pages/careers/careers.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
+import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -38,6 +39,8 @@ const routes: Routes = [
   { path: 'subjects', component: SubjectsComponent },
   //fill the career course details route
   { path: 'career/:courseName', component: CareerChoiceComponent},
+  //Course Details - AI from fill career
+  { path: 'course-details', component: CourseDetailsComponent},
 
   { path: 'career', component: CareerChoiceComponent},
 
@@ -51,6 +54,8 @@ const routes: Routes = [
   
   { path: 'careers', component: CareersComponent},
   { path: 'quiz-questions', component: QuizQuestionsComponent},
+  
+
   
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];

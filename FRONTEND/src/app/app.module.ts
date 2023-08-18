@@ -38,6 +38,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
+import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 
 
 
@@ -64,7 +65,8 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
     
     CareersComponent,
     HamburgerComponent,
-    SubjectmarksComponent
+    SubjectmarksComponent,
+    CourseDetailsComponent
    
    
   ],

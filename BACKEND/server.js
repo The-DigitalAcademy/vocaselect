@@ -4,12 +4,16 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
-const nodemailer = require('nodemailer');
-// const subjectRoutes = require('./routes/subjects.routes')
+// const nodemailer = require('nodemailer');
+const subjectRoutes = require('./routes/subjects.routes')
 const { sendResetOTP, resetPassword } = require('./controllers/user.controllers');
 
+//ChatGPT Routes
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
+const selectedCourseController = require("./routes/selectedCourse");
+
+
 const quizAnswers = require('./routes/quizAnswers.routes')
 
 //SWAGGER 
@@ -102,9 +106,13 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //User AUTH routes for the user API
 app.use('/api/users', userRoutes)
 
+// app.use('/api/allSubjects', subjectRoutes)
+app.use('/api/subjects', subjectRoutes)
+
 // OpenAI API Routes
 app.use("/enterCareer", careerRoutes);
 app.use("/quiz", quizRoutes);
+app.use("/courseInfo", selectedCourseController );
 
 
 

@@ -76,6 +76,10 @@ export class FillCareerComponent implements OnInit {
     }
   }
 
+  viewCourseDetails(course: any) {
+    this.router.navigate(['/course-details'], { state: { course } });
+  }
+
   // Define colors for card background using ngClass
   cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
   

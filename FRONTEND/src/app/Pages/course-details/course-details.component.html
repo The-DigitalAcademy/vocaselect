@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Course Details</h1>
+    <div *ngIf="selectedCourseId">
+        <h2>{{ selectedCourseId.courseName }}</h2>
+        <p>University Name: {{ selectedCourseId.uniName }}</p>
+        <p>Course Duration: {{ selectedCourseId.courseDuration }}</p>
+        <p>Course Description: {{ selectedCourseId.courseDescription }}</p>
+        <p>Admission Requirements: {{ selectedCourseId.admissionRequirements }}</p>
+    </div>
+    <div *ngIf="!selectedCourseId">
+        <p>No course selected.</p>
+    </div>
+</div>
