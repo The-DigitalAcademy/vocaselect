@@ -4,6 +4,7 @@ import { QuizQuestionsService } from 'src/app/_services/_ChatGPT_Services/quiz-q
 import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
 import { Router } from '@angular/router';
 import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
+import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
 
 
 @Component({
@@ -51,16 +52,20 @@ export class QuizQuestionsComponent implements OnInit {
   // Flag to show a loader while generating recommendations
   showLoader: boolean = false;
 
-  careers: CareerRecommendation[] = [] = [];
+  careers: CareerRecommendation[] = [];
 
   constructor
   (
     private dataService: QuizQuestionsService, 
     private _formBuilder: FormBuilder,
     private careerQuizService: CareerQuizService,
+    private sharedCareerService: SharedDataService,
     private router: Router // Inject the Router service
   ) { }
-
+  
+  ngOnInit(): void {
+    this.getDataFromServer();
+  }
 
   quizQuestions = [
     {
@@ -139,19 +144,16 @@ export class QuizQuestionsComponent implements OnInit {
 
     }));
     this.showLoader = true; // Display the loader and message
+
     // Use the careerQuizService to send the answers to the API
       this.careerQuizService.generateCareerQuiz(this.answers)
         .subscribe(
-          (response) => {
+          (response: CareerRecommendation[]) => {
            
             // Handle the API response if needed
-            console.log('careers:', response);
+            console.log('API Response:', response);
+            this.careers = response;
 
-            // Assuming response has the generated career information
-            // const careers = response.quizRecommendations;
-            
-            // Navigate to the CareersComponent with the career information
-            // this.router.navigate(['/careers'], { state: { careers } });
 
             this.showLoader = false; // Hide the loader and message
             this.showRecommendations = true; // Show the recommendations
@@ -161,7 +163,6 @@ export class QuizQuestionsComponent implements OnInit {
             console.error('API Error:', error);
           }
         );
-
 
     // this.dataService.postQuizToPostgres(this.answers).subscribe(
     //   {
@@ -178,8 +179,6 @@ export class QuizQuestionsComponent implements OnInit {
     // Do whatever you want with the answers, e.g., send them to a backend server
     // console.log(this.answers, "     mpelemane");
 
-
-
   }
 
 
@@ -189,16 +188,9 @@ export class QuizQuestionsComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-    this.getDataFromServer();
-  }
-
-
   getDataFromServer() {
 
     this.dataService.getData().subscribe(
-
-
       {
         next: (data: any) => {
           this.quiz = data;

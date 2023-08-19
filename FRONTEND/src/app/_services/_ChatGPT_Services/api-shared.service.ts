@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedDataService {
-  careerChoice: string = '';
-  recommendations: any[] = [];
+  private careersDataSubject = new BehaviorSubject<any[]>([]);
+  careersData$ = this.careersDataSubject.asObservable();
 
-  constructor() {}
-
-  setCareerChoice(choice: string): void {
-    this.careerChoice = choice;
+  updateCareersData(careers: any[]) {
+    this.careersDataSubject.next(careers);
   }
 
-  setRecommendations(recommendations: any[]): void {
-    this.recommendations = recommendations;
-  }
+  
 }

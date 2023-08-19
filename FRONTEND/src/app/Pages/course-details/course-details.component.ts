@@ -27,7 +27,7 @@ export class CourseDetailsComponent implements OnInit {
       this.selectedCourseService.getSelectedCourses(courseName)
         .subscribe(
           (courses) => {
-            // this.courseRecommendations = courses;
+            this.courseRecommendations = courses;
 
             // Remove strings, commas, and single quotes from the course names
             // Modify courseRecommendations before displaying

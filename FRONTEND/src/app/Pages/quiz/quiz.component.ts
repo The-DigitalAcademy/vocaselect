@@ -42,7 +42,7 @@ export class QuizComponent implements OnInit {
     this.careerQuizService.generateCareerQuiz(answers).subscribe(
       (response) => {
 
-        this.careerRecommendations = response.quizRecommendations;
+        // this.careerRecommendations = response.quizRecommendations;
         console.log(this.careerRecommendations)
       },
       (error) => {

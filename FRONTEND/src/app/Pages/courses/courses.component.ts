@@ -9,16 +9,16 @@ import {  ActivatedRoute } from '@angular/router';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  @Input() careerChoice: string = '';
-  @Input() recommendations: any[] = [];
+  // @Input() careerChoice: string = '';
+  // @Input() recommendations: any[] = [];
 
   constructor(private apiSharedService: SharedDataService) { }
 
   ngOnInit(): void {
-    this.careerChoice = this.apiSharedService.careerChoice;
-    this.recommendations = this.apiSharedService.recommendations;
-    console.log(this.careerChoice)
-    console.log(this.recommendations)
+    // this.careerChoice = this.apiSharedService.careerChoice;
+    // this.recommendations = this.apiSharedService.recommendations;
+    // console.log(this.careerChoice)
+    // console.log(this.recommendations)
   }
 
 }

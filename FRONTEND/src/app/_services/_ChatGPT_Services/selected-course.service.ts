@@ -8,7 +8,11 @@ import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 })
 export class SelectedCourseService {
 
-  private baseUrl = 'http://localhost:9000'; // Replace with your backend API URL
+  //hosted backend
+  // private apiUrl = 'https://backend-ai-a6r3.onrender.com';
+
+  //LOCAL BACKEND
+  private baseUrl = 'http://localhost:9000'; 
 
   constructor(private http: HttpClient) {}
 

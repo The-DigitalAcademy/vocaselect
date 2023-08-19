@@ -5,24 +5,25 @@
           </svg>
    </div>
   
-   <div class="logo ">
+   <!-- <div class="logo1 ">
     <img src="../../../assets/logo.png" class="logo-img" alt="...">
-    </div>
+    </div> -->
+    <h1 class="category-heading" style="text-align: center;">Suitable Courses</h1>
+    
 </nav>
 
 <!--LOADER-->
 <div *ngIf="showLoader" class="loader-container">
     <img src="../../../assets/blue loader.gif" alt="Loading..." class="loader">
-    <p>Generating course details recommendations...</p>
+    <p>Generating Course information...</p>
 </div>
 
 <div *ngIf="showRecommendations" class="container">
-    <h1 class="category-heading">Suitable Courses</h1>
     <div class="row">
         <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
             <div class="mb-3 card" >
                 <div class="card-body" [style.background-color]="cardBackgroundColors[i]">
-                    <h3 class="card-title">{{ course.courseName }}</h3>
+                    <!-- <h3 class="card-title">{{ course.courseName }}</h3> -->
                     <p><strong>University:</strong> {{ course.uniName }}</p>
                     <p><strong>Duration:</strong> {{ course.courseDuration }}</p>
                     <p><strong>Admission Requirements:</strong> {{ course.admissionRequirements }}</p>
@@ -37,4 +38,4 @@
 <div class="eclipse-2"></div>
 <!-- <div class="eclipse-1"></div> -->
 <div class="eclipse-6"></div>
-<!-- <div class="eclipse-4"></div> -->
+<div class="eclipse-4"></div>

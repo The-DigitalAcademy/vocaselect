@@ -16,7 +16,7 @@ export class CareerQuizService {
 
   constructor(private http: HttpClient) {}
 
-  generateCareerQuiz(answers: any): Observable<any> {
+  generateCareerQuiz(answers: any): Observable<CareerRecommendation[]> {
     return this.http.post<CareerRecommendation[]>(`${this.apiUrl}/quiz`, answers);
   }
 }

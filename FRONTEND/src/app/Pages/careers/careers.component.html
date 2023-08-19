@@ -10,7 +10,7 @@
 
     <!-- <div class="row cards " width="100%">
         <div class="col-md-3" *ngFor="let career of careers">
-            <div class="card mt-10" style="width: 100%;">
+            <div class="mt-10 card" style="width: 100%;">
                
                 <div class="card-body">
                     <span class = "name">{{career.name}}</span><br>
@@ -23,11 +23,11 @@
 
     <div class="container">
         <div class="row">
-          <div class="col-md-3 mx-auto my-3" *ngFor="let career of careers">
+          <div class="mx-auto my-3 col-md-3" *ngFor="let career of careers">
             <mdb-card class="card">
               <mdb-card-body>
                 <mdb-card-title>
-                  <h4>{{career}}</h4>
+                  <h4>{{career.careerName}}</h4>
                 </mdb-card-title>
       
                 <mdb-card-text>

@@ -40,6 +40,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 
+import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
 
 
 @NgModule({
@@ -87,7 +88,7 @@ import { CourseDetailsComponent } from './Pages/course-details/course-details.co
     
     
   ],
-  providers: [ ],
+  providers: [ SharedDataService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 

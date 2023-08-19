@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
+import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
 
 @Component({
   selector: 'app-careers',
@@ -8,7 +9,8 @@ import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
   styleUrls: ['./careers.component.scss']
 })
 export class CareersComponent implements OnInit {
-  careers: CareerRecommendation[] = [] = [];
+  careers: CareerRecommendation[] = [];
+  // sharedCareerService: any;
   // careers: any[] = [
   //   {
   //     "name": "Pharmacist", "description":"a healthcare provider who gives you your prescriptions. But they're also an important member of your healthcare team. They're the person who knows the most about drugs."
@@ -24,11 +26,16 @@ export class CareersComponent implements OnInit {
   //   }
   // ];
 
-  constructor(private route: ActivatedRoute) { }
+   
+    constructor(private route: ActivatedRoute,  private sharedCareerService: SharedDataService) { }
 
   ngOnInit(): void {
     // Retrieve the passed data from the state object
-    this.careers = this.route.snapshot?.data?.['state']?.careers || [];
+    // this.careers = this.route.snapshot?.data?.['state']?.careers || [];
+    // Subscribe to the careers data from the shared service
+    this.sharedCareerService.careersData$.subscribe((careers: any) => {
+    this.careers = careers;
+  });
   }
 
 }

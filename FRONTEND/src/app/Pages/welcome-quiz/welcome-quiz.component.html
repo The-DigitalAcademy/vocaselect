@@ -14,7 +14,7 @@
 
 <div class = "container quiz">
     <br>
-    <b><h2 class="header  text-blue-400">LET'S LEARN MORE ABOUT YOU</h2></b>
+    <b><h2 class="header" style="color: var(--button-color)">LET'S LEARN MORE ABOUT YOU</h2></b>
 
     
         <div class="img">
@@ -22,7 +22,11 @@
         </div>
         <br>
         <br>
-        <button class="btn-submit" type="button" id="button" class="px-10 py-3.5 text-base font-medium text-white bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600" routerLink="/quiz-questions">Let's Go!</button>
+        <!-- <button class="btn-submit" type="button" id="button" class="px-10 py-3.5 text-base font-medium text-white bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600" routerLink="/quiz-questions">Let's Go!</button> -->
+
+        <div class="row" id="btn-submit">
+          <button routerLink="/quiz-questions" type="button" class="btn-custom" data-bs-toggle="button" >Let's Go!</button>
+      </div>
     
 </div>
 
