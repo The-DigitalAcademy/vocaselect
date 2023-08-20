@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   loading: boolean = false; 
+  successMessage: string | null = null; // Initialize success message
   users!: any;
   email!: string;
   invalidCredentials = false;
@@ -50,6 +51,10 @@ export class LoginComponent implements OnInit {
           console.log(data)
           this.router.navigate(['/home']);
           this.loading = false; // Deactivate loading state
+           this.successMessage = 'Successfully logged in!'; // Set success message
+          setTimeout(() => {
+            this.successMessage = null; // Clear success message after 2 seconds
+          }, 4000);
         },
         error: err => {
           console.log(err)
