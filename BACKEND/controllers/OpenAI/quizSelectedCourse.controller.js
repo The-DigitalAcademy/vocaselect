@@ -9,7 +9,7 @@ exports.career_Choice_Selected_Course = async (req, res) => {
     
     //uses the body-parser middleware - destructuring assigment
     // Extract the user's chosen career choice from the request body
-    const { careerChoice} = req.body;
+    const { career} = req.body;
 
      // Check if the careerChoice is provided
      if (!careerChoice || careerChoice.trim() === "") {
@@ -17,7 +17,7 @@ exports.career_Choice_Selected_Course = async (req, res) => {
     }
 
     //AI prompt 
-    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a stringified JSON representation.
+    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${career} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a stringified JSON representation.
 
     Explain the course description and admission requirements in layman's terms for high school minors of age 15 years to understand.
     
@@ -88,7 +88,7 @@ exports.Get_career_Choice_Selected_Course = async (req, res) => {
     
     //uses the body-parser middleware - destructuring assigment
     // Extract the user's chosen course from the request body
-    const {  careerChoice } = req.query;
+    const {  career } = req.query;
 
      // Check if the careerChoice is provided
     //  if (!course || course.trim() === "") {
@@ -96,7 +96,7 @@ exports.Get_career_Choice_Selected_Course = async (req, res) => {
     // }
 
     //AI prompt 
-    const prompt = `Please provide all the universities in South Africa that are offering this course ${careerChoice}.
+    const prompt = `Please provide all the universities in South Africa that are offering this course ${career}.
 
     Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
     

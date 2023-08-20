@@ -464,6 +464,7 @@ id="toggle-linear"
 </div>
 
 <div class="eclipse-4"></div>
+<div class="eclipse-4"></div>
 <div class="eclipse-2"></div>
 <div class="eclipse-3"></div>
 <div class="eclipse-6"></div>
@@ -487,13 +488,17 @@ id="toggle-linear"
             <h3 class="card-title">{{career.careerName}}</h3>
             <p class="card-para">{{career.careerDescription}}</p>
 
-            <a routerLink="" class="chevron">Related courses<i class="bi bi-forward-fill"></i></a>
-
+            <!-- <a routerLink="" class="chevron">Related courses<i class="bi bi-forward-fill"></i></a> -->
+            <div class="courseDetails">
+              <!-- Pass the course name as a query parameter -->
+              <a [routerLink]="['/quizSelectedCourse']" [queryParams]="{ careerName: career.careerName }">Related courses <i class="bi bi-forward-fill"></i></a>
+          </div>
         </div>
     </div>
 </div>
 </div>
 </div>
+<!-- courseName: course.courseName -->
 
 <!-- <div *ngIf="showRecommendations" class="container">
   <div class="row">

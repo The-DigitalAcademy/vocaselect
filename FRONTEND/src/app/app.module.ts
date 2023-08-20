@@ -20,7 +20,7 @@ import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { SubjectmarksComponent } from './Pages/subjectmarks/subjectmarks.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CoursesComponent } from './Pages/courses/courses.component';
+// import { CoursesComponent } from './Pages/courses/courses.component';
 import { Quiz2Component } from './Pages/quiz2/quiz2.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 // import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
@@ -40,7 +40,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 
-import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
+import { QuizCourseInfoComponent } from './Pages/quiz-course-info/quiz-course-info.component';
 
 
 @NgModule({
@@ -56,7 +56,7 @@ import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-share
     DreamJobComponent,
     FillCareerComponent,
     HomepageComponent,
-    CoursesComponent,
+    // CoursesComponent,
     Quiz2Component,
     NavbarComponent,
     NavbarComponent,
@@ -67,7 +67,8 @@ import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-share
     CareersComponent,
     HamburgerComponent,
     SubjectmarksComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    QuizCourseInfoComponent
    
    
   ],
@@ -88,7 +89,7 @@ import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-share
     
     
   ],
-  providers: [ SharedDataService],
+  providers: [ ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 

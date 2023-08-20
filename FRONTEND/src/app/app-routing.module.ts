@@ -10,7 +10,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
-import { CoursesComponent } from './Pages/courses/courses.component';
+// import { CoursesComponent } from './Pages/courses/courses.component';
 import { QuizComponent } from './Pages/quiz/quiz.component';
 import { Quiz2Component } from './Pages/quiz2/quiz2.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -20,6 +20,7 @@ import { CareersComponent } from './Pages/careers/careers.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
+import { QuizCourseInfoComponent } from './Pages/quiz-course-info/quiz-course-info.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -42,9 +43,12 @@ const routes: Routes = [
   //Course Details - AI from fill career
   { path: 'course-details', component: CourseDetailsComponent},
 
+  //Quiz Selected Career Course Details
+  {path: 'quizSelectedCourse', component: QuizCourseInfoComponent},
+
   { path: 'career', component: CareerChoiceComponent},
 
-  { path: 'courses', component: CoursesComponent},
+  // { path: 'courses', component: CoursesComponent},
   { path: 'quiz', component: QuizComponent},
   { path: 'quiz2', component: Quiz2Component},
   { path: 'hamburger', component:HamburgerComponent},
@@ -60,7 +64,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
-@NgModule({
+@NgModule({ 
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

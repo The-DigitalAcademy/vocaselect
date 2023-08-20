@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
-import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
 
 @Component({
   selector: 'app-careers',
