@@ -27,15 +27,14 @@ export class CareersComponent implements OnInit {
   // ];
 
    
-    constructor(private route: ActivatedRoute,  private sharedCareerService: SharedDataService) { }
+    constructor(private route: ActivatedRoute,  ) { }
 
   ngOnInit(): void {
     // Retrieve the passed data from the state object
     // this.careers = this.route.snapshot?.data?.['state']?.careers || [];
     // Subscribe to the careers data from the shared service
-    this.sharedCareerService.careersData$.subscribe((careers: any) => {
-    this.careers = careers;
-  });
-  }
-
+   
+  };
 }
+
+

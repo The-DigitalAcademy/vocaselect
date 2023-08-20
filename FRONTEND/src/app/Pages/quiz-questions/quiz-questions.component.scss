@@ -1,5 +1,6 @@
 .mat-stepper-horizontal {
-  margin-top: 8px;
+  margin-top: -35px;
+  /* padding: 5px 10px 5px 10px;  */
 }
 
 .mat-mdc-form-field {
@@ -15,15 +16,20 @@ input{
  width:67vw !important;
 }
 
-
+.mat-horizontal-content-container {
+  /* overflow: hidden;
+  padding: 28px 28px 28px 28px; */
+  background-color: green;
+}
 
 // Use This To Modify Your Scss For Angular Material
 :host {
   ::ng-deep{
     mat-progress-bar{
       height: 1.8rem;
-      border-radius: 1rem;
-      width: 17.5rem;
+      border-radius: 2rem;
+      width: 16.5rem;
+      margin-top: 12px;
     }
     input{
       width:67vw !important;
@@ -45,7 +51,7 @@ input{
   ::ng-deep{
     .mat-form-field-wrapper{
      
-      width: 380px;
+      width: 390px;
       
     }
    
@@ -99,9 +105,11 @@ input{
 #bcolor{
   background-color: #75A1DF;
   color: #FFFFFF;
+  margin-top:-55px;
 }
 #bcolor p{
   color: #FFFFFF;
+  font-size: 17px;
 }
 .eclipse-2{
   margin-bottom:  960px; 
@@ -127,7 +135,9 @@ input{
   padding-bottom: 3rem;
 }
 
-
+#options-btn {
+  font-size: 16px;
+}
 
 
 
@@ -218,4 +228,88 @@ p {
 
 .backbutton {
   margin: 10px 20px;
+}
+
+.careers{
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+
+    .heading{
+        display: flex;
+        justify-items: center;
+        // position: fixed;
+        // z-index: 2;
+
+        h2{
+            font-weight: bolder;
+            margin-top: .8rem;
+            margin-left: 1.5rem;
+        }
+    }
+
+    .card{
+        width: 100%;
+        background-color: var(--career-cards);
+        height: 30vh;
+        justify-content: center;
+        padding: 15px 5px;
+        position: inherit;
+      
+        .name{
+            font-size: 20px;
+            font-weight: bolder; 
+        }
+
+        a{
+            margin-right: 10rem;
+            text-decoration: none;
+            // position: inherit;
+        }
+
+        p{
+            padding-bottom: -5rem;
+        }
+    }
+
+}
+
+.careers-heading {
+  text-align: center;
+  margin-top: -60px;
+
+}
+
+.chevron {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar {
+  margin-top: -1.2rem;
+//   display: flex;
+
+  .backbutton {
+    cursor: pointer;
+    margin-left: 8px;
+  }
+
+  .logo-img {
+//    margin-right: 10rem;
+   width: 120px;
+  }
+}
+
+.heading {
+  text-align: center;
+  margin-top: -65px;
+}
+
+.card-para {
+  font-size: 18px
+}
+
+.card-title {
+  text-align: center;
 }

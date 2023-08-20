@@ -1,5 +1,5 @@
 import {  Component, Input, OnInit  } from '@angular/core';
-import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
+import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice/careerChoice.service';
 import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
 import {  ActivatedRoute } from '@angular/router';
 

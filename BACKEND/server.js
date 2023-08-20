@@ -12,6 +12,7 @@ const { sendResetOTP, resetPassword } = require('./controllers/user.controllers'
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 const selectedCourseController = require("./routes/selectedCourse");
+const quizSelectedCourse = require("./routes/quiz.selectedCourse");
 
 
 const quizAnswers = require('./routes/quizAnswers.routes')
@@ -113,7 +114,7 @@ app.use('/api/subjects', subjectRoutes)
 app.use("/enterCareer", careerRoutes);
 app.use("/quiz", quizRoutes);
 app.use("/courseInfo", selectedCourseController );
-
+app.use("/quizCourseInfo", quizSelectedCourse );
 
 
 // set port, listen for requests

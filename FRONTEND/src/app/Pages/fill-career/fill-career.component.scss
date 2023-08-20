@@ -1,5 +1,5 @@
 .navbar {
-    margin-top: -2.5rem;
+    margin-top: -1.2rem;
   //   display: flex;
   
     .backbutton {
@@ -9,7 +9,7 @@
   
     .logo-img {
   //    margin-right: 10rem;
-     width: 150px;
+     width: 120px;
     }
 }
   
@@ -107,17 +107,19 @@
     font-weight: normal;
   }
   
-  // .card {
-  //   // pointer: cursor;
-  // }
+  .card {
+    pointer: cursor;
+
+ }
   
   .eclipse-2, .eclipse-1{
     background: linear-gradient(#fff, #cecef0);
   }
   
-  .category-heading {
-    text-align: center;
-  }
+  
+
+
+  
 
  .courseDetails {
     display: flex;
@@ -126,9 +128,17 @@
     
     a {
       text-decoration: none;
-      color: black;
+      color: blue;
     }
 
    
 
  }
+
+ .category-heading {
+  padding-top: 15px;
+  margin-bottom: 10px;
+  margin-top: -65px;
+  text-align: center;
+  font-size: 26px;
+  }

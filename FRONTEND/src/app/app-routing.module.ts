@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'welcome-quiz', component: WelcomeQuizComponent },
   { path: 'subjectmarks', component: SubjectmarksComponent },
   { path: 'careerChoice', component: CareerChoiceComponent},
-  { path: 'welcome-quize', component: WelcomeQuizComponent },
+  // { path: 'welcome-quize', component: WelcomeQuizComponent },
   { path: 'login', component: RegisterComponent },
   { path: 'register', component: LoginComponent },
   { path: 'landing', component: LandingPageComponent },

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
-import { SelectedCourseService } from 'src/app/_services/_ChatGPT_Services/selected-course.service';
+import { SelectedCourseService } from 'src/app/_services/_ChatGPT_Services/careerChoice/selected-course.service';
 
 @Component({
   selector: 'app-course-details',

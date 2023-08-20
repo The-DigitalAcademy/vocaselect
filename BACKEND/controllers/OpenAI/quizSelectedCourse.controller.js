@@ -4,7 +4,7 @@ const openai = new OpenAIApi(configuration);
 
 // const axios = require('axios');
 
-exports.generateCareer = async (req, res) => {
+exports.career_Choice_Selected_Course = async (req, res) => {
   try {
     
     //uses the body-parser middleware - destructuring assigment
@@ -83,7 +83,7 @@ exports.generateCareer = async (req, res) => {
 };
 
 //@GET - METHOD
-exports.career_Choice_Selected_Course = async (req, res) => {
+exports.Get_career_Choice_Selected_Course = async (req, res) => {
   try {
     
     //uses the body-parser middleware - destructuring assigment

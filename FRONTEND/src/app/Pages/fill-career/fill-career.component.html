@@ -1,9 +1,11 @@
 
 <!--Eclipses-->
 <div class="eclipse-2"></div>
-<!-- <div class="eclipse-1"></div> -->
+<div class="eclipse-1"></div>
 <div class="eclipse-6"></div>
-<!-- <div class="eclipse-4"></div> -->
+<div class="eclipse-4"></div>
+<div class="eclipse-3"></div>
+
 
 <nav class="navbar">
     <div class="backbutton">
@@ -12,9 +14,9 @@
           </svg>
    </div>
   
-   <div class="logo ">
+   <!-- <div class="logo ">
     <img src="../../../assets/logo.png" class="logo-img" alt="...">
-    </div>
+    </div> -->
 
 </nav>
 
@@ -43,14 +45,15 @@
     <p>Generating courses recommendations...</p>
 </div>
 
-
+<div class="heading" *ngIf="showRecommendations" >
+    <h1 class="category-heading">Suitable Courses</h1>
+</div>
 
 <!--Course cards-->
 <div  *ngIf="showRecommendations"  class="container">
-    <h1 class="category-heading">Suitable Courses</h1>
     <div class="row">
         <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
-            <div class="mb-3 card" [style.background-color]="cardBackgroundColors[i]" [routerLink]="['/careerChoice', ]">
+            <div class="mb-3 card" [style.background-color]="cardBackgroundColors[i]">
                 <div class="card-body">                
                     <h3 class="card-title">{{ course.courseName }}</h3>
                     <!-- <h3 class="card-title">{{ course.uniName }}</h3> -->
@@ -60,7 +63,9 @@
                      <!-- <button [routerLink]="['/career', course.courseName]">View Course</button> -->
                      <div class="courseDetails">
                          <!-- Pass the course name as a query parameter -->
-                         <a [routerLink]="['/course-details']" [queryParams]="{ courseName: course.courseName }">View Course <i class="bi bi-forward-fill"></i></a>
+                         <a [routerLink]="['/course-details']" [queryParams]="{ courseName: course.courseName }">Course details <i class="bi bi-forward-fill"></i></a>
+          
+
                      </div>
                      
                 </div>

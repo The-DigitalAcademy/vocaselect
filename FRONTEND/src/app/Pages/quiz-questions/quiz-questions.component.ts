@@ -4,7 +4,7 @@ import { QuizQuestionsService } from 'src/app/_services/_ChatGPT_Services/quiz-q
 import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
 import { Router } from '@angular/router';
 import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
-import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
+// import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
 
 
 @Component({
@@ -59,7 +59,6 @@ export class QuizQuestionsComponent implements OnInit {
     private dataService: QuizQuestionsService, 
     private _formBuilder: FormBuilder,
     private careerQuizService: CareerQuizService,
-    private sharedCareerService: SharedDataService,
     private router: Router // Inject the Router service
   ) { }
   
@@ -87,7 +86,7 @@ export class QuizQuestionsComponent implements OnInit {
 
     {
       questionId: 3,
-      questionText: 'What do you enjoy doing in your free time?',
+      questionText: 'Do you enjoy teamwork or individual work more?',
       options: [''],
       selectedOption: [''],
     },
@@ -157,6 +156,10 @@ export class QuizQuestionsComponent implements OnInit {
 
             this.showLoader = false; // Hide the loader and message
             this.showRecommendations = true; // Show the recommendations
+
+
+            // Navigate to the "Careers" component and pass the data
+            // this.router.navigate(['/careers'], { state: { careers: this.careers } });
           },
           (error) => {
             // Handle errors if needed
@@ -204,5 +207,6 @@ export class QuizQuestionsComponent implements OnInit {
     );
   }
 
-
+  // Define colors for card background using ngClass
+  cardBackgroundColors: string[] = ["#A1C2F3", "#A1C2F3", "#A1C2F3", "#A1C2F3", "#A1C2F3", "#E6E6FA"];
 }

@@ -4,6 +4,7 @@ const openai = new OpenAIApi(configuration);
 
 // const axios = require('axios');
 
+//@POST - METHOD
 exports.selectedCourse = async (req, res) => {
   try {
     
@@ -44,7 +45,7 @@ exports.selectedCourse = async (req, res) => {
    const completion = await openai.createCompletion({
      model: "text-davinci-003",
      prompt,
-     temperature: 0.6,
+     temperature: 0.8,
      max_tokens: 1000,
    });
 
@@ -90,11 +91,12 @@ exports.selectedCourse = async (req, res) => {
   }
 };
 
+//@GET - METHOD
 exports.getSelectedCourses = async (req, res) => {
   try {
     
     //uses the body-parser middleware - destructuring assigment
-    // Extract the user's chosen career choice from the request body
+    // Extract the user's chosen course from the request body
     const {  course } = req.query;
 
      // Check if the careerChoice is provided
