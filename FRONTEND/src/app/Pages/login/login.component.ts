@@ -19,6 +19,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
+  loading: boolean = false; 
   users!: any;
   email!: string;
   invalidCredentials = false;
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     if (this.loginForm.valid) {
+      this.loading = true; // Activate loading state
       this.authService.login(this.loginForm.value).subscribe({
         next: data => {
           this.tokenStorage.saveToken(data.token);
@@ -47,6 +49,7 @@ export class LoginComponent implements OnInit {
           this.tokenStorage.saveUser(data.user);
           console.log(data)
           this.router.navigate(['/home']);
+          this.loading = false; // Deactivate loading state
         },
         error: err => {
           console.log(err)
@@ -55,6 +58,7 @@ export class LoginComponent implements OnInit {
           } else {
             this.errorMessage = err.error.message;
           }
+          this.loading = false; // Deactivate loading state
 
           // this.toastr.error("Login Failed, Try Again")
         },

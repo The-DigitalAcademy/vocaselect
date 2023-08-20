@@ -44,10 +44,13 @@
                     Fill in your credentials
                   </div>
     
-                <div ngClass="form-group mt-4 text-center">
-                    <button type="submit" class="text-white btn btn-primary btn-block">Login</button>
+                  <div class="form-group mt-4 text-center">
+                    <button type="submit" [disabled]="loading" class="text-white btn btn-primary btn-block">
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      <span *ngIf="!loading">Login</span>
+                    </button>
                   </div>
-
+                  
                   <div class = "forgot">
                   <label class="fr">
                     <p>Forgot

@@ -83,3 +83,20 @@
 
     }
 }
+
+/* Add loader styling to the "Login" button */
+.btn-primary {
+  position: relative;
+}
+
+/* Example loader styling */
+.spinner-border {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
+}
