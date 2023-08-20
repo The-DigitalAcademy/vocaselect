@@ -14,6 +14,9 @@ import { CareerChoiceComponent } from './Pages/career-choice/career-choice.compo
 import { QuizComponent } from './Pages/quiz/quiz.component';
 import { Quiz2Component } from './Pages/quiz2/quiz2.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AuthGuardsService } from './_services/auth-guards.service';
+import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
+import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
 
 import { CareersComponent } from './Pages/careers/careers.component';
@@ -21,11 +24,22 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 import { QuizCourseInfoComponent } from './Pages/quiz-course-info/quiz-course-info.component';
+import { TimelineComponent } from './Pages/timeline/timeline.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'landing', component: LandingPageComponent },
+  { path: 'subjects', component: SubjectsComponent , canActivate: [AuthGuardsService]},
+  { path: 'dream-job', component: DreamJobComponent , canActivate: [AuthGuardsService]},
+  { path: 'home', component: HomepageComponent, canActivate: [AuthGuardsService]},
+  { path: 'fill-career', component: FillCareerComponent , canActivate: [AuthGuardsService]},
+  { path: 'welcome-quize', component: WelcomeQuizComponent , canActivate: [AuthGuardsService]},
+  { path: 'subjectmarks', component: SubjectmarksComponent , canActivate: [AuthGuardsService]},
+  { path: 'hamburger', component: HamburgerComponent},
+  { path: 'nav', component: NavbarComponent},
+  { path: 'passwordReset/:email', component: PasswordResetComponent},
+  { path: 'forgotPassword', component: RequestPasswordResetComponent},
   { path: 'subjects', component: SubjectsComponent },
   { path: 'dream-job', component: DreamJobComponent, data: { showNav: true }},
   { path: 'home', component: HomepageComponent },
@@ -52,7 +66,7 @@ const routes: Routes = [
   { path: 'quiz', component: QuizComponent},
   { path: 'quiz2', component: Quiz2Component},
   { path: 'hamburger', component:HamburgerComponent},
-
+  { path: 'timeline', component: TimelineComponent },
   { path: 'nav', component: NavbarComponent},
   { path: 'viewcareer', component: ViewCareeerComponent },
   
@@ -62,10 +76,12 @@ const routes: Routes = [
 
   
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
+  
 ];
 
 @NgModule({ 
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuardsService]
 })
 export class AppRoutingModule { }

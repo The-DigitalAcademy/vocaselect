@@ -4,9 +4,11 @@ const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
-// const nodemailer = require('nodemailer');
+const timelineRoutes = require('./routes/timeline.routes');
 const subjectRoutes = require('./routes/subjects.routes')
-const { sendResetOTP, resetPassword } = require('./controllers/user.controllers');
+const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
+const { sendResetOTP, resetPassword } = require('./controllers/user.controllers')
+// const nodemailer = require('nodemailer');
 
 //ChatGPT Routes
 const careerRoutes = require("./routes/careerRoutes");
@@ -56,14 +58,19 @@ app.use(cookieParser())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//routes for the user API
+app.use('/api/users', userRoutes)
 
 // routes for getting all subjets
+app.use('/api/subjects', subjectRoutes)
 
 // app.use('/app/getting')
 
-// app.use('/api/user_selected_subjects', selectedSubjectRoutes);
+app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 
-// app.use('/api', selectedSubjectsRouter); 
+// Use the timeline route
+app.use('/api/timeline', timelineRoutes);
+
 // Import the deleteUserById method (replace this with the actual path to your method file)
 const { deleteUserById } = require('./controllers/user.controllers');
 
@@ -116,6 +123,12 @@ app.use("/quiz", quizRoutes);
 app.use("/courseInfo", selectedCourseController );
 app.use("/quizCourseInfo", quizSelectedCourse );
 
+
+// Endpoint to send OTP
+app.post('/', sendResetOTP);
+
+// Endpoint to reset password
+app.post('/', resetPassword);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

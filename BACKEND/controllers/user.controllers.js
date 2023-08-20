@@ -3,12 +3,9 @@ const bcrypt = require("bcryptjs");
 const db = require("../models");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+require("dotenv").config();
 // Assigning users to the variable User
-const User = require('../models/users.models');
-// const nodemailer = require('nodemailer');
-// const otpManager = require('../otp/otpManager');
-// const otpGenerated = 0;
-// const sendEmail = require("../utils/email/sendEmail");
+const User = db.User;
 
 //signing a user up
 //hashing users password before its saved to the database with bcrypt

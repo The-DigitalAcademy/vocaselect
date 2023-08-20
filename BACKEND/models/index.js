@@ -34,7 +34,7 @@ db.sequelize = sequelize;
 
 db.User = require("./users.models")(sequelize, Sequelize);
 db.Subject = require("../models/subjects.model")(sequelize, Sequelize);
-
+db.Timeline = require("../models/timeline.models")(sequelize, Sequelize);
 
 // db.users = require("./users.model.js")(sequelize, Sequelize);
 
