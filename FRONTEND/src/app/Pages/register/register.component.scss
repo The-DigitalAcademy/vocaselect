@@ -21,11 +21,11 @@
   .container {
     margin-top: 100px;
     margin-bottom: 50px;
-
-      }
+    width: 105%
+  }
   
   .form-control{
-      border-radius: 30px;
+      border-radius: 12px;
       height: 40px;
       border: solid #A1C2F3;
   }
@@ -34,10 +34,12 @@
       padding-top: 15px;
   }
   .img-logo{
-    margin-bottom: -63px;
-    margin-top: -88px;
-    margin-left: 4rem;
-   
+    width: 160px;
+    height: 160px;
+    margin-bottom: -25px;
+    margin-top: -55px;
+    margin-left: 5rem;
+
   }
   
   button{
@@ -104,4 +106,10 @@ placeholder {
   font-size: 26px;
   text-align: center;
   margin-top: 2px;
+}
+
+
+label {
+  display: inline-block;
+  margin-bottom: 0.2rem;
 }

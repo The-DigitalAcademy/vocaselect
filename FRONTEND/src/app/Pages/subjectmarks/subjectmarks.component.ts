@@ -103,7 +103,7 @@ export class SubjectmarksComponent implements OnInit {
       (response) => {
         console.log('Selected subjects sent successfully:', response);
         // If needed, you can navigate to another route after successful submission
-        this.router.navigate(['dream-job']);
+        // this.router.navigate(['home']);
       },
       (error) => {
         console.error('Error sending selected subjects:', error);
