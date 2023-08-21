@@ -35,6 +35,13 @@ input{
       width:67vw !important;
      }
 
+     .mat-horizontal-content-container {
+      overflow: hidden;
+      background-color: var(--background-color) ;
+      // background-color: linear-gradient(#c2e8e6, #9198e5);
+      padding: 0 24px 24px 24px;
+  }
+
   }
 }
 
@@ -287,7 +294,7 @@ p {
 }
 
 .navbar {
-  margin-top: -1.2rem;
+  margin-top: -2.5rem;
 //   display: flex;
 
   .backbutton {
@@ -297,7 +304,7 @@ p {
 
   .logo-img {
 //    margin-right: 10rem;
-   width: 120px;
+   width: 150px;
   }
 }
 

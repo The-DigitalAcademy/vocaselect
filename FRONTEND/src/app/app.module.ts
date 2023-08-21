@@ -69,8 +69,7 @@ import { QuizCourseInfoComponent } from './Pages/quiz-course-info/quiz-course-in
     HamburgerComponent,
     SubjectmarksComponent,
     CourseDetailsComponent,
-    TimelineComponent
-    CourseDetailsComponent,
+    TimelineComponent,
     QuizCourseInfoComponent
    
    
