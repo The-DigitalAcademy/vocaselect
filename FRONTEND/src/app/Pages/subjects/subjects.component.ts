@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { SubjectsService } from 'src/app/_services/_ChatGPT_Services/subjects.service';
+import { SubjectsService } from 'src/app/_services/subjects.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-subjects',
@@ -23,7 +25,7 @@ export class SubjectsComponent implements OnInit {
     // Fetch items from the API when the component initializes
     this.fetchSubjects();
     this.userId = this.tokenStorage.getUser().id;
-  console.log(this.userId, 'user id')
+console.log(this.userId, 'user id')
   }
 
   fetchSubjects() {

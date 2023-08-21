@@ -24,6 +24,7 @@ import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 import { TimelineComponent } from './Pages/timeline/timeline.component';
+import { ProfileComponent } from './Pages/profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -65,7 +66,7 @@ const routes: Routes = [
   { path: 'timeline', component: TimelineComponent },
   { path: 'nav', component: NavbarComponent},
   { path: 'viewcareer', component: ViewCareeerComponent },
-  
+  {path: 'profile', component: ProfileComponent},
   { path: 'careers', component: CareersComponent},
   { path: 'quiz-questions', component: QuizQuestionsComponent},
   
