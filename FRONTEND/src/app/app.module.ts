@@ -39,6 +39,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
+import { TimelineComponent } from './Pages/timeline/timeline.component';
 
 import { QuizCourseInfoComponent } from './Pages/quiz-course-info/quiz-course-info.component';
 
@@ -67,6 +68,8 @@ import { QuizCourseInfoComponent } from './Pages/quiz-course-info/quiz-course-in
     CareersComponent,
     HamburgerComponent,
     SubjectmarksComponent,
+    CourseDetailsComponent,
+    TimelineComponent
     CourseDetailsComponent,
     QuizCourseInfoComponent
    
