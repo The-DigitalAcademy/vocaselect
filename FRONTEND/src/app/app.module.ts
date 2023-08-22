@@ -1,9 +1,7 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule,} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
-
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './Pages/landing-page/landing-page.component';
@@ -13,7 +11,6 @@ import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { WelcomeQuizComponent } from './Pages/welcome-quiz/welcome-quiz.component';
 // import { UserService } from './_services/user.service';
 import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
-
 import { CommonModule } from '@angular/common';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
@@ -24,24 +21,20 @@ import { CoursesComponent } from './Pages/courses/courses.component';
 import { Quiz2Component } from './Pages/quiz2/quiz2.component';
 import { QuizQuestionsComponent } from './Pages/quiz-questions/quiz-questions.component';
 // import { SharedDataService } from './_services/_ChatGPT_Services/api-shared.service';
-
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
-
 import { CareersComponent } from './Pages/careers/careers.component';
-
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 import { TimelineComponent } from './Pages/timeline/timeline.component';
-
-
+import { ProfileComponent } from './Pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -63,14 +56,12 @@ import { TimelineComponent } from './Pages/timeline/timeline.component';
     PasswordResetComponent,
     RequestPasswordResetComponent,
     ViewCareeerComponent,
-    
     CareersComponent,
     HamburgerComponent,
     SubjectmarksComponent,
     CourseDetailsComponent,
-    TimelineComponent
-   
-   
+    TimelineComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -80,18 +71,14 @@ import { TimelineComponent } from './Pages/timeline/timeline.component';
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
     MatInputModule,
     MatFormFieldModule,
     MatStepperModule,
     MatButtonModule,
-    MatProgressBarModule,
-    
-    
+    MatProgressBarModule
   ],
-  providers: [ ],
+  providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
-
 })
 export class AppModule { }
