@@ -27,4 +27,5 @@ export class CareerRecommendationService {
     const body = { courseName, uniName, admissionRequirements, courseDescription };
     return this.http.post<CareerRecommendation[]>(`${this.apiUrl}/enterCareer`, body);
   }
+
 }

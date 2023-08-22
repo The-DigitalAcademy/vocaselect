@@ -2,8 +2,8 @@ const { OpenAIApi } = require("openai");
 const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 
-// const axios = require('axios');
 
+// @POST - Method
 exports.generateCareer = async (req, res) => {
   try {
     
@@ -11,7 +11,7 @@ exports.generateCareer = async (req, res) => {
     // Extract the user's chosen career choice from the request body
     const { careerChoice} = req.body;
 
-     // Check if the careerChoice is provided
+     // Check if the careerChoice is provided - validation
      if (!careerChoice || careerChoice.trim() === "") {
       return res.status(400).json({ error: "Please provide a valid career choice." });
     }
@@ -57,16 +57,16 @@ exports.generateCareer = async (req, res) => {
      const extractedCourses = [];
 
      for (const course of courses) {
-      // If 'course.uniName' is falsy, assign an empty string to 'uniName'
-      const uniName = course.uniName || "";
-      // If 'course.courseName' is falsy, assign an empty string to 'courseName'
-      const courseName = course.courseName || "";
 
-      const admissionRequirements = course.admissionRequirements || "";
+      const uniName = course.uniName;
+
+      const courseName = course.courseName;
+
+      const admissionRequirements = course.admissionRequirements;
   
-      const courseDescription = course.courseDescription || "";
+      const courseDescription = course.courseDescription;
 
-      const universityURL = course.universityURL || "";
+      const universityURL = course.universityURL;
 
 
       // Create an object containing extracted course information and push it to 'extractedCourses' array
@@ -87,6 +87,7 @@ exports.generateCareer = async (req, res) => {
     res.status(500).json({ error: "An error occurred while generating recommendations." });
   }
 };
+
 
 //@GET - METHOD
 exports.career_Choice_Selected_Course = async (req, res) => {
@@ -144,19 +145,14 @@ exports.career_Choice_Selected_Course = async (req, res) => {
      const extractedCourses = [];
 
      for (const course of courses) {
-      // If 'course.uniName' is falsy, assign an empty string to 'uniName'
-      const uniName = course.uniName || "";
-      // If 'course.courseName' is falsy, assign an empty string to 'courseName'
-      const courseName = course.courseName || "";
+      const uniName = course.uniName;
+      const courseName = course.courseName;
 
-      const courseDescription = course.courseDescription || "";
+      const courseDescription = course.courseDescription;
 
-      const courseDuration = course.courseDuration || "";
-
-      const admissionRequirements = course.admissionRequirements || "";
-
-      const universityURL = course.universityURL || "";
-        
+      const courseDuration = course.courseDuration; 
+      const admissionRequirements = course.admissionRequirements; 
+      const universityURL = course.universityURL;         
   
       
 
@@ -184,14 +180,20 @@ exports.career_Choice_Selected_Course = async (req, res) => {
 // Function to parse course recommendations text into structured course objects
 function parseCourseRecommendations(text) {
   const courses = [];
+
+  // Split the input text into an array of lines using newline characters as separators
   const lines = text.split('\n');
 
   let currentCourse = {};
   for (const line of lines) {
+    // Split the line into key and value parts using ':' as a separator, and trim any whitespace
     const [key, value] = line.split(':').map(part => part.trim());
 
+    // If both 'key' and 'value' are truthy (not empty), store them in 'currentCourse'
     if (key && value) {
       currentCourse[key] = value;
+    // If 'key' or 'value' is empty and there are existing properties in 'currentCourse',
+      // push 'currentCourse' to the 'courses' array, and reset 'currentCourse' to an empty object
     } else if (Object.keys(currentCourse).length > 0) {
       courses.push(currentCourse);
       currentCourse = {};
@@ -204,30 +206,5 @@ function parseCourseRecommendations(text) {
 
   return courses;
 }
-
-// New endpoint for displaying course details
-// exports.displayCourseDetails = async (req, res) => {
-//   try {
-//     const { extractedCourses } = req.body;
-//     const { selectedCourseName } = req.params;
-
-//     if (!selectedCourseName || selectedCourseName.trim() === "") {
-//       return res.status(400).json({ error: "Please provide a valid course name." });
-//     }
-
-//     const selectedCourse = extractedCourses.find(course => course.courseName === selectedCourseName);
-
-//     if (!selectedCourse) {
-//       return res.status(404).json({ error: "Course not found." });
-//     }
-
-//     res.status(200).json(selectedCourse);
-
-//   } catch (err) {
-//     console.error("Error occurred:", err);
-//     res.status(500).json({ error: "An error occurred while fetching course details." });
-//   }
-// };
-
 
 

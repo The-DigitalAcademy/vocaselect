@@ -10,11 +10,6 @@ exports.generateCareerQuiz = async (req, res) => {
       answer1,answer2,answer3,answer4,answer5,answer6,answer7,answer8,answer9, answer10
     } = req.body;
 
-    // Check if all answers are provided
-    // if (!answer1 || !answer2 || !answer3 || !answer4 || !answer5 || !answer6 || !answer7 || !answer8 || !answer9 || !answer10) {
-    //   return res.status(400).json({ error: "All answers are required." });
-    // }
-
     const prompt = `Quiz for Career Recommendation:\n
     1. What do you enjoy doing in your spare time? (${answer1})\n
     2. How would you describe your personality? (e.g., outgoing, analytical, creative, etc.) (${answer2})\n
@@ -63,35 +58,23 @@ exports.generateCareerQuiz = async (req, res) => {
     const extractedCareers = [];
 
     for (const career of careers) {
-      // If 'career.careerName' is falsy, assign an empty string to 'uniName'
-      const careerName = career.careerName || "";
-      // If 'course.courseName' is falsy, assign an empty string to 'courseName'
-      const careerDescription = career.careerDescription || "";
-  
-      const careerSalary = career.careerSalary || "";
+      // Extract the value of the 'careerName' property from the current 'career' object
+      const careerName = career.careerName;
+      const careerDescription = career.careerDescription;
+      const careerSalary = career.careerSalary;
 
-      // Create an object containing extracted course information and push it to 'extractedCourses' array
-      extractedCareers.push({
+      const extractedCareer = {
         careerName,
         careerDescription,
         careerSalary,
-      });
+      };
+      extractedCareers.push(extractedCareer);
     }
+
 
    // Send the extracted course recommendations as a JSON response
    res.status(200).json(extractedCareers);
 
-
-    //  Assuming you have a Sequelize model QuizAnswer to store the generated recommendations
-    // const quizAnswers = {
-    //   answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10,
-    //   careerRecommendations: JSON.stringify(jsonResult.quizRecommendations) // Store the recommendations as JSON
-    // };
-
-    // Use Sequelize's create method to insert the quiz answers and recommendations into the database
-    // await QuizAnswer.create(quizAnswers);
-
-    // res.status(200).json(jsonResult);
 
   } catch (err) {
     console.error("Error occurred:", err);

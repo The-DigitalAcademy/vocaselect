@@ -2,7 +2,6 @@ const { OpenAIApi } = require("openai");
 const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 
-// const axios = require('axios');
 
 exports.career_Choice_Selected_Course = async (req, res) => {
   try {
@@ -94,7 +93,7 @@ exports.Get_career_Choice_Selected_Course = async (req, res) => {
     
     //uses the body-parser middleware - destructuring assigment
     // Extract the user's chosen course from the request body
-    const {  career } = req.query;
+    const { career } = req.query;
 
      // Check if the careerChoice is provided
     //  if (!course || course.trim() === "") {
@@ -205,29 +204,7 @@ function parseCourseRecommendations(text) {
   return courses;
 }
 
-// New endpoint for displaying course details
-// exports.displayCourseDetails = async (req, res) => {
-//   try {
-//     const { extractedCourses } = req.body;
-//     const { selectedCourseName } = req.params;
 
-//     if (!selectedCourseName || selectedCourseName.trim() === "") {
-//       return res.status(400).json({ error: "Please provide a valid course name." });
-//     }
-
-//     const selectedCourse = extractedCourses.find(course => course.courseName === selectedCourseName);
-
-//     if (!selectedCourse) {
-//       return res.status(404).json({ error: "Course not found." });
-//     }
-
-//     res.status(200).json(selectedCourse);
-
-//   } catch (err) {
-//     console.error("Error occurred:", err);
-//     res.status(500).json({ error: "An error occurred while fetching course details." });
-//   }
-// };
 
 
 

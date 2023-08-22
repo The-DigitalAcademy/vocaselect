@@ -1,6 +1,6 @@
 //importing modules
 const bcrypt = require("bcryptjs");
-const db = require("../models");
+const db = require("../../models");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 // Assigning users to the variable User

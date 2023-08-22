@@ -149,15 +149,15 @@ exports.getSelectedCourses = async (req, res) => {
 
      for (const course of courses) {
       // If 'course.uniName' is falsy, assign an empty string to 'uniName'
-      const uniName = course.uniName || "";
+      const uniName = course.uniName;
       // If 'course.courseName' is falsy, assign an empty string to 'courseName'
-      const courseName = course.courseName || "";
+      const courseName = course.courseName;
 
-      const courseDescription = course.courseDescription || "";
+      const courseDescription = course.courseDescription;
 
-      const courseDuration = course.courseDuration || "";
+      const courseDuration = course.courseDuration;
 
-      const admissionRequirements = course.admissionRequirements || "";
+      const admissionRequirements = course.admissionRequirements;
   
       
 

@@ -7,5 +7,3 @@ const configuration = new Configuration({
 
 module.exports = configuration;
 
-
-// const openai = new OpenAIApi(configuration);

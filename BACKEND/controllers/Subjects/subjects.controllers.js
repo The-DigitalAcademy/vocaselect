@@ -1,4 +1,4 @@
-const db = require("../models")
+const db = require("../../models")
 const Subject = db.Subject;
 // const Op = db.Sequelize.Op;
 

@@ -1,4 +1,4 @@
-const subjects = require('../controllers/subjects.controllers')
+const subjects = require('../controllers/Subjects/subjects.controllers')
   
     const router = require("express").Router();
   
