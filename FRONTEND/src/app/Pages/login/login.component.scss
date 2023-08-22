@@ -63,7 +63,7 @@
         margin-top: 20px;
     }
     
-    
+   
     .alert{
         background: none !important;
         border: 0px !important;
@@ -100,4 +100,9 @@
   border-right-color: transparent;
   border-radius: 50%;
   animation: spinner-border 0.75s linear infinite;
+}
+
+
+::placeholder {
+    color: rgb(178, 175, 175);
 }

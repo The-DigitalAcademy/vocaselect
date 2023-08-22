@@ -167,6 +167,8 @@ export class RegisterComponent implements OnInit {
 
   onRegister() {
     if (this.registerForm.valid) {
+      // Set loading state to true before registration process
+      this.loading = true;
 
       //check if the email used for reistration doesn't exist
       //if it exist return an alert with email already exist
@@ -174,6 +176,7 @@ export class RegisterComponent implements OnInit {
       this.userService.checkEmailExists(this.registerForm.value.email).subscribe({
         next: (data) => {
           console.log(data);
+          this.loading = false;
           if (data == "true") {
             Swal.fire({
               title: 'This email already exists!',
@@ -217,6 +220,8 @@ export class RegisterComponent implements OnInit {
               return;
             }
           });
+          // Set loading state to false after error occurs
+          this.loading = false;
         }
       });
     } else {

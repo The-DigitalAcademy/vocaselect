@@ -65,12 +65,19 @@ export class SubjectsComponent implements OnInit {
   // }
 
   onSubmit(): void {
+    console.log('Submit button clicked');
+    
     if (this.allSelectedId.length === 0) {
       console.log("Please select a course");
       return;
     }
   
-    // Make an HTTP POST request to the server with the selected subject IDs
+    console.log("Sending selected subjects...");
+  
+    this.loading = true;
+    console.log("Loading state set to true");
+  
+    // Make an HTTP POST request...
     this.subjectsService.saveSelectedSubjects(this.allSelectedId).subscribe(
       (response) => {
         console.log('Selected subjects sent successfully:', response);
@@ -81,6 +88,11 @@ export class SubjectsComponent implements OnInit {
         console.error('Error sending selected subjects:', error);
       }
     );
+  
+    // Set loading state to false after submitting subjects
+    this.loading = false;
+    console.log("Loading state set to false");
   }
+  
   
 }

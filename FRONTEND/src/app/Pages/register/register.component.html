@@ -229,9 +229,21 @@
             Please fill in all required fields
           </div>
 
+          <!-- <div class="form-group mt-4 text-center">
+            <button type="submit" [disabled]="loading" class="text-white btn btn-primary btn-block">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span *ngIf="!loading">Login</span>
+            </button>
+          </div> -->
+
           <div ngClass="form-group mt-3 text-center">
-            <button class="text-white btn btn-primary btn-block" type="submit">
-              {{ buttonLabel() }}
+            <button
+              class="text-white btn btn-primary btn-block"
+              type="submit"
+              [disabled]="registerForm.invalid || loading"
+            >
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span *ngIf="!loading">Registration</span>
             </button>
           </div>
 
