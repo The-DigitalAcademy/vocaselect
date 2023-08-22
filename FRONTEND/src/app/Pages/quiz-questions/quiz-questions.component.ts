@@ -70,7 +70,7 @@ export class QuizQuestionsComponent implements OnInit {
     {
       questionId: 1,
       questionText:
-        "What's your favorite way to spend free time?",
+        "What are your favourite topics or subjects to learn about?",
       options: [''],
       selectedOption: [''],
 
@@ -86,7 +86,7 @@ export class QuizQuestionsComponent implements OnInit {
 
     {
       questionId: 3,
-      questionText: 'Do you enjoy teamwork or individual work more?',
+      questionText: 'What do you enjoy doing in your free time?',
       options: [''],
       selectedOption: [''],
     },

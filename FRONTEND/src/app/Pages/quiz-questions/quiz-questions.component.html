@@ -52,11 +52,11 @@ id="toggle-linear"
 
     <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
     <mat-form-field style="justify-content: center;" appearance="outline">
-      <br /><br /><br /><br /><mat-label>What's your favorite way to spend free time?</mat-label>
+      <br /><br /><br /><br /><mat-label>Fill in your subjects</mat-label>
       <!-- <input type="text" placeholder="English, Geography"> -->
       <input
         matInput
-        placeholder="eg. Reading, painting"
+        placeholder="eg. English,Geography"
         formControlName="firstCtrl"
         required
         [(ngModel)]="question.selectedOption"
@@ -158,11 +158,11 @@ id="toggle-linear"
     </a>
 
     <mat-form-field style="justify-content: center;" appearance="outline">
-      <br /><br /><br /><br /><mat-label>Teamwork or Individual</mat-label>
+      <br /><br /><br /><br /><mat-label>Your hobbies</mat-label>
       <input
         matInput
         formControlName="thirdCtrl"
-        placeholder="eg.Teamwork or Individual"
+        placeholder="eg.Reading or Video games"
         required
         [(ngModel)]="question.selectedOption"
         [value]="option"

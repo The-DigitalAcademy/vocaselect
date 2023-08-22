@@ -17,7 +17,7 @@ exports.generateCareer = async (req, res) => {
     }
 
     //AI prompt 
-    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a stringified JSON representation.
+    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Add also the university URL. Format the response in a stringified JSON representation.
 
     Explain the course description and admission requirements in layman's terms for high school minors of age 15 years to understand.
     
