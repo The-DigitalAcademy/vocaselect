@@ -10,7 +10,7 @@ import { SubjectsService } from 'src/app/_services/_ChatGPT_Services/subjects.se
   styleUrls: ['./subjects.component.scss']
 })
 export class SubjectsComponent implements OnInit {
-     
+  loading: boolean = false;
   subjects: any; 
   public selectedSubjects: string[] = [];
 

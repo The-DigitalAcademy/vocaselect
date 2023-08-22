@@ -78,7 +78,7 @@ id="toggle-linear"
       <button
         mat-button
         matStepperNext
-        class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-white bg-blue-400 hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-400 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
       >
         Next
       </button>
@@ -114,7 +114,7 @@ id="toggle-linear"
         mat-button
         formControlName=""
         matStepperNext
-        class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
         
         [value]="question.options[0]"
         (click)="selected1(question, question.options[0])"
@@ -126,7 +126,7 @@ id="toggle-linear"
         class="btns"
         mat-button
         matStepperNext
-        class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
         [value]="question.options[1]"
         (click)="selected1(question, question.options[1])">
         Extroverted
@@ -172,7 +172,7 @@ id="toggle-linear"
       <button
         mat-button
         matStepperNext
-        class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-white bg-blue-400 hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-400 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
       >
         Next
       </button>
@@ -184,7 +184,7 @@ id="toggle-linear"
 </mat-step>
 
 
-<!------------------------------------ fourth input------------------------------------------->
+<!------------------------------------ fourth select------------------------------------------->
 <mat-step [stepControl]="fourthFormGroup" label="">
   <form [formGroup]="fourthFormGroup">
     <div *ngFor="let question of quizQuestions">
@@ -214,7 +214,7 @@ id="toggle-linear"
       <button
       mat-button
       matStepperNext
-      class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
     
       [value]="question.options[0]"
       (click)="selected1(question, question.options[0])"  >
@@ -272,7 +272,7 @@ id="toggle-linear"
       <button
         mat-button
         matStepperNext
-        class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-white bg-blue-400 hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-400 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
       >
         Next
       </button>
@@ -314,7 +314,7 @@ id="toggle-linear"
     <button
     mat-button
     matStepperNext
-    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
     [value]="question.options[0]"
     (click)="selected1(question, question.options[0])"
     >
@@ -323,7 +323,7 @@ id="toggle-linear"
     <button
     mat-button
     matStepperNext
-    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
     [value]="question.options[1]"
       (click)="selected1(question, question.options[1])"
     >
@@ -360,7 +360,7 @@ id="toggle-linear"
     <button
     mat-button
     matStepperNext
-    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
   
     [value]="question.options[0]"
     (click)="selected1(question, question.options[0])"  >
@@ -369,7 +369,7 @@ id="toggle-linear"
     <button
     mat-button
     matStepperNext
-    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    class="text-black bg-blue-200 rounded-lg shadow hover:bg-blue-400 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
     [value]="question.options[1]"
     (click)="selected1(question, question.options[1])"
     >
@@ -450,7 +450,7 @@ id="toggle-linear"
       class="btn-submit"
       type="button"
       id="button"
-      class="px-10 py-3.5 text-base font-medium text-white bg-blue-400 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-600"
+      class="px-10 py-3.5 text-base font-medium text-white bg-blue-400 hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-400 dark:hover:bg-blue-400 dark:focus:ring-blue-400"
       
       (click)="generateCareerQuiz()">
       Submit!

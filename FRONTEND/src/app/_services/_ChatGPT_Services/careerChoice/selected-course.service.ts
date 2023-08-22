@@ -9,7 +9,7 @@ import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 export class SelectedCourseService {
 
   //hosted backend
-  // private apiUrl = 'https://backend-ai-a6r3.onrender.com';
+  // private apiUrl = 'https://vocaselect-backend.onrender.com';
 
   //LOCAL BACKEND
   private baseUrl = 'http://localhost:9000'; 

@@ -19,7 +19,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-  loading: boolean = false; 
+  loading: boolean = false;
   successMessage: string | null = null; // Initialize success message
   users!: any;
   email!: string;

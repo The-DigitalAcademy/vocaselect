@@ -9,7 +9,7 @@ import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
 export class CareerQuizService {
   
   // HOSTED BACKEND
-  // private backendUrl = 'https://backend-ai-a6r3.onrender.com'
+  // private backendUrl = 'https://vocaselect-backend.onrender.com'
 
   //LOCAL BACKEND 
   private apiUrl = 'http://localhost:9000';

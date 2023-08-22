@@ -15,7 +15,6 @@ export class SubjectmarksComponent implements OnInit {
 
   subjects: any;
   public selectedSubjects: string[] = [];
-
   updatedSubjectMarks: any = [];
   userId: any;
   belowAverage: any = [];

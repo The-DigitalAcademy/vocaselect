@@ -16,6 +16,8 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
+  loading: boolean = false; 
+
   user: any;
   invalidCredentials = false;
   form: any = {
@@ -177,6 +179,7 @@ export class RegisterComponent implements OnInit {
               title: 'This email already exists!',
               text: '',
               icon: 'error',
+              timer: 3000,
             }).then((result) => {
               if (result.value) {
                 return;
@@ -208,6 +211,7 @@ export class RegisterComponent implements OnInit {
             title: 'Unsuccessful',
             text: this.errorMessage,
             icon: 'error',
+            timer: 3000,
           }).then((result) => {
             if (result.value) {
               return;

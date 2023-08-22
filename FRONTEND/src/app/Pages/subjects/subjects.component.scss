@@ -68,7 +68,7 @@
 
     label:hover {
       // background-color: var(--button-color);
-      color:#17A2B8; }
+      color: var(--button-color); }
 
     input[type="checkbox"] {
       transform: scale(1.2); /* Change the value to adjust the size as needed */
@@ -80,6 +80,7 @@
     input[type="checkbox"]:checked {
       border-color: #17A2B8; /* Change to your desired color */
       background-color: #17A2B8 /* Change to your desired color */
+      
       
     }
   }
