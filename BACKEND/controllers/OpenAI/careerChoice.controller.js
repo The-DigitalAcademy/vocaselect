@@ -27,13 +27,15 @@ exports.generateCareer = async (req, res) => {
         uniName: University of Johannesburg,
         courseName: Bachelor of Science in Computer Science,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Information Systems,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
       }
     ]    
     `;
@@ -64,12 +66,16 @@ exports.generateCareer = async (req, res) => {
   
       const courseDescription = course.courseDescription || "";
 
+      const universityURL = course.universityURL || "";
+
+
       // Create an object containing extracted course information and push it to 'extractedCourses' array
       extractedCourses.push({
         uniName,
         courseName,
         admissionRequirements,
         courseDescription,
+        universityURL
       });
     }
      // Send the extracted course recommendations as a JSON response
@@ -107,14 +113,16 @@ exports.career_Choice_Selected_Course = async (req, res) => {
         courseName: Bachelor of Science in Computer Science,
         courseDuration: 3 years,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Computer Science,
         courseDuration: 3 years,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
       }
     ]    
     `;
@@ -146,6 +154,9 @@ exports.career_Choice_Selected_Course = async (req, res) => {
       const courseDuration = course.courseDuration || "";
 
       const admissionRequirements = course.admissionRequirements || "";
+
+      const universityURL = course.universityURL || "";
+        
   
       
 
@@ -156,6 +167,7 @@ exports.career_Choice_Selected_Course = async (req, res) => {
         courseDuration,
         courseDescription,
         admissionRequirements, 
+        universityURL
       });
     }
      // Send the extracted course recommendations as a JSON response

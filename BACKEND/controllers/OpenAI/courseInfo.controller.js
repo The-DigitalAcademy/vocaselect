@@ -29,14 +29,17 @@ exports.selectedCourse = async (req, res) => {
         courseName: Bachelor of Science in Computer Science,
         courseDuration: 3 years,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
+
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Computer Science,
         courseDuration: 3 years,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
       }
     ]    
     `;

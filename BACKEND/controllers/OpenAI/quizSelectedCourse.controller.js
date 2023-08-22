@@ -9,10 +9,10 @@ exports.career_Choice_Selected_Course = async (req, res) => {
     
     //uses the body-parser middleware - destructuring assigment
     // Extract the user's chosen career choice from the request body
-    const { career} = req.body;
+    const { career } = req.body;
 
      // Check if the careerChoice is provided
-     if (!careerChoice || careerChoice.trim() === "") {
+     if (!career || career.trim() === "") {
       return res.status(400).json({ error: "Please provide a valid career choice." });
     }
 
@@ -27,13 +27,16 @@ exports.career_Choice_Selected_Course = async (req, res) => {
         uniName: University of Johannesburg,
         courseName: Bachelor of Science in Computer Science,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
+
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Information Systems,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
       }
     ]    
     `;
@@ -64,12 +67,15 @@ exports.career_Choice_Selected_Course = async (req, res) => {
   
       const courseDescription = course.courseDescription || "";
 
+      const universityURL = course.universityURL || "";
+
       // Create an object containing extracted course information and push it to 'extractedCourses' array
       extractedCourses.push({
         uniName,
         courseName,
         admissionRequirements,
         courseDescription,
+        universityURL
       });
     }
      // Send the extracted course recommendations as a JSON response
@@ -107,14 +113,18 @@ exports.Get_career_Choice_Selected_Course = async (req, res) => {
         courseName: Bachelor of Science in Computer Science,
         courseDuration: 3 years,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
+
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Computer Science,
         courseDuration: 3 years,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
+
       }
     ]    
     `;
@@ -147,6 +157,7 @@ exports.Get_career_Choice_Selected_Course = async (req, res) => {
 
       const admissionRequirements = course.admissionRequirements || "";
   
+      const universityURL = course.universityURL || "";
       
 
       // Create an object containing extracted course information and push it to 'extractedCourses' array
@@ -155,7 +166,8 @@ exports.Get_career_Choice_Selected_Course = async (req, res) => {
         courseName,
         courseDuration,
         courseDescription,
-        admissionRequirements, 
+        admissionRequirements,
+        universityURL
       });
     }
      // Send the extracted course recommendations as a JSON response
