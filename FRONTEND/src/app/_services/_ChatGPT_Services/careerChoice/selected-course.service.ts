@@ -4,23 +4,23 @@ import { Observable } from 'rxjs/internal/Observable';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 import { environment } from 'src/environments/environment';
 
-let ApiUrl = environment.apiUrl;
 
 @Injectable({
   providedIn: 'root'
 })
 export class SelectedCourseService {
+  ApiUrl = environment.apiUrl;  
 
   constructor(private http: HttpClient) {}
 
   selectedCourse(courseName: string): Observable<CourseRecommendation[]> {
-    return this.http.post<CourseRecommendation[]>(`${ApiUrl}/courseInfo`, { courseName });
+    return this.http.post<CourseRecommendation[]>(`${this.ApiUrl}/courseInfo`, { courseName });
   }
 
 
   //getting the data from AI
   getSelectedCourses(courseName: string): Observable<CourseRecommendation[]> {
-    return this.http.get<CourseRecommendation[]>(`${ApiUrl}/courseInfo?course=${courseName}`);
+    return this.http.get<CourseRecommendation[]>(`${this.ApiUrl}/courseInfo?course=${courseName}`);
   }
 }
 
