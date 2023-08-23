@@ -11,8 +11,6 @@ import { LoginComponent } from './Pages/_Auth/login/login.component';
 import { RegisterComponent } from './Pages/_Auth/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 import { WelcomeQuizComponent } from './Pages/_Quiz/welcome-quiz/welcome-quiz.component';
-// import { UserService } from './_services/user.service';
-import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
 
 import { CommonModule } from '@angular/common';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
@@ -28,7 +26,6 @@ import { PasswordResetComponent } from './Pages/password-reset/password-reset.co
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
 
-import { CareersComponent } from './Pages/careers/careers.component';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -49,7 +46,6 @@ import { QuizCourseInfoComponent } from './Pages/_Quiz/quiz-course-info/quiz-cou
     LoginComponent,
     RegisterComponent,
     SubjectsComponent,
-    CareerChoiceComponent,
     WelcomeQuizComponent,
     QuizQuestionsComponent,
     DreamJobComponent,
@@ -61,7 +57,6 @@ import { QuizCourseInfoComponent } from './Pages/_Quiz/quiz-course-info/quiz-cou
     RequestPasswordResetComponent,
     ViewCareeerComponent,
     
-    CareersComponent,
     HamburgerComponent,
     SubjectmarksComponent,
     CourseDetailsComponent,

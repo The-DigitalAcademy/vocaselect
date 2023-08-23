@@ -13,16 +13,11 @@ import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
 import { RegisterComponent } from './Pages/_Auth/register/register.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
-import { CareerChoiceComponent } from './Pages/career-choice/career-choice.component';
-// import { CoursesComponent } from './Pages/courses/courses.component';
-
-
 
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 import { ViewCareeerComponent } from './Pages/view-careeer/view-careeer.component';
 
-import { CareersComponent } from './Pages/careers/careers.component';
 import { HamburgerComponent } from './components/hamburger/hamburger.component';
 import { QuizQuestionsComponent } from './Pages/_Quiz/quiz-questions/quiz-questions.component';
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
@@ -49,32 +44,17 @@ const routes: Routes = [
   { path: 'fill-career', component: FillCareerComponent },
   { path: 'welcome-quiz', component: WelcomeQuizComponent },
   { path: 'subjectmarks', component: SubjectmarksComponent },
-  { path: 'careerChoice', component: CareerChoiceComponent},
   { path: 'login', component: RegisterComponent },
   { path: 'register', component: LoginComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'subjects', component: SubjectsComponent },
-  //fill the career course details route
-  { path: 'career/:courseName', component: CareerChoiceComponent},
-  //Course Details - AI from fill career
   { path: 'course-details', component: CourseDetailsComponent},
-
-  //Quiz Selected Career Course Details
-  {path: 'quizSelectedCourse', component: QuizCourseInfoComponent},
-
-  { path: 'career', component: CareerChoiceComponent},
-
-  // { path: 'courses', component: CoursesComponent},
+  { path: 'quizSelectedCourse', component: QuizCourseInfoComponent},
   { path: 'hamburger', component:HamburgerComponent},
   { path: 'timeline', component: TimelineComponent },
   { path: 'nav', component: NavbarComponent},
   { path: 'viewcareer', component: ViewCareeerComponent },
-  
-  { path: 'careers', component: CareersComponent},
   { path: 'quiz-questions', component: QuizQuestionsComponent},
-  
-
-  
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
   
 ];

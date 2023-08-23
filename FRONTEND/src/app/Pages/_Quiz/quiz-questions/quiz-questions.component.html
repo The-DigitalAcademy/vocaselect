@@ -1,21 +1,5 @@
-<!-- <app-navbar></app-navbar> -->
-<!-- <nav class="navbar"> -->
 <app-hamburger></app-hamburger>
-  <!-- <div class="backbutton">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" fill="#073980" class="bi bi-arrow-left" viewBox="0 0 16 16" routerLink="/dream-job">
-          <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-        </svg>
-  </div> -->
 
-<!-- <div class="logo ">
-  <img src="../../../assets/logo.png" class="logo-img" alt="...">
-</div> -->
-
-<!-- </nav> -->
-
-<!-- <div class="heading"  >
-  <h1>Questionaires</h1>
-  </div> -->
 
 <div *ngIf="!showLoader && !showRecommendations" class="div">
 
@@ -50,10 +34,8 @@ id="toggle-linear"
       </p>
     </a>
 
-    <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
     <mat-form-field style="justify-content: center;" appearance="outline">
       <br /><br /><br /><br /><mat-label>Fill in your subjects</mat-label>
-      <!-- <input type="text" placeholder="English, Geography"> -->
       <input
         matInput
         placeholder="eg. English,Geography"
@@ -64,13 +46,7 @@ id="toggle-linear"
         
       />
 
-      <!-- <button
-      mat-button
-      matStepperNext
-      class="text-white bg-blue-400 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    >
-      Next
-    </button> -->
+      
     </mat-form-field>
     
 
@@ -201,15 +177,6 @@ id="toggle-linear"
       </p></a
     >
 
-    <!-- <mat-form-field>
-      <mat-label>Work Preference</mat-label>
-      <br /><br /><br /><br /><input
-        matInput
-        formControlName="fourthCtrl"
-        placeholder="eg.On-site or Remote"
-        required
-      />
-    </mat-form-field> -->
     <div class="mvbuttons">
       <button
       mat-button
@@ -301,15 +268,6 @@ id="toggle-linear"
     </p>
   </a>
 
-  <!-- <mat-form-field>
-    <mat-label>Ever Worked or Volunteered?</mat-label>
-    <br /><br /><br /><br /><input
-      matInput
-      formControlName="sixthCtrl"
-      placeholder="eg.Yes or No"
-      required
-    />
-  </mat-form-field> -->
   <div class="mvbuttons">
     <button
     mat-button
@@ -428,10 +386,7 @@ id="toggle-linear"
 </form>
 </mat-step>
 
-<!-- Last page  -->
 <mat-step>
-<!-- <mat-progress-bar mode="determinate" value="100"></mat-progress-bar> -->
-<!-- <ng-template matStepLabel>Done</ng-template> -->
 <h1 class="text-blue-400 header" style="justify-content: center;">
   <!-- Well Done.You have completed the Quiz! -->
 </h1>
@@ -467,7 +422,6 @@ id="toggle-linear"
 <div class="eclipse-2"></div> 
 <div class="eclipse-3"></div>
 <div class="eclipse-6"></div> 
-<!-- <div class="eclipse-1"></div>  -->
 
 
 
@@ -487,7 +441,6 @@ id="toggle-linear"
             <h3 class="card-title">{{career.careerName}}</h3>
             <p class="card-para">{{career.careerDescription}}</p>
 
-            <!-- <a routerLink="" class="chevron">Related courses<i class="bi bi-forward-fill"></i></a> -->
             <div class="courseDetails">
               <!-- Pass the course name as a query parameter -->
               <a [routerLink]="['/quizSelectedCourse']" [queryParams]="{ careerName: career.careerName }">Related courses <i class="bi bi-forward-fill"></i></a>
@@ -497,24 +450,3 @@ id="toggle-linear"
 </div>
 </div>
 </div>
-<!-- courseName: course.courseName -->
-
-<!-- <div *ngIf="showRecommendations" class="container">
-  <div class="row">
-    <div class="mx-auto my-3 col-md-3" *ngFor="let career of careers">
-      <mdb-card class="card">
-        <mdb-card-body>
-          <mdb-card-title>
-            <h4>{{career.careerName}}</h4>
-          </mdb-card-title>
-
-          <mdb-card-text>
-            <p>{{career.careerDescription}}</p>
-          </mdb-card-text>
-
-          <a routerLink="" class="">Related courses<i class="bi bi-forward-fill"></i></a>
-        </mdb-card-body>
-      </mdb-card>
-    </div>
-  </div>
-</div> -->

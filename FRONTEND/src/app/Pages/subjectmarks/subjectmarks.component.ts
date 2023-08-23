@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { SubjectsService } from '../../_services/_ChatGPT_Services/subjects.service';
+import { SubjectsService } from '../../_services/subjects.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { QuizQuestionsService } from 'src/app/_services/_ChatGPT_Services/quiz-questions.service';
-import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
+import { QuizQuestionsService } from 'src/app/_services/quiz-questions.service';
+import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz/quiz.service';
 import { Router } from '@angular/router';
 import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
 // import { SharedDataService } from 'src/app/_services/_ChatGPT_Services/api-shared.service';
@@ -18,23 +18,19 @@ export class QuizQuestionsComponent implements OnInit {
     firstCtrl: ['', Validators.required],
   });
   secondFormGroup = this._formBuilder.group({
-    // secondCtrl: ['', Validators.required],
   });
   thirdFormGroup = this._formBuilder.group({
     thirdCtrl: ['', Validators.required],
   });
   fourthFormGroup = this._formBuilder.group({
-    // fourthCtrl: ['', Validators.required],
 
   });
   fifthFormGroup = this._formBuilder.group({
     fifthCtrl: ['', Validators.required],
   });
   sixthFormGroup = this._formBuilder.group({
-    // sixthCtrl: ['', Validators.required],
   });
   seventhFormGroup = this._formBuilder.group({
-    // seventhCtrl: ['', Validators.required],
   });
   eighthFormGroup = this._formBuilder.group({
     eighthCtrl: ['', Validators.required],
@@ -115,12 +111,7 @@ export class QuizQuestionsComponent implements OnInit {
       options: ['yes', 'no'],
       selectedOption: [''],
     },
-    // {
-    //   questionId: 9,
-    //   questionText: '9.Are you willing to invest extra hours on a dream job?',
-    //   options: ['Yes i am willing to invest extra hours for a dream job', 'No i am not willing to invest extra hours for a dream job'],
-    //   selectedOption: [''],
-    // },
+    
     {
       questionId: 8,
       questionText: 'Is there any other information or aspirations you would like about you?',
@@ -167,6 +158,7 @@ export class QuizQuestionsComponent implements OnInit {
           }
         );
 
+    // POSTING QUIZ QUESTIONS TO DATABASE
     // this.dataService.postQuizToPostgres(this.answers).subscribe(
     //   {
     //     next: (data: any) => {

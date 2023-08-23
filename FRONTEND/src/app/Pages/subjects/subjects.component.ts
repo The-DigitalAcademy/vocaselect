@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { SubjectsService } from 'src/app/_services/_ChatGPT_Services/subjects.service';
+import { SubjectsService } from 'src/app/_services/subjects.service';
 
 @Component({
   selector: 'app-subjects',
