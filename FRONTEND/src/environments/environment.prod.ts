@@ -1,5 +1,5 @@
 export const environment = {
-  production: false,
+  production: true,
   baseUrl: 'https://vocaselect-backendfinal.onrender.com/api/',
   apiUrl: 'https://vocaselect-backendfinal.onrender.com',
   

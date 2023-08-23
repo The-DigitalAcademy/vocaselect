@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
 import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Injectable({
