@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { AuthService } from '../../_services/auth.service';
 })
 export class RequestPasswordResetComponent implements OnInit {
   showRequestPasswordForm = true;
-  requestPasswordForm: FormGroup;
+  requestPasswordForm: UntypedFormGroup;
 
   result: boolean = false; // Set to true if OTP is successfully sent, otherwise false
   isFailed: boolean = false; // Set to true if OTP sending fails, otherwise false
 
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private formBuilder: UntypedFormBuilder) {
     this.requestPasswordForm = this.formBuilder.group({
       requestEmail: ['', [Validators.required, Validators.email]],
     });

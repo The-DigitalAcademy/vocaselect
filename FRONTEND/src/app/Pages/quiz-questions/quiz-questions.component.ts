@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { QuizQuestionsService } from 'src/app/_services/_ChatGPT_Services/quiz-questions.service';
 import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
 import { Router } from '@angular/router';
@@ -56,7 +56,7 @@ export class QuizQuestionsComponent implements OnInit {
   constructor
   (
     private dataService: QuizQuestionsService, 
-    private _formBuilder: FormBuilder,
+    private _formBuilder: UntypedFormBuilder,
     private careerQuizService: CareerQuizService,
     private router: Router // Inject the Router service
   ) { }

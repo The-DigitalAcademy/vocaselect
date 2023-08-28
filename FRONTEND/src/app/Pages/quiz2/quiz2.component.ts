@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { QuizQuestionsService } from 'src/app/services/quiz-questions.service';
 import {  FormlyFieldConfig } from '@ngx-formly/core';
 
-import { FormBuilder,  Validators } from '@angular/forms';
+import { UntypedFormBuilder,  Validators } from '@angular/forms';
 import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
 import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz.service';
  // Inject the service
@@ -52,7 +52,7 @@ export class Quiz2Component implements OnInit {
   quiz: any; // Assuming the data is an array of objects or any other data structure
   option: any;
 
-  constructor(private careerQuizService: CareerQuizService, private _formBuilder: FormBuilder) { }
+  constructor(private careerQuizService: CareerQuizService, private _formBuilder: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     // this.getDataFromServer();

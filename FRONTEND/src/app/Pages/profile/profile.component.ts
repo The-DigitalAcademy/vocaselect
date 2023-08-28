@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { UserService } from 'src/app/_services/user.service';
 
@@ -11,9 +11,9 @@ import { UserService } from 'src/app/_services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  profileForm!: FormGroup; // Declare the profileForm FormGroup
+  profileForm!: UntypedFormGroup; // Declare the profileForm FormGroup
   user: any = {};
-  constructor(private formBuilder: FormBuilder, private tokenStorage: TokenStorageService,private userService: UserService) { }
+  constructor(private formBuilder: UntypedFormBuilder, private tokenStorage: TokenStorageService,private userService: UserService) { }
 
   
 

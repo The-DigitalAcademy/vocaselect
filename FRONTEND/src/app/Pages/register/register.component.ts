@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import Swal from 'sweetalert2';
 import { parseISO, isValid, differenceInYears } from 'date-fns';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 // import { log } from 'console';
 import { UserService } from 'src/app/_services/user.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
@@ -15,14 +15,14 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm!: FormGroup;
+  registerForm!: UntypedFormGroup;
   user: any;
   invalidCredentials = false;
   form: any = {
     name: '',
     surname: '',
     email: '',
-    dob: new FormControl('', [Validators.required]),
+    dob: new UntypedFormControl('', [Validators.required]),
     city: '',
     studentgrade: '',
     password: '',
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
   regInvalid = false;
 
-  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: FormBuilder, private tokenStorage: TokenStorageService,) {
+  constructor(private authService: AuthService, private userService: UserService, public router: Router, private formBuilder: UntypedFormBuilder, private tokenStorage: TokenStorageService,) {
     this.registerForm = this.formBuilder.group({
       name: [null, [Validators.required, Validators.minLength(3)]],
       surname: [null, [Validators.required, Validators.minLength(3)]],
@@ -72,11 +72,11 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  passwordValidator(control: FormControl): { [key: string]: boolean } | null {
+  passwordValidator(control: UntypedFormControl): { [key: string]: boolean } | null {
     const value: string = control.value; const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value); const hasNumber = /\d/.test(value); const hasLetter = /[a-zA-Z]/.test(value); if (!hasSymbol || !hasNumber || !hasLetter) { return { invalidPassword: true }; } return null;
   }
 
-  validateDateOfBirth(control: FormControl) {
+  validateDateOfBirth(control: UntypedFormControl) {
     const selectedDate = parseISO(control.value);
     const currentDate = new Date();
     const age = differenceInYears(currentDate, selectedDate);

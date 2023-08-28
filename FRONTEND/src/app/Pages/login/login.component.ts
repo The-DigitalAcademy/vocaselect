@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import Swal from 'sweetalert2';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 // Login Component Calls TokenStorageService Methods To Check The LoggedIn Status And Save Token And User Info To Session Storage.
 
@@ -18,7 +18,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
   users!: any;
   email!: string;
   invalidCredentials = false;
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
 
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public router: Router, private formB: FormBuilder,) {
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, public router: Router, private formB: UntypedFormBuilder,) {
     this.loginForm = this.formB.group({
       username: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]],

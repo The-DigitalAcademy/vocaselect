@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { CareerQuizService } from '../../_services/_ChatGPT_Services/quiz.service';
 import { CareerRecommendation  } from 'src/app/_Interface/career-recommendation';
 
@@ -11,12 +11,12 @@ import { CareerRecommendation  } from 'src/app/_Interface/career-recommendation'
   styleUrls: ['./quiz.component.scss']
 })
 export class QuizComponent implements OnInit {
-  quizForm!: FormGroup;
+  quizForm!: UntypedFormGroup;
   careerRecommendations: CareerRecommendation[] = [];
 
   
 
-  constructor(private formBuilder: FormBuilder, private careerQuizService: CareerQuizService) {}
+  constructor(private formBuilder: UntypedFormBuilder, private careerQuizService: CareerQuizService) {}
 
   ngOnInit(): void {
     this.initializeForm();
