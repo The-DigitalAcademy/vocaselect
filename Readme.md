@@ -5,33 +5,33 @@ VocaSelect is an innovative career guidance app designed to help users explore a
 ## Features
 
 ### Guiding Users with Undecided Career Paths
-```
-- **Interest Assessment:** Engage in an interactive assessment to uncover your interests and preferences.
-- **Personality Analysis:** Leverage AI-powered personality analysis to gain insights into your potential career matches.
-- **Tailored Recommendations:** Receive a curated list of potential career options aligned with your profile.
-```
+- Interest Assessment: Engage in an interactive assessment to uncover your interests and preferences.
+- Personality Analysis: Leverage AI-powered personality analysis to gain insights into your potential career matches.
+- Tailored Recommendations: Receive a curated list of potential career options aligned with your profile.
+
 
 ### Assisting Users with Chosen Career Paths
 
-- **Course Suggestions:** For users who have a specific career in mind, the app generates tailored course recommendations related to their chosen field.
-- **Skill Development:** Discover essential skills for your selected career and access recommended resources for skill enhancement.
+- Course Suggestions: For users who have a specific career in mind, the app generates tailored course recommendations related to their chosen field.
+- Skill Development: Discover essential skills for your selected career and access recommended resources for skill enhancement.
 
-## Technologies Used
+# Technologies Used
 
 - **Frontend:** Angular
 - **Backend:** Node.js
 - **Database:** PostgreSQL
-- **AI Integration:** Machine learning and AI algorithms drive the personalized recommendations and assessments.
+- **AI Integration:** Using ChatGPT API
+- **DevOps:** Docker, Render and vercel
 
-## Getting Started
+# Installation and Setup
 
 Follow these steps to set up the VocaSelect app locally:
 
 1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/VocaSelect.git
-   cd VocaSelect
-   ```
+```
+git clone https://github.com/your-username/VocaSelect.git
+cd VocaSelect
+```
 
 Install Dependencies:
 
