@@ -99,7 +99,7 @@ const login = async (req, res) => {
     //find a user by their email
     const user = await db.User.findOne({
       where: {
-        email: username,
+        email: username, //////
       },
     });
 

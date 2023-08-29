@@ -10,7 +10,7 @@ const router = express.Router();
  *   post:
  *     summary: Get career recommendations based on quiz answers.
  *     description: Returns career recommendations tailored to the user's preferences and traits.
- *     tags: [OpenAI]
+ *     tags: [ChatGPT API]
  * 
  *     requestBody:
  *       required: true
@@ -65,7 +65,6 @@ const router = express.Router();
  *                   example: "An error occurred while processing the quiz and generating career recommendations."
  */
 
-// router.post("/", quizController.generateQuizRecommendations);
 
 router.post('/', quizController.generateCareerQuiz);
 

@@ -7,7 +7,6 @@ const timelineRoutes = require('./routes/timeline.routes');
 const subjectRoutes = require('./routes/subjects.routes')
 const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
 const { sendResetOTP, resetPassword } = require('./controllers/User/user.controllers')
-// const nodemailer = require('nodemailer');
 
 //ChatGPT Routes
 const careerRoutes = require("./routes/careerRoutes");
@@ -15,6 +14,9 @@ const quizRoutes = require("./routes/quizRoutes");
 const selectedCourseController = require("./routes/selectedCourse");
 const quizSelectedCourse = require("./routes/quiz.selectedCourse");
 const quizAnswers = require('./routes/quizAnswers.routes')
+
+// Import the deleteUserById method (replace this with the actual path to your method file)
+const { deleteUserById, updateUserById } = require('./controllers/User/user.controllers');
 
 //SWAGGER 
 // const quizAnswers = require('./routes/quizAnswers.routes')
@@ -67,11 +69,13 @@ app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 // Use the timeline route
 app.use('/api/timeline', timelineRoutes);
 
-// Import the deleteUserById method (replace this with the actual path to your method file)
-const { deleteUserById } = require('./controllers/User/user.controllers');
+
 
 // Create the route for deleting a user
-app.delete('/:id', deleteUserById);
+app.delete('api/users', deleteUserById);
+
+app.put('api/users', updateUserById);
+
 
 //API for answers
 
@@ -88,6 +92,11 @@ const swaggerOptions = {
       version: "1.0.0",
       description: "API to get recommendations for a preferred career choice in South Africa",
     },
+    servers: [
+      {
+        url: `http://localhost:${process.env.PORT}`
+      }
+    ]
   },
   apis: ['./routes/*.js'], // Point to the route files containing Swagger comments
 };
