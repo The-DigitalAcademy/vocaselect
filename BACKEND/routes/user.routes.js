@@ -57,6 +57,11 @@ router.delete('/:id', userController.deleteUserById);
 
 router.post('/sendresetotp', sendResetOTP);
 
+// route  for the update users
+router.put('/:id', userController.updateUserById)
+
+
+
 // Endpoint to reset password
 router.post('/resetpassword', resetPassword);
 module.exports = router

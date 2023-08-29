@@ -15,6 +15,7 @@ const quizRoutes = require("./routes/quizRoutes");
 const selectedCourseController = require("./routes/selectedCourse");
 const quizSelectedCourse = require("./routes/quiz.selectedCourse");
 const quizAnswers = require('./routes/quizAnswers.routes')
+const updateuser = require('./routes/user.routes')
 
 //SWAGGER 
 // const quizAnswers = require('./routes/quizAnswers.routes')
@@ -72,6 +73,10 @@ const { deleteUserById } = require('./controllers/User/user.controllers');
 
 // Create the route for deleting a user
 app.delete('/:id', deleteUserById);
+
+/// update user API
+app.use('/api/updateuser', updateuser )
+
 
 //API for answers
 
