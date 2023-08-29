@@ -1,0 +1,327 @@
+.mat-stepper-horizontal {
+  margin-top: -35px;
+  /* padding: 5px 10px 5px 10px;  */
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+#stepper {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+input{
+ width:67vw !important;
+}
+
+.mat-horizontal-content-container {
+  /* overflow: hidden;
+  padding: 28px 28px 28px 28px; */
+  background-color: green;
+}
+
+// Use This To Modify Your Scss For Angular Material
+:host {
+  ::ng-deep{
+    mat-progress-bar{
+      height: 1.8rem;
+      border-radius: 2rem;
+      width: 16.5rem;
+      margin-top: 12px;
+    }
+    input{
+      width:67vw !important;
+     }
+
+     .mat-horizontal-content-container {
+      overflow: hidden;
+      background-color: var(--background-color) ;
+      // background-color: linear-gradient(#c2e8e6, #9198e5);
+      padding: 0 24px 24px 24px;
+  }
+
+  }
+}
+
+:host {
+  ::ng-deep{
+    .mat-horizontal-stepper-header-container{
+      display: none;
+    }
+  }
+}
+
+
+:host {
+  ::ng-deep{
+    .mat-form-field-wrapper{
+     
+      width: 390px;
+      
+    }
+   
+  }
+}
+
+ :host {
+     ::ng-deep{
+      .div{
+          padding: 40px 40px;
+          
+      }
+      .mvbuttons {
+        // padding: 1.5rem;
+        // height: 9rem;
+        margin-top: 3rem;
+        cursor: pointer;
+        
+    }
+
+    .mvbuttons button{
+      // padding: 1.5rem;
+      // height: 9rem;
+      // border-radius: -5rem;
+      border-color: #75A1DF;
+      height: 3.5rem;
+      margin-top: 2rem;
+      
+      
+  }
+   }
+  }
+  
+
+
+
+:host {
+  ::ng-deep{
+   .mat-form-field-wrapper{
+    margin-top: 2rem;
+   }
+  }
+}
+
+.btns{
+  align-items: center;
+}
+
+
+
+#bcolor{
+  background-color: #75A1DF;
+  color: #FFFFFF;
+  margin-top:-55px;
+}
+#bcolor p{
+  color: #FFFFFF;
+  font-size: 17px;
+}
+.eclipse-2{
+  margin-bottom:  960px; 
+  z-index: -99999;
+ margin-left: 15rem;
+ margin-bottom: 0rem;
+}
+
+.eclipse-4{
+  margin-top:  40rem;
+
+  z-index: -99999;
+ margin-right: 10rem;
+  
+
+}
+
+.eclipse-2{
+  z-index: -99999;
+}
+
+.img{
+  padding-bottom: 3rem;
+}
+
+#options-btn {
+  font-size: 16px;
+}
+
+
+
+.mat-form-field-infix{
+  margin-left: 5rem;
+}
+
+
+
+h1{
+  text-align: center;
+}
+
+
+:host {
+  ::ng-deep{
+    #bcolor[_ngcontent-qap-c103] {
+      background-color: #75A1DF;
+      color: #FFFFFF;
+      margin-bottom: 2rem;
+  }
+    .mat-form-field-flex {
+      display: inline-flex;
+      align-items: baseline;
+      box-sizing: border-box;
+      width: 16.28rem;
+      // margin-top: 2rem;
+  }
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+ 
+  display: none;
+}
+.snd{
+  .mat-form-field {
+    display: none;
+    position: relative;
+    text-align: left;
+    margin-top: 3rem;
+  }
+     .mat-form-field-infix {
+  display: none;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: 180px;
+}
+
+
+}
+
+  }
+}
+
+
+:host {
+  ::ng-deep{
+    .mat-form-field {
+      position: relative;
+      text-align: left;
+      margin-top: 3rem;
+    }
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+      cursor: pointer;
+      width: 16rem;
+      // border-radius: 30px;
+      border-radius: 7px;
+  }
+  }
+}
+
+
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* height: 200px; Adjust as needed */
+
+.img {
+  width: 300px;
+}
+p {
+  margin-top: -100px;
+  font-size: 20px;
+}
+}
+
+.backbutton {
+  margin: 10px 20px;
+}
+
+.careers{
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+
+    .heading{
+        display: flex;
+        justify-items: center;
+        // position: fixed;
+        // z-index: 2;
+
+        h2{
+            font-weight: bolder;
+            margin-top: .8rem;
+            margin-left: 1.5rem;
+        }
+    }
+
+    .card{
+        width: 100%;
+        background-color: var(--career-cards);
+        height: 30vh;
+        justify-content: center;
+        padding: 15px 5px;
+        position: inherit;
+      
+        .name{
+            font-size: 20px;
+            font-weight: bolder; 
+        }
+
+        a{
+            margin-right: 10rem;
+            text-decoration: none;
+            // position: inherit;
+        }
+
+        p{
+            padding-bottom: -5rem;
+        }
+    }
+
+}
+
+.careers-heading {
+  text-align: center;
+  margin-top: -60px;
+
+}
+
+.chevron {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar {
+  margin-top: -2.5rem;
+//   display: flex;
+
+  .backbutton {
+    cursor: pointer;
+    margin-left: 8px;
+  }
+
+  .logo-img {
+//    margin-right: 10rem;
+   width: 150px;
+  }
+}
+
+.heading {
+  text-align: center;
+  margin-top: -65px;
+}
+
+.card-para {
+  font-size: 18px
+}
+
+.card-title {
+  text-align: center;
+}
+
+.courseDetails {
+  display: flex;
+  justify-content: flex-end;
+}
