@@ -5,10 +5,11 @@ VocaSelect is an innovative career guidance app designed to help users explore a
 ## Features
 
 ### Guiding Users with Undecided Career Paths
-
+```
 - **Interest Assessment:** Engage in an interactive assessment to uncover your interests and preferences.
 - **Personality Analysis:** Leverage AI-powered personality analysis to gain insights into your potential career matches.
 - **Tailored Recommendations:** Receive a curated list of potential career options aligned with your profile.
+```
 
 ### Assisting Users with Chosen Career Paths
 
@@ -30,17 +31,21 @@ Follow these steps to set up the VocaSelect app locally:
    ```bash
    git clone https://github.com/your-username/VocaSelect.git
    cd VocaSelect
+   ```
 
 Install Dependencies:
 
 Navigate to the frontend directory and install frontend dependencies:
+```
 cd frontend
 npm install
+```
 
 Move to the backend directory and install backend dependencies:
+```
 cd ../backend
 npm install
-
+```
 Database Setup:
 
 Create a PostgreSQL database and update the database configuration in backend/config/database.js.
@@ -50,13 +55,15 @@ Create .env files in both the frontend and backend directories based on the prov
 Run the App:
 
 In one terminal window, start the frontend:
+```
 cd frontend
 npm start
-
+```
 In another terminal window, start the backend:
+```
 cd backend
 npm start
-
+```
 Access the App:
 Open a web browser and navigate to http://localhost:4200 to access the VocaSelect app.
 
