@@ -37,6 +37,7 @@ import { CourseDetailsComponent } from './Pages/course-details/course-details.co
 import { TimelineComponent } from './Pages/timeline/timeline.component';
 
 import { QuizCourseInfoComponent } from './Pages/_Quiz/quiz-course-info/quiz-course-info.component';
+import { ProfileComponent } from './Pages/profile/profile.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { QuizCourseInfoComponent } from './Pages/_Quiz/quiz-course-info/quiz-cou
     SubjectmarksComponent,
     CourseDetailsComponent,
     TimelineComponent,
-    QuizCourseInfoComponent
+    QuizCourseInfoComponent,
+    ProfileComponent
    
    
   ],
