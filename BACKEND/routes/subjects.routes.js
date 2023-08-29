@@ -59,8 +59,28 @@ const router = require("express").Router();
 router.post("/", subjects.createNewSubject);
 
 
-//for getting all subjects
-router.get("/", subjects.getAllsubjects);
+
+/**
+ * @swagger
+ * /api/subjects/getAll:
+ *   get:
+ *     summary: Get all subjects
+ *     tags: [Subjects]
+ *     description: Returns a list of all subjects.
+ *     responses:
+ *       200:
+ *         description: Successful response with the list of subjects.
+ *         content:
+ *           application/json:
+ *             example:
+ *               - id: 1
+ *                 name: Mathematics
+ *               - id: 2
+ *                 name: Science
+ *       500:
+ *         description: Internal server error.
+ */
+router.get("/getAll", subjects.getAllsubjects);
 
 // Create the route for deleting a subject
 router.delete('/:id', subjects.deleteSubjectById);

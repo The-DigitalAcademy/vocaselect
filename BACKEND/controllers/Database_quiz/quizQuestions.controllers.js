@@ -1,6 +1,6 @@
 //const { DataTypes } = require('sequelize');
 
-const db = require("../models")
+const db = require("../../models")
 const Quiz = db.Quiz;
 
 require('dotenv').config();

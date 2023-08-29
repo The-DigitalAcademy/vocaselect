@@ -58,18 +58,6 @@ app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-
-
-
-
-
-
-//API for answers
-
-app.use('/api/Answers', quizAnswers)
-
-
-
 // Swagger configuration options
 const swaggerOptions = {
   definition: {
@@ -99,14 +87,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //User AUTH routes for the user API
 app.use('/api/users', userRoutes)
 
-// @DELETE
-// app.delete('api/users', deleteUserById);
-
-// @ UPDATE
-// app.put('api/users', updateUserById);
-
-// @ GET
-// app.get('api/users', getUserById);
 
 // app.use('/api/allSubjects', subjectRoutes)
 app.use('/api/subjects', subjectRoutes)
@@ -135,6 +115,9 @@ app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 
 // Use the timeline route
 app.use('/api/timeline', timelineRoutes);
+
+//API for answers
+app.use('/api/Answers', quizAnswers)
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

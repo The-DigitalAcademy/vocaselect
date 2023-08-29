@@ -1,4 +1,4 @@
-const answers = require('../controllers/quizAnswers.controller')
+const answers = require('../controllers/Database_quiz/quizAnswers.controller')
 
 const router = require("express").Router();
 

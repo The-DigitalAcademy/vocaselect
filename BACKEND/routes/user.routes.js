@@ -106,7 +106,7 @@ router.get("/getAll",  userController.getUsers);
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/users/getUserById/{id}:
  *   get:
  *     summary: Get a user by ID
  *     tags: [User Authentication]
@@ -135,7 +135,7 @@ router.get("/getAll",  userController.getUsers);
  *           text/plain:
  *             example: Internal Server Error
  */
-router.get('/:id', userController.getUserById)
+router.get('getUserById/:id', userController.getUserById)
 
 // @DELETE Method
 /**
