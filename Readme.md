@@ -15,7 +15,7 @@ VocaSelect is an innovative career guidance app designed to help users explore a
 - Course Suggestions: For users who have a specific career in mind, the app generates tailored course recommendations related to their chosen field.
 - Skill Development: Discover essential skills for your selected career and access recommended resources for skill enhancement.
 
-# Technologies Used
+## Technologies Used
 
 - **Frontend:** Angular
 - **Backend:** Node.js
@@ -23,7 +23,7 @@ VocaSelect is an innovative career guidance app designed to help users explore a
 - **AI Integration:** Using ChatGPT API
 - **DevOps:** Docker, Render and vercel
 
-# Installation and Setup
+## Installation and Setup
 
 Follow these steps to set up the VocaSelect app locally:
 
@@ -48,24 +48,25 @@ npm install
 ```
 Database Setup:
 
-Create a PostgreSQL database and update the database configuration in backend/config/database.js.
+Create a PostgreSQL database and update the database configuration in `backend/config/database.js`.
 Environment Variables:
-
+```
 Create .env files in both the frontend and backend directories based on the provided .env.example files. Fill in the required information.
 Run the App:
+```
 
-In one terminal window, start the frontend:
+In one terminal window, start the `frontend`:
 ```
 cd frontend
-npm start
+ng serve --o
 ```
-In another terminal window, start the backend:
+In another terminal window, start the `backend`:
 ```
 cd backend
-npm start
+node server.js
 ```
 Access the App:
-Open a web browser and navigate to http://localhost:4200 to access the VocaSelect app.
+Open a web browser and navigate to `http://localhost:4200` to access the VocaSelect app.
 
 Contributing
-We welcome contributions from the community! To contribute, follow the guidelines in CONTRIBUTING.md.
+We welcome contributions from the community!
