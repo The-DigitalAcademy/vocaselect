@@ -30,7 +30,7 @@ initProfileForm() {
     grade: [this.user.grade]
   });
 
-  console.log(this.profileForm, "   profile form")
+  console.log(this.profileForm, "profile form")
 }
 
 

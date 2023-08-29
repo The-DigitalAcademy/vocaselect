@@ -49,7 +49,6 @@ import { RequestPasswordResetComponent } from './Pages/request-password-reset/re
     FillCareerComponent,
     HomepageComponent,
     NavbarComponent,
-    NavbarComponent,
     PasswordResetComponent,
     RequestPasswordResetComponent,
     ViewCareeerComponent,
