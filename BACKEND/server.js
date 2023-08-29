@@ -16,7 +16,7 @@ const quizSelectedCourse = require("./routes/quiz.selectedCourse");
 const quizAnswers = require('./routes/quizAnswers.routes')
 
 // Import the deleteUserById method (replace this with the actual path to your method file)
-const { deleteUserById, updateUserById } = require('./controllers/User/user.controllers');
+// const { deleteUserById, updateUserById, getUserById } = require('./controllers/User/user.controllers');
 
 //SWAGGER 
 // const quizAnswers = require('./routes/quizAnswers.routes')
@@ -57,24 +57,11 @@ app.use(cookieParser())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//routes for the user API
-app.use('/api/users', userRoutes)
-
-// routes for getting all subjets
-app.use('/api/subjects', subjectRoutes)
-
-
-app.use('/api/user_selected_subjects', selectedSubjectRoutes);
-
-// Use the timeline route
-app.use('/api/timeline', timelineRoutes);
 
 
 
-// Create the route for deleting a user
-app.delete('api/users', deleteUserById);
 
-app.put('api/users', updateUserById);
+
 
 
 //API for answers
@@ -112,6 +99,15 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //User AUTH routes for the user API
 app.use('/api/users', userRoutes)
 
+// @DELETE
+// app.delete('api/users', deleteUserById);
+
+// @ UPDATE
+// app.put('api/users', updateUserById);
+
+// @ GET
+// app.get('api/users', getUserById);
+
 // app.use('/api/allSubjects', subjectRoutes)
 app.use('/api/subjects', subjectRoutes)
 
@@ -127,6 +123,18 @@ app.post('/', sendResetOTP);
 
 // Endpoint to reset password
 app.post('/', resetPassword);
+
+//routes for the user API
+app.use('/api/users', userRoutes)
+
+// routes for getting all subjets
+app.use('/api/subjects', subjectRoutes)
+
+
+app.use('/api/user_selected_subjects', selectedSubjectRoutes);
+
+// Use the timeline route
+app.use('/api/timeline', timelineRoutes);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

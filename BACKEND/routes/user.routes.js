@@ -102,10 +102,41 @@ router.post('/login', userController.login )
  */
 router.get("/getAll",  userController.getUsers);
 
-// getUserById
-// router.get('/:id', )
 
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   get:
+ *     summary: Get a user by ID
+ *     tags: [User Authentication]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *         description: ID of the user to retrieve
+ *     responses:
+ *       200:
+ *         description: User retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ *       404:
+ *         description: User not found
+ *         content:
+ *           text/plain:
+ *             example: User not found
+ *       500:
+ *         description: Internal Server Error
+ *         content:
+ *           text/plain:
+ *             example: Internal Server Error
+ */
+router.get('/:id', userController.getUserById)
 
+// @DELETE Method
 /**
  * @swagger
  * /api/users/{id}:
@@ -139,6 +170,7 @@ router.get("/getAll",  userController.getUsers);
 router.delete('/:id', userController.deleteUserById);
 
 
+// @UPDATE Method
 /**
  * @swagger
  * /api/users/{id}:
