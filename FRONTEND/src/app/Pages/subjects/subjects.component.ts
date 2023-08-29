@@ -18,6 +18,7 @@ export class SubjectsComponent implements OnInit {
 
   allSelectedId: any = [];
   userId: any;
+  selectedSubjectsCount: number = 0;
 
   constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router, private tokenStorage: TokenStorageService){}  
 
@@ -40,37 +41,29 @@ console.log(this.userId, 'user id')
     );
   }
 
-  isChecked(event: any):void {
-    
-    if (event.target.checked) {
-      this.allSelectedId.push({subjectId:event.target.value, userId: this.userId })
+ isChecked(event: any): void {
+  if (event.target.checked) {
+    if (this.selectedSubjectsCount < 9) {
+      this.allSelectedId.push({ subjectId: event.target.value, userId: this.userId });
+      this.selectedSubjectsCount++;
     } else {
-      this.allSelectedId = this.allSelectedId.filter((userSubject:any) => userSubject.subjectId !== event.target.value)
+      event.target.checked = false; // Prevent checking more subjects when the limit is reached
+      console.log("Maximum of 9 subjects can be selected.");
     }
-
-    console.log(this.allSelectedId)
-
+  } else {
+    this.allSelectedId = this.allSelectedId.filter(
+      (userSubject: any) => userSubject.subjectId !== event.target.value
+    );
+    this.selectedSubjectsCount--;
   }
+}
 
-
-  // onSubmit():void {
-    
-  //   if (this.allSelectedId.length == 0) {
-  //     console.log("Please select a course")
-  //     return;
-  //   }
-
-  //   console.log(this.allSelectedId)
-
-  //   this.router.navigate(['dream-job'])
-
-  // }
 
   onSubmit(): void {
     console.log('Submit button clicked');
-    
-    if (this.allSelectedId.length === 0) {
-      console.log("Please select a course");
+  
+    if (this.selectedSubjectsCount === 0) {
+      console.log("Please select at least one course");
       return;
     }
   
@@ -95,6 +88,5 @@ console.log(this.userId, 'user id')
     this.loading = false;
     console.log("Loading state set to false");
   }
-  
   
 }
