@@ -3,7 +3,7 @@ const express = require('express')
 const userController = require('../controllers/User/user.controllers')
 // const { signup, login } = userController
 const userAuth = require('../middleware/userAuth')
-const { sendResetOTP, resetPassword } = require('../controllers/User/user.controllers'); // Import both functions
+const { sendResetOTP, resetPassword } = require('../controllers/User/user.controllers'); 
 const router = express.Router()
 
 
@@ -29,12 +29,13 @@ const router = express.Router()
  *             email:
  *               type: string
  *             dob:
- *               type: Date
+ *               type: string
+ *               format: date
  *             city:
  *               type: string
- *             studentgrade:
+ *             studentGrade:
  *               type: string
- *             password
+ *             password:
  *               type: string
  *     responses:
  *       200:
@@ -209,27 +210,7 @@ router.delete('/:id', userController.deleteUserById);
  *             example: Internal Server Error
  */
 
-/**
- * @swagger
- * components:
- *   schemas:
- *     UserInput:
- *       type: object
- *       properties:
- *         name:
- *           type: string
- *         surname:
- *           type: string
- *         email:
- *           type: string
- *         dob:
- *           type: string
- *           format: date
- *         city:
- *           type: string
- *         studentgrade:
- *           type: string
- */
+
 
 /**
  * @swagger
