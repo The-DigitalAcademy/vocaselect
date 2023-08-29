@@ -56,7 +56,6 @@ const routes: Routes = [
   { path: 'nav', component: NavbarComponent},
   { path: 'viewcareer', component: ViewCareeerComponent },
   {path: 'profile', component: ProfileComponent},
-  { path: 'careers', component: CareersComponent},
   { path: 'quiz-questions', component: QuizQuestionsComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
   

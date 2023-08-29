@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth.service';
 
 @Component({
@@ -10,13 +10,13 @@ import { AuthService } from '../../_services/auth.service';
 })
 export class PasswordResetComponent implements OnInit {
   showResetPasswordForm = false;
-  resetPasswordForm: UntypedFormGroup;
+  resetPasswordForm: FormGroup;
   email:any;
   resetSuccess: boolean = false;
   resetFailed: boolean = false;
   loading: boolean = false;
 
-  constructor(private authService: AuthService, private formBuilder: UntypedFormBuilder, public router: Router, private activatedRoute: ActivatedRoute,) {
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, public router: Router, private activatedRoute: ActivatedRoute,) {
     this.resetPasswordForm = this.formBuilder.group({
       otp: ['', Validators.required],
       password: ['', Validators.required],

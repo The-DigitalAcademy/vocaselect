@@ -4,7 +4,6 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { SubjectsService } from 'src/app/_services/subjects.service';
-import { SubjectsService } from 'src/app/_services/subjects.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
