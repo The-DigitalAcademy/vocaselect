@@ -1,14 +1,40 @@
+// styles.scss
+
 .navbar {
-    margin-top: -2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 10px 20px;
+
+  .backbutton {
     display: flex;
-  
-    .backbutton {
-      cursor: pointer;
-      margin-left: 8px;
-    }
-  
-    .logo-img {
-     margin-left: 10rem;
-     width: 150px;
+    align-items: center;
+
+    svg {
+      fill: var(--text-color);
+      width: 53px;
+      height: 43px;
+      margin-right: 10px;
     }
   }
+
+  .logo {
+    display: flex;
+    flex-direction: column; /* Stack logo and border line vertically */
+    align-items: center;
+
+    .logo-img {
+      width: 145px;
+      height: 140px;
+      object-fit: contain;
+    }
+
+    .border-line {
+      width: 40px; /* Adjust the width of the border line */
+      height: 2px; /* Adjust the height of the border line */
+      background-color: green;
+      margin-top: 5px; /* Add some spacing between logo and border line */
+    }
+  }
+}

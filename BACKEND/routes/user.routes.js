@@ -1,13 +1,10 @@
 
-
-
-
 //importing modules
 const express = require('express')
-const userController = require('../controllers/user.controllers')
+const userController = require('../controllers/User/user.controllers')
 const { signup, login } = userController
 const userAuth = require('../middleware/userAuth')
-
+const { sendResetOTP, resetPassword } = require('../controllers/User/user.controllers'); // Import both functions
 const router = express.Router()
 
 //signup endpoint
@@ -58,5 +55,8 @@ router.get("/emailExist/:email", userController.emailExists);
 // Create the route for deleting a user
 router.delete('/:id', userController.deleteUserById);
 
+router.post('/sendresetotp', sendResetOTP);
 
+// Endpoint to reset password
+router.post('/resetpassword', resetPassword);
 module.exports = router

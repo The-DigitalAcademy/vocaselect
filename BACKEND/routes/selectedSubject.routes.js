@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const subjectController = require('../controllers/selectedSubject.controller');
+const subjectController = require('../controllers/Subjects/selectedSubject.controller');
 
 router.post('/', subjectController.saveSelectedSubjects);
 

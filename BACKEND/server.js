@@ -1,15 +1,19 @@
-//Packages
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser");
 const userRoutes = require ('./routes/user.routes')
-const nodemailer = require('nodemailer');
-// const subjectRoutes = require('./routes/subjects.routes')
-const { sendResetOTP, resetPassword } = require('./controllers/user.controllers');
+const timelineRoutes = require('./routes/timeline.routes');
+const subjectRoutes = require('./routes/subjects.routes')
+const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
+const { sendResetOTP, resetPassword } = require('./controllers/User/user.controllers')
+// const nodemailer = require('nodemailer');
 
+//ChatGPT Routes
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
+const selectedCourseController = require("./routes/selectedCourse");
+const quizSelectedCourse = require("./routes/quiz.selectedCourse");
 const quizAnswers = require('./routes/quizAnswers.routes')
 
 //SWAGGER 
@@ -51,16 +55,20 @@ app.use(cookieParser())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//routes for the user API
+app.use('/api/users', userRoutes)
 
 // routes for getting all subjets
+app.use('/api/subjects', subjectRoutes)
 
-// app.use('/app/getting')
 
-// app.use('/api/user_selected_subjects', selectedSubjectRoutes);
+app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 
-// app.use('/api', selectedSubjectsRouter); 
+// Use the timeline route
+app.use('/api/timeline', timelineRoutes);
+
 // Import the deleteUserById method (replace this with the actual path to your method file)
-const { deleteUserById } = require('./controllers/user.controllers');
+const { deleteUserById } = require('./controllers/User/user.controllers');
 
 // Create the route for deleting a user
 app.delete('/:id', deleteUserById);
@@ -69,14 +77,7 @@ app.delete('/:id', deleteUserById);
 
 app.use('/api/Answers', quizAnswers)
 
-// Endpoint to send OTP
-// app.post('/', sendResetOTP);
 
-// // Endpoint to reset password
-// app.post('/', resetPassword);
-
-// Initialize swagger-jsdoc
-// const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 // Swagger configuration options
 const swaggerOptions = {
@@ -94,17 +95,29 @@ const swaggerOptions = {
 // Initialize swagger-jsdoc
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
+
 // Serve Swagger API documentation
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-//routes for the user API
+
+//User AUTH routes for the user API
 app.use('/api/users', userRoutes)
 
-// AI Routes
+// app.use('/api/allSubjects', subjectRoutes)
+app.use('/api/subjects', subjectRoutes)
+
+// OpenAI API Routes
 app.use("/enterCareer", careerRoutes);
 app.use("/quiz", quizRoutes);
+app.use("/courseInfo", selectedCourseController );
+app.use("/quizCourseInfo", quizSelectedCourse );
 
 
+// Endpoint to send OTP
+app.post('/', sendResetOTP);
+
+// Endpoint to reset password
+app.post('/', resetPassword);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

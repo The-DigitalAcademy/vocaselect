@@ -19,9 +19,18 @@
     </div>
     
     <div class="row" id="btn-submit">
-      <!-- <button type="button" class="btn" (click)="sendSelectedSubjectsToServer()" routerLink="/dream-job">Submit</button> -->
-      <button type="button" class="btn" (click)="onSubmit()">Submit</button>
+      <button
+        type="button"
+        class="btn"
+        [disabled]="loading"
+        (click)="onSubmit()"
+      >
+      <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      <span *ngIf="!loading">Submit</span>
+        
+      </button>
     </div>
+    
     </div>
     
     <div class="eclipse-2"></div>

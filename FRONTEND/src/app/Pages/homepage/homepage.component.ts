@@ -17,6 +17,7 @@ user: any = {};
      this.user = this.tokenStorage.getUser();  
   }
 
+  // Navigating to login page
   logout(){
     console.log("tetsts")
     this.tokenStorage.signOut();

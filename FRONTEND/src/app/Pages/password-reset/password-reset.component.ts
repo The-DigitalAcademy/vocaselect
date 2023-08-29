@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../_services/auth.service';
 
@@ -9,30 +9,58 @@ import { AuthService } from '../../_services/auth.service';
   styleUrls: ['./password-reset.component.scss']
 })
 export class PasswordResetComponent implements OnInit {
+  showResetPasswordForm = false;
   resetPasswordForm: FormGroup;
-  //token: string;
-  constructor(private route: ActivatedRoute, private fb: FormBuilder, private authService: AuthService) {
-    //this.token = this.route.snapshot.queryParams.email || '';
+  email:any;
+  resetSuccess: boolean = false;
+  resetFailed: boolean = false;
+  loading: boolean = false;
 
-    this.resetPasswordForm = this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required]]
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, public router: Router, private activatedRoute: ActivatedRoute,) {
+    this.resetPasswordForm = this.formBuilder.group({
+      otp: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
-  ngOnInit(): void {}
+   ngOnInit(): void {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      // decrypting the email parameter using atob
+      this.email = atob( params.get('email')?? "");
+    });
+   }
 
-  onSubmit() {
-    if (this.resetPasswordForm.valid) {
-      const password = this.resetPasswordForm.value.password;
-      // this.authService.resetPassword(this.token, password).subscribe(
-      //   () => {
-      //     // Handle success, show a message or redirect
-      //   },
-      //   (error) => {
-      //     // Handle error
-      //   }
-      // );
+  onResetPasswordSubmit() {
+
+    if (this.resetPasswordForm.invalid) {
+      // Mark form controls as touched to trigger validation
+      this.resetPasswordForm.markAllAsTouched();
+      return;
     }
-  }
-}
+    //creating an object for changing password
 
+    const data = {
+      email: this.email,
+      otp: this.resetPasswordForm.get('otp')?.value,
+      password: this.resetPasswordForm.get('password')?.value
+    }
+
+    this.loading = true; 
+    
+    this.authService.resetPasswordWithOTP(data).subscribe(
+      () => {
+        this.resetSuccess = true;
+        // Password reset successfully, show a message or redirect
+        setTimeout(() => {
+          this.loading = false; // Reset loading
+          this.router.navigate(['/login']);
+        }, 2000); // 3 seconds delay before redirection
+
+      },
+      (error) => {
+        this.resetFailed = true;
+        console.log(error);
+        // Handle error, e.g., show error message
+      }
+    );
+   }
+}

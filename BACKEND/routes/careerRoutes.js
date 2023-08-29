@@ -1,6 +1,5 @@
 const express = require("express");
 const careerController = require("../controllers/OpenAI/careerChoice.controller");
-// const selectedCourse = require("../controllers/OpenAI/selectedCourse.controller")
 const router = express.Router();
 
 
@@ -10,6 +9,8 @@ const router = express.Router();
  *   post:
  *     summary: Get recommendations for a preferred career choice
  *     description: Returns university and course recommendations for a specified career choice in South Africa.
+ *     tags: [OpenAI]
+ * 
  *     requestBody:
  *       required: true
  *       content:
@@ -49,9 +50,8 @@ const router = express.Router();
  *               error: "An error occurred while generating recommendations."
  */
 
-// router.post("/", careerController.generateCareer);
 // Define the route for generating career courses
 router.post('/', careerController.generateCareer);
-// router.post('/display-course-details/:selectedCourseName', careerController.displayCourseDetails);
+
 
 module.exports = router;
