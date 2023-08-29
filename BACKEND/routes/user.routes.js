@@ -1,10 +1,10 @@
 
 //importing modules
 const express = require('express')
-const userController = require('../controllers/user.controllers')
+const userController = require('../controllers/User/user.controllers')
 const { signup, login } = userController
 const userAuth = require('../middleware/userAuth')
-const { sendResetOTP, resetPassword } = require('../controllers/user.controllers'); // Import both functions
+const { sendResetOTP, resetPassword } = require('../controllers/User/user.controllers'); // Import both functions
 const router = express.Router()
 
 //signup endpoint

@@ -1,4 +1,3 @@
-//Packages
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require('cookie-parser');
@@ -7,15 +6,14 @@ const userRoutes = require ('./routes/user.routes')
 const timelineRoutes = require('./routes/timeline.routes');
 const subjectRoutes = require('./routes/subjects.routes')
 const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
-const { sendResetOTP, resetPassword } = require('./controllers/user.controllers')
+const { sendResetOTP, resetPassword } = require('./controllers/User/user.controllers')
 // const nodemailer = require('nodemailer');
 
 //ChatGPT Routes
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 const selectedCourseController = require("./routes/selectedCourse");
-
-
+const quizSelectedCourse = require("./routes/quiz.selectedCourse");
 const quizAnswers = require('./routes/quizAnswers.routes')
 
 //SWAGGER 
@@ -63,7 +61,6 @@ app.use('/api/users', userRoutes)
 // routes for getting all subjets
 app.use('/api/subjects', subjectRoutes)
 
-// app.use('/app/getting')
 
 app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 
@@ -71,7 +68,7 @@ app.use('/api/user_selected_subjects', selectedSubjectRoutes);
 app.use('/api/timeline', timelineRoutes);
 
 // Import the deleteUserById method (replace this with the actual path to your method file)
-const { deleteUserById } = require('./controllers/user.controllers');
+const { deleteUserById } = require('./controllers/User/user.controllers');
 
 // Create the route for deleting a user
 app.delete('/:id', deleteUserById);
@@ -80,14 +77,7 @@ app.delete('/:id', deleteUserById);
 
 app.use('/api/Answers', quizAnswers)
 
-// Endpoint to send OTP
-// app.post('/', sendResetOTP);
 
-//  Endpoint to reset password
-// app.post('/', resetPassword);
-
-// Initialize swagger-jsdoc
-// const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
 // Swagger configuration options
 const swaggerOptions = {
@@ -120,7 +110,7 @@ app.use('/api/subjects', subjectRoutes)
 app.use("/enterCareer", careerRoutes);
 app.use("/quiz", quizRoutes);
 app.use("/courseInfo", selectedCourseController );
-
+app.use("/quizCourseInfo", quizSelectedCourse );
 
 
 // Endpoint to send OTP

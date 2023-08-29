@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice.service';
+import { CareerRecommendationService } from '../../_services/_ChatGPT_Services/careerChoice/careerChoice.service';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
@@ -35,15 +35,6 @@ export class FillCareerComponent implements OnInit {
   ngOnInit(): void {
     // Generate courses on component initialization
     this.generateCourses();
-
-    // Retrieve stored data on component initialization
-    // const storedRecommendations = localStorage.getItem('courseRecommendations');
-    // if (storedRecommendations) {
-    //   this.courseRecommendations = JSON.parse(storedRecommendations);
-    //   this.showRecommendations = true;
-    // } else {
-    //   this.generateCourses();
-    // }
   }
 
   generateCourses(): void {
@@ -60,9 +51,6 @@ export class FillCareerComponent implements OnInit {
           this.courseRecommendations.forEach(course => {
             course.courseName = course.courseName.replace(/["',]/g, '');
           });
-
-          // Store the recommendations in local or session storage
-          // localStorage.setItem('courseRecommendations', JSON.stringify(this.courseRecommendations));
           
           this.showLoader = false; // Hide the loader and message
           this.showRecommendations = true; // Show the recommendations
@@ -74,12 +62,8 @@ export class FillCareerComponent implements OnInit {
     }
   }
 
-  viewCourseDetails(course: any) {
-    this.router.navigate(['/course-details'], { state: { course } });
-  }
-
   // Define colors for card background using ngClass
-  cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
+  cardBackgroundColors: string[] = ["#A1C2F3", "#A1C2F3", "#A1C2F3", "#A1C2F3", "#A1C2F3", "#A1C2F3"];
   
 
 }

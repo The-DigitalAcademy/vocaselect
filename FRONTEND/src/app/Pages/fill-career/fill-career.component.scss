@@ -108,16 +108,14 @@
   }
   
   // .card {
-  //   // pointer: cursor;
-  // }
+    // pointer: cursor;
+//  }
   
   .eclipse-2, .eclipse-1{
     background: linear-gradient(#fff, #cecef0);
   }
   
-  .category-heading {
-    text-align: center;
-  }
+  
 
  .courseDetails {
     display: flex;
@@ -125,10 +123,20 @@
     font-size: 14px;
     
     a {
-      /* text-decoration: none; */
-      color: black;
+      text-decoration: none;
+      color: var(--text-color);
     }
 
-   
+    a:hover {
+      color: blue;
+    }
 
  }
+
+ .category-heading {
+  // padding-top: 30px;
+  margin-bottom: 20px;
+  margin-top: -50px;
+  text-align: center;
+  font-size: 25px;
+  }

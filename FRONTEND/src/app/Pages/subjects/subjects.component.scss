@@ -68,7 +68,7 @@
 
     label:hover {
       // background-color: var(--button-color);
-      color:#17A2B8; }
+      color: var(--button-color); }
 
     input[type="checkbox"] {
       transform: scale(1.2); /* Change the value to adjust the size as needed */
@@ -81,9 +81,21 @@
       border-color: #17A2B8; /* Change to your desired color */
       background-color: #17A2B8 /* Change to your desired color */
       
+      
     }
   }
 
 }
 
+}
+/* Example loader styling */
+.spinner-border {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TimelineService } from 'src/app/_services/_ChatGPT_Services/timeline.service';
+import { TimelineService } from 'src/app/_services/timeline.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
@@ -34,17 +34,6 @@ export class TimelineComponent implements OnInit {
     );
     //need to get the grade from user data
     this.user = this.tokenStorage.getUser();  
-
-  //   const test = [{title: "Test 1", description: "testing description", grade:8}, 
-  //   {title: "Test 2", description: "testing description", grade:9},
-  //   {title: "Test 3", description: "testing description", grade:10},
-  //   {title: "Test 4", description: "testing description", grade:11},
-  //   {title: "Test 5", description: "testing description", grade:12},
-  // ];
-
-  // test.forEach((en:any)=>{
-  //   this.timeline.push(en)
-  // });
    }
 
 }

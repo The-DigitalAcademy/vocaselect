@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CourseRecommendation } from 'src/app/_Interface/course-recommendation';
-import { SelectedCourseService } from 'src/app/_services/_ChatGPT_Services/selected-course.service';
+import { SelectedCourseService } from 'src/app/_services/_ChatGPT_Services/careerChoice/selected-course.service';
 
 @Component({
   selector: 'app-course-details',
@@ -27,7 +27,7 @@ export class CourseDetailsComponent implements OnInit {
       this.selectedCourseService.getSelectedCourses(courseName)
         .subscribe(
           (courses) => {
-            // this.courseRecommendations = courses;
+            this.courseRecommendations = courses;
 
             // Remove strings, commas, and single quotes from the course names
             // Modify courseRecommendations before displaying
