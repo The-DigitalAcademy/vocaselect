@@ -10,7 +10,7 @@ export const environment = {
   jwt_Secret: 'vocaselect23' 
   
 };
-
+  
 
 
 /*
