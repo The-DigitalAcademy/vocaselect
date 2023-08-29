@@ -18,7 +18,6 @@ export class SubjectsComponent implements OnInit {
 
   allSelectedId: any = [];
   userId: any;
-  selectedSubjectsCount: number = 0;
 
   constructor(private subjectsService: SubjectsService, private http: HttpClient, private router: Router, private tokenStorage: TokenStorageService){}  
 
@@ -41,42 +40,31 @@ console.log(this.userId, 'user id')
     );
   }
 
- isChecked(event: any): void {
-  if (event.target.checked) {
-    if (this.selectedSubjectsCount < 9) {
-      this.allSelectedId.push({ subjectId: event.target.value, userId: this.userId });
-      this.selectedSubjectsCount++;
+  isChecked(event: any): void {
+    if (event.target.checked) {
+      this.allSelectedId.push({subjectId:event.target.value, userId: this.userId });
     } else {
-      event.target.checked = false; // Prevent checking more subjects when the limit is reached
-      console.log("Maximum of 9 subjects can be selected.");
+      this.allSelectedId = this.allSelectedId.filter((userSubject:any) => userSubject.subjectId !== event.target.value);
     }
-  } else {
-    this.allSelectedId = this.allSelectedId.filter(
-      (userSubject: any) => userSubject.subjectId !== event.target.value
-    );
-    this.selectedSubjectsCount--;
+
+    console.log(this.allSelectedId);
   }
-}
 
 
   onSubmit(): void {
-    console.log('Submit button clicked');
-  
-    if (this.selectedSubjectsCount === 0) {
-      console.log("Please select at least one course");
+    
+    if (this.allSelectedId.length === 0) {
+      console.log("Please select a course");
       return;
     }
   
     console.log("Sending selected subjects...");
   
     this.loading = true;
-    console.log("Loading state set to true");
   
-    // Make an HTTP POST request...
     this.subjectsService.saveSelectedSubjects(this.allSelectedId).subscribe(
       (response) => {
         console.log('Selected subjects sent successfully:', response);
-        // If needed, you can navigate to another route after successful submission
         this.router.navigate(['dream-job']);
       },
       (error) => {
@@ -84,9 +72,6 @@ console.log(this.userId, 'user id')
       }
     );
   
-    // Set loading state to false after submitting subjects
     this.loading = false;
-    console.log("Loading state set to false");
-  }
-  
+}
 }

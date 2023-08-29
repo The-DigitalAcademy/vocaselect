@@ -33,6 +33,7 @@ import { TimelineComponent } from './Pages/timeline/timeline.component';
 import { WelcomeQuizComponent } from './Pages/_Quiz/welcome-quiz/welcome-quiz.component';
 import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
+import { ProfileComponent } from './Pages/profile/profile.component';
 
 
 
@@ -56,6 +57,7 @@ import { RequestPasswordResetComponent } from './Pages/request-password-reset/re
     SubjectmarksComponent,
     CourseDetailsComponent,
     TimelineComponent,
+    ProfileComponent
    
    
   ],

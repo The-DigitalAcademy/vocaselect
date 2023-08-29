@@ -5,7 +5,7 @@ const UserSelectedSubject = require("../../models/selectedSubject.models");
 
 exports.saveSelectedSubjects = async (req, res) => {
   var userSubjects = req.body;
-
+console.log(userSubjects)
   try {
     //loop through the selected user subjects
     for (var i = 0; i < userSubjects.length; i++) {
@@ -13,9 +13,10 @@ exports.saveSelectedSubjects = async (req, res) => {
       const user = await User.findByPk(userSubjects[i].userId);
       //check if the subjectid provided is correct
       const subject = await Subject.findByPk(userSubjects[i].subjectId);
-      
+      console.log("subjects")
       //check if the user and subject exists
       if (user && subject) {
+        console.log("selected subjects")
         //add the subjet selected by the user
         await UserSelectedSubject.create({
           user_id: userSubjects[i].userId,
