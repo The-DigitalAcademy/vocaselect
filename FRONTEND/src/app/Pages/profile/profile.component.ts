@@ -64,7 +64,7 @@ updateProfile() {
   ///
   ngOnInit(): void {
      this.user = this.tokenStorage.getUser();   // it will display the user who currently loged in at a time 
-  
+     console.log(this.user)
      this.initProfileForm();
     
     }
