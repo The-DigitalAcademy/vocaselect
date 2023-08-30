@@ -41,7 +41,7 @@ cd /frontend
 ng server --o
 ```
 
-Move to the backend directory and install backend dependencies:
+Move to the `backend` directory and install backend dependencies:
 ```
 cd /backend
 npm install

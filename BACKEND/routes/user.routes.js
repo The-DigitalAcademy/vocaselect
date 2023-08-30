@@ -138,36 +138,36 @@ router.get("/getAll",  userController.getUsers);
 router.get('getUserById/:id', userController.getUserById)
 
 // @DELETE Method
-/**
- * @swagger
- * /api/users/{id}:
- *   delete:
- *     summary: Delete a user by ID
- *     tags: [User Authentication]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: integer
- *         required: true
- *         description: ID of the user to delete
- *     responses:
- *       200:
- *         description: User deleted successfully
- *         content:
- *           text/plain:
- *             example: User deleted successfully
- *       404:
- *         description: User not found
- *         content:
- *           text/plain:
- *             example: User not found
- *       500:
- *         description: Internal Server Error
- *         content:
- *           text/plain:
- *             example: Internal Server Error
- */
+// /**
+//  * @swagger
+//  * /api/users/{id}:
+//  *   delete:
+//  *     summary: Delete a user by ID
+//  *     tags: [User Authentication]
+//  *     parameters:
+//  *       - in: path
+//  *         name: id
+//  *         schema:
+//  *           type: integer
+//  *         required: true
+//  *         description: ID of the user to delete
+//  *     responses:
+//  *       200:
+//  *         description: User deleted successfully
+//  *         content:
+//  *           text/plain:
+//  *             example: User deleted successfully
+//  *       404:
+//  *         description: User not found
+//  *         content:
+//  *           text/plain:
+//  *             example: User not found
+//  *       500:
+//  *         description: Internal Server Error
+//  *         content:
+//  *           text/plain:
+//  *             example: Internal Server Error
+//  */
 router.delete('/:id', userController.deleteUserById);
 
 
