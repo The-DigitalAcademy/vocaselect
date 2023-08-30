@@ -11,14 +11,20 @@
         class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2"
       >
         <p class="profile text-3xl"><b>Profile</b></p>
+       
+        
         <div
           class="l-container justify-center px-6 py-8 rounded shadow-md text-black w-full align-middle"
         >
-          <img
-            class="image profilePic ml-24 mb-6 bg-gray-300 w-32 h-32 align-middle rounded-full"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP-i5liksKo3g85Qz90jpYieJ4J_YGy5S7JQ&usqp=CAU"
-            alt="Profile Picture"
-          />
+        <div class="image profilePic ml-24 mb-6 bg-blue-300 w-32 h-32  align-middle rounded-full">
+
+        
+        <p class="p-2 text-center text-9xl text-white">{{user.name | profile }}</p>
+        
+          
+      </div>
+      
+      
           <div class="names flex flex-row space-x-4">
             <div class="form-group pt-30 w-36">
               <label for="name">Name</label>

@@ -38,10 +38,12 @@ import { TimelineComponent } from './Pages/timeline/timeline.component';
 
 import { QuizCourseInfoComponent } from './Pages/_Quiz/quiz-course-info/quiz-course-info.component';
 import { ProfileComponent } from './Pages/profile/profile.component';
+import { ProfilePipe } from './components/pipes/profile.pipe';
 
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LandingPageComponent,
     LoginComponent,
@@ -63,7 +65,8 @@ import { ProfileComponent } from './Pages/profile/profile.component';
     CourseDetailsComponent,
     TimelineComponent,
     QuizCourseInfoComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfilePipe
    
    
   ],

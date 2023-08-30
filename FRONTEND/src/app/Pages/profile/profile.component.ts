@@ -3,6 +3,9 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { UserService } from 'src/app/_services/user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -33,16 +36,7 @@ initProfileForm() {
 
 
   updateProfile() {
-    // const userId = this.tokenStorage.getUser().id;
-    // const updatedData = {
-    //   id: userId,
-    //   profileData: this.profileForm.value
-      
-    // };
-  
-    // const updatedData = this.profileForm.value;
-    // console.log(updatedData, "form data are here");
-  
+    
   
     this.userService.updateProfile(this.user.id, this.profileForm.value).subscribe(
       (response) => {
