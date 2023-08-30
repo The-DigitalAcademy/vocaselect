@@ -21,6 +21,8 @@ exports.selectedCourse = async (req, res) => {
     const prompt = `Please provide all the universities in South Africa that are offering this course ${course}.
 
     Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
+
+    Please provide the respective University website/link for that course. Store this URL under the universityURL.
     
     The JSON Format object must have the following structure:
     [
@@ -30,8 +32,7 @@ exports.selectedCourse = async (req, res) => {
         courseDuration: 3 years,
         courseDescription: Course description example,
         admissionRequirements: Admission example,
-        universityURL: uniUrl
-
+        universityURL: sample university link
       },
       {
         uniName: University of Pretoria,
@@ -39,7 +40,7 @@ exports.selectedCourse = async (req, res) => {
         courseDuration: 3 years,
         courseDescription: Course description example,
         admissionRequirements: Admission example,
-        universityURL: uniUrl
+        universityURL: sample university link
       }
     ]    
     `;
@@ -71,7 +72,9 @@ exports.selectedCourse = async (req, res) => {
       const courseDuration = course.courseDuration || "";
 
       const admissionRequirements = course.admissionRequirements || "";
-  
+      
+      const universityURL = course.universityURL || "";
+
       
 
       // Create an object containing extracted course information and push it to 'extractedCourses' array
@@ -80,7 +83,8 @@ exports.selectedCourse = async (req, res) => {
         courseName,
         courseDuration,
         courseDescription,
-        admissionRequirements, 
+        admissionRequirements,
+        universityURL
       });
     }
      // Send the extracted course recommendations as a JSON response
@@ -110,7 +114,9 @@ exports.getSelectedCourses = async (req, res) => {
     //AI prompt 
     const prompt = `Please provide all the universities in South Africa that are offering this course ${course}.
 
-    Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
+    Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course. From the requested universities, 
+    
+    Please provide the respective University website/link for that course. Store this URL under the universityURL.
     
     The JSON Format object must have the following structure:
     [
@@ -120,13 +126,15 @@ exports.getSelectedCourses = async (req, res) => {
         courseDuration: 3 years,
         courseDescription: Course description example,
         admissionRequirements: Admission example
+        universityURL: https://www.uj.ac.za/
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Computer Science,
         courseDuration: 3 years,
         courseDescription: Course description example,
-        admissionRequirements: Admission example
+        admissionRequirements: Admission example,
+        universityURL:  https://www.up.ac.za/
       }
     ]    
     `;
@@ -158,6 +166,8 @@ exports.getSelectedCourses = async (req, res) => {
       const courseDuration = course.courseDuration;
 
       const admissionRequirements = course.admissionRequirements;
+
+      const universityURL = course.universityURL;
   
       
 
@@ -167,7 +177,8 @@ exports.getSelectedCourses = async (req, res) => {
         courseName,
         courseDuration,
         courseDescription,
-        admissionRequirements, 
+        admissionRequirements,
+        universityURL 
       });
     }
      // Send the extracted course recommendations as a JSON response

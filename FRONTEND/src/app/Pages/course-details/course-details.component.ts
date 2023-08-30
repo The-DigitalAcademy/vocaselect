@@ -33,7 +33,7 @@ export class CourseDetailsComponent implements OnInit {
             // Modify courseRecommendations before displaying
             this.courseRecommendations = courses.map(course => {
               // Remove unwanted characters from courseName
-              course.courseName = course.courseName.replace(/["',]/g, '');
+              // course.courseName = course.courseName.replace(/["',]/g, '');
               return course;
             });
 

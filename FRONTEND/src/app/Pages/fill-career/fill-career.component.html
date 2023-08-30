@@ -8,16 +8,14 @@
 
 
 <nav class="navbar">
-    <div class="backbutton">
+   <div class="backbutton">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" fill="#073980" class="bi bi-arrow-left" viewBox="0 0 16 16" routerLink="/dream-job">
             <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
           </svg>
    </div>
-  
    <div class="logo ">
-    <img src="../../../assets/logo.png" class="logo-img" alt="...">
+    <img src="../../../assets/logo.png" routerLink="/home" class="logo-img" alt="...">
     </div>
-
 </nav>
 
 
@@ -26,7 +24,7 @@
 
 
 <!--MAIN CONTENT & INPUT FIELD-->
-<div *ngIf="!showLoader && !showRecommendations" class = "container career">
+<div *ngIf="!showLoader && !showRecommendations" class="container career">
         <img src="../../../assets/career.png" class="logo-img" alt="...">
     <!-- <form>   -->
     <div class = "type">
@@ -57,17 +55,10 @@
                 <div class="card-body">                
                     <h3 class="card-title">{{ course.courseName }}</h3>
                     <!-- <h3 class="card-title">{{ course.uniName }}</h3> -->
-
-                    <!-- <h3 class="card-title">{{ course.courseDescription }}</h3>
-                    <h3 class="card-title">{{ course.admissionRequirements}}</h3> -->
-                     <!-- <button [routerLink]="['/career', course.courseName]">View Course</button> -->
                      <div class="courseDetails">
                          <!-- Pass the course name as a query parameter -->
                          <a [routerLink]="['/course-details']" [queryParams]="{ courseName: course.courseName }">Course details <i class="bi bi-forward-fill"></i></a>
-          
-
                      </div>
-                     
                 </div>
             </div>
         </div>

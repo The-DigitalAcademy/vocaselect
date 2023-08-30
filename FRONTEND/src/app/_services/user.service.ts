@@ -18,6 +18,11 @@ export class UserService {
     return this.http.get(apiUrl + '/users', { responseType: 'text' });
   }
 
+  getUserById(): Observable<any> {
+    return this.http.get(apiUrl + 'users/getUserById', { responseType: 'text' });
+
+  }
+
   getUserByEmail(email:any): Observable<any> {
     return this.http.get(apiUrl + '/users/email/' + email, { responseType: 'json' });
   }

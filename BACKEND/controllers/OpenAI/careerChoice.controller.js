@@ -17,25 +17,30 @@ exports.generateCareer = async (req, res) => {
     }
 
     //AI prompt 
-    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Provide also the university website link. Format the response in a stringified JSON representation.
+    const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms, like to a 5-year-old, for the career ${careerChoice} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria, explained in simple terms like to a 5-year-old, for that specific course.
 
-    Explain the course description and admission requirements in layman's terms for high school minors of age 15 years to understand.
+    For each university, please provide the course name, course description, admission requirements, and the university's official URL.
     
-    The JSON Format object must have the following structure:
+    Format the response in a JSON representation.
+    
+    Explain the course description and admission requirements in a way that high school students aged 15 years can easily understand.
+    
+    Here's an example of how the JSON object might look:
+
     [
       {
         uniName: University of Johannesburg,
         courseName: Bachelor of Science in Computer Science,
-        courseDescription: Course description example,
-        admissionRequirements: Admission example,
-        universityURL: sample university link
+        courseDescription: This is a super cool course where you learn to create apps and games for computers. You'll become a tech wizard!,
+        admissionRequirements: To get in, you just need to have finished high school with good grades in math and science.,
+        universityURL: https://www.uj.ac.za/
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Information Systems,
-        courseDescription: Course description example,
-        admissionRequirements: Admission example,
-        universityURL: sample university link
+        courseDescription: In this course, you'll learn how computers help businesses. It's like teaching computers to be smart helpers!,
+        admissionRequirements: If you finished high school and are curious about computers and business, you're good to go!,
+        universityURL: https://www.up.ac.za/
       }
     ]    
     `;

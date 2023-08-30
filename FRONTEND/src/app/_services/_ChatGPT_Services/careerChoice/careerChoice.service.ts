@@ -15,6 +15,10 @@ export class CareerRecommendationService {
   ApiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
+  getUserById(userId: string): Observable<any> {
+    return this.http.get(this.ApiUrl + `users/getUserById/${userId}`);
+  }
+
   generateCourses(careerChoice: string): Observable<CourseRecommendation[]> {
     // return this.http.post(`${this.apiUrl}/enterCareer`, { careerChoice });
     const body = { careerChoice };
