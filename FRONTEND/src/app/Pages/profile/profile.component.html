@@ -1,0 +1,92 @@
+
+<div class="eclipse-2"></div>
+<div class="eclipse-6"></div>
+<div class="eclipse-4"></div>
+<div class="eclipse-3"></div>
+
+<div class="container login-page">
+  <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+      <div
+        class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2"
+      >
+        <p class="profile text-3xl"><b>Profile</b></p>
+       
+        
+        <div
+          class="l-container justify-center px-6 py-8 rounded shadow-md text-black w-full align-middle"
+        >
+        <div class="image profilePic ml-24 mb-6 bg-blue-300 w-32 h-32  align-middle rounded-full">
+
+        
+        <p class="p-2 text-center text-9xl text-white">{{user.name | profile }}</p>
+        
+          
+      </div>
+      
+      
+          <div class="names flex flex-row space-x-4">
+            <div class="form-group pt-30 w-36">
+              <label for="name">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="name"
+              />
+            </div>
+            <div class="form-group pt-30 w-36">
+              <label for="surname">Surname</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="surname"
+              />
+            </div>
+          </div>
+          <div class="addresContainer">
+            <div class="form-group pt-30">
+              <label for="grade">Grade</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="grade"
+              />
+            </div>
+          </div>
+          <div class="password flex flex-row space-x-4">
+            <div class="form-group pt-30 w-36">
+              <label for="city">City/town</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="city"
+              />
+            </div>
+            <div class="form-group pt-30 w-36">
+              <label for="dob">Date of birth</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="dob"
+              />
+            </div>
+          </div>
+          <div class="button ml-24 w-96">
+            <button
+              type="submit"
+              class="btn btn-primary w-24 align-middle text-white"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+    <div class="eclipse-1"></div>
+    
+  

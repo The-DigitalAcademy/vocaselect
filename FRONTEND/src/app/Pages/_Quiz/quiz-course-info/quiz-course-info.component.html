@@ -1,0 +1,32 @@
+
+
+<div class="courses">
+    <app-hamburger></app-hamburger>
+</div>
+
+<!--LOADER-->
+<div *ngIf="showLoader" class="loader-container">
+    <img src="../../../assets/blue loader.gif" alt="Loading..." class="loader">
+    <p>Generating Course information...</p>
+</div>
+
+<div *ngIf="showRecommendations" class="container">
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let course of CourseRecommendations; let i=index">
+            <div class="mb-3 card" >
+                <div class="card-body" [style.background-color]="cardBackgroundColors[i]">
+                    <!-- <h3 class="card-title">{{ course.courseName }}</h3> -->
+                    <p><strong>University Name :</strong> {{ course.uniName }}</p>
+                    <p><strong>Course Duration:</strong> {{ course.courseDuration }}</p>
+                    <p><strong>Admission Requirements:</strong> {{ course.admissionRequirements }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Eclipses-->
+<div class="eclipse-2"></div>
+<div class="eclipse-6"></div>
+<div class="eclipse-4"></div>
