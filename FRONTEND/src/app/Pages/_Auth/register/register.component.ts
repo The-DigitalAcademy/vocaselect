@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import Swal from 'sweetalert2';
 import { parseISO, isValid, differenceInYears } from 'date-fns';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl} from '@angular/forms';
 // import { log } from 'console';
 import { UserService } from 'src/app/_services/user.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
@@ -17,6 +17,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
   loading: boolean = false; 
+  buttonLabel: string = 'Register';
 
   user: any;
   invalidCredentials = false;
@@ -42,7 +43,7 @@ export class RegisterComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       dob: [null, [Validators.required, this.validateDateOfBirth]],
       city: [null, [Validators.required, Validators.minLength(3)]],
-      studentgrade: [null, [Validators.required, Validators.minLength(1)]],
+      studentgrade:  [null, [Validators.required, Validators.minLength(1), this.gradeRangeValidator]],
       password: [null, [Validators.required, Validators.minLength(8), this.passwordValidator]]
     })
   }
@@ -51,28 +52,40 @@ export class RegisterComponent implements OnInit {
     this.form.dob.setValidators([Validators.required, this.validateDateOfBirth]); // Add custom validator
     this.form.dob.updateValueAndValidity();
     this.regInvalid = false;
+    this.updateButtonLabel();
   }
 
-  // Function to handle the button click event
-  buttonLabel(): string {
-    return this.registerForm.value.studentgrade >= 10 ? 'Next' : 'Register';
+
+   gradeRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const grade = control.value;
+    if (grade !== null && (isNaN(grade) || grade < 8 || grade > 12)) {
+      return { invalidGradeRange: true };
+    }
+    return null;
+  }
+
+  updateButtonLabel(): void {
+    const studentGrade = this.registerForm.value.studentgrade;
+    if (studentGrade >= 10) {
+      this.buttonLabel = 'Next';
+    } else if (studentGrade >= 8 && studentGrade <= 12) {
+      this.buttonLabel = 'Register';
+     } 
   }
 
   onButtonClick(): void {
-    if (this.registerForm.value.studentgrade >= 10) {
-      // Handle the logic for the "Register" button click
-      // e.g., perform registration or any other action
+    const studentGrade = this.registerForm.value.studentgrade;
+    if (studentGrade >= 10) {
       this.onRegister();
-      console.log('Next button clicked!');
       this.router.navigate(['/subjects']);
-    } else {
-      // Handle the logic for the "Next" button click
-      // e.g., proceed to the next step or action
-
-      console.log('Register button clicked!');
+    } else if (studentGrade >= 8 && studentGrade <= 12) {
       this.router.navigate(['/dream-job']);
+    } else {
+      // Handle the case where the grade is invalid
+      console.log('Invalid grade!');
     }
   }
+  
 
   passwordValidator(control: FormControl): { [key: string]: boolean } | null {
     const value: string = control.value; const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(value); const hasNumber = /\d/.test(value); const hasLetter = /[a-zA-Z]/.test(value); if (!hasSymbol || !hasNumber || !hasLetter) { return { invalidPassword: true }; } return null;
