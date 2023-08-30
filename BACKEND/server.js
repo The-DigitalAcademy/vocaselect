@@ -13,7 +13,7 @@ const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 const selectedCourseController = require("./routes/selectedCourse");
 const quizSelectedCourse = require("./routes/quiz.selectedCourse");
-const quizAnswers = require('./routes/quizAnswers.routes')
+const quizAnswers = require('./routes/Database_quiz/quizAnswers.routes')
 
 // Import the deleteUserById method (replace this with the actual path to your method file)
 // const { deleteUserById, updateUserById, getUserById } = require('./controllers/User/user.controllers');
