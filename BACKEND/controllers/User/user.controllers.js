@@ -1,16 +1,13 @@
-//importing modules
 const bcrypt = require("bcryptjs");
 const db = require("../../models");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-// Assigning users to the variable User
 const User = db.User;
 
 //signing a user up
 //hashing users password before its saved to the database with bcrypt
 const signup = async (req, res) => {
   try {
-    console.log("Hi-1");
     const { name, surname, email, dob, city, studentGrade, password } =
       req.body.users;
 
@@ -27,12 +24,7 @@ const signup = async (req, res) => {
     );
 
    const data = {
-    name,
-    surname,
-    email,
-    dob,
-    city,
-    studentGrade,
+    name, surname, email, dob, city, studentGrade,
     password: await bcrypt.hash(password, 10),
    };
    //saving the user
@@ -50,7 +42,6 @@ const signup = async (req, res) => {
      console.log("user", JSON.stringify(user, null, 2));
      console.log(token);
      //send users details
-    //  return res.status(201).send(user);
      return res.status(201).send({message: "User was registered successfully!"} );
 
    } else {
@@ -202,7 +193,6 @@ const updateUserById = async (req, res) => {
   }
 };
 
-//delete users
 // DELETE BY ID
 const deleteUserById = async (req, res) => {
   try {

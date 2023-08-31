@@ -1,4 +1,3 @@
-
 const express = require('express')
 const userController = require('../controllers/User/user.controllers')
 // const { signup, login } = userController

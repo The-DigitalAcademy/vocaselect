@@ -1,6 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
   const Users  = sequelize.define("users", {
-      //change DataTypes back Sequelize - if it breaks
       name: {
       type: Sequelize.STRING,
       allowNull: false

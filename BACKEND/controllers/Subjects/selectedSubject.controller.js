@@ -1,7 +1,7 @@
 const db = require("../../models");
 const User = db.User;
 const Subject = db.Subject;
-const UserSelectedSubject = require("../../models/selectedSubject.models");
+const UserSelectedSubject = require("../../models/SubjectsModel/selectedSubject.models");
 
 exports.saveSelectedSubjects = async (req, res) => {
   var userSubjects = req.body;

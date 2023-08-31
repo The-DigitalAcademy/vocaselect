@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../models');
+const { sequelize } = require('..');
 // const db = require('../models'); // Make sure to replace '../models' with the actual path to your Sequelize setup file
 
 const UserSelectedSubject = sequelize.define('user_selected_subjects', {

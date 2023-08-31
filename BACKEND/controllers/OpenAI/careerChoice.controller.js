@@ -3,11 +3,9 @@ const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 
 
-// @POST - Method
-exports.generateCareer = async (req, res) => {
+// This function is for generating 6 courses which relates to the entered career choice. 
+exports.generateCourses = async (req, res) => {
   try {
-    
-    //uses the body-parser middleware - destructuring assigment
     // Extract the user's chosen career choice from the request body
     const { careerChoice} = req.body;
 
@@ -25,21 +23,21 @@ exports.generateCareer = async (req, res) => {
     
     Explain the course description and admission requirements in a way that high school students aged 15 years can easily understand.
     
-    Here's an example of how the JSON object might look:
+    Here's an example of how the JSON object should look:
 
     [
       {
         uniName: University of Johannesburg,
         courseName: Bachelor of Science in Computer Science,
-        courseDescription: This is a super cool course where you learn to create apps and games for computers. You'll become a tech wizard!,
-        admissionRequirements: To get in, you just need to have finished high school with good grades in math and science.,
+        courseDescription: The purpose of the BSc Information Technology programme is to develop qualified scientists who can identify, evaluate and solve problems associated with information technology and be able to assume and demonstrate initiative and responsibility in related academic and professional contexts in South Africa as well as in the international world.,
+        admissionRequirements: Applicants must have a National Senior Certificate (NSC) with a minimum of 60% in Mathematics and Physical Science.
         universityURL: https://www.uj.ac.za/
       },
       {
         uniName: University of Pretoria,
         courseName: Bachelor of Science in Information Systems,
         courseDescription: In this course, you'll learn how computers help businesses. It's like teaching computers to be smart helpers!,
-        admissionRequirements: If you finished high school and are curious about computers and business, you're good to go!,
+        admissionRequirements: A minimum score of 50% in Mathematics and a pass in English are mandatory.,
         universityURL: https://www.up.ac.za/
       }
     ]    
@@ -89,96 +87,7 @@ exports.generateCareer = async (req, res) => {
     
   } catch (err) {
     console.error("Error occurred:", err);
-    res.status(500).json({ error: "An error occurred while generating recommendations." });
-  }
-};
-
-
-//@GET - METHOD
-exports.career_Choice_Selected_Course = async (req, res) => {
-  try {
-    
-    //uses the body-parser middleware - destructuring assigment
-    // Extract the user's chosen course from the request body
-    const {  careerChoice } = req.query;
-
-     // Check if the careerChoice is provided
-    //  if (!course || course.trim() === "") {
-    //   return res.status(400).json({ error: "Please provide a valid career choice." });
-    // }
-
-    //AI prompt 
-    const prompt = `Please provide all the universities in South Africa that are offering this course ${careerChoice}.
-
-    Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
-    
-    The JSON Format object must have the following structure:
-    [
-      {
-        uniName: University of Johannesburg,
-        courseName: Bachelor of Science in Computer Science,
-        courseDuration: 3 years,
-        courseDescription: Course description example,
-        admissionRequirements: Admission example,
-        universityURL: uniUrl
-      },
-      {
-        uniName: University of Pretoria,
-        courseName: Bachelor of Science in Computer Science,
-        courseDuration: 3 years,
-        courseDescription: Course description example,
-        admissionRequirements: Admission example,
-        universityURL: uniUrl
-      }
-    ]    
-    `;
-
-   //asking the AI to complete the prompt you've provided with additional text
-   const completion = await openai.createCompletion({
-     model: "text-davinci-003",
-     prompt,
-     temperature: 0.6,
-     max_tokens: 1000,
-   });
-
-     // Extract the course recommendations text from the API response
-     const courseRecommendations = completion.data.choices[0].text;
-
-     // Parse the course recommendations text into structured course objects
-     const courses = parseCourseRecommendations(courseRecommendations);
- 
-     const extractedCourses = [];
-
-     for (const course of courses) {
-      const uniName = course.uniName;
-      const courseName = course.courseName;
-
-      const courseDescription = course.courseDescription;
-
-      const courseDuration = course.courseDuration; 
-      const admissionRequirements = course.admissionRequirements; 
-      const universityURL = course.universityURL;         
-  
-      
-
-      // Create an object containing extracted course information and push it to 'extractedCourses' array
-      extractedCourses.push({
-        uniName,
-        courseName,
-        courseDuration,
-        courseDescription,
-        admissionRequirements, 
-        universityURL
-      });
-    }
-     // Send the extracted course recommendations as a JSON response
-    res.status(200).json(extractedCourses);
-
-    console.log(extractedCourses);
-
-  } catch (err) {
-    console.error("Error occurred:", err);
-    res.status(500).json({ error: "An error occurred while generating recommendations." });
+    res.status(500).json({ error: "An error occurred while generating courses." });
   }
 };
 
@@ -211,5 +120,95 @@ function parseCourseRecommendations(text) {
 
   return courses;
 }
+
+
+//@GET - METHOD
+// exports.career_Choice_Selected_Course = async (req, res) => {
+//   try {
+    
+//     //uses the body-parser middleware - destructuring assigment
+//     // Extract the user's chosen course from the request body
+//     const {  careerChoice } = req.query;
+
+//      // Check if the careerChoice is provided
+//     //  if (!course || course.trim() === "") {
+//     //   return res.status(400).json({ error: "Please provide a valid career choice." });
+//     // }
+
+//     //AI prompt 
+//     const prompt = `Please provide all the universities in South Africa that are offering this course ${careerChoice}.
+
+//     Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
+    
+//     The JSON Format object must have the following structure:
+//     [
+//       {
+//         uniName: University of Johannesburg,
+//         courseName: Bachelor of Science in Computer Science,
+//         courseDuration: 3 years,
+//         courseDescription: Course description example,
+//         admissionRequirements: Admission example,
+//         universityURL: uniUrl
+//       },
+//       {
+//         uniName: University of Pretoria,
+//         courseName: Bachelor of Science in Computer Science,
+//         courseDuration: 3 years,
+//         courseDescription: Course description example,
+//         admissionRequirements: Admission example,
+//         universityURL: uniUrl
+//       }
+//     ]    
+//     `;
+
+//    //asking the AI to complete the prompt you've provided with additional text
+//    const completion = await openai.createCompletion({
+//      model: "text-davinci-003",
+//      prompt,
+//      temperature: 0.6,
+//      max_tokens: 1000,
+//    });
+
+//      // Extract the course recommendations text from the API response
+//      const courseRecommendations = completion.data.choices[0].text;
+
+//      // Parse the course recommendations text into structured course objects
+//      const courses = parseCourseRecommendations(courseRecommendations);
+ 
+//      const extractedCourses = [];
+
+//      for (const course of courses) {
+//       const uniName = course.uniName;
+//       const courseName = course.courseName;
+
+//       const courseDescription = course.courseDescription;
+
+//       const courseDuration = course.courseDuration; 
+//       const admissionRequirements = course.admissionRequirements; 
+//       const universityURL = course.universityURL;         
+  
+      
+
+//       // Create an object containing extracted course information and push it to 'extractedCourses' array
+//       extractedCourses.push({
+//         uniName,
+//         courseName,
+//         courseDuration,
+//         courseDescription,
+//         admissionRequirements, 
+//         universityURL
+//       });
+//     }
+//      // Send the extracted course recommendations as a JSON response
+//     res.status(200).json(extractedCourses);
+
+//     console.log(extractedCourses);
+
+//   } catch (err) {
+//     console.error("Error occurred:", err);
+//     res.status(500).json({ error: "An error occurred while generating recommendations." });
+//   }
+// };
+
 
 

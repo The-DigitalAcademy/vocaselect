@@ -38,14 +38,14 @@ export class FillCareerComponent implements OnInit {
     this.generateCourses();
 
     // Retrieve stored data on component initialization
-    const storedRecommendations = sessionStorage.getItem('courseRecommendations');
-    if (storedRecommendations) {
-      this.courseRecommendations = JSON.parse(storedRecommendations);
-      console.log(this.courseRecommendations)
-      this.showRecommendations = true;
-    } else {
-      this.generateCourses();
-    }
+    // const storedRecommendations = sessionStorage.getItem('courseRecommendations');
+    // if (storedRecommendations) {
+    //   this.courseRecommendations = JSON.parse(storedRecommendations);
+    //   console.log(this.courseRecommendations)
+    //   this.showRecommendations = true;
+    // } else {
+    //   this.generateCourses();
+    // }
   }
 
   generateCourses(): void {

@@ -20,7 +20,7 @@ exports.selectedCourse = async (req, res) => {
     //AI prompt 
     const prompt = `Please provide all the universities in South Africa that are offering this course ${course}.
 
-    Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
+    Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course. Make each 
 
     Please provide the respective University website/link for that course. Store this URL under the universityURL.
     
@@ -102,7 +102,6 @@ exports.selectedCourse = async (req, res) => {
 exports.getSelectedCourses = async (req, res) => {
   try {
     
-    //uses the body-parser middleware - destructuring assigment
     // Extract the user's chosen course from the request body
     const {  course } = req.query;
 
@@ -143,7 +142,7 @@ exports.getSelectedCourses = async (req, res) => {
    const completion = await openai.createCompletion({
      model: "text-davinci-003",
      prompt,
-     temperature: 0.6,
+     temperature: 0.8,
      max_tokens: 1000,
    });
 

@@ -1,6 +1,7 @@
 
-<div class="courses">
+<div class="courses hide-on-scroll">
 <app-hamburger></app-hamburger>
+
 </div>
 
 <!--LOADER-->
@@ -14,7 +15,7 @@
         <div class="col-sm-3" *ngFor="let course of courseRecommendations; let i=index">
             <div class="mb-3 card" >
                 <div class="card-body" [style.background-color]="cardBackgroundColors[i]">
-                    <!-- <h3 class="card-title">{{ course.courseName }}</h3> -->
+                    <!-- <h4 style="text-align: center; font-size: 15px">{{ course.courseName }}</h4> -->
                     <p><strong>University:</strong> {{ course.uniName }}</p>
                     <p><strong>Duration:</strong> {{ course.courseDuration }}</p>
                     <p><strong>Admission Requirements:</strong> {{ course.admissionRequirements }}</p>
@@ -26,7 +27,9 @@
 
 
 <!--Eclipses-->
+<div class="eclipse-1"></div>
 <div class="eclipse-2"></div>
-<!-- <div class="eclipse-1"></div> -->
+<div class="eclipse-3"></div>
 <div class="eclipse-6"></div>
 <div class="eclipse-4"></div>
+<div class="eclipse-5"></div>

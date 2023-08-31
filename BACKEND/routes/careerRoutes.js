@@ -7,7 +7,7 @@ const router = express.Router();
  * @swagger
  * /enterCareer:
  *   post:
- *     summary: Get recommendations for a preferred career choice
+ *     summary: Get courses for a preferred career choice
  *     description: Returns university and course recommendations for a specified career choice in South Africa.
  *     tags: [ChatGPT API]
  * 
@@ -51,7 +51,7 @@ const router = express.Router();
  */
 
 // Define the route for generating career courses
-router.post('/', careerController.generateCareer);
+router.post('/', careerController.generateCourses);
 
 
 module.exports = router;

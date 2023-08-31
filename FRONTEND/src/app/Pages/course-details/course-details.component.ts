@@ -50,4 +50,5 @@ export class CourseDetailsComponent implements OnInit {
   // Define colors for card background using ngClass
   cardBackgroundColors: string[] = ["#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA", "#A1C2F3", "#E6E6FA"];
   
+  
 }

@@ -12,7 +12,7 @@ export class HamburgerComponent implements OnInit {
   constructor(public router: Router,private tokenStorage: TokenStorageService,) { }
 
   ngOnInit(): void {
-     this.user = this.tokenStorage.getUser();  
+    this.user = this.tokenStorage.getUser();  
   }
 
   logout(){
