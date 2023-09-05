@@ -241,7 +241,8 @@ router.put('/:id', userController.updateUserById);
 // Route to check if email exists
 router.get("/emailExist/:email", userController.emailExists);
 
-
+// route  for the update users
+router.put('/:id', userController.updateUserById)
 
 router.post('/sendresetotp', sendResetOTP);
 
