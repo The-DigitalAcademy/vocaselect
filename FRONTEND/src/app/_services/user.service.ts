@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.prod';
 
 const apiUrl = environment.baseUrl;
+const updateUrl = 'http://localhost:9000/api/'
 @Injectable({
   providedIn: 'root'
 })
@@ -32,7 +33,7 @@ export class UserService {
   }
 
   updateProfile( id:number, profileData: any) : Observable<any> {
-    return this.http.put(apiUrl +'users/' + id , profileData);
+    return this.http.put(updateUrl +'updateuser/' + id , profileData, { responseType: 'json' });
 
 }
 }

@@ -14,7 +14,7 @@ const quizRoutes = require("./routes/quizRoutes");
 const selectedCourseController = require("./routes/selectedCourse");
 const quizSelectedCourse = require("./routes/quiz.selectedCourse");
 const quizAnswers = require('./routes/Database_quiz/quizAnswers.routes')
-
+const updateuser = require('./routes/user.routes')
 // Import the deleteUserById method (replace this with the actual path to your method file)
 // const { deleteUserById, updateUserById, getUserById } = require('./controllers/User/user.controllers');
 
@@ -87,6 +87,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //User AUTH routes for the user API
 app.use('/api/users', userRoutes)
 
+/// update user API
+app.use('/api/updateuser', updateuser )
 
 // app.use('/api/allSubjects', subjectRoutes)
 app.use('/api/subjects', subjectRoutes)
