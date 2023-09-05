@@ -28,6 +28,7 @@ VocaSelect is an innovative career guidance app designed to help users explore a
 Follow these steps to set up the VocaSelect app locally:
 
 1. **Clone the Repository:**
+
 ```
 git clone https://github.com/your-username/VocaSelect.git
 cd VocaSelect
@@ -50,6 +51,7 @@ Database Setup:
 
 Create a PostgreSQL database and update the database configuration in `backend/config/database.js`.
 Environment Variables:
+
 ```
 Create .env files in both the frontend and backend directories based on the provided .env.example files. Fill in the required information.
 Run the App:
