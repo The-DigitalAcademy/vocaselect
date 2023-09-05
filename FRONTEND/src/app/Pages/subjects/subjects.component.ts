@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { SubjectsService } from 'src/app/_services/subjects.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-subjects',
@@ -23,7 +25,7 @@ export class SubjectsComponent implements OnInit {
     // Fetch items from the API when the component initializes
     this.fetchSubjects();
     this.userId = this.tokenStorage.getUser().id;
-  console.log(this.userId, 'user id')
+console.log(this.userId, 'user id')
   }
 
   fetchSubjects() {
@@ -38,34 +40,18 @@ export class SubjectsComponent implements OnInit {
     );
   }
 
-  isChecked(event: any):void {
-    
+  isChecked(event: any): void {
     if (event.target.checked) {
-      this.allSelectedId.push({subjectId:event.target.value, userId: this.userId })
+      this.allSelectedId.push({subjectId:event.target.value, userId: this.userId });
     } else {
-      this.allSelectedId = this.allSelectedId.filter((userSubject:any) => userSubject.subjectId !== event.target.value)
+      this.allSelectedId = this.allSelectedId.filter((userSubject:any) => userSubject.subjectId !== event.target.value);
     }
 
-    console.log(this.allSelectedId)
-
+    console.log(this.allSelectedId);
   }
 
 
-  // onSubmit():void {
-    
-  //   if (this.allSelectedId.length == 0) {
-  //     console.log("Please select a course")
-  //     return;
-  //   }
-
-  //   console.log(this.allSelectedId)
-
-  //   this.router.navigate(['dream-job'])
-
-  // }
-
   onSubmit(): void {
-    console.log('Submit button clicked');
     
     if (this.allSelectedId.length === 0) {
       console.log("Please select a course");
@@ -75,13 +61,10 @@ export class SubjectsComponent implements OnInit {
     console.log("Sending selected subjects...");
   
     this.loading = true;
-    console.log("Loading state set to true");
   
-    // Make an HTTP POST request...
     this.subjectsService.saveSelectedSubjects(this.allSelectedId).subscribe(
       (response) => {
         console.log('Selected subjects sent successfully:', response);
-        // If needed, you can navigate to another route after successful submission
         this.router.navigate(['dream-job']);
       },
       (error) => {
@@ -89,10 +72,6 @@ export class SubjectsComponent implements OnInit {
       }
     );
   
-    // Set loading state to false after submitting subjects
     this.loading = false;
-    console.log("Loading state set to false");
-  }
-  
-  
+}
 }

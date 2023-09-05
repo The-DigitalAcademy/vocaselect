@@ -11,7 +11,7 @@ const User = db.User;
 const signup = async (req, res) => {
   try {
     console.log("Hi-1");
-    const { name, surname, email, dob, city, studentgrade, password } =
+    const { name, surname, email, dob, city, studentGrade, password } =
       req.body.users;
 
     console.log(
@@ -22,7 +22,7 @@ const signup = async (req, res) => {
       email,
       dob,
       city,
-      studentgrade,
+      studentGrade,
       password
     );
 
@@ -32,7 +32,7 @@ const signup = async (req, res) => {
     email,
     dob,
     city,
-    studentgrade,
+    studentGrade,
     password: await bcrypt.hash(password, 10),
    };
    //saving the user
@@ -99,7 +99,7 @@ const login = async (req, res) => {
     //find a user by their email
     const user = await db.User.findOne({
       where: {
-        email: username,
+        email: username, 
       },
     });
 
@@ -127,7 +127,7 @@ const login = async (req, res) => {
           email: user.email,
           dob: user.dob,
           city: user.city,
-          grade: user.studentgrade
+          grade: user.studentGrade
         }
         //send user data
         return res.status(201).send({ message: "Successfully logged in!", token: token,user:userInfo  });
@@ -176,14 +176,14 @@ const getUserById = async (req, res) => {
 const updateUserById = async (req, res) => {
   try {
     const userId = req.params.id;
-    const { name, surname, email, dob, city, studentgrade } = req.body;
+    const { name, surname, email, dob, city, studentGrade } = req.body;
     const data = {
       name,
       surname,
       email,
       dob,
       city,
-      studentgrade,
+      studentGrade,
     };
     const user = await User.findByPk(userId);
     if (user) {

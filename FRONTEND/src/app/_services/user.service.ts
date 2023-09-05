@@ -31,4 +31,8 @@ export class UserService {
     return this.http.get(apiUrl + 'users/emailexist/' + email, { responseType: 'text' });
   }
 
+  updateProfile( id:number, profileData: any) : Observable<any> {
+    return this.http.put(apiUrl +'users/' + id , profileData);
+
+}
 }

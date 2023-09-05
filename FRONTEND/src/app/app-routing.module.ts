@@ -23,6 +23,7 @@ import { QuizQuestionsComponent } from './Pages/_Quiz/quiz-questions/quiz-questi
 import { CourseDetailsComponent } from './Pages/course-details/course-details.component';
 import { QuizCourseInfoComponent } from './Pages/_Quiz/quiz-course-info/quiz-course-info.component';
 import { TimelineComponent } from './Pages/timeline/timeline.component';
+import { ProfileComponent } from './Pages/profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'timeline', component: TimelineComponent },
   { path: 'nav', component: NavbarComponent},
   { path: 'viewcareer', component: ViewCareeerComponent },
+  {path: 'profile', component: ProfileComponent},
   { path: 'quiz-questions', component: QuizQuestionsComponent},
   { path: '', redirectTo: 'landing', pathMatch: 'full' }
   

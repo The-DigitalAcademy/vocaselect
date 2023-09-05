@@ -62,7 +62,6 @@ export class SubjectmarksComponent implements OnInit {
         }
       });
     }
-    console.log(this.belowAverage, 'belowAverage items');
   }
 
   isChanged(event: any): void {

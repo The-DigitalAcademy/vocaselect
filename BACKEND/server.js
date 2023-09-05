@@ -7,14 +7,16 @@ const timelineRoutes = require('./routes/timeline.routes');
 const subjectRoutes = require('./routes/subjects.routes')
 const selectedSubjectRoutes = require('./routes/selectedSubject.routes')
 const { sendResetOTP, resetPassword } = require('./controllers/User/user.controllers')
-// const nodemailer = require('nodemailer');
 
 //ChatGPT Routes
 const careerRoutes = require("./routes/careerRoutes");
 const quizRoutes = require("./routes/quizRoutes");
 const selectedCourseController = require("./routes/selectedCourse");
 const quizSelectedCourse = require("./routes/quiz.selectedCourse");
-const quizAnswers = require('./routes/quizAnswers.routes')
+const quizAnswers = require('./routes/Database_quiz/quizAnswers.routes')
+
+// Import the deleteUserById method (replace this with the actual path to your method file)
+// const { deleteUserById, updateUserById, getUserById } = require('./controllers/User/user.controllers');
 
 //SWAGGER 
 // const quizAnswers = require('./routes/quizAnswers.routes')
@@ -55,29 +57,6 @@ app.use(cookieParser())
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//routes for the user API
-app.use('/api/users', userRoutes)
-
-// routes for getting all subjets
-app.use('/api/subjects', subjectRoutes)
-
-
-app.use('/api/user_selected_subjects', selectedSubjectRoutes);
-
-// Use the timeline route
-app.use('/api/timeline', timelineRoutes);
-
-// Import the deleteUserById method (replace this with the actual path to your method file)
-const { deleteUserById } = require('./controllers/User/user.controllers');
-
-// Create the route for deleting a user
-app.delete('/:id', deleteUserById);
-
-//API for answers
-
-app.use('/api/Answers', quizAnswers)
-
-
 
 // Swagger configuration options
 const swaggerOptions = {
@@ -88,6 +67,11 @@ const swaggerOptions = {
       version: "1.0.0",
       description: "API to get recommendations for a preferred career choice in South Africa",
     },
+    servers: [
+      {
+        url: `http://localhost:${process.env.PORT}`
+      }
+    ]
   },
   apis: ['./routes/*.js'], // Point to the route files containing Swagger comments
 };
@@ -102,6 +86,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //User AUTH routes for the user API
 app.use('/api/users', userRoutes)
+
 
 // app.use('/api/allSubjects', subjectRoutes)
 app.use('/api/subjects', subjectRoutes)
@@ -118,6 +103,21 @@ app.post('/', sendResetOTP);
 
 // Endpoint to reset password
 app.post('/', resetPassword);
+
+//routes for the user API
+app.use('/api/users', userRoutes)
+
+// routes for getting all subjets
+app.use('/api/subjects', subjectRoutes)
+
+
+app.use('/api/user_selected_subjects', selectedSubjectRoutes);
+
+// Use the timeline route
+app.use('/api/timeline', timelineRoutes);
+
+//API for answers
+app.use('/api/Answers', quizAnswers)
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
