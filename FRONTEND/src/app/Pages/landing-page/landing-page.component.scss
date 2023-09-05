@@ -8,17 +8,21 @@
     width: 14rem;
     border: none;
     transition: box-shadow 0.3s;
+    transition: 0.3s ease-in-out;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
     // user-select: none;
     // -webkit-user-select: none;
     // touch-action: manipulation;
-  
     cursor: pointer;
 }
 
+
 .btn2:hover {
     /* Add 3D shadow effect on hover */
+    transform: scale(1.1);
+    transition: all 0.4s ease;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+
   }
 
  .page{
