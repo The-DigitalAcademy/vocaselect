@@ -8,7 +8,7 @@ const User = db.User;
 //hashing users password before its saved to the database with bcrypt
 const signup = async (req, res) => {
   try {
-    const { name, surname, email, dob, city, studentGrade, password } =
+    const { name, surname, email, dob, city, studentgrade, password } =
       req.body.users;
 
     console.log(
@@ -19,12 +19,12 @@ const signup = async (req, res) => {
       email,
       dob,
       city,
-      studentGrade,
+      studentgrade,
       password
     );
 
    const data = {
-    name, surname, email, dob, city, studentGrade,
+    name, surname, email, dob, city, studentgrade,
     password: await bcrypt.hash(password, 10),
    };
    //saving the user
