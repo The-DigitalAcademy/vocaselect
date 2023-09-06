@@ -19,7 +19,8 @@ exports.career_Choice_Selected_Course = async (req, res) => {
     const prompt = `Please recommend a maximum of six courses (only one course per university) and provide a short description explained in simple terms like to a 5-year-old for the career ${career} in South Africa. Only provide undergraduate qualifications/courses. Include a faculty prospectus and admission criteria (explained in simple terms like to a 5-year-old) for that specific course. Format the response in a stringified JSON representation.
 
     Explain the course description and admission requirements in layman's terms for high school minors of age 15 years to understand.
-    
+    Admission Criteria must be explained in maximum of 200 words.
+
     The JSON Format object must have the following structure:
     [
       {
