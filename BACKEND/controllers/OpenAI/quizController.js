@@ -3,7 +3,11 @@ const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 // const QuizAnswer = require("../../models/quizAnswers.model"); // Import your Sequelize model here
 // const db = require("../../config/db.config");
+const db = require("../../models");
+const Career = db.Career;
 
+
+// const User = db.User;
 exports.generateCareerQuiz = async (req, res) => {
   try {
     const {
@@ -69,18 +73,40 @@ exports.generateCareerQuiz = async (req, res) => {
         careerSalary,
       };
       extractedCareers.push(extractedCareer);
-    }
 
+    }
+   
+   // Store the extracted careers in the database
+   await storeCareersInDatabase(extractedCareers);
 
    // Send the extracted course recommendations as a JSON response
    res.status(200).json(extractedCareers);
-
 
   } catch (err) {
     console.error("Error occurred:", err);
     res.status(500).json({ error: "An error occurred while generating recommendations." });
   }
 };
+
+//Function for posting data into the database
+async function storeCareersInDatabase(careers) {
+  try {
+    for (const career of careers) {
+      const { careerName, careerDescription, careerSalary } = career;
+
+      // Create a new career record in the database
+      await db.Career.create({
+        careerName,
+        careerDescription,
+        careerSalary,
+      });
+    }
+
+    console.log('Careers have been successfully stored in the database.');
+  } catch (error) {
+    console.error('Error occurred while storing careers in the database:', error);
+  }
+}
 
 // Function to parse course recommendations text into structured course objects
 function parseCareerRecommendation(text) {
