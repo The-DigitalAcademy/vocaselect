@@ -35,6 +35,7 @@ import { PasswordResetComponent } from './Pages/password-reset/password-reset.co
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 import { ProfileComponent } from './Pages/profile/profile.component';
 import { ProfilePipe } from './components/pipes/profile.pipe';
+import { AboutComponent } from './Pages/about/about.component';
 
 
 
@@ -59,7 +60,8 @@ import { ProfilePipe } from './components/pipes/profile.pipe';
     CourseDetailsComponent,
     TimelineComponent,
     ProfileComponent,
-    ProfilePipe
+    ProfilePipe,
+    AboutComponent
    
    
   ],
