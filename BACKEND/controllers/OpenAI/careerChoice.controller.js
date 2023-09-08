@@ -91,6 +91,8 @@ exports.generateCourses = async (req, res) => {
   }
 };
 
+
+
 // Function to parse course recommendations text into structured course objects
 function parseCourseRecommendations(text) {
   const courses = [];

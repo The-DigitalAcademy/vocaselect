@@ -64,9 +64,9 @@ export class FillCareerComponent implements OnInit {
           });
 
           // Store the recommendations in session storage
-          sessionStorage.setItem('courseRecommendations', JSON.stringify(this.courseRecommendations));
+          // sessionStorage.setItem('courseRecommendations', JSON.stringify(this.courseRecommendations));
 
-          localStorage.setItem('enteredCareer', JSON.stringify(this.careerChoice));
+          // localStorage.setItem('enteredCareer', JSON.stringify(this.careerChoice));
           
           this.showLoader = false; // Hide the loader and message
           this.showRecommendations = true; // Show the recommendations
