@@ -109,6 +109,9 @@ async function storeCareersInDatabase(careers) {
   }
 }
 
+
+
+
 // Function to parse course recommendations text into structured course objects
 function parseCareerRecommendation(text) {
   const careers = [];

@@ -37,7 +37,7 @@
     width: fit-content;
     block-size: fit-content;
     padding-bottom: -60rem;
-    background-color: #F2F6FD;
+    // background-color: #F2F6FD;
 
 
     p{
@@ -62,7 +62,92 @@
         justify-content: center;
     }
 }
+.logo-container{
+  justify-content: center;
+  display:flex;
+}
 
 #landing-header {
     font-size: 300px;
 }
+@media (max-width: 640px) {
+    .btn2 {
+      font-size: 16px;
+      width: 12rem;
+    }
+  
+    #landing-header {
+      font-size: 24px;
+    }
+  }
+  
+  /* Tablet Styles */
+  @media (min-width: 641px) {
+    .container {
+      text-align: left;
+    }
+
+    .intro{
+      margin-top: 6rem;
+    }
+  
+    .col {
+      align-items: flex-start;
+    }
+  
+    .logo {
+      margin-left: 1rem;
+    }
+  
+    #landing-header {
+      font-size: 36px;
+    }
+  
+    .btn2 {
+      width: 10rem;
+    }
+  }
+  
+  /* Laptop Styles */
+  @media (min-width: 1024px)  {
+    .intro{
+      margin-top: 8rem;
+    }
+    .container {
+     justify-content: left;
+    //  margin-left:0;
+     position: relative;
+      }
+    .fs-1{
+      font-size: 35px !important;
+    }
+    .logo {
+        width: 18rem !important;
+        height: 18rem !important;
+      }
+
+      .btn2 {
+        width: 16rem;
+        font-size: 25px;
+      }
+
+      .landingImg{
+        width: 40rem;
+      }
+
+      #landing-header {
+        font-size: 300px;
+        margin-right: 5px !important;
+    }
+    
+  }
+  
+  /* Desktop Styles */
+  @media (min-width: 1440px) {
+    #landing-header {
+      font-size: 60px;
+    }
+    .intro{
+      margin-top: 10rem;
+    }
+  }
