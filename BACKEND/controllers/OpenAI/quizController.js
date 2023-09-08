@@ -78,7 +78,7 @@ exports.generateCareerQuiz = async (req, res) => {
     }
    
    // Store the extracted careers in the database
-   await storeCareersInDatabase(extractedCareers);
+  //  await storeCareersInDatabase(extractedCareers);
 
    // Send the extracted course recommendations as a JSON response
    res.status(200).json(extractedCareers);
@@ -90,24 +90,24 @@ exports.generateCareerQuiz = async (req, res) => {
 };
 
 //Function for posting data into the database
-async function storeCareersInDatabase(careers) {
-  try {
-    for (const career of careers) {
-      const { careerName, careerDescription, careerSalary } = career;
+// async function storeCareersInDatabase(careers) {
+//   try {
+//     for (const career of careers) {
+//       const { careerName, careerDescription, careerSalary } = career;
 
-      // Create a new career record in the database
-      await db.Career.create({
-        careerName,
-        careerDescription,
-        careerSalary,
-      });
-    }
+//       // Create a new career record in the database
+//       await db.Career.create({
+//         careerName,
+//         careerDescription,
+//         careerSalary,
+//       });
+//     }
 
-    console.log('Careers have been successfully stored in the database.');
-  } catch (error) {
-    console.error('Error occurred while storing careers in the database:', error);
-  }
-}
+//     console.log('Careers have been successfully stored in the database.');
+//   } catch (error) {
+//     console.error('Error occurred while storing careers in the database:', error);
+//   }
+// }
 
 
 // getting all careers

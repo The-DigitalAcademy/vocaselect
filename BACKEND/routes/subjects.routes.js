@@ -80,7 +80,7 @@ router.post("/", subjects.createNewSubject);
  *       500:
  *         description: Internal server error.
  */
-router.get("/getAll", subjects.getAllsubjects);
+router.get("/", subjects.getAllsubjects);
 
 // Create the route for deleting a subject
 router.delete('/:id', subjects.deleteSubjectById);

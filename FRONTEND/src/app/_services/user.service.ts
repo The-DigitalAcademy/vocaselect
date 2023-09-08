@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment.prod';
 
-const apiUrl = environment.baseUrl;
+const apiUrl = environment.apiUrl;
 const updateUrl = 'http://localhost:9000/api/'
 @Injectable({
   providedIn: 'root'

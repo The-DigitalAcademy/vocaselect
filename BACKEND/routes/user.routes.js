@@ -1,6 +1,11 @@
 const express = require('express')
+//<<<<<<< Updated upstream
 const userController = require('../controllers/User/user.controllers')
 // const { signup, login } = userController
+
+//const userController = require('../controllers/user.controllers')
+const { signup, login,updateUserById  } = userController
+//>>>>>>> Stashed changes
 const userAuth = require('../middleware/userAuth')
 const { sendResetOTP, resetPassword } = require('../controllers/User/user.controllers'); 
 const router = express.Router()
@@ -242,6 +247,9 @@ router.get("/emailExist/:email", userController.emailExists);
 
 // route  for the update users
 router.put('/:id', userController.updateUserById)
+
+// updates user by id
+router.put('/:id' , updateUserById)
 
 router.post('/sendresetotp', sendResetOTP);
 
