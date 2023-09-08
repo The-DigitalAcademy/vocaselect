@@ -1,6 +1,45 @@
-<div *ngFor="let career of careers">
+<!-- <div *ngFor="let career of careers">
 
-    <p>{{career.careerName}}</p>
+    <p>{{career.careerName | careers }}</p>
+
+</div> -->
+
+<div class = "container careers">
+    <div class = "heading">
+        <div class="backbutton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" fill="#073980" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" routerLink="/home"/>
+              </svg>
+        </div>
+        <h2>View Career</h2>
+    </div><br>
 
 
+
+
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-700 sr-only dark:text-black">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-700 dark:text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" id="default-search" class="block w-full p-3.5 pl-10 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-200 dark:border-gray-200 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"    placeholder="Search Career" required>
+        <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-400 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-400 dark:hover:bg-blue-600 dark:focus:ring-blue-400">Search</button>
+    </div>
+
+<br> <div class="overscroll-contain ..." *ngFor="let career of careers">
+    <a  class="block max-w-sm p-6 bg-blue-400 border rounded-lg shadow hover dark:bg-blue-300  dark:hover:bg-blue-400">
+
+        <h1 class=" font-bold text-white">{{career.careerName | careers }}</h1>
+        <h5 class="mb-2 text-2xl  font-normal tracking-tight text-gray-900 dark:text-white">{{career.careerDescription | careers }} </h5>
+        <p class="font-normal text-gray-800 dark:text-gray-800"></p>
+
+    </a> 
+<br>
 </div>
+
+<div class="eclipse-2"></div>
+<div class="eclipse-6"></div>
+<div class="eclipse-4"></div>
+<div class="eclipse-3"></div>

@@ -96,6 +96,7 @@ app.use('/api/subjects', subjectRoutes)
 // OpenAI API Routes
 app.use("/enterCareer", careerRoutes);
 app.use("/quiz", quizRoutes);
+app.use("/getAllCareers", quizRoutes);
 app.use("/courseInfo", selectedCourseController );
 app.use("/quizCourseInfo", quizSelectedCourse );
 

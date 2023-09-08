@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewCareerService } from 'src/app/_services/_ChatGPT_Services/viewcareer/viewCareer.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { UserService } from 'src/app/_services/user.service';
 
 @Component({
   selector: 'app-view-careeer',
@@ -8,10 +10,10 @@ import { ViewCareerService } from 'src/app/_services/_ChatGPT_Services/viewcaree
 })
 export class ViewCareeerComponent implements OnInit {
 
-  constructor(private Viewcareer: ViewCareerService) { }
+  constructor(private Viewcareer: ViewCareerService, private tokenStorage: TokenStorageService,private userService: UserService) { }
 
   careers: any;
-
+  userId: any;
   
 
   // getDataFromServer() {
@@ -33,11 +35,12 @@ export class ViewCareeerComponent implements OnInit {
   //     }
   //   );
   // }
-
+  
 
   fetchCareers() {
-    // const apiUrl = 'YOUR_API_ENDPOINT'; // Replace with your actual API endpoint URL
-    this.Viewcareer.getCareerData().subscribe(
+    
+    this.userId = this.tokenStorage.getUser().id;
+    this.Viewcareer.getCareerData(this.userId).subscribe(
       (response) => {
         this.careers = response;
       },

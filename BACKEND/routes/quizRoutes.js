@@ -67,5 +67,6 @@ const router = express.Router();
 
 
 router.post('/', quizController.generateCareerQuiz);
+router.get('/', quizController.getAllCareers);
 
 module.exports = router;

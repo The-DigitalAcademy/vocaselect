@@ -110,6 +110,26 @@ exports.generateCareerQuiz = async (req, res) => {
 // }
 
 
+// getting all careers
+
+
+exports.getAllCareers = async (req, res) => {
+  try {
+    // Fetch all careers from the database
+    const careers = await db.Career.findAll();
+
+    // Check if there are any careers in the database
+    if (!careers || careers.length === 0) {
+      return res.status(404).json({ error: 'No careers found in the database.' });
+    }
+
+    // Send the list of careers as a JSON response
+    res.status(200).json(careers);
+  } catch (error) {
+    console.error('Error occurred while fetching careers from the database:', error);
+    res.status(500).json({ error: 'An error occurred while fetching careers from the database.' });
+  }
+};
 
 
 // Function to parse course recommendations text into structured course objects

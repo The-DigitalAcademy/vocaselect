@@ -41,6 +41,11 @@ module.exports = (sequelize, Sequelize) => {
   //   });
   // };
 
+  // Define the association with Career model
+  // Users.hasMany(sequelize.models.Career, {
+  //   foreignKey: 'user_id', // Assuming your foreign key is named user_id
+  // });
+
 
   return Users;
 };

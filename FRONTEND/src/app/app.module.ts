@@ -35,6 +35,7 @@ import { RequestPasswordResetComponent } from './Pages/request-password-reset/re
 import { ProfileComponent } from './Pages/profile/profile.component';
 import { ProfilePipe } from './components/pipes/profile.pipe';
 import { AboutComponent } from './Pages/about/about.component';
+import { CareersPipe } from './components/pipes/careers.pipe';
 import { CommonModule } from '@angular/common';
 
 
@@ -61,7 +62,8 @@ import { CommonModule } from '@angular/common';
     TimelineComponent,
     ProfileComponent,
     ProfilePipe,
-    AboutComponent
+    AboutComponent,
+    CareersPipe
    
    
   ],
