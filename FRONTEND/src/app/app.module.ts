@@ -9,7 +9,6 @@ import { LoginComponent } from './Pages/_Auth/login/login.component';
 import { RegisterComponent } from './Pages/_Auth/register/register.component';
 import { SubjectsComponent } from './Pages/subjects/subjects.component';
 
-import { CommonModule } from '@angular/common';
 import { FillCareerComponent } from './Pages/fill-career/fill-career.component';
 import { HomepageComponent } from './Pages/homepage/homepage.component';
 import { DreamJobComponent } from './Pages/dream-job/dream-job.component';
@@ -36,6 +35,7 @@ import { RequestPasswordResetComponent } from './Pages/request-password-reset/re
 import { ProfileComponent } from './Pages/profile/profile.component';
 import { ProfilePipe } from './components/pipes/profile.pipe';
 import { AboutComponent } from './Pages/about/about.component';
+import { CommonModule } from '@angular/common';
 
 
 

@@ -11,7 +11,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 })
 export class TimelineComponent implements OnInit {
 
-  timeline :any;
+  timeline: any;
   grade: any;
   user: any = {};
   constructor(private timelineService: TimelineService, private http:HttpClient, private router: Router, private tokenStorage: TokenStorageService,){}  
