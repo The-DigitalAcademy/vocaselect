@@ -125,92 +125,92 @@ function parseCourseRecommendations(text) {
 
 
 //@GET - METHOD
-// exports.career_Choice_Selected_Course = async (req, res) => {
-//   try {
+exports.career_Choice_Selected_Course = async (req, res) => {
+  try {
     
-//     //uses the body-parser middleware - destructuring assigment
-//     // Extract the user's chosen course from the request body
-//     const {  careerChoice } = req.query;
+    //uses the body-parser middleware - destructuring assigment
+    // Extract the user's chosen course from the request body
+    const {  careerChoice } = req.query;
 
-//      // Check if the careerChoice is provided
-//     //  if (!course || course.trim() === "") {
-//     //   return res.status(400).json({ error: "Please provide a valid career choice." });
-//     // }
+     // Check if the careerChoice is provided
+    //  if (!course || course.trim() === "") {
+    //   return res.status(400).json({ error: "Please provide a valid career choice." });
+    // }
 
-//     //AI prompt 
-//     const prompt = `Please provide all the universities in South Africa that are offering this course ${careerChoice}.
+    //AI prompt 
+    const prompt = `Please provide all the universities in South Africa that are offering this course ${careerChoice}.
 
-//     Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
+    Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course.
     
-//     The JSON Format object must have the following structure:
-//     [
-//       {
-//         uniName: University of Johannesburg,
-//         courseName: Bachelor of Science in Computer Science,
-//         courseDuration: 3 years,
-//         courseDescription: Course description example,
-//         admissionRequirements: Admission example,
-//         universityURL: uniUrl
-//       },
-//       {
-//         uniName: University of Pretoria,
-//         courseName: Bachelor of Science in Computer Science,
-//         courseDuration: 3 years,
-//         courseDescription: Course description example,
-//         admissionRequirements: Admission example,
-//         universityURL: uniUrl
-//       }
-//     ]    
-//     `;
+    The JSON Format object must have the following structure:
+    [
+      {
+        uniName: University of Johannesburg,
+        courseName: Bachelor of Science in Computer Science,
+        courseDuration: 3 years,
+        courseDescription: Course description example,
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
+      },
+      {
+        uniName: University of Pretoria,
+        courseName: Bachelor of Science in Computer Science,
+        courseDuration: 3 years,
+        courseDescription: Course description example,
+        admissionRequirements: Admission example,
+        universityURL: uniUrl
+      }
+    ]    
+    `;
 
-//    //asking the AI to complete the prompt you've provided with additional text
-//    const completion = await openai.createCompletion({
-//      model: "text-davinci-003",
-//      prompt,
-//      temperature: 0.6,
-//      max_tokens: 1000,
-//    });
+   //asking the AI to complete the prompt you've provided with additional text
+   const completion = await openai.createCompletion({
+     model: "text-davinci-003",
+     prompt,
+     temperature: 0.6,
+     max_tokens: 1000,
+   });
 
-//      // Extract the course recommendations text from the API response
-//      const courseRecommendations = completion.data.choices[0].text;
+     // Extract the course recommendations text from the API response
+     const courseRecommendations = completion.data.choices[0].text;
 
-//      // Parse the course recommendations text into structured course objects
-//      const courses = parseCourseRecommendations(courseRecommendations);
+     // Parse the course recommendations text into structured course objects
+     const courses = parseCourseRecommendations(courseRecommendations);
  
-//      const extractedCourses = [];
+     const extractedCourses = [];
 
-//      for (const course of courses) {
-//       const uniName = course.uniName;
-//       const courseName = course.courseName;
+     for (const course of courses) {
+      const uniName = course.uniName;
+      const courseName = course.courseName;
 
-//       const courseDescription = course.courseDescription;
+      const courseDescription = course.courseDescription;
 
-//       const courseDuration = course.courseDuration; 
-//       const admissionRequirements = course.admissionRequirements; 
-//       const universityURL = course.universityURL;         
+      const courseDuration = course.courseDuration; 
+      const admissionRequirements = course.admissionRequirements; 
+      const universityURL = course.universityURL;         
   
       
 
-//       // Create an object containing extracted course information and push it to 'extractedCourses' array
-//       extractedCourses.push({
-//         uniName,
-//         courseName,
-//         courseDuration,
-//         courseDescription,
-//         admissionRequirements, 
-//         universityURL
-//       });
-//     }
-//      // Send the extracted course recommendations as a JSON response
-//     res.status(200).json(extractedCourses);
+      // Create an object containing extracted course information and push it to 'extractedCourses' array
+      extractedCourses.push({
+        uniName,
+        courseName,
+        courseDuration,
+        courseDescription,
+        admissionRequirements, 
+        universityURL
+      });
+    }
+     // Send the extracted course recommendations as a JSON response
+    res.status(200).json(extractedCourses);
 
-//     console.log(extractedCourses);
+    console.log(extractedCourses);
 
-//   } catch (err) {
-//     console.error("Error occurred:", err);
-//     res.status(500).json({ error: "An error occurred while generating recommendations." });
-//   }
-// };
+  } catch (err) {
+    console.error("Error occurred:", err);
+    res.status(500).json({ error: "An error occurred while generating recommendations." });
+  }
+};
 
 
 
