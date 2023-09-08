@@ -17,7 +17,7 @@ constructor(private http: HttpClient) { }
 
 
 // Example method to fetch quiz data from the postgres
-getCareerData(): Observable<any> {
-    return this.http.get(APIUrl + 'quiz', { responseType: 'json' });
+getCareerData(id:any): Observable<any> {
+    return this.http.get(APIUrl + 'getAllCareers/'+ id, { responseType: 'json' });
   }
 }
