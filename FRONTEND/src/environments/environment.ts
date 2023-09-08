@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://vocaselect-backendfinal.onrender.com/api/',
-  apiUrl: 'https://vocaselect-backendfinal.onrender.com',
+  baseUrl: 'https://vocaselect-backendfinal.onrender.com/api',
+  //apiUrl: 'https://vocaselect-backendfinal.onrender.com',
   
-  // apiUrl: 'http://localhost:9000/',
+   apiUrl: 'http://localhost:9000/',
 
   jwt_Secret: 'vocaselect23' 
   

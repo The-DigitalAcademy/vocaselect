@@ -35,8 +35,7 @@ db.sequelize = sequelize;
 db.User = require("./users.models")(sequelize, Sequelize);
 db.Subject = require("./SubjectsModel/subjects.model")(sequelize, Sequelize);
 db.Timeline = require("../models/timeline.models")(sequelize, Sequelize);
-
-// db.users = require("./users.model.js")(sequelize, Sequelize);
+db.Career = require("../models/careers.model")(sequelize, Sequelize); 
 
 
 module.exports = db;

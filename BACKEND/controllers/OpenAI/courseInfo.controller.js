@@ -23,7 +23,8 @@ exports.selectedCourse = async (req, res) => {
     Provide all the list of top 5 universities, course duration, admission requirements, and career opportunities for that specific course. Make each 
 
     Please provide the respective University website/link for that course. Store this URL under the universityURL.
-    
+    Admission Criteria must be explained in maximum of 200 words.
+
     The JSON Format object must have the following structure:
     [
       {

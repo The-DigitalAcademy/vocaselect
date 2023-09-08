@@ -3,7 +3,11 @@ const configuration = require("../../config/openaiConfig");
 const openai = new OpenAIApi(configuration);
 // const QuizAnswer = require("../../models/quizAnswers.model"); // Import your Sequelize model here
 // const db = require("../../config/db.config");
+const db = require("../../models");
+const Career = db.Career;
 
+
+// const User = db.User;
 exports.generateCareerQuiz = async (req, res) => {
   try {
     const {
@@ -24,7 +28,8 @@ exports.generateCareerQuiz = async (req, res) => {
     10. What's your dream way to spend a year off work? (${answer10})\n
 
     Based on your user answers, please recommend a maximum of 4 (four) careers and short interesting  description of what each profession does in simple terms like you are explaining to a 5-year-old. Provide only information for South Africa. 
-    
+    Admission Criteria must be explained in maximum of 200 words.
+
     Format the response in JSON  representation.
     
     The JSON Format object must have the following structure:
@@ -69,18 +74,43 @@ exports.generateCareerQuiz = async (req, res) => {
         careerSalary,
       };
       extractedCareers.push(extractedCareer);
-    }
 
+    }
+   
+   // Store the extracted careers in the database
+   await storeCareersInDatabase(extractedCareers);
 
    // Send the extracted course recommendations as a JSON response
    res.status(200).json(extractedCareers);
-
 
   } catch (err) {
     console.error("Error occurred:", err);
     res.status(500).json({ error: "An error occurred while generating recommendations." });
   }
 };
+
+//Function for posting data into the database
+async function storeCareersInDatabase(careers) {
+  try {
+    for (const career of careers) {
+      const { careerName, careerDescription, careerSalary } = career;
+
+      // Create a new career record in the database
+      await db.Career.create({
+        careerName,
+        careerDescription,
+        careerSalary,
+      });
+    }
+
+    console.log('Careers have been successfully stored in the database.');
+  } catch (error) {
+    console.error('Error occurred while storing careers in the database:', error);
+  }
+}
+
+
+
 
 // Function to parse course recommendations text into structured course objects
 function parseCareerRecommendation(text) {
