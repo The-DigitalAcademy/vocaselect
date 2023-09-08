@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QuizQuestionsService } from 'src/app/_services/quiz-questions.service';
 import { CareerQuizService } from 'src/app/_services/_ChatGPT_Services/quiz/quiz.service';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ import { CareerRecommendation } from 'src/app/_Interface/career-recommendation';
 
 })
 export class QuizQuestionsComponent implements OnInit {
+  
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
   });
