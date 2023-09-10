@@ -34,7 +34,7 @@ import { WelcomeQuizComponent } from './Pages/_Quiz/welcome-quiz/welcome-quiz.co
 import { PasswordResetComponent } from './Pages/password-reset/password-reset.component';
 import { RequestPasswordResetComponent } from './Pages/request-password-reset/request-password-reset.component';
 import { ProfileComponent } from './Pages/profile/profile.component';
-
+import { QuizCourseInfoComponent } from './Pages/_Quiz/quiz-course-info/quiz-course-info.component';
 
 
 @NgModule({
@@ -57,8 +57,8 @@ import { ProfileComponent } from './Pages/profile/profile.component';
     SubjectmarksComponent,
     CourseDetailsComponent,
     TimelineComponent,
-    ProfileComponent
-   
+    ProfileComponent,
+    QuizCourseInfoComponent
    
   ],
   imports: [
