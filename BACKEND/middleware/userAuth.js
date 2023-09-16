@@ -36,14 +36,16 @@ const verifyToken = (req, res, next) => {
    });
 
    //if email exist in the database respond with a status of 409
+   // If email already exists, respond with a 409 status code (Conflict)
    if (emailcheck) {
-     return res.status(204).send({message:"username already exists"});
+     return res.status(409).send({message:"username already exists"});
    }
 
    next();
  } catch (error) {
-   //console.log(error, 'this is on auth');
-   return ({message:"username already exists"});
+  console.error(error);
+    // Handle other errors here and send an appropriate response
+    return res.status(500).json({ message: "Internal server error" });
  }
 };
 
