@@ -37,7 +37,7 @@ const verifyToken = (req, res, next) => {
 
    //if email exist in the database respond with a status of 409
    if (emailcheck) {
-     return ({message:"username already exists"});
+     return res.status(204).send({message:"username already exists"});
    }
 
    next();
