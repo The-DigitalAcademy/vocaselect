@@ -27,7 +27,13 @@ const verifyToken = (req, res, next) => {
 //this is to avoid having two users with the same username and email
  const saveUser = async (req, res, next) => {
  //search the database to see if user exist
+ 
  try {
+   // Check if req.body and req.body.users exist
+   if (!req.body || !req.body.users || !req.body.users.email) {
+      return res.status(400).json({ message: "Invalid request data" });
+   }
+
   //  checking if email already exist
    const emailcheck = await User.findOne({
      where: {
