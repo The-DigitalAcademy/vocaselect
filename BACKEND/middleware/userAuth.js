@@ -24,30 +24,26 @@ const verifyToken = (req, res, next) => {
 };
 
 //Function to check if username or email already exist in the database
-//this is to avoid having two users with the same username and email
  const saveUser = async (req, res, next) => {
- //search the database to see if user exist
  
  try {
+  const { email } = req.body;
+   console.log(email);
    // Check if req.body and req.body.users exist
-   if (!req.body || !req.body.users || !req.body.users.email) {
-      return res.status(400).json({ message: "Invalid request data" });
-   }
+  //  if (!req.body || !req.body.users || !req.body.users.email) {
+  //     return res.status(400).json({ message: "Invalid request data" });
+  //  }
 
-  //  checking if email already exist
-   const emailcheck = await User.findOne({
-     where: {
-       email: req.body.users.email,
-     },
-   });
+  // Check if email already exists
+   const emailExists = await User.findOne({ where: { email: email } });
 
-   //if email exist in the database respond with a status of 409
+
    // If email already exists, respond with a 409 status code (Conflict)
-   if (emailcheck) {
+   if (emailExists) {
      return res.status(409).send({message:"username already exists"});
    }
-
    next();
+   
  } catch (error) {
   console.error(error);
     // Handle other errors here and send an appropriate response
@@ -58,5 +54,6 @@ const verifyToken = (req, res, next) => {
 
 //exporting module
  module.exports = {
- saveUser, verifyToken
+ saveUser, 
+ verifyToken
 };

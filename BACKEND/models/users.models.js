@@ -16,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false
     },
     dob: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATE,
       allowNull: false
     },
     city: {
