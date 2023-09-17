@@ -27,14 +27,14 @@ const router = express.Router()
  *             surname:
  *               type: string
  *             email:
- *               type: string
+ *               type: email@gmail.com
  *             dob:
  *               type: string
  *               format: date
  *             city:
  *               type: string
  *             studentGrade:
- *               type: string
+ *               type: 8
  *             password:
  *               type: string
  *     responses:
@@ -62,7 +62,7 @@ router.post('/signup', userAuth.saveUser, userController.signup)
  *             type: object
  *             properties:
  *               username:
- *                 type: string
+ *                 type: email@gmail.com
  *               password:
  *                 type: string
  *     responses:
