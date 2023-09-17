@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const Users  = sequelize.define("users", {
+  const Users  = sequelize.define("user", {
       name: {
       type: Sequelize.STRING,
       allowNull: false
@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false
     },
     dob: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATE,
       allowNull: false
     },
     city: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false
     },
     studentgrade: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false
 
     },
@@ -33,13 +33,6 @@ module.exports = (sequelize, Sequelize) => {
     }
   });
 
-  // User.associate = (models) => {
-  //   User.belongsToMany(models.Subject, {
-  //     through: models.UserSubject,
-  //     as: "selectedSubjects",
-  //     foreignKey: "userId",
-  //   });
-  // };
 
 
   return Users;

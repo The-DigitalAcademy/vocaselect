@@ -8,23 +8,24 @@ const User = db.User;
 //hashing users password before its saved to the database with bcrypt
 const signup = async (req, res) => {
   try {
-    const { name, surname, email, dob, city, studentGrade, password } =
-      req.body.users;
+    const { name, surname, email, dob, city, studentgrade, password } =
+      req.body;
 
+    // console.log(req.body, "login body", username, password);
     console.log(
-      req.body.users,
+      req.body,
       " json body ",
       name,
       surname,
       email,
       dob,
       city,
-      studentGrade,
+      studentgrade,
       password
     );
 
    const data = {
-    name, surname, email, dob, city, studentGrade,
+    name, surname, email, dob, city, studentgrade,
     password: await bcrypt.hash(password, 10),
    };
    //saving the user
@@ -118,7 +119,7 @@ const login = async (req, res) => {
           email: user.email,
           dob: user.dob,
           city: user.city,
-          grade: user.studentGrade
+          grade: user.studentgrade
         }
         //send user data
         return res.status(201).send({ message: "Successfully logged in!", token: token,user:userInfo  });

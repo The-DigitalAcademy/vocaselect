@@ -88,8 +88,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/users', userRoutes)
 
 
-// app.use('/api/allSubjects', subjectRoutes)
-app.use('/api/subjects', subjectRoutes)
+
 
 // OpenAI API Routes
 app.use("/enterCareer", careerRoutes);
@@ -104,8 +103,6 @@ app.post('/', sendResetOTP);
 // Endpoint to reset password
 app.post('/', resetPassword);
 
-//routes for the user API
-app.use('/api/users', userRoutes)
 
 // routes for getting all subjets
 app.use('/api/subjects', subjectRoutes)
@@ -118,6 +115,11 @@ app.use('/api/timeline', timelineRoutes);
 
 //API for answers
 app.use('/api/Answers', quizAnswers)
+
+app.use((req, res, next) => {
+  res.setHeader('Content-Type', 'application/json');
+  next();
+});
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

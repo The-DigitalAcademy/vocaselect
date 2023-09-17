@@ -17,6 +17,7 @@ const verifyToken = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, config.JWT_SECRET);
     req.user = decoded;
+
   } catch (err) {
     return res.status(401).send("Invalid Token");
   }
@@ -24,31 +25,34 @@ const verifyToken = (req, res, next) => {
 };
 
 //Function to check if username or email already exist in the database
-//this is to avoid having two users with the same username and email
- const saveUser = async (req, res, next) => {
- //search the database to see if user exist
+const saveUser = async (req, res, next) => {
  try {
-  //  checking if email already exist
-   const emailcheck = await User.findOne({
-     where: {
-       email: req.body.users.email,
-     },
-   });
+   const { email } = req.body;
+   console.log(email);
+   // Check if email already exists
+   const emailExists = await User.findOne({ where: { email: email } });
 
-   //if email exist in the database respond with a status of 409
-   if (emailcheck) {
-     return res.json(204).send({message:"username already exists"});
+
+   if (emailExists) {
+    return res.status(409).json({ message: "Email already exists" });
    }
-
    next();
- } catch (error) {
-   //console.log(error, 'this is on auth');
-   return res.json(204).send({message:"username already exists"});
- }
+
+} catch (error) {
+  // console.error(error, 'this is on auth');
+  return res.status(500).json({ message: "Internal Server Error" });
+}
+ 
 };
 
 
-//exporting module
- module.exports = {
- saveUser, verifyToken
+module.exports = {
+ saveUser,
+ verifyToken
 };
+
+
+
+
+// const { email } = req.body;
+// console.log(email);
